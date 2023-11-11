@@ -1,0 +1,17 @@
+@charset "UTF-8";
+#nav>li>a {
+	color: #ccc;
+	font-size: 12px;
+	font-weight: 600;
+}
+
+.navbar-nav.mx-auto>li>a {
+	font-weight: 700;
+	font-size: 22px;
+	padding-left: 32px !important;
+	padding-right: 32px !important;
+}
+
+footer>* {
+	color: #ccc;
+}
