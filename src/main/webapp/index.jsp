@@ -9,12 +9,5 @@
 </head>
 <body>
 <jsp:forward page="main.do"></jsp:forward>
-<h1>안녕</h1>
-<h1>안녕</h1>
-<h1>안녕</h1>
-<h1>안녕</h1>
-<h1>안녕</h1>
-<h1>안녕</h1>
-<h1>안녕</h1>
 </body>
 </html>
