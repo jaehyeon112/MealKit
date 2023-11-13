@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.cart.GoCartControl;
+import co.yedam.order.GoOrderControl;
 
 public class FrontController extends HttpServlet {
 	Map<String, command> map = new HashMap<>();
@@ -18,6 +19,7 @@ public class FrontController extends HttpServlet {
 	public void init() throws ServletException {
 		map.put("/main.do", new GoMainControl());		
 		map.put("/cart.do", new GoCartControl());		
+		map.put("/order.do", new GoOrderControl());		
 		
 	}
 	
