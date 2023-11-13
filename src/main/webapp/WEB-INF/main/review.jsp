@@ -204,6 +204,12 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> <%@taglib uri="http://tiles
 							<span class="tag">#너무맛있어요</span>
 							<span class="tag">#맛있게맛있어요</span>
 						</div>
+						<div class="tip_box">
+							<div class="tip_flag">
+								<span class="hide">TIP!</span>
+							</div>
+							<div class="tip_txt">비앤나 더넣으면 더 맛있어요.</div>
+						</div>
 					</div>
 					<div class="img_left_wrap">
 						<div class="img">
