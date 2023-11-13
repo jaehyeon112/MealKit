@@ -9,13 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.yedam.cart.GoCartControl;
+
 public class FrontController extends HttpServlet {
 	Map<String, command> map = new HashMap<>();
 	
 	@Override
 	public void init() throws ServletException {
 		map.put("/main.do", new GoMainControl());		
-		map.put("/cart.do", new GoMainControl());		
+		map.put("/cart.do", new GoCartControl());		
 		
 	}
 	
