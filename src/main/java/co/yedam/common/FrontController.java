@@ -14,11 +14,21 @@ import co.yedam.join.GoJoinControl;
 import co.yedam.login.GoLoginControl;
 import co.yedam.order.GoOrderControl;
 
+
+
+
+
+
 public class FrontController extends HttpServlet {
 	Map<String, command> map = new HashMap<>();
 
 	@Override
 	public void init() throws ServletException {
+
+
+		map.put("/review.do", new GoReviewControl());
+		
+
 		map.put("/main.do", new GoMainControl());
 		map.put("/cart.do", new GoCartControl());
 		map.put("/order.do", new GoOrderControl());
