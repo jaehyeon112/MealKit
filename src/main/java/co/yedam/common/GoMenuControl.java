@@ -10,12 +10,12 @@ public class GoMenuControl implements command {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
+		// TODO Auto-generated method stub
 		try {
-			req.getRequestDispatcher("main/menu.do").forward(req, resp);
+			req.getRequestDispatcher("/main/menu.tiles").forward(req, resp);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
-		
 	}
 
 }

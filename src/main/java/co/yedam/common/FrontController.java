@@ -24,11 +24,7 @@ public class FrontController extends HttpServlet {
 
 	@Override
 	public void init() throws ServletException {
-
-
 		map.put("/review.do", new GoReviewControl());
-		
-
 		map.put("/main.do", new GoMainControl());
 		map.put("/cart.do", new GoCartControl());
 		map.put("/order.do", new GoOrderControl());
@@ -48,6 +44,7 @@ public class FrontController extends HttpServlet {
 
 		command controller = map.get(page);
 		controller.execute(req, resp);
+		//ggggggg
 	}
 
 }
