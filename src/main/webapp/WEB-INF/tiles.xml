@@ -12,6 +12,11 @@
 	<definition name="WILDCARD:main/*" extends="main">
 		<put-attribute name="body" value="/WEB-INF/main/{1}.jsp" />
 	</definition>
+	
+	<definition name="WILDCARD:cartcount/*" extends="main">
+		<put-attribute name="body" value="/WEB-INF/cartcount/{1}.jsp" />
+	</definition>
+	
 
 	<definition name="WILDCARD:*/*" extends="main">
 		<put-attribute name="body" value="/WEB-INF/{1}/{2}.jsp" />
