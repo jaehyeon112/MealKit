@@ -14,7 +14,8 @@ public class FrontController extends HttpServlet {
 	
 	@Override
 	public void init() throws ServletException {
-		map.put("/main.do", new GoMainControl());		
+		map.put("/main.do", new GoMainControl());	
+		//kkkkkk
 		
 	}
 	
