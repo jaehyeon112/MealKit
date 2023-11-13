@@ -20,9 +20,8 @@ public class FrontController extends HttpServlet {
 		map.put("/main.do", new GoMainControl());
 		map.put("/cart.do", new GoCartControl());
 		map.put("/order.do", new GoOrderControl());
-		map.put("/order.do", new GoOrderControl());
+		map.put("/menu.do", new GoMenuControl());
 
-		// hhhhhh
 
 	}
 
