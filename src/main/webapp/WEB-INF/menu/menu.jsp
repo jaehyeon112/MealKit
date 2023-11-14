@@ -4,8 +4,11 @@
 <!-- 메뉴바-->
 <h1><b>COOKIT 메뉴</b></h1>
 <br>
-<a href="#"><b>배송일별</b></a>
-<a href="#"><b>테마별</b></a>
+<div>
+    <a href="#"><b>배송일별</b></a>
+    <a href="#"><b>테마별</b></a>
+</div>
+
 
 <!-- 개별 상품-->
 <hr>
@@ -13,7 +16,7 @@
     <b>예담에서 배송 가능한 메뉴입니다.</b><br>
     <div class="row"  input type="redio">
         <div class="col">
-            <p class="메뉴2">주문마감은 오전 7시 입니다ggg.</p>
+            <p class="메뉴2">주문마감은 오전 7시 입니다.</p>
         </div>
         <div class="col">          
             <a href="#" ><span>신메뉴순</span></a>
@@ -36,10 +39,12 @@
                     <!-- Sale badge-->
                     <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
                     </div>
-                    <!-- Product image-->
-                    <img class="card-img-top"
+                    <!-- Product image--><a href="menupage.do">
+
+                        <img  class="card-img-top"
                         src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_8311632%2F83116327439.1.jpg&type=f372_372"
                         alt="..." />
+                    </a>
                     
                     <!-- Product details-->
                     <div class="card-body p-4">

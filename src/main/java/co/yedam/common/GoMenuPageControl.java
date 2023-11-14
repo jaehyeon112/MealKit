@@ -6,15 +6,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class GoMenuControl implements command {
+public class GoMenuPageControl implements command {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO Auto-generated method stub
 		try {
-
-			req.getRequestDispatcher("menu/menu.tiles").forward(req, resp);
-
+			req.getRequestDispatcher("/menu/menupage.tiles").forward(req, resp);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
