@@ -19,7 +19,7 @@
 					<li class="nav-item"><a class="nav-link" href="#"> 소개 </a></li>
 					<li class="nav-item"><a class="nav-link" href="#"> 메뉴 </a></li>
 					<li class="nav-item"><a class="nav-link" href="#">리뷰 </a></li>
-					<li class="nav-item"><a class="nav-link" href="#">마이페이지 </a></li>
+					<li class="nav-item"><a class="nav-link" href="myPage.do">마이페이지 </a></li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
 					<li>
