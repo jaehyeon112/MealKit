@@ -3,7 +3,7 @@
     <h1>나는</h1>
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    매콤한맛을
+    우리팀원들을
   </button>
   <ul class="dropdown-menu">
     <li><a class="dropdown-item" href="#">매콤한맛을</a></li>
