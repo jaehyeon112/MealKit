@@ -13,7 +13,7 @@
     <b>예담에서 배송 가능한 메뉴입니다.</b><br>
     <div class="row"  input type="redio">
         <div class="col">
-            <p class="메뉴2">주문마감은 오전 7시 입니다.</p>
+            <p class="메뉴2">주문마감은 오전 7시 입니다ggg.</p>
         </div>
         <div class="col">          
             <a href="#" ><span>신메뉴순</span></a>
