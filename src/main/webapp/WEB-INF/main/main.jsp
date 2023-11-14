@@ -40,17 +40,15 @@
 }
 
 .ma_best {
-    width: 1260px;
-   	height: 500px;
-   	
+	width: 1260px;
+	height: 500px;
 }
 
-.tit{
-    color: #101010;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 56px;
-   
+.tit {
+	color: #101010;
+	font-weight: 700;
+	font-size: 40px;
+	line-height: 56px;
 }
 </style>
 <div class="container text-center">
@@ -84,6 +82,31 @@
 </div>
 <hr>
 <div class="ma_best">
-	<h2 class="tit">실시간 베스트</h2>
+	<div class="sec_tit">
+		<h2 class="tit">실시간 베스트</h2>
+	</div>
+	<div class="prod_list">
+		<ul>
+			<li>
+				<div class="module">
+					<div class="img_wrap">
+						<a href="#!" class="conts"> <img src="#!" alt="#!"
+							onerror="#!"> <span class="flag_num best"> <span>BEST</span>
+								01
+						</span>
+						</a>
+					</div>
+					<div class="txt_wrap">
+						<a href="#!" class="conts"></a>
+					</div>
+					<div class="act_btn_wrap">
+						<button type="button" class="btn btn_cart" onclick="#!">
+							<span class="hide">장바구니 담기</span>
+						</button>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
 </div>
 
