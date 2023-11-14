@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 	<ul class="nav justify-content-end bg-black" id="nav">
-		<li class="nav-item"><a class="nav-link" href="#">(로그인시 아이디)님</a>
+		<li class="nav-item"><a class="nav-link" href="login.do">(로그인시 아이디)님</a>
 		</li>
-		<li class="nav-item"><a class="nav-link" href="#">회원가입/로그인or로그아웃</a>
+		<li class="nav-item"><a class="nav-link" href="join.do">회원가입/로그인or로그아웃</a>
 		</li>
 		<li class="nav-item"><a class="nav-link" href="#">고객센터</a></li>
 	</ul>

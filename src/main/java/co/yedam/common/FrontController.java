@@ -10,17 +10,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.cart.GoCartControl;
+import co.yedam.join.GoJoinControl;
+import co.yedam.login.GoLoginControl;
 import co.yedam.order.GoOrderControl;
+
+
+
+
+
 
 public class FrontController extends HttpServlet {
 	Map<String, command> map = new HashMap<>();
 
 	@Override
 	public void init() throws ServletException {
+		map.put("/review.do", new GoReviewControl());
 		map.put("/main.do", new GoMainControl());
 		map.put("/cart.do", new GoCartControl());
 		map.put("/order.do", new GoOrderControl());
 		map.put("/menu.do", new GoMenuControl());
+		map.put("/login.do", new GoLoginControl());
+		map.put("/join.do", new GoJoinControl());
 
 
 	}
@@ -34,6 +44,7 @@ public class FrontController extends HttpServlet {
 
 		command controller = map.get(page);
 		controller.execute(req, resp);
+		//ggggggg
 	}
 
 }
