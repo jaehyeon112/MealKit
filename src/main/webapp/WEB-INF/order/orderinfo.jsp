@@ -83,13 +83,6 @@ td {
 width: 400px;
 }
 
-.how_to_pay >div>div > input {
-  appearance: none;
-        width: 0;
-        height: 0;
-        position: absolute;
-        pointer-events: none;
-}
 </style>
 
 <div class="row">
@@ -145,22 +138,22 @@ width: 400px;
 		</ul>
 		<h3>결제수단</h3>
 		<div id="test"></div>
-		<div class="how_to_pay">
-		<div class="row">
-		<div class="col">
-		<input type="radio" id="card" name="card">
-		<label for="card">신용카드</label>
-		</div>
-		<div class="col">
-		<input type="radio" id="card" name="card">
-		<label for="card">신용카드</label>
-		</div>
-		<div class="col">
-		<input type="radio" id="card" name="card">
-		<label for="card">신용카드</label>
-		</div>
-		</div>
-		</div>
+		
+		<div class="form-check">
+  <input class="form-check-input" type="radio" name="kindOfPayment" id="kakao">
+  <label class="form-check-label" for="kakao">
+    카카오페이
+  </label>
+</div>
+
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="kindOfPayment" id="kg" checked>
+  <label class="form-check-label" for="kg">
+    KG 이니시스
+  </label>
+</div>
+		
+		
 	</div>
 	
 	
@@ -186,8 +179,8 @@ width: 400px;
 				<td id="lastPay">2000원</td>
 			</tr>
 		</table>
-		<button type="submit" class="cart__bigorderbtn right">결제하기</button>
-
+		<button onclick="requestPay()" class="cart__bigorderbtn right">결제하기</button>
+		
 	</div>
 </div>
 
@@ -201,13 +194,18 @@ width: 400px;
 
 
 
-
-
-
-
-<script
-	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+ <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+    <!-- iamport.payment.js -->
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+    
+    
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+	
+	;
+
 	function sample6_execDaumPostcode() {
 		new daum.Postcode(
 				{
@@ -260,6 +258,37 @@ width: 400px;
 					}
 				}).open();
 	}
+	
+	 var IMP = window.IMP; 
+     IMP.init("imp87028837"); 
+ 	
+    function requestPay(){
+    	if(document.querySelector('input[name="kindOfPayment"]:checked').id=='kg'){
+
+    		
+    	IMP.request_pay({
+    	    pg : 'html5_inicis',
+    	    pay_method : 'card',
+    	    merchant_uid: "order_no_0001", // 상점에서 관리하는 주문 번호를 전달
+    	    name : '주문명:결제테스트',
+    	    amount : 10000,// 가격 넣기
+    	    buyer_email : 'iamport@siot.do',
+    	    buyer_name : '구매자이름',
+    	    buyer_tel : '010-1234-5678',
+    	    buyer_addr : '서울특별시 강남구 삼성동',
+    	    buyer_postcode : '123-456',
+    	    m_redirect_url : '{모바일에서 결제 완료 후 리디렉션 될 URL}' // 예: https://www.my-service.com/payments/complete/mobile
+    	}, function(rsp) { // callback 로직
+    		//* ...중략 (README 파일에서 상세 샘플코드를 확인하세요)... *//
+    	})
+	}else{
+		alert('아직 구현 안했어요!')
+	}
+    	
+	
+	}
+	
+	
 </script>
 
 
