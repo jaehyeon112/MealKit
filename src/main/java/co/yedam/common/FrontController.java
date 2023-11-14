@@ -31,6 +31,8 @@ public class FrontController extends HttpServlet {
 		map.put("/menu.do", new GoMenuControl());
 		map.put("/login.do", new GoLoginControl());
 		map.put("/join.do", new GoJoinControl());
+		map.put("/myPage.do", new GoMyPageControl());
+		map.put("/menupage.do", new GoMenuPageControl());
 
 
 	}
