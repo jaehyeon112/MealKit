@@ -14,6 +14,7 @@ import co.yedam.join.GoJoinControl;
 import co.yedam.login.GoLoginControl;
 import co.yedam.menu.web.GoAddFromControl;
 import co.yedam.order.GoOrderControl;
+import co.yedam.review.web.GoReviewControl;
 
 
 
