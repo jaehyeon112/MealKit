@@ -1,5 +1,6 @@
 package co.yedam.common;
 
+
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -19,6 +20,6 @@ public class MainExe {
 		List<UserVO> list = svc.userList();
 		System.out.println(list);
 	}
+}
 	
 
-}//

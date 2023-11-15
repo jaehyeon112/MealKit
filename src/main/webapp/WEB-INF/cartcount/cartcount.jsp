@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
  <style>
  
  body {
@@ -197,14 +198,14 @@ font-weight: 700;
 font-weight: 700;
 }
   
- </style> 
-<body>
+ </style>
+ <!-- 메뉴 list를 가져와서 가격 * 수량이 되야 장바구니의 금액이 된다. -->
   <h2 style="font-weight:800">장바구니</h2>
     <section class="cart">
-        <table class="cart__list">
             <form>
+        <table class="cart__list">
               <button class="cart__list__optionbtn">선택상품 삭제</button>
-                        <button class="cart__list__optionbtn">품절상품 삭제</button>
+              <button class="cart__list__optionbtn">품절상품 삭제</button>
                 <thead>
                     <tr>
                       <td><input type="checkbox"></td>   
@@ -214,20 +215,22 @@ font-weight: 700;
                     </tr>
                 </thead>
                 <tbody>
+                <c:forEach var="vo" items="${list}">
                     <tr class="cart__list__detail">
                         <td><input type="checkbox"></td>
-                        <td><img id="images" src=".."></td>
-                        <td id="description"><a href="#">제품이름</a></td>
+                        <td><img id="images" src="https://picsum.photos/80/80"></td>
+                        <td id="description"><a href="#">${vo.menuName }</a></td>
                         <td id="amount_center">
-                        <button class="bnt_size">-</button>
-                        <span>수량</span>
-                        <button class="bnt_size">+</button>
+                        <input type="button" class="bnt_size" value="-" onclick="del()">
+                        <input style="border:0; width:20px;" readonly id="amounts" value="1" size="9">
+                        <input type="button" class="bnt_size" value="+" onclick="add()">
                         </td>
-                        <td><span class="price">100원</span></td>
+                        <td><span class="price">원</span></td>
                     </tr>
+                    </c:forEach>
                 </tbody>
-            </form>
         </table>
+            </form>
         
              <hr>
                 <div class="container text-center">
@@ -259,11 +262,29 @@ font-weight: 700;
     </div>
   </div>
 </div>
-                <form action="order.do">
+                <form >
         <div class="cart__mainbtns">
-            <button class="cart__bigorderbtn left">쇼핑 계속하기</button>
-            <button type="submit" class="cart__bigorderbtn right">주문하기</button>
+            <input formaction="menu.do" type="submit" class="cart__bigorderbtn left"   value="쇼핑 계속하기">
+            <input formaction="order.do" type="submit" class="cart__bigorderbtn right" value="주문하기" >
         </div>
         </form>
     </section>
-</body>
+
+    
+    <script>
+    	
+    let a = document.querySelector('#amounts')
+    
+    function del(){
+    	if(a.value>1){
+      a.value--;
+    	}else{
+    		alert('최소 1개 이상 구매해주세요')
+    	}
+    }
+    
+    function add(){
+      a.value++;
+    }
+
+    </script>

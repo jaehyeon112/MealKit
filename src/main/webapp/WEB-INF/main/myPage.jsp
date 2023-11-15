@@ -160,4 +160,6 @@ font-weight: bold;
 					
 				</div>
 			</div>
+			</div>
+			</div>
 </section>
