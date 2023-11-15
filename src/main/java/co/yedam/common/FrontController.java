@@ -13,6 +13,8 @@ import co.yedam.cart.GoCartControl;
 import co.yedam.join.GoJoinControl;
 import co.yedam.login.GoLoginControl;
 import co.yedam.order.GoOrderControl;
+
+import co.yedam.review.web.GoAddReviewControl;
 import co.yedam.review.web.GoReviewControl;
 
 
@@ -34,6 +36,7 @@ public class FrontController extends HttpServlet {
 		map.put("/join.do", new GoJoinControl());
 		map.put("/myPage.do", new GoMyPageControl());
 		map.put("/menupage.do", new GoMenuPageControl());
+		map.put("/addReview.do", new GoAddReviewControl());
 
 
 	}
@@ -47,7 +50,7 @@ public class FrontController extends HttpServlet {
 
 		command controller = map.get(page);
 		controller.execute(req, resp);
-		//ggggggg
+		
 	}
 
 }
