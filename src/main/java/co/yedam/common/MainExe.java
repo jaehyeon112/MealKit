@@ -10,6 +10,8 @@ public class MainExe {
 
 		SqlSession session = DataSourceMybatis.getInstance().openSession(true);
 		MenuMapper mapper = session.getMapper(MenuMapper.class);
+		System.out.println(mapper.selectMenu("P001"));
+				
 
 	}
 }

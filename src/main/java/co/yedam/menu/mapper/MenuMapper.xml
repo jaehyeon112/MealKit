@@ -4,6 +4,13 @@
 	<select id="list" resultType="co.yedam.menu.service.MenuVO">
 		select * from menu
 	</select>
+	
+	<!-- 장바구니 버튼 눌렀을때, 해당 메뉴의 정보 가져올 수 있도록.. -->
+	<select id="selectMenu"	resultType="co.yedam.menu.service.MenuVO"
+	parameterType="String">
+		select * from menu where menu_id = #{menuId}
+	</select>
+	
 	<insert id="insertMenu" parameterType="co.yedam.menu.service.MenuVO">
 		insert into menu values(#{menuId}, #{menuName}, #{menuNameInfo}, #{menuImage1}, #{menuImage2}, #{menuImage3},#{menuKind}, #{menuPrice}, #{menuPriceOff}, #{menuContent}, #{menuCount}, #{menuPoint})
 	</insert>

@@ -8,4 +8,10 @@
 		select * from cart
 	</select>
 
+	<insert id="insertCart" parameterType="co.yedam.cart.service.CartVO">
+	<selectKey keyProperty="cartNum" resultType="int" order="BEFORE">
+	    	SELECT seq_cart_no.NEXTVAL FROM DUAL;
+		</selectKey>
+	insert into cart values(#{cartNum},#{menuId},#{menuName},#{menuImage1},1,#{userId})
+	</insert>
 </mapper>	

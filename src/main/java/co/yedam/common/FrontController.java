@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import co.yedam.cart.GoCartControl;
 import co.yedam.join.GoJoinControl;
 import co.yedam.login.GoLoginControl;
+import co.yedam.menu.web.AddCartList;
 import co.yedam.menu.web.GoAddFromControl;
 import co.yedam.order.GoOrderControl;
 import co.yedam.review.web.GoReviewControl;
@@ -32,7 +33,7 @@ public class FrontController extends HttpServlet {
 		map.put("/menupage.do", new GoMenuPageControl());
 		map.put("/addMenu.do", new GoAddMenuControl());
 		map.put("/addForm.do", new GoAddFromControl());
-
+		map.put("/addCart.do", new AddCartList()); //장바구니 버튼 클릭시 장바구니에 메뉴 추가
 	}
 
 	@Override

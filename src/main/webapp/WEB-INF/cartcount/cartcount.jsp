@@ -200,7 +200,6 @@ font-weight: 700;
   
  </style>
  <!-- 메뉴 list를 가져와서 가격 * 수량이 되야 장바구니의 금액이 된다. -->
- ${list} 
   <h2 style="font-weight:800">장바구니</h2>
     <section class="cart">
             <form>
@@ -226,7 +225,7 @@ font-weight: 700;
                         <input style="border:0; width:20px;" readonly id="amounts" value="1" size="9">
                         <input type="button" class="bnt_size" value="+" onclick="add()">
                         </td>
-                        <td><span class="price">${vo.price }원</span></td>
+                        <td><span class="price">원</span></td>
                     </tr>
                     </c:forEach>
                 </tbody>
@@ -270,13 +269,10 @@ font-weight: 700;
         </div>
         </form>
     </section>
+
     
     <script>
     	
-    function menugo(){
-    	
-    }
-    
     let a = document.querySelector('#amounts')
     
     function del(){
