@@ -198,7 +198,6 @@ font-weight: 700;
 }
   
  </style> 
-<body>
   <h2 style="font-weight:800">장바구니</h2>
     <section class="cart">
         <table class="cart__list">
@@ -216,12 +215,12 @@ font-weight: 700;
                 <tbody>
                     <tr class="cart__list__detail">
                         <td><input type="checkbox"></td>
-                        <td><img id="images" src=".."></td>
+                        <td><img id="images" src="https://picsum.photos/80/80"></td>
                         <td id="description"><a href="#">제품이름</a></td>
                         <td id="amount_center">
-                        <button class="bnt_size">-</button>
-                        <span>수량</span>
-                        <button class="bnt_size">+</button>
+                        <input type="button" class="bnt_size" value="-" onclick="del()">
+                        <input style="border:0; width:20px;" readonly id="amounts" value="1" size="9">
+                        <input type="button" class="bnt_size" value="+" onclick="add()">
                         </td>
                         <td><span class="price">100원</span></td>
                     </tr>
@@ -259,11 +258,31 @@ font-weight: 700;
     </div>
   </div>
 </div>
-                <form action="order.do">
+                <form >
         <div class="cart__mainbtns">
-            <button class="cart__bigorderbtn left">쇼핑 계속하기</button>
-            <button type="submit" class="cart__bigorderbtn right">주문하기</button>
+            <input formaction="menu.do" type="submit" class="cart__bigorderbtn left"   value="쇼핑 계속하기">
+            <input formaction="order.do" type="submit" class="cart__bigorderbtn right" value="주문하기" >
         </div>
         </form>
     </section>
-</body>
+    
+    <script>
+    function menugo(){
+    	
+    }
+    
+    let a = document.querySelector('#amounts')
+    
+    function del(){
+    	if(a.value>1){
+      a.value--;
+    	}else{
+    		alert('최소 1개 이상 구매해주세요')
+    	}
+    }
+    
+    function add(){
+      a.value++;
+    }
+
+    </script>
