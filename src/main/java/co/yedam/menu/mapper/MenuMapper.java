@@ -7,10 +7,11 @@ import co.yedam.menu.service.MenuVO;
 
 public interface MenuMapper {
 	public List<MenuVO> list();
-	public MenuVO selectMenu(String menuId);
 	public int insertMenu(MenuVO vo);
 	public int updateMenu(MenuVO vo);
 	public int deleteMenu(MenuVO vo);
 	
+	//팀장이 작업함
+	public MenuVO selectMenu(String menuId);
 	
 }

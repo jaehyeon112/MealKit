@@ -4,4 +4,9 @@
 	<select id="selectList" resultType="co.yedam.review.service.ReviewVO">
 		SELECT * FROM REVIEW ORDER BY USER_ID
 	</select>
+	
+	<insert id="insert" parameterType="co.yedam.review.service.ReviewVO">
+		INSERT INTO REVIEW(REVIEW_DATE, REVIEW_STAR, REVIEW_IMAGE, REVIEW_CONTENT)
+		VALUES
+	</insert>
 </mapper>

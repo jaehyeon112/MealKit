@@ -10,16 +10,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.cart.GoCartControl;
+<<<<<<< HEAD
 import co.yedam.join.GoJoinControl;
 import co.yedam.login.GoLoginControl;
 import co.yedam.menu.web.GoAddFormControl;
+=======
+import co.yedam.join.GoJoinFormControl;
+import co.yedam.join.JoinControl;
+import co.yedam.login.GoLoginFormControl;
+import co.yedam.login.LoginControl;
+import co.yedam.login.LogoutControl;
+import co.yedam.menu.web.AddCartList;
+import co.yedam.menu.web.GoAddFromControl;
+>>>>>>> branch 'develop' of https://github.com/jaehyeon112/MealKit.git
 import co.yedam.order.GoOrderControl;
+
+import co.yedam.review.web.GoAddReviewControl;
 import co.yedam.review.web.GoReviewControl;
-
-
-
-
-
 
 public class FrontController extends HttpServlet {
 	Map<String, command> map = new HashMap<>();
@@ -31,12 +38,22 @@ public class FrontController extends HttpServlet {
 		map.put("/cart.do", new GoCartControl());
 		map.put("/order.do", new GoOrderControl());
 		map.put("/menu.do", new GoMenuControl());
-		map.put("/login.do", new GoLoginControl());
-		map.put("/join.do", new GoJoinControl());
+		
+		map.put("/login.do", new GoLoginFormControl());
+		map.put("/signIn.do", new LoginControl());
+		map.put("/logout.do", new LogoutControl()); 
+		
+		map.put("/join.do", new GoJoinFormControl());
+		map.put("/signUp.do", new JoinControl());
+		
 		map.put("/myPage.do", new GoMyPageControl());
+		
 		map.put("/menupage.do", new GoMenuPageControl());
+		map.put("/addReview.do", new GoAddReviewControl());
 		map.put("/addMenu.do", new GoAddMenuControl());
 		map.put("/addForm.do", new GoAddFormControl());
+		map.put("/addCart.do", new AddCartList()); //장바구니 버튼 클릭시 장바구니에 메뉴 추가
+
 
 	}
 
@@ -49,7 +66,7 @@ public class FrontController extends HttpServlet {
 
 		command controller = map.get(page);
 		controller.execute(req, resp);
-		//gggggggdd@@@@@
+
 	}
 
 }

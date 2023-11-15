@@ -9,4 +9,7 @@ public interface MenuService {
 	public boolean updateMenu(MenuVO vo);
 	public boolean deleteMenu(String menuName);//s
 	
+	
+	// 팀장이 작업함
+	public MenuVO addCart(String menuId);
 }

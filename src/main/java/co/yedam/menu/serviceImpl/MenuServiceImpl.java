@@ -37,5 +37,11 @@ public class MenuServiceImpl implements MenuService{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public MenuVO addCart(String menuId) {
+		// TODO Auto-generated method stub
+		return mapper.selectMenu(menuId);
+	}
 	
 }

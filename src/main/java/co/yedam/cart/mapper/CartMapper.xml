@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "path/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.yedam.cart.mapper.CartMapper">
+	<!-- id = 메소드이름 resultType = 반환타입 -->
+	<select id="selectList"
+		resultType="co.yedam.cart.service.CartVO">
+		select * from cart
+	</select>
+
+	<insert id="insertCart" parameterType="co.yedam.cart.service.CartVO">
+	<selectKey keyProperty="cartNum" resultType="int" order="BEFORE">
+	    	SELECT seq_cart_no.NEXTVAL FROM DUAL;
+		</selectKey>
+	insert into cart values(#{cartNum},#{menuId},#{menuName},#{menuImage1},1,#{userId})
+	</insert>
+</mapper>	

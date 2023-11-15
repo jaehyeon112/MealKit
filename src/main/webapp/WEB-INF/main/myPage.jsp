@@ -6,21 +6,66 @@
 	height: 100%;
 	margin: 0, auto;
 	overflow: hidden;
+	margin-bottom: 100px;
 }
 
 .leftMenu {
 	float: left;
 	width: 190px;
-	border: solid 1px #ccc;
 }
 
 .rightCon {
 	float: right;
-	width: 940px;
+	width: 840px;
+}
+.bottomInfo{
+margin-bottom: 32px;
+}
+.mainTop .topInfo{
+    padding: 0 24px;
+    background: linear-gradient(-90deg, #7AB600, #7AB600 45%, #E1EE06);
+}
+.mainTop .topInfo .name {
+    display: inline-block;
+    color: #101010;
+    font-size: 22px;
+    line-height: 64px;
+    vertical-align: middle;
+    font-weight: 700;
+}
+.mainTop .bottomInfo .benefitInfo {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+.myMain{
+margin-bottom: 60px;
+}
+#leftMenu {
+	display: inline-block;
 }
 
-li {
-	display: inline-block;
+#test {
+	border-top: solid 2.5px black;
+}
+ul{
+list-style: none;
+}
+h2{
+font-weight: bold;
+}
+h3{
+font-weight: bold;
+}
+a{
+text-decoration-line : none;
+color: black; 
+}
+.name{
+font-weight: bold;
 }
 </style>
 <section id="myContainer">
@@ -31,8 +76,8 @@ li {
 				<dt>나의 주문정보</dt>
 				<dd>
 					<ul class="menuList">
-						<li><a href="#">주문/배송 조회</a></li>
-						<li><a href="#">취소/반품 조회</a></li>
+						<li id ="leftMenu"><a href="#">주문/배송 조회</a></li>
+						<li id ="leftMenu"><a href="#">취소/반품 조회</a></li>
 					</ul>
 				</dd>
 			</dl>
@@ -40,7 +85,7 @@ li {
 				<dt>나의 혜택</dt>
 				<dd>
 					<ul class="menuList">
-						<li><a href="#">포인트</a></li>
+						<li id ="leftMenu"><a href="#">포인트</a></li>
 					</ul>
 				</dd>
 			</dl>
@@ -48,8 +93,8 @@ li {
 				<dt>나의 활동</dt>
 				<dd>
 					<ul class="menuList">
-						<li><a href="#">작성 리뷰 조회</a></li>
-						<li><a href="#">1:1 문의</a></li>
+						<li id ="leftMenu"><a href="#">작성 리뷰 조회</a></li>
+						<li id ="leftMenu"><a href="#">1:1 문의</a></li>
 					</ul>
 				</dd>
 			</dl>
@@ -57,8 +102,8 @@ li {
 				<dt>나의 정보</dt>
 				<dd>
 					<ul class="menuList">
-						<li><a href="#">개인정보 변경</a></li>
-						<li><a href="#">회원탈퇴</a></li>
+						<li id ="leftMenu"><a href="#">개인정보 변경</a></li>
+						<li id ="leftMenu"><a href="#">회원탈퇴</a></li>
 					</ul>
 				</dd>
 			</dl>
@@ -66,11 +111,11 @@ li {
 		<div class="rightCon">
 			<div class="myMain">
 				<h3 class="hide">나의 정보</h3>
+				<div id="test"></div>
 				<div class="mainTop">
 					<div class="topInfo">
-						<div class="name">"홍길동님"</div>
+						<div class="name">${userName }</div>
 					</div>
-				</div>
 				<div class="bottomInfo">
 					<ul class="benefitInfo">
 						<li><a href="#">
@@ -84,85 +129,37 @@ li {
 					</ul>
 				</div>
 			</div>
+				</div>
 			<div class="mainBottom">
 				<div class="myInfoWrap">
-					<div class="infoBox">최근 구매한 메뉴</div>
-					<!-- 상품목록 -->
-					<div class="col mb-5">
-						<div class="card h-100">
-							<!-- Sale badge-->
-							<div class="badge bg-dark text-white position-absolute"
-								style="top: 0.5rem; right: 0.5rem">Sale</div>
-							<!-- Product image-->
-							<a href="menupage.do"> <img class="card-img-top"
-								src="https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_8311632%2F83116327439.1.jpg&type=f372_372"
-								alt="..." />
-							</a>
+					<div class="infoBox"></div>
+							<h3>구매 목록</h3>
+		<div id="test"></div>
+		<div class="recieve_date">
+		<strong>11-16(목) 도착예정</strong>
+		</div>
+		<ul style="list-style-type: none; margin-top:20px">
+		<li style="margin-bottom: 20px">
+		<div class="row" style="vertical-align: center">
+		<div class="col"><img src="https://picsum.photos/80/80"></div>
+		<div class="col-6"><span style="font-size: 20px;line-height: 80px; ">[냉장]어쩌구저쩌구볶음</span></div>
+		<div class="col"><span style="font-size: 14px;line-height: 80px;">1개</span></div>
+		<div class="col"><span style="font-size: 20px;line-height: 80px;; font-weight: 700">30,000원</span></div>
+		</div>
+		</li>
+		<li style="margin-bottom: 20px">
+		<div class="row" style="vertical-align: center">
+		<div class="col"><img src="https://picsum.photos/80/80"></div>
+		<div class="col-6"><span style="font-size: 20px;line-height: 80px; ">상품명</span></div>
+		<div class="col"><span style="font-size: 14px;line-height: 80px;">수량</span></div>
+		<div class="col"><span style="font-size: 22px;line-height: 80px;; font-weight: 700">가격</span></div>
+		</div>
+		</li>
+		</ul>
 
-							<!-- Product details-->
-							<div class="card-body p-4">
-								<div class="text-center">
-									<!-- Product name-->
-									<h5 class="fw-bolder">기똥찬 순대국</h5>
-									<!-- Product reviews-->
-									<div
-										class="d-flex justify-content-center small text-warning mb-2">
-										<div class="bi-star-fill"></div>
-										<div class="bi-star-fill"></div>
-										<div class="bi-star-fill"></div>
-										<div class="bi-star-fill"></div>
-										<div class="bi-star-fill"></div>
-									</div>
-									<!-- Product price-->
-									<span class="text-muted text-decoration-line-through">$20.00</span>
-									$18.00
-								</div>
-							</div>
-							<!-- Product actions-->
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								<div class="text-center">
-									<a class="btn btn-outline-dark mt-auto" href="#">장바구니</a>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col mb-5">
-						<div class="card h-100">
-							<!-- Sale badge-->
-							<div class="badge bg-dark text-white position-absolute"
-								style="top: 0.5rem; right: 0.5rem">Sale</div>
-							<!-- Product image-->
-							<img class="card-img-top"
-								src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20230914_237%2F16946628457743JvCH_PNG%2FxpbQI_100004_1.png&type=a340"
-								alt="..." />
-							<!-- Product details-->
-							<div class="card-body p-4">
-								<div class="text-center">
-									<!-- Product name-->
-									<h5 class="fw-bolder">기절하는 갈비탕</h5>
-									<!-- Product reviews-->
-									<div
-										class="d-flex justify-content-center small text-warning mb-2">
-										<div class="bi-star-fill"></div>
-										<div class="bi-star-fill"></div>
-										<div class="bi-star-fill"></div>
-										<div class="bi-star-fill"></div>
-										<div class="bi-star-fill"></div>
-									</div>
-									<!-- Product price-->
-									<span class="text-muted text-decoration-line-through">25,000원</span>
-									20,000원
-								</div>
-							</div>
-							<!-- Product actions-->
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								<div class="text-center">
-									<a class="btn btn-outline-dark mt-auto" href="#">장바구니</a>
-								</div>
-							</div>
-						</div>
-					</div>
+					
 				</div>
+			</div>
+			</div>
 			</div>
 </section>
