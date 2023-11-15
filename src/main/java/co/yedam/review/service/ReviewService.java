@@ -4,4 +4,5 @@ import java.util.List;
 
 public interface ReviewService {
 	public List<ReviewVO> reviewList();
+	public boolean addReview(ReviewVO vo);
 }
