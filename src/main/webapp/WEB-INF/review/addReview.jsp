@@ -202,7 +202,7 @@ a {
 								</div>
 								<input type="text" class="text">
 							    <input type="button" value="리뷰등록">
-							    <input type="button" value="사진등록">
+							    <input type="submit" value="사진등록">
 							</div>
 						</li>
 					</ul>

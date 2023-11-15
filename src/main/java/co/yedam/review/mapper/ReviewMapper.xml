@@ -7,6 +7,6 @@
 	
 	<insert id="insert" parameterType="co.yedam.review.service.ReviewVO">
 		INSERT INTO REVIEW(REVIEW_DATE, REVIEW_STAR, REVIEW_IMAGE, REVIEW_CONTENT)
-		VALUES
+		VALUES(SYSDATE, #{reviewStar}, #{reviewImage}, #{reviewContent})
 	</insert>
 </mapper>
