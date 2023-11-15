@@ -14,6 +14,6 @@ public class MenuVO {
 	private int menuPrice;
 	private int menuPriceOff;
 	private String menuContent;
-	private int meniCount;
+	private int menuCount;
 	private int menuPoint;
 }
