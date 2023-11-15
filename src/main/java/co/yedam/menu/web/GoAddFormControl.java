@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.common.command;
 
-public class GoAddFromControl implements command {
+public class GoAddFormControl implements command {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
