@@ -19,6 +19,11 @@
 		</environment>
 	</environments>
 	<mappers>
+<<<<<<< HEAD
 		<mapper resource="co/yedam/cart/mapper/CartMapper.xml" />	
+=======
+		<mapper resource="co/yedam/menu/mapper/MenuMapper.xml" />	
+		<mapper resource="co/yedam/review/mapper/ReviewMapper.xml" />	
+>>>>>>> branch 'develop' of https://github.com/jaehyeon112/MealKit.git
 	</mappers>
 </configuration>

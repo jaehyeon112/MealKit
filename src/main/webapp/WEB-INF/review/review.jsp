@@ -2,62 +2,72 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 
 
 <style>
+ul{
+list-style-type: none;
+}
 .user_id {
-    display: inline-block;
-    color: #606060;
-    font-size: 14px;
-    line-height: 22px;
-    vertical-align: middle;
+	display: inline-block;
+	color: #606060;
+	font-size: 14px;
+	line-height: 22px;
+	vertical-align: middle;
 }
+
 .rating_wrap {
-    display: inline-block;
-    vertical-align: top;
+	display: inline-block;
+	vertical-align: top;
 }
+
 a {
-    color: inherit;
-    text-decoration: none;
+	color: inherit;
+	text-decoration: none;
 }
+
 .taste_review_list .etc_info .purchase_num {
-    display: inline-block;
-    color: #606060;
-    font-size: 14px;
-    line-height: 22px;
-    vertical-align: middle;
+	display: inline-block;
+	color: #606060;
+	font-size: 14px;
+	line-height: 22px;
+	vertical-align: middle;
 }
+
 .rating_wrap .rating_star span {
-    background-position: -374px 0;
+	background-position: -374px 0;
 }
 
 .review_module .top_wrap .top_wrap--right {
-    float: right;
+	float: right;
 }
 
 .taste_review_list, .etc_info {
-    float: left;
-    width: 100%;
-    margin-bottom: 20px;
+	float: left;
+	width: 100%;
+	margin-bottom: 20px;
 }
 
 .taste_review_list .top_wrap:after {
-    content: '';
-    display: table;
-    clear: both;
+	content: '';
+	display: table;
+	clear: both;
 }
 
 .taste_review_list .top_wrap .name {
-    float: left;
-    display: inline-block;
-    width: 560px;
-    color: #101010;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
+	float: left;
+	display: inline-block;
+	width: 560px;
+	color: #101010;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 24px;
 }
+
 .taste_review_list .top_wrap {
-    margin-bottom: 6px;
+	margin-bottom: 6px;
 }
 
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code,
@@ -230,7 +240,7 @@ div.input_wrap {
 		<h2>리뷰</h2>
 	</div>
 	<div class="slide">
-		<h1>슬라이드 사진</h1>
+		<h1></h1>
 	</div>
 	<div class="review_search" id="reviewTop">
 		<div class="box_search">
@@ -251,33 +261,35 @@ div.input_wrap {
 		</div>
 		<div class="top_sec">
 			<p class="total">
-				리뷰<span class="rvwTotalCnt">9999</span> 건
+				리뷰<span class="rvwTotalCnt">999</span> 건
 			</p>
 		</div>
 		<div class="taste_review_list">
+		<c:forEach items="${reviewList }" var="vo">
 			<ul class="reviewArea">
 				<li>
 					<div class="review_module">
 						<div class="top_wrap">
 							<p class="tit">
-								<span class="name">[냉장] 부채살 찹스테이크</span>
+								<span class="name">${vo.menuName }</span>
 							</p>
 							<div class="top_wrap--right">
-								<time datetime="2023-11-14">2023-11-14</time>
+								<time datetime="2023-11-14"><fmt:formatDate value="${vo.reviewDate}" pattern="yyyy-MM-dd"/></time>
 							</div>
 						</div>
 						<div class="link_wrap">
+						
 							<div class="etc_info">
 								<div class="reting_wrap">
 									<span class="rating_star"> <span class="star"> <span
-											style="width: 100.0%"> <span class="hide">별점5.0점</span>
+											style="width: 100.0%"> <span class="hide">${vo.reviewStar }</span>
 										</span>
 									</span>
 									</span>
 								</div>
 								<div class="user_id">
 									<a href="javascript:cj.prodReview.open('2628583','01');"> <span
-										class="hide">작성자</span> pin*****
+										class="hide">작성자</span> ${vo.userId }
 									</a>
 								</div>
 								<div class="purchase_num">
@@ -285,33 +297,29 @@ div.input_wrap {
 								</div>
 								<div class="txt_wrap">
 									<div class="txt_cont">
-										<p class="txt mt_elps">부채살 찹 스테이크 는 고기가 맛있어요 소스 도 풍부해 서 집에
-											있는 야채 버섯 완자 추가하니 더 좋아요</p>
+										<p class="txt mt_elps">${vo.reviewContent }</p>
 									</div>
 								</div>
 							</div>
+							
 						</div>
 					</div>
 				</li>
 			</ul>
-			
+				</c:forEach>
 		</div>
 	</div>
-	
+
 </div>
 <nav aria-label="...">
-  <ul class="pagination">
-    <li class="page-item disabled">
-      <a class="page-link">Previous</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item active" aria-current="page">
-      <a class="page-link" href="#">2</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
+	<ul class="pagination">
+		<li class="page-item disabled"><a class="page-link">Previous</a>
+		</li>
+		<li class="page-item"><a class="page-link" href="#">1</a></li>
+		<li class="page-item active" aria-current="page"><a
+			class="page-link" href="#">2</a></li>
+		<li class="page-item"><a class="page-link" href="#">3</a></li>
+		<li class="page-item"><a class="page-link" href="#">Next</a></li>
+	</ul>
 </nav>
 
