@@ -13,6 +13,7 @@ import co.yedam.cart.GoCartControl;
 import co.yedam.join.GoJoinControl;
 import co.yedam.login.GoLoginControl;
 import co.yedam.order.GoOrderControl;
+import co.yedam.review.web.GoReviewControl;
 
 
 
