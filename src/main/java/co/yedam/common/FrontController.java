@@ -10,19 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.cart.GoCartControl;
-<<<<<<< HEAD
-import co.yedam.join.GoJoinControl;
-import co.yedam.login.GoLoginControl;
 import co.yedam.menu.web.GoAddFormControl;
-=======
 import co.yedam.join.GoJoinFormControl;
 import co.yedam.join.JoinControl;
 import co.yedam.login.GoLoginFormControl;
 import co.yedam.login.LoginControl;
 import co.yedam.login.LogoutControl;
 import co.yedam.menu.web.AddCartList;
-import co.yedam.menu.web.GoAddFromControl;
->>>>>>> branch 'develop' of https://github.com/jaehyeon112/MealKit.git
 import co.yedam.order.GoOrderControl;
 
 import co.yedam.review.web.GoAddReviewControl;
