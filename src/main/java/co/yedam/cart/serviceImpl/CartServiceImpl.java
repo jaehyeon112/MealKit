@@ -8,6 +8,7 @@ import co.yedam.cart.mapper.CartMapper;
 import co.yedam.cart.service.CartService;
 import co.yedam.cart.service.CartVO;
 import co.yedam.common.DataSourceMybatis;
+import co.yedam.menu.service.MenuVO;
 
 public class CartServiceImpl implements CartService{
 
@@ -17,5 +18,8 @@ public class CartServiceImpl implements CartService{
 	public List<CartVO> CartList() {
 		return mapper.selectList();
 	}
-
+	@Override
+	public boolean addCartList(CartVO vo) {
+		return mapper.insertCart(vo)==1;
+	}
 }

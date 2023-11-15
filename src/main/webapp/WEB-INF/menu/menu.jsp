@@ -71,7 +71,8 @@
                         </div>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="addCart.do?menuId=${vo.menuId }">장바구니</a></div>
+                            <div class="text-center"><a id=${vo.menuId } class="btn btn-outline-dark mt-auto" >장바구니</a></div>
+                            <a>${vo.menuId }</a>
                         </div>
                     </div>
                 </div>
@@ -80,5 +81,11 @@
     </div>
 </section>
 <script>
-
+document.querySelectorAll('.btn.btn-outline-dark').forEach(ele=>{
+    ele.addEventListener('click', function() {
+        let menuId = this.getAttribute("id")
+        fetch("addCart.do?menuId="+menuId).then(resolve=>resolve.json()).then(result=>{console.log(result)}).catch(err=>{console.log(err)})
+        
+    });
+});
 </script>

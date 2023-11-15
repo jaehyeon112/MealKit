@@ -9,5 +9,5 @@ import co.yedam.menu.service.MenuVO;
 
 public interface CartMapper {
 public List<CartVO> selectList();
-public int insertCart(MenuVO vo , @Param("userId") String userId);
+public int insertCart(CartVO vo );
 }
