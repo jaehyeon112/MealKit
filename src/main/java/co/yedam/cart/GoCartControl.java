@@ -1,18 +1,27 @@
 package co.yedam.cart;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.yedam.cart.service.CartService;
+import co.yedam.cart.service.CartVO;
+import co.yedam.cart.serviceImpl.CartServiceImpl;
 import co.yedam.common.command;
 
 public class GoCartControl implements command {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO Auto-generated method stub
+		CartService svc = new CartServiceImpl();
+		List<CartVO> list = svc.CartList();
+		
+		req.setAttribute("list", list);
+		
+		
 		try {
 			req.getRequestDispatcher("/cartcount/cartcount.tiles").forward(req, resp);
 		} catch (ServletException | IOException e) {

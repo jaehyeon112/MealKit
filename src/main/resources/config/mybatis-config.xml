@@ -19,6 +19,6 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource=" " />	
+		<mapper resource="co/yedam/cart/mapper/CartMapper.xml" />	
 	</mappers>
 </configuration>

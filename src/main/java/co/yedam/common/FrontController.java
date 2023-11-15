@@ -14,11 +14,6 @@ import co.yedam.join.GoJoinControl;
 import co.yedam.login.GoLoginControl;
 import co.yedam.order.GoOrderControl;
 
-
-
-
-
-
 public class FrontController extends HttpServlet {
 	Map<String, command> map = new HashMap<>();
 
