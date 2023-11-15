@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.cart.GoCartControl;
-import co.yedam.join.GoJoinControl;
-import co.yedam.login.GoLoginControl;
+import co.yedam.join.GoJoinFormControl;
+import co.yedam.join.JoinControl;
+import co.yedam.login.GoLoginFormControl;
+import co.yedam.login.LoginControl;
+import co.yedam.login.LogoutControl;
 import co.yedam.order.GoOrderControl;
 
 
@@ -29,9 +32,16 @@ public class FrontController extends HttpServlet {
 		map.put("/cart.do", new GoCartControl());
 		map.put("/order.do", new GoOrderControl());
 		map.put("/menu.do", new GoMenuControl());
-		map.put("/login.do", new GoLoginControl());
-		map.put("/join.do", new GoJoinControl());
+		
+		map.put("/login.do", new GoLoginFormControl());
+		map.put("/signIn.do", new LoginControl());
+		map.put("/logout.do", new LogoutControl()); 
+		
+		map.put("/join.do", new GoJoinFormControl());
+		map.put("/signUp.do", new JoinControl());
+		
 		map.put("/myPage.do", new GoMyPageControl());
+		
 		map.put("/menupage.do", new GoMenuPageControl());
 
 
@@ -46,7 +56,6 @@ public class FrontController extends HttpServlet {
 
 		command controller = map.get(page);
 		controller.execute(req, resp);
-		//ggggggg
 	}
 
 }

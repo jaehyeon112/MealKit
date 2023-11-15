@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper SYSTEM "path/mybatis-3-mapper.dtd">
+<mapper namespace="co.yedam.users.mapper.UserMapper">
+
+	<select id="selectList"
+		resultType="co.yedam.users.service.UserVO">
+		SELECT * FROM USERS
+	</select>
+
+	<insert id="insertUser"
+		parameterType="co.yedam.users.service.UserVO">
+		insert into users
+		VALUES(#{userId},#{userPassword},#{userEmail},#{userName},#{userBirth},#{userPhone},#{userAddress1},#{userAddress2},#{userAddress3},0,'bronze',0)
+	</insert>
+	<select id="getUser" resultType="co.yedam.users.service.UserVO">
+		SELECT*FROM USERS WHERE USER_ID=#{userId} AND USER_PASSWORD=#{userPassword}
+	</select>
+</mapper>
