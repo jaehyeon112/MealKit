@@ -12,15 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import co.yedam.cart.GoCartControl;
 import co.yedam.join.GoJoinControl;
 import co.yedam.login.GoLoginControl;
+import co.yedam.menu.web.GoAddFromControl;
 import co.yedam.order.GoOrderControl;
 
 import co.yedam.review.web.GoAddReviewControl;
 import co.yedam.review.web.GoReviewControl;
-
-
-
-
-
 
 public class FrontController extends HttpServlet {
 	Map<String, command> map = new HashMap<>();
@@ -36,7 +32,12 @@ public class FrontController extends HttpServlet {
 		map.put("/join.do", new GoJoinControl());
 		map.put("/myPage.do", new GoMyPageControl());
 		map.put("/menupage.do", new GoMenuPageControl());
+
 		map.put("/addReview.do", new GoAddReviewControl());
+
+
+		map.put("/addMenu.do", new GoAddMenuControl());
+		map.put("/addForm.do", new GoAddFromControl());
 
 
 	}
@@ -50,7 +51,7 @@ public class FrontController extends HttpServlet {
 
 		command controller = map.get(page);
 		controller.execute(req, resp);
-		
+
 	}
 
 }
