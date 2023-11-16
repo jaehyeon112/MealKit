@@ -30,6 +30,24 @@
             </div>
         </div>
 
+        <div class="form-group row">
+            <label class="col-sm-2">조리시간</label>
+            <div class="col-sm-3">
+                <input type="text" name="menuTime" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="hotstep">몇인분</label>
+            <div style="width: 300px;">
+                <select name="menuMany">
+                    <option value="인분" selected="selected">인분체크 선택</option>
+                    <option value="2">2인분</option>
+                    <option value="3">3인분</option>
+                    <option value="4">4인분</option>
+                </select>
+            </div>
+        </div>
        
 
         <div class="form-group row">
@@ -37,10 +55,10 @@
             <div style="width: 300px;">
                 <select name="menuKind">
                     <option value="단계" selected="selected">맵기단계 선택</option>
-                    <option value="0단계">매콤0단계</option>
-                    <option value="1단계">매콤1단계</option>
-                    <option value="2단계">매콤2단계</option>
-                    <option value="3단계">매콤3단계</option>
+                    <option value="매콤0단계">매콤0단계</option>
+                    <option value="매콤1단계">매콤1단계</option>
+                    <option value="매콤2단계">매콤2단계</option>
+                    <option value="매콤3단계">매콤3단계</option>
                 </select>
             </div>
         </div>
@@ -89,7 +107,7 @@
         <div class="image-show" id="image-show"></div>
 
 
-        <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" />
+        <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" name="menuImage1"/>
         <div id="image_container1"></div> 
         <script>
             function setThumbnail(event) {
@@ -114,7 +132,7 @@
         <div class="image-show" id="image-show"></div>
 
 
-        <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" />
+        <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" name="menuImage2"/>
         <div id="image_container2"></div>
         <script>
             function setThumbnail(event) {
@@ -139,7 +157,7 @@
         <div class="image-show" id="image-show"></div>
 
 
-        <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" />
+        <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" name="menuImage3"/>
         <div id="image_container3"></div>
         <script>
             function setThumbnail(event) {

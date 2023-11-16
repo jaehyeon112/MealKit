@@ -22,7 +22,7 @@ public class GoMenuControl implements command {
 		List<MenuVO> list = svc.menuList();
 		
 		req.setAttribute("list", list);
-		
+		System.out.println(list);
 		try {
 
 			req.getRequestDispatcher("menu/menu.tiles").forward(req, resp);

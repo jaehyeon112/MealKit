@@ -16,4 +16,6 @@ public class MenuVO {
 	private String menuContent;
 	private int menuCount;
 	private int menuPoint;
+	private int menuTime;
+	private int menuMany;
 }
