@@ -12,7 +12,7 @@
 	</select>
 	
 	<insert id="insertMenu" parameterType="co.yedam.menu.service.MenuVO">
-		insert into menu values(#{menuId}, #{menuName}, #{menuNameInfo}, #{menuImage1}, #{menuImage2}, #{menuImage3},#{menuKind}, #{menuPrice}, #{menuPriceOff}, #{menuContent}, #{menuCount}, #{menuPoint})
+		insert into menu values(#{menuId}, #{menuName}, #{menuNameInfo}, #{menuImage1}, #{menuImage2} , #{menuImage3} ,#{menuKind}, #{menuPrice}, #{menuPriceOff}, #{menuContent}, #{menuCount}, #{menuPoint})
 	</insert>
 
 </mapper> 

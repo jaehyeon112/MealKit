@@ -36,7 +36,7 @@
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <c:forEach items="${list }" var="vo" end="3">
+            <c:forEach items="${list }" var="vo">
                 <!--메뉴페이지 상품 포이치로 돌림-->
                 <!-- 상품목록 -->
                 <div class="col mb-5">
@@ -75,7 +75,7 @@
                         </div>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a id=${vo.menuId } class="btn btn-outline-dark mt-auto" href="#" >장바구니</a>
+                            <div class="text-center"><a id=${vo.menuId } class="btn btn-outline-dark mt-auto" href="#">장바구니</a>
                             </div>
                             <a>${vo.menuId }</a>
                         </div>
@@ -86,15 +86,17 @@
     </div>
 </section>
 <script>
-let userId = "${userId}";
-
-document.querySelectorAll('.btn.btn-outline-dark').forEach(ele=>{
-    ele.addEventListener('click', function() {
-    	if(userId!="guest"){    		
-        let menuId = this.getAttribute("id")
-        fetch("addCart.do?menuId="+menuId).then(resolve=>resolve.json()).then(result=>{console.log(result)}).catch(err=>{console.log(err)})
-    	}else{
-    		alert('로그인을 하셔야합니다.')
-    	}
+    let userId = "${userId}";
+    
+    document.querySelectorAll('.btn.btn-outline-dark').forEach(ele=>{
+        ele.addEventListener('click', function() {
+           if(userId!="guest"){          
+            let menuId = this.getAttribute("id")
+            fetch("addCart.do?menuId="+menuId).then(resolve=>resolve.json()).then(result=>{console.log(result)}).catch(err=>{console.log(err)})
+           }else{
+              alert('로그인을 하셔야합니다.')
+           }
+            
+        });
     });
-</script>
+    </script>

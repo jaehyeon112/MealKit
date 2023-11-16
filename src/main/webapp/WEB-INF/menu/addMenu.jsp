@@ -2,29 +2,29 @@
     pageEncoding="UTF-8"%>
 
 
-<!-- <div class="jumbotron">
+<div class="jumbotron">
     <div class="container">
         <h1 class="display-3">제품등록</h1>
     </div>
 </div>
 <div class="container">
-    <form name="newProduct" action="addMenu.do" method="post" class="form-horizontal">
+    <form name="newProduct" action="addMenu.do"  method="post" class="form-horizontal" enctype="multipart/form-data">
         <div class="form-group row">
-            <label class="col-sm-2">${vo.menuId }</label>
+            <label class="col-sm-2">제품번호</label>
             <div class="col-sm-3">
                 <input type="text" name="menuId" class="form-control" />
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-2">${vo.menuName }</label>
+            <label class="col-sm-2">상품이름</label>
             <div class="col-sm-3">
                 <input type="text" name="menuName" class="form-control" />
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-2">${vo.menuNameInfo }</label>
+            <label class="col-sm-2">상품타이틀</label>
             <div class="col-sm-3">
                 <textarea cols="15" rows="2" name="menuNameInfo"></textarea>
             </div>
@@ -33,7 +33,7 @@
        
 
         <div class="form-group row">
-            <label class="hotstep">${vo.menuKind }</label>
+            <label class="hotstep">맵기단계</label>
             <div style="width: 300px;">
                 <select name="menuKind">
                     <option value="단계" selected="selected">맵기단계 선택</option>
@@ -47,35 +47,35 @@
 
 
         <div class="form-group row">
-            <label class="col-sm-2">${vo.menuPrice }</label>
+            <label class="col-sm-2">제품가격</label>
             <div class="col-sm-3">
                 <input type="text" name="menuPrice" class="form-control" />
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-2">${vo.menuPriceOff }</label>
+            <label class="col-sm-2">할인가격</label>
             <div class="col-sm-3">
                 <input type="text" name="menuPriceOff" class="form-control" />
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-2">${vo.menuContent }</label>
+            <label class="col-sm-2">제품설명</label>
             <div class="col-sm-3">
-                <textarea cols="30" rows="5" name="menuCentent"></textarea>
+                <textarea cols="30" rows="5" name="menuContent"></textarea>
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-2">${vo.menuCount }</label>
+            <label class="col-sm-2">재고수량</label>
             <div class="col-sm-3">
                 <input type="text" name="menuCount" class="form-control" />
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-2">${vo.menuPoint }</label>
+            <label class="col-sm-2">포인트적립</label>
             <div class="col-sm-3">
                 <input type="text" name="menuPoint" class="form-control" />
             </div>
@@ -164,14 +164,14 @@
             </div>
         </div>
     </form>
-</div> -->
+</div>
 
 
 
 
     
 
-<div class="container">
+<!-- <div class="container">
     <h2>상품 등록</h2>
     <form id="addform" enctype="multipart/form-data" action="addMenu.do" method="post">
 
@@ -234,7 +234,7 @@
         </table>
       
         <p>메인사진</p>
-        <input type="file" accept="image/jpg">
+        <input type="file" name="" accept="image/jpg">
 
         <p>사진1</p>
         <input type="file" accept="image/jpg">
@@ -250,4 +250,4 @@
             </div>
         </div>
     </form>
-</div>
+</div> -->
