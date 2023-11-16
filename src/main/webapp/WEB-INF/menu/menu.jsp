@@ -84,14 +84,19 @@
 let userId = "${userId}";
 
 document.querySelectorAll('.btn.btn-outline-dark').forEach(ele=>{
-    ele.addEventListener('click', function() {
-    	if(userId!="guest"){    		
-        let menuId = this.getAttribute("id")
-        fetch("addCart.do?menuId="+menuId).then(resolve=>resolve.json()).then(result=>{console.log(result)}).catch(err=>{console.log(err)})
-    	}else{
+    ele.addEventListener('click', function() {  
+        if(userId!="guest"){  
+            let menuId = this.getAttribute("id")
+            fetch("addCart.do?menuId="+menuId).then(resolve=>resolve.json()).then(result=>{
+        	//값은 갯수 가져왔음.
+        	let cart = document.querySelector('#cartAmounts')
+            cart.innerHTML = result;
+            console.log(cart);
+            console.log(result);
+        }).catch(err=>{console.log(err)})
+        	alert('등록되었습니다!')
+        }else{
     		alert('로그인을 하셔야합니다.')
     	}
-        
-    });
-});
+    })})
 </script>
