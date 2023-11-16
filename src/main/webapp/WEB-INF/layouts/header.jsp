@@ -3,7 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <ul class="nav justify-content-end bg-black" id="nav">
 	<c:choose>
-		<c:when test="${empty userId }">
+		<c:when test="${userId == 'guest'}">
 			<li class="nav-item"><a class="nav-link" href="join.do">회원가입</a></li>
 		</c:when>
 		<c:otherwise>
@@ -11,7 +11,7 @@
 		</c:otherwise>
 	</c:choose>
 	<c:choose>
-		<c:when test="${empty userId }">
+		<c:when test="${userId == 'guest'}">
 			<li class="nav-item"><a class="nav-link" href="login.do">로그인</a></li>
 		</c:when>
 		<c:otherwise>

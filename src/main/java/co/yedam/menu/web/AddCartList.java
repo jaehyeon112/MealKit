@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -21,8 +22,15 @@ public class AddCartList implements command {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
+		HttpSession session = req.getSession();
+		String userId = (String) session.getAttribute("userId");
+		if(userId!=null) {
+			System.out.println("user아이디 떠라!!!!!!!!"+userId);
+		}else {
+			userId = "비회원";
+		}
 		String menuId = req.getParameter("menuId");
-		System.out.println("이거 받아지나?" + menuId);
+		
 		MenuService svc = new MenuServiceImpl();
 		MenuVO vo = svc.addCart(menuId);
 		CartVO vo2 = new CartVO();
@@ -30,6 +38,7 @@ public class AddCartList implements command {
 		vo2.setMenuName(vo.getMenuName());
 		vo2.setUserId(menuId);
 		vo2.setMenuImage1(vo.getMenuImage1());
+		vo2.setUserId(userId);
 		CartService svc2 = new CartServiceImpl();
 		svc2.addCartList(vo2);
 

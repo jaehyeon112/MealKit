@@ -15,8 +15,8 @@ public class CartServiceImpl implements CartService{
 	SqlSession session = DataSourceMybatis.getInstance().openSession(true);
 	CartMapper mapper = session.getMapper(CartMapper.class);
 	@Override
-	public List<CartVO> CartList() {
-		return mapper.selectList();
+	public List<CartVO> CartList(String userId) {
+		return mapper.selectList(userId);
 	}
 	@Override
 	public boolean addCartList(CartVO vo) {

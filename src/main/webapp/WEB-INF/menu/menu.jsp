@@ -81,10 +81,16 @@
     </div>
 </section>
 <script>
+let userId = "${userId}";
+
 document.querySelectorAll('.btn.btn-outline-dark').forEach(ele=>{
     ele.addEventListener('click', function() {
+    	if(userId!="guest"){    		
         let menuId = this.getAttribute("id")
         fetch("addCart.do?menuId="+menuId).then(resolve=>resolve.json()).then(result=>{console.log(result)}).catch(err=>{console.log(err)})
+    	}else{
+    		alert('로그인을 하셔야합니다.')
+    	}
         
     });
 });
