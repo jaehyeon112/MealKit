@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import co.yedam.cart.service.CartService;
 import co.yedam.cart.service.CartVO;
 import co.yedam.cart.serviceImpl.CartServiceImpl;
@@ -20,15 +23,24 @@ public class GoCartControl implements command {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
+		Gson gson = new GsonBuilder().create();
 		CartService svc = new CartServiceImpl();
 		MenuService menuSvc = new MenuServiceImpl();
 		HttpSession session = req.getSession();
 		String userId = (String) session.getAttribute("userId");
+		
+		
 		List<CartVO> list = svc.CartList(userId);
-		List<MenuVO> menuList = menuSvc.menuList();
-		req.setAttribute("menuList", menuList);
-		System.out.println(menuList);
-		req.setAttribute("list", list);
+		String cartList = gson.toJson(list);
+		
+		
+		req.setAttribute("list", cartList);
+		
+		 List<MenuVO> menuList = menuSvc.menuList();
+		 System.out.println(menuList+"일반버전");
+		String menuListJson = gson.toJson(menuList);
+        req.setAttribute("menuList", menuListJson);
+        System.out.println(menuListJson+"json버전");
 		
 		
 		try {

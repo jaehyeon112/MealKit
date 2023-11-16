@@ -199,7 +199,8 @@ font-weight: 700;
 }
   
  </style>
- 
+ ${menuList }
+ ${list }
  <!-- 메뉴 list를 가져와서 가격 * 수량이 되야 장바구니의 금액이 된다. -->
   <h2 style="font-weight:800">장바구니</h2>
     <section class="cart">
@@ -219,14 +220,16 @@ font-weight: 700;
                 <c:forEach var="vo" items="${list}">
                     <tr class="cart__list__detail">
                         <td><input type="checkbox"></td>
-                        <td><img id="images" src="https://picsum.photos/80/80"></td>
-                        <td id="description"><a href="#">${vo.menuName }</a></td>
+                        <td><img id="images" src="image/${vo.menuImage1 }"></td>
+                        <td id="description"><a id="menuSelector" href="#">${vo.menuName }</a></td>
                         <td id="amount_center">
                         <input type="button" class="bnt_size" value="-" id="minus">
                         <input style="border:0; width:20px;" readonly id="amounts" value="1" size="9">
                         <input type="button" class="bnt_size" value="+"  id="plus"></td>
                         
-                        <td><span class="price" id="price"></span>원</td>
+                        <td><span class="price" id="price">
+                          
+                        </span>원</td>
                     </tr>
                     </c:forEach>
                 </tbody>
@@ -273,19 +276,37 @@ font-weight: 700;
 
     
     <script>
+    let json = '${menuList}'
+    json = JSON.parse(json);
+    console.log(json)
+    let userId = "${userId}"
     
     
+   
+    document.querySelectorAll('#menuSelector').forEach(ele => console.log(ele.value))
     
     document.querySelectorAll('#plus').forEach(ele => {
-      ele.addEventListener('click',function(){
+      ele.addEventListener('click',function(e){
+    	  
+    	  
         ele.parentNode.children[1].value++
-        //fetch로 값을 가져와서 해결하자...
+        updatePrice();
         
-        fetch("calcart.do")
-        
-        ele.parentNode.parentNode.children[4].children[0].innerHTML += 10;
+          
         })
-      })
+
+       
+        
+        })
+      
+        function updatePrice() {
+    document.querySelectorAll('.cart__list__detail').forEach((row, index) => {
+      let quantity = row.querySelector('#amounts').value;
+      let price = json[index].menuPrice;
+      let totalPrice = quantity * price;
+      row.querySelector('#price').innerText = totalPrice;
+    });
+  }
 
     
     
