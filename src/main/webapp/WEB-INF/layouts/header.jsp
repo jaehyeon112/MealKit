@@ -37,8 +37,15 @@
 				</a></li>
 				<li class="nav-item"><a class="nav-link" href="review.do">리뷰
 				</a></li>
-				<li class="nav-item"><a class="nav-link" href="myPage.do">마이페이지
-				</a></li>
+				<c:choose>
+					<c:when test="${userId == 'guest' }">
+						<li class="nav-item"><a class="nav-link" href="login.do">마이페이지</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="nav-item"><a class="nav-link" href="myPage.do">마이페이지</a></li>
+					</c:otherwise>
+				</c:choose>
+
 			</ul>
 			<ul class="navbar-nav ml-auto">
 				<li><a href="cart.do" class="btn position-relative"
