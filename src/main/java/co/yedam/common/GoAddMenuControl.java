@@ -29,7 +29,7 @@ public class GoAddMenuControl implements command {
 		String menuNameInfo = req.getParameter("menuNameInfo");
 //		String menuImage1 = req.getParameter("menuImage1");
 //		String menuImage2 = req.getParameter("menuImage2");
-		String menuImage3 = req.getParameter("menuImage3");
+//		String menuImage3 = req.getParameter("menuImage3");
 		String menuKind = req.getParameter("menuKind");
 		String menuPrice = req.getParameter("menuPrice");
 		String menuPriceOff = req.getParameter("menuPriceOff");
@@ -42,7 +42,7 @@ public class GoAddMenuControl implements command {
 		vo.setMenuNameInfo(menuNameInfo);
 //		vo.setMenuImage1(menuImage1);
 //		vo.setMenuImage2(menuImage2);
-		vo.setMenuImage3(menuImage3);
+//		vo.setMenuImage3(menuImage3);
 		vo.setMenuKind(menuKind);
 		vo.setMenuPrice(Integer.parseInt(menuPrice));
 		vo.setMenuPriceOff(Integer.parseInt(menuPriceOff));
@@ -52,6 +52,13 @@ public class GoAddMenuControl implements command {
 		
 		} else if(req.getMethod().equals("POST")) {
 			String menuImage = req.getServletContext().getRealPath("image");
+			System.out.println("===================");
+			System.out.println("===================");
+			System.out.println("===================");
+			System.out.println(req.getServletContext());
+			System.out.println("===================");
+			System.out.println("===================");
+			System.out.println("===================");
 			int size = 5 * 1024 * 1024;
 			try {
 				MultipartRequest mr =
@@ -94,13 +101,13 @@ public class GoAddMenuControl implements command {
 		MenuService svc = new MenuServiceImpl();
 		if (svc.addMenu(vo)) {
 			try {
-				resp.sendRedirect("addMenu.do");
+				resp.sendRedirect("menu.do");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		} else {
 			try {
-				resp.sendRedirect("main.do");
+				resp.sendRedirect("addMenu.do");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

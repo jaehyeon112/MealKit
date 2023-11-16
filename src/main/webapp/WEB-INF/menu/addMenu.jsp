@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 
-<div class="jumbotron">
+<!-- <div class="jumbotron">
     <div class="container">
         <h1 class="display-3">제품등록</h1>
     </div>
@@ -164,6 +164,90 @@
             </div>
         </div>
     </form>
-</div>
-</div>
+</div> -->
 
+
+
+
+    
+
+<div class="container">
+    <h2>상품 등록</h2>
+    <form id="addform" enctype="multipart/form-data" action="addMenu.do" method="post">
+
+        <table border="1">
+
+            <tr>
+                <td>상품번호</td>
+                <td><input type="text" name="menuId"></td>
+            </tr>
+
+
+            <tr>
+                <td>상품이름</td>
+                <td><input type="text" name="menuName"></td>
+            </tr>
+
+            <tr>
+                <td>상품타이틀</td>
+                <td><textarea name="title" id="title" cols="15" rows="2"></textarea></td>
+            </tr>
+
+            <tr>
+                <td>맵기단계</td>
+                <td> <select name="menuKind">
+                    <option value="단계" selected="selected">맵기단계 선택</option>
+                    <option value="0단계">매콤0단계</option>
+                    <option value="1단계">매콤1단계</option>
+                    <option value="2단계">매콤2단계</option>
+                    <option value="3단계">매콤3단계</option>
+                </select></td>
+            </tr>
+
+            <tr>
+                <td>상품가격</td>
+                <td><input type="text" name="menuPrice"></td>
+            </tr>
+
+            <tr>
+                <td>할인가격</td>
+                <td><input type="text" name="menuPriceOff"></td>
+            </tr>
+
+            <tr>
+                <td>상품설명</td>
+                <td><textarea name="content" id="content" cols="20" rows="5"></textarea></td>
+            </tr>
+
+            <tr>
+                <td>상품재고량</td>
+                <td><input type="text" name="menuCount"></td>
+            </tr>
+
+            <tr>
+                <td>추가포인트</td>
+                <td><input type="text" name="menuPoint"></td>
+            </tr>
+
+            
+
+        </table>
+      
+        <p>메인사진</p>
+        <input type="file" accept="image/jpg">
+
+        <p>사진1</p>
+        <input type="file" accept="image/jpg">
+
+        <p>사진2</p>
+        <input type="file" accept="image/jpg">
+
+        
+        
+        </div>
+            <div>
+                <input type="submit" class="btn btn-primary" value="등록"/>
+            </div>
+        </div>
+    </form>
+</div>

@@ -3,7 +3,10 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <!-- 메뉴바-->
-<h1><b>COOKIT 메뉴</b></h1>
+<div>
+    <h1><b>COOKIT 메뉴</b></h1>
+    <a href="addForm.do"><button>상품등록</button></a>
+</div>
 <br>
 <div>
     <a href="#"><b>배송일별</b></a>
@@ -33,7 +36,8 @@
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <c:forEach items="${list }" var="vo" end="3">  <!--메뉴페이지 상품 포이치로 돌림-->
+            <c:forEach items="${list }" var="vo" end="3">
+                <!--메뉴페이지 상품 포이치로 돌림-->
                 <!-- 상품목록 -->
                 <div class="col mb-5">
                     <div class="card h-100">
@@ -71,7 +75,8 @@
                         </div>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a id=${vo.menuId } class="btn btn-outline-dark mt-auto" >장바구니</a></div>
+                            <div class="text-center"><a id=${vo.menuId } class="btn btn-outline-dark mt-auto" href="#" onclick="alert('장바구니 골인~')">장바구니</a>
+                            </div>
                             <a>${vo.menuId }</a>
                         </div>
                     </div>
@@ -81,11 +86,15 @@
     </div>
 </section>
 <script>
-document.querySelectorAll('.btn.btn-outline-dark').forEach(ele=>{
-    ele.addEventListener('click', function() {
-        let menuId = this.getAttribute("id")
-        fetch("addCart.do?menuId="+menuId).then(resolve=>resolve.json()).then(result=>{console.log(result)}).catch(err=>{console.log(err)})
-        
+    document.querySelectorAll('.btn.btn-outline-dark').forEach(ele => {
+        ele.addEventListener('click', function () {
+            let menuId = this.getAttribute("id")
+            fetch("addCart.do?menuId=" + menuId).then(resolve => resolve.json()).then(result => {
+                console.log(result)
+            }).catch(err => {
+                console.log(err)
+            })
+
+        });
     });
-});
 </script>
