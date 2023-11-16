@@ -14,4 +14,9 @@
 		</selectKey>
 	insert into cart values(#{cartNum},#{menuId},#{menuName},#{menuImage1},1,#{userId})
 	</insert>
+	
+	<!-- 메뉴에 장바구니 갯수 확인하는.. -->
+	<select id="cartListCheck" parameterType="String" resultType="Integer">
+		select count(*) from cart where user_id = #{userId} group by user_Id
+	</select>
 </mapper>	

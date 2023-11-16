@@ -23,9 +23,25 @@ public class LoginControl implements command {
 		
 		HttpSession session = req.getSession();
 		session.setAttribute("userId", vo.getUserId());
+		session.setAttribute("userPassword", vo.getUserPassword());
 		session.setAttribute("userName", vo.getUserName());
 		
-		if(svc.loginCheck(userId, userPassword) != null) {
+		if(userId.equals(vo.getUserId())&& userPassword.equals(vo.getUserPassword())){
+			try {
+				resp.sendRedirect("main.do");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}else {
+			try {
+				resp.sendRedirect("login.do");
+			} catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		/*if(svc.loginCheck(userId, userPassword) != null) {
 			try {
 				resp.sendRedirect("main.do");
 			} catch (IOException e) {
@@ -37,7 +53,8 @@ public class LoginControl implements command {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-			}
+			} */
+			
 		}
 	}
 

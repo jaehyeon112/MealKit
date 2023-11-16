@@ -1,6 +1,7 @@
 package co.yedam.menu.web;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +30,11 @@ public class AddCartList implements command {
 		}else {
 			userId = "비회원";
 		}
+		Gson gson = new GsonBuilder().create();
+
+		resp.setContentType("application/json; charset=UTF-8");
+		
+		
 		String menuId = req.getParameter("menuId");
 		
 		MenuService svc = new MenuServiceImpl();
@@ -39,14 +45,40 @@ public class AddCartList implements command {
 		vo2.setUserId(menuId);
 		vo2.setMenuImage1(vo.getMenuImage1());
 		vo2.setUserId(userId);
+		
+		
 		CartService svc2 = new CartServiceImpl();
+		Map<String, Object> map = new HashMap<>();
+		
+		List<CartVO> checkCart = svc2.CartList(userId);
+		for(CartVO test : checkCart) {
+				if(test.getMenuId().equals(vo.getMenuId())) {
+					map.put("retCode","NG");
+					System.out.println("중복 중복!!!!!!!!");
+					try {
+						resp.getWriter().print(gson.toJson(map));
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					return;
+				}else {
+					System.out.println(test.getMenuId()+"!!!!!!!");
+					System.out.println(vo.getMenuId()+"!!!!!!!!!!");
+					System.out.println("중복아니야!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!@@");
+				}
+		}
+		
 		svc2.addCartList(vo2);
+		
+		Integer cartAmounts = svc2.checkCartList(userId);
+		if(cartAmounts==null) {
+			map.put("number",1);
+		}else {
+			map.put("number",cartAmounts);
+		}
 
-		Gson gson = new GsonBuilder().create();
-
-		resp.setContentType("application/json; charset=UTF-8");
 		try {
-			resp.getWriter().print(gson.toJson(vo2));
+			resp.getWriter().print(gson.toJson(map));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
