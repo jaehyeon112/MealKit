@@ -3,6 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <style>
 #content {
 	min-height: 900px;
@@ -152,60 +153,64 @@ a {
 			</div>
 			<div class="#!">
 				<!-- 상품리스트 -->
-				<div class="prd_list row ">
-					<ul>
-						<li>
-							<div class="review_module">
-								<div class="top_wrap">
-									<p class="tit">
-										<!-- 190510_수정 및 케이스 추가 -->
+				<div class="prd_list row">
+					<form action="addMyReview.do" method="post" id="formReview">
+						<ul>
+							<li>
+								<div class="review_module">
+									<div class="top_wrap">
+										<p class="tit">
+											<!-- 190510_수정 및 케이스 추가 -->
 
 
-										<!-- //190510_수정 및 케이스 추가 -->
-										<span class="name">[냉장]밀푀유나베</span>
-										<!-- 개발 요청 사항 : 검색된 단어에 <strong></strong>태그 추가 -->
-									</p>
-									<div class="top_wrap--right">
-										<!-- 20220609 div 추가 -->
-										<time datetime="2023-11-15">2023-11-15</time>
-										<!-- 데이터 없을 때 노출 -->
-										<!-- <li class="no_data"><span class="ico"></span> <strong>작성
+											<!-- //190510_수정 및 케이스 추가 -->
+											<span class="name"><input name="menuName" value="[냉동] 참치" readonly></span>
+											<!-- 개발 요청 사항 : 검색된 단어에 <strong></strong>태그 추가 -->
+										</p>
+										<div class="top_wrap--right">
+											<!-- 20220609 div 추가 -->
+
+											<time datetime="2023-11-15"><input type="text" value="2023-11-16" name="reviewDate" readonly></time>
+											<!-- 데이터 없을 때 노출 -->
+											<!-- <li class="no_data"><span class="ico"></span> <strong>작성
 								가능한 리뷰가 없습니다.</strong></li> -->
-										<!-- 데이터 없을 때 노출 -->
+											<!-- 데이터 없을 때 노출 -->
+										</div>
 									</div>
-								</div>
-								<div class="etc_info">
-									<div class="rating_wrap">
-										<span class="rating_star"> <span class="star"> <!-- background image 커스텀 영역 -->
-												<span style="width: 100.0%;"> <select>
-														<option value="">별점 선택하세요</option>
-														<option value="star1">1점</option>
-														<option value="star2">2점</option>
-														<option value="star3">3점</option>
-														<option value="star4">4점</option>
-														<option value="star5">5점</option>
-												</select></span> <!-- backgorund image 활성화 영역 (20%에 한개씩 점수가 채워 집니다.) -->
-										</span>
-										</span>
-									</div>
-									<!-- 190610_수정 -->
-									<div class="user_id">
-										<span class="hide">작성자</span>cyn******</a>
-									</div>
-									<!-- //190610_수정 -->
+									<div class="etc_info">
+										<div class="rating_wrap">
+											<span class="rating_star"> <span class="star">
+													<!-- background image 커스텀 영역 --> <span style="width: 100.0%;"> 
+													<select name="reviewStar">
+															<option value="">별점 선택하세요</option>
+															<option value="1">1점</option>
+															<option value="2">2점</option>
+															<option value="3">3점</option>
+															<option value="4">4점</option>
+															<option value="5">5점</option>
+													</select></span> <!-- backgorund image 활성화 영역 (20%에 한개씩 점수가 채워 집니다.) -->
+											</span>
+											</span>
+										</div>
+										<!-- 190610_수정 -->
+										<div class="user_id">
+											<a><span class="hide">작성자</span><input type="text" name="userId"></a>
+										</div>
+										<!-- //190610_수정 -->
 
-									<div class="purchase_num">
-										<span class="hide">구매 횟수 : </span>구매 3회
-									</div>
-									<!-- 개발 요청 사항 : 첫구매시에는 노출되지 않음 -->
+										<div class="purchase_num">
+											<span class="hide">구매 횟수 : </span>구매 3회
+										</div>
+										<!-- 개발 요청 사항 : 첫구매시에는 노출되지 않음 -->
 
+									</div>
+									<input type="text" name="reviewContent" class="text" placeholder="리뷰를 작성해주세요"> <input
+										type="submit" value="리뷰등록" form="formReview"> <input type="submit"
+										value="사진등록">
 								</div>
-								<input type="text" class="text">
-							    <input type="button" value="리뷰등록">
-							    <input type="submit" value="사진등록">
-							</div>
-						</li>
-					</ul>
+							</li>
+						</ul>
+					</form>
 				</div>
 			</div>
 		</div>

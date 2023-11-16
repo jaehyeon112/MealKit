@@ -17,6 +17,14 @@ public class ReviewExe {
 		List<ReviewVO> list = mapper.selectList();
 		list.forEach(vo -> System.out.println(vo));
 		
+		ReviewVO vo = new ReviewVO();
+		vo.setMenuName("토마토 스파게티");
+		vo.setReviewStar(4);
+		vo.setReviewImage("토마토 스파게티.jpg");
+		vo.setUserId("user1");
+		vo.setReviewContent("맛있어요");
+		mapper.insert(vo);
+		
 	}
 	
 	

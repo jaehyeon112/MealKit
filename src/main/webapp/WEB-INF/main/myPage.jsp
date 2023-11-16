@@ -93,7 +93,7 @@ font-weight: bold;
 				<dt>나의 활동</dt>
 				<dd>
 					<ul class="menuList">
-						<li id ="leftMenu"><a href="#">작성 리뷰 조회</a></li>
+						<li id ="leftMenu"><a href="addReview.do">작성 리뷰 조회</a></li>
 						<li id ="leftMenu"><a href="#">1:1 문의</a></li>
 					</ul>
 				</dd>

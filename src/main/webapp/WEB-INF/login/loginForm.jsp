@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <style>
 #idContainer {
 	width: 40%;
@@ -92,7 +93,12 @@ a {
 li {
 	display: inline-block;
 }
+
+#errMsg {
+	text-align: center;
+}
 </style>
+
 <div id="idContainer">
 	<header>
 		<h2>LOGIN</h2>
@@ -116,6 +122,12 @@ li {
 			<li id="signUp"><a href="join.do">회원가입</a></li>
 		</ul>
 	</form>
+	<%
+	String errMsg = (String) session.getAttribute("errMsg");
+	if (errMsg == null)
+		errMsg = "";
+	%>
+	<div id="errMsg" style="color: red"><%=errMsg%></div>
 </div>
 
 <!-- 유효성 검사 -->
