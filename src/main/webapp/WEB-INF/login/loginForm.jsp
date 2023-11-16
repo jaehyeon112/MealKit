@@ -24,7 +24,6 @@ form {
 	margin-left: 20%;
 	margin-right: 20%;
 	border: solid 1px #ccc;
-	
 }
 
 .input-box>input {
@@ -71,20 +70,26 @@ input[type=submit] {
 	margin-top: 40px;
 	margin-left: 45%;
 }
-h2{
-color: #BDD61A;
+
+h2 {
+	color: #BDD61A;
 }
+
 #submitUl {
 	text-align: center;
 	font-size: 12pt;
 	color: rgb(164, 164, 164);
 	margin: 10px 0px;
 }
-li{
-	display: inline-block;
+
+a {
+	text-decoration-line: none;
+	color: black;
 }
 
-
+li {
+	display: inline-block;
+}
 </style>
 <div id="idContainer">
 	<header>
@@ -101,11 +106,11 @@ li{
 		</div>
 		<input type="submit" value="로그인">
 		<ul id="submitUl">
-		<li id="forgot">아이디 또는 비밀번호 찾기</li>
-		<li> </li>
-		<li>|</li>
-		<li> </li>
-		<li id="signUp">회원가입</li>
+			<li id="forgot">아이디 또는 비밀번호 찾기</li>
+			<li></li>
+			<li>|</li>
+			<li></li>
+			<li id="signUp"><a href="join.do">회원가입</a></li>
 		</ul>
 	</form>
 </div>
