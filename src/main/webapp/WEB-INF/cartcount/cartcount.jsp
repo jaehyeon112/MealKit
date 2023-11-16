@@ -199,6 +199,7 @@ font-weight: 700;
 }
   
  </style>
+ 
  <!-- 메뉴 list를 가져와서 가격 * 수량이 되야 장바구니의 금액이 된다. -->
   <h2 style="font-weight:800">장바구니</h2>
     <section class="cart">
@@ -221,11 +222,11 @@ font-weight: 700;
                         <td><img id="images" src="https://picsum.photos/80/80"></td>
                         <td id="description"><a href="#">${vo.menuName }</a></td>
                         <td id="amount_center">
-                        <input type="button" class="bnt_size" value="-" onclick="del()">
+                        <input type="button" class="bnt_size" value="-" id="minus">
                         <input style="border:0; width:20px;" readonly id="amounts" value="1" size="9">
-                        <input type="button" class="bnt_size" value="+" onclick="add()">
-                        </td>
-                        <td><span class="price">원</span></td>
+                        <input type="button" class="bnt_size" value="+"  id="plus"></td>
+                        
+                        <td><span class="price" id="price"></span>원</td>
                     </tr>
                     </c:forEach>
                 </tbody>
@@ -272,19 +273,32 @@ font-weight: 700;
 
     
     <script>
-    	
-    let a = document.querySelector('#amounts')
     
-    function del(){
-    	if(a.value>1){
-      a.value--;
-    	}else{
-    		alert('최소 1개 이상 구매해주세요')
-    	}
-    }
     
-    function add(){
-      a.value++;
-    }
+    
+    document.querySelectorAll('#plus').forEach(ele => {
+      ele.addEventListener('click',function(){
+        ele.parentNode.children[1].value++
+        //fetch로 값을 가져와서 해결하자...
+        
+        fetch("calcart.do")
+        
+        ele.parentNode.parentNode.children[4].children[0].innerHTML += 10;
+        })
+      })
 
+    
+    
+    document.querySelectorAll('#minus').forEach(ele => {
+      ele.addEventListener('click',function(){
+        if(ele.parentNode.children[1].value>1){
+          ele.parentNode.children[1].value--
+        }else{
+          alert('최소 1개 이상은 구매해야합니다.')
+        }
+      
+      })
+
+    })
+    
     </script>

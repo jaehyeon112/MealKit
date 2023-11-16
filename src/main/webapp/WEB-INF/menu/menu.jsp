@@ -89,12 +89,18 @@ document.querySelectorAll('.btn.btn-outline-dark').forEach(ele=>{
             let menuId = this.getAttribute("id")
             fetch("addCart.do?menuId="+menuId).then(resolve=>resolve.json()).then(result=>{
         	//값은 갯수 가져왔음.
+            if(result.retCode == 'NG'){
+            	alert('이미 장바구니에 있어요~')
+            }else{
+            	
         	let cart = document.querySelector('#cartAmounts')
-            cart.innerHTML = result;
+        	console.log(result.number)
+            cart.innerHTML = result.number;
             console.log(cart);
-            console.log(result);
-        }).catch(err=>{console.log(err)})
         	alert('등록되었습니다!')
+            }
+        	
+        }).catch(err=>{console.log(err)})
         }else{
     		alert('로그인을 하셔야합니다.')
     	}
