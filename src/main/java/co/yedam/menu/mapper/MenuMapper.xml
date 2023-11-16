@@ -14,5 +14,8 @@
 	<insert id="insertMenu" parameterType="co.yedam.menu.service.MenuVO">
 		insert into menu values(#{menuId}, #{menuName}, #{menuNameInfo}, #{menuImage1}, #{menuImage2} , #{menuImage3} ,#{menuKind}, #{menuPrice}, #{menuPriceOff}, #{menuContent}, #{menuCount}, #{menuPoint}, #{menuTime}, #{menuMany})
 	</insert>
-
+	
+	<update id="updateMenu" parameterType="int">
+		update menu set menu_name =#{menuName}, menu_name_info =#{menuNameInfo}, menu_image1 =#{menuImage1}, menu_image2 =#{menuImage2}, menu_image3 =#{menuImage3}, menu_kind =#{menuKind}, menu_price =#{menuPrice}, menu_priceoff =#{menuPriceOff}, menu_content =#{menuContent}, menu_count =#{menuCount}, menu_point =#{menuPonint}, menu_time =#{menuTime}, menu_many =#{menuMany} where menu_id =#{menuId} 
+	</update>
 </mapper> 
