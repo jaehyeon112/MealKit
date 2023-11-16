@@ -114,15 +114,15 @@ h2 {
 				-->
 				<div class="row">
 					<div class="col-sm-8 ">
-						<input style="border: none" id="userid" type="text" name="userid" placeholder="아이디">
-						<label for="userid">아이디</label>
+						<input style="border: none" id="userid" type="text" name="userid"
+							placeholder="아이디"> <label for="userid">아이디</label>
 					</div>
-					  <div class="col-sm-4">
+					<div class="col-sm-4">
 						<input type="button" onclick="idCheck()" value="중복확인">
 					</div>
 				</div>
 			</div>
-			<input type="hidden" name="idUncheck" value = "idUncheck">
+			<input type="hidden" name="idUncheck" value="idUncheck">
 			<div class="input-box">
 				<input id="password" type="password" name="password"
 					placeholder="비밀번호" autocomplete="off"> <label
@@ -151,7 +151,7 @@ h2 {
 			</div>
 			<div class="input-box">
 				<input id="phone" type="text" name="phone" placeholder="휴대전화"
-					maxlength="11"> <label for="phone">휴대전화("-" 제외)</label>
+				maxlength="11"> <label for="phone">휴대전화("-" 제외)</label>
 			</div>
 		</div>
 
@@ -189,7 +189,6 @@ h2 {
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-
 	function DaumPostcode() {
 		new daum.Postcode({
 			oncomplete : function(data) {
@@ -214,7 +213,7 @@ h2 {
 			}
 		}).open();
 	}
-	
+
 	function check() {
 		var userId = document.getElementById("userid");
 		var userPassword = document.getElementById("password");
@@ -226,17 +225,37 @@ h2 {
 		var userAddress1 = document.getElementById("address1");
 		var userAddress2 = document.getElementById("address2");
 		var userAddress3 = document.getElementById("address3");
-		
-		
-		
+
+		// 정규식
+		// id, pw
+		var regIdPw = /^[a-zA-Z0-9]{4,12}$/;
+		// 이름
+		var regName = /^[가-힣a-zA-Z]{2,15}$/;
+		// 이메일
+		var regMail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+		// 휴대전화
+		var regPhone = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+
 		if (userId.value == "") {
 			alert("아이디를 입력해주세요.")
+			userId.focus();
+			return false;
+		} else if (!regIdPw.test(userId.value)) {
+			alert("4~12자 영문 대소문자, 숫자만 입력하세요.")
 			userId.focus();
 			return false;
 		}
 
 		if (userPassword.value == "") {
 			alert("비밀번호를 입력해주세요.")
+			userPassword.focus();
+			return false;
+		} else if (!regIdPw.test(userPassword.value)) {
+			alert("4~12자 영문 대소문자, 숫자만 입력하세요.")
+			userPassword.focus();
+			return false;
+		} else if (userPassword.value == userId.value) {
+			alert("아이디와 동일한 비밀번호를 사용할 수 없습니다.")
 			userPassword.focus();
 			return false;
 		}
@@ -249,6 +268,10 @@ h2 {
 			alert("이름을 입력해주세요.")
 			userName.focus();
 			return false;
+		} else if (!regName.test(userName.value)) {
+			alert("최소 2글자 이상, 한글과 영어만 입력하세요.")
+			userName.focus();
+			return false;
 		}
 		if (userBirth.value == "") {
 			alert("생년월일을 입력해주세요.")
@@ -259,9 +282,17 @@ h2 {
 			alert("이메일을 입력해주세요.")
 			userEmail.focus();
 			return false;
+		} else if (!regMail.test(userEmail.value)) {
+			alert("잘못된 이메일 형식입니다.")
+			userEmail.focus();
+			return false;
 		}
 		if (userPhone.value == "") {
 			alert("연락처를 입력해주세요.")
+			userPhone.focus();
+			return false;
+		} else if (!regPhone.test(userPhone.value)) {
+			alert("올바른 형식으로 입력해주세요.")
 			userPhone.focus();
 			return false;
 		}
@@ -280,13 +311,13 @@ h2 {
 			userAddress3.focus();
 			return false;
 		}
-		if(idUncheck.value != "idCheck"){
+		if (idUncheck.value != "idCheck") {
 			alert("아이디 중복체크를 해주세요.")
 		}
-		
+
 	}
-	
-	function idCheck(){
-		window.open("IdCheckForm.jsp","idwin","width=400", "height=350");
+
+	function idCheck() {
+		window.open("IdCheckForm.jsp", "idwin", "width=400", "height=350");
 	}
 </script>
