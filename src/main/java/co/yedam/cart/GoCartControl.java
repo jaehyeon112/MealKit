@@ -21,7 +21,13 @@ public class GoCartControl implements command {
 		HttpSession session = req.getSession();
 		String userId = (String) session.getAttribute("userId");
 		List<CartVO> list = svc.CartList(userId);
-		
+		System.out.println("=======================");
+		System.out.println("=======================");
+		System.out.println("=======================");
+		System.out.println(list);
+		System.out.println("=======================");
+		System.out.println("=======================");
+		System.out.println("=======================");
 		req.setAttribute("list", list);
 		
 		
