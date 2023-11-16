@@ -17,45 +17,28 @@ public class LoginControl implements command {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		String userId = req.getParameter("userId");
 		String userPassword = req.getParameter("userPassword");
-		
-		UserService svc = new UserServiceImpl(); 
-		UserVO vo = svc.loginCheck(userId, userPassword);
-		
+		UserService svc = new UserServiceImpl();
+
 		HttpSession session = req.getSession();
-		session.setAttribute("userId", vo.getUserId());
-		session.setAttribute("userPassword", vo.getUserPassword());
-		session.setAttribute("userName", vo.getUserName());
-		
-		if(userId.equals(vo.getUserId())&& userPassword.equals(vo.getUserPassword())){
+		UserVO vo = svc.loginCheck(userId, userPassword);
+
+		if (svc.loginCheck(userId, userPassword) != null) {
 			try {
+				session.setAttribute("userId", vo.getUserId());
+				session.setAttribute("userPassword", vo.getUserPassword());
+				session.setAttribute("userName", vo.getUserName());
 				resp.sendRedirect("main.do");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}else {
+		} else {
 			try {
+				session.setAttribute("errMsg", "로그인 정보가 올바르지 않습니다.");
 				resp.sendRedirect("login.do");
-			} catch(IOException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		
-		/*if(svc.loginCheck(userId, userPassword) != null) {
-			try {
-				resp.sendRedirect("main.do");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}else {
-				try {
-					resp.sendRedirect("login.do");
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			} */
-			
 		}
+
 	}
-
-
+}
