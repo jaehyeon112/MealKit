@@ -1,6 +1,5 @@
 package co.yedam.common;
 
-
 import co.yedam.cart.service.CartService;
 import co.yedam.cart.service.CartVO;
 import co.yedam.cart.serviceImpl.CartServiceImpl;
@@ -8,9 +7,7 @@ import co.yedam.menu.service.MenuService;
 import co.yedam.menu.service.MenuVO;
 import co.yedam.menu.serviceImpl.MenuServiceImpl;
 
-
 public class MainExe {
-
 
 	public static void main(String[] args) {
 
@@ -23,7 +20,5 @@ public class MainExe {
 		vo2.setMenuName(vo.getMenuName());
 		CartService svc2 = new CartServiceImpl();
 		System.out.println(svc2.addCartList(vo2));
+	}
 }
-}
-	
-
