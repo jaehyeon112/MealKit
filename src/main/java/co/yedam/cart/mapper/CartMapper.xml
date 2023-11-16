@@ -3,15 +3,15 @@
 
 <mapper namespace="co.yedam.cart.mapper.CartMapper">
 	<!-- id = 메소드이름 resultType = 반환타입 -->
-	<select id="selectList"
+	<select id="selectList" parameterType="String"
 		resultType="co.yedam.cart.service.CartVO">
-		select * from cart
+		select * from cart where user_Id = #{userId}
 	</select>
 
 	<insert id="insertCart" parameterType="co.yedam.cart.service.CartVO">
 	<selectKey keyProperty="cartNum" resultType="int" order="BEFORE">
 	    	SELECT seq_cart_no.NEXTVAL as cartNum FROM DUAL
 		</selectKey>
-	insert into cart values(#{cartNum},#{menuId},#{menuName},#{menuImage1},1,'112')
+	insert into cart values(#{cartNum},#{menuId},#{menuName},#{menuImage1},1,#{userId})
 	</insert>
 </mapper>	

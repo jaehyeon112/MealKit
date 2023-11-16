@@ -75,7 +75,7 @@
                         </div>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a id=${vo.menuId } class="btn btn-outline-dark mt-auto" href="#" onclick="alert('장바구니 골인~')">장바구니</a>
+                            <div class="text-center"><a id=${vo.menuId } class="btn btn-outline-dark mt-auto" href="#" >장바구니</a>
                             </div>
                             <a>${vo.menuId }</a>
                         </div>
@@ -86,15 +86,15 @@
     </div>
 </section>
 <script>
-    document.querySelectorAll('.btn.btn-outline-dark').forEach(ele => {
-        ele.addEventListener('click', function () {
-            let menuId = this.getAttribute("id")
-            fetch("addCart.do?menuId=" + menuId).then(resolve => resolve.json()).then(result => {
-                console.log(result)
-            }).catch(err => {
-                console.log(err)
-            })
+let userId = "${userId}";
 
-        });
+document.querySelectorAll('.btn.btn-outline-dark').forEach(ele=>{
+    ele.addEventListener('click', function() {
+    	if(userId!="guest"){    		
+        let menuId = this.getAttribute("id")
+        fetch("addCart.do?menuId="+menuId).then(resolve=>resolve.json()).then(result=>{console.log(result)}).catch(err=>{console.log(err)})
+    	}else{
+    		alert('로그인을 하셔야합니다.')
+    	}
     });
 </script>

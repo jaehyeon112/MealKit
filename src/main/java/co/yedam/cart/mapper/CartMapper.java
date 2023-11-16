@@ -8,6 +8,6 @@ import co.yedam.cart.service.CartVO;
 import co.yedam.menu.service.MenuVO;
 
 public interface CartMapper {
-public List<CartVO> selectList();
-public int insertCart(CartVO vo );
+public List<CartVO> selectList(String userId);
+public int insertCart(CartVO vo);
 }
