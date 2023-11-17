@@ -42,9 +42,9 @@ public class AddCartList implements command {
 		CartVO vo2 = new CartVO();
 		vo2.setMenuId(vo.getMenuId());
 		vo2.setMenuName(vo.getMenuName());
-		vo2.setUserId(menuId);
-		vo2.setMenuImage1(vo.getMenuImage1());
 		vo2.setUserId(userId);
+		vo2.setMenuImage1(vo.getMenuImage1());
+		vo2.setMenuPrice(vo.getMenuPrice());
 		
 		
 		CartService svc2 = new CartServiceImpl();

@@ -11,6 +11,7 @@ public class GoLoginFormControl implements command {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {		
+		
 		try {
 			req.getRequestDispatcher("/login/loginForm.tiles").forward(req, resp);
 		} catch (Exception e) {

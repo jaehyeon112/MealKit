@@ -9,9 +9,10 @@ public interface MenuMapper {
 	public List<MenuVO> list();
 	public int insertMenu(MenuVO vo);
 	public int updateMenu(MenuVO vo);
-	public int deleteMenu(MenuVO vo);
+	public int deleteMenu(String menuId);
+	public MenuVO getMenu(String menuId);
+
 	
 	//팀장이 작업함
 	public MenuVO selectMenu(String menuId);
-	
 }
