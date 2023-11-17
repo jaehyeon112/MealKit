@@ -761,16 +761,17 @@ input, select, textarea, button {
 				<div class="taste_review_list">
 					<div class="no_data" style="display: none"></div>
 					<ul class="reviewArea">
+					<c:forEach var="vo" items="${reviewList}" >
 						<li>
 							<div class="review_module">
 								<div class="top_wrap">
 									<p class="tit">
-										<span class="name">[냉동] 스페인식 감바스</span>
+										<span class="name">${vo.menuName }</span>
 									</p>
 									<div class="top_wrap--right">
-										<time datetime="2023-11-16">2023-11-16</time>
+										<time datetime="2023-11-16"><fmt:formatDate value="${vo.reviewDate}" pattern="yyyy.MM.dd"/></time>
 										<a
-											href="/pc/cs/formCounsel?cslCtgrId=0410&amp;prdRvwSeq=2632066"
+											href="#!"
 											class="btn-report">신고</a>
 									</div>
 
@@ -780,13 +781,13 @@ input, select, textarea, button {
 										<div class="rating_wrap">
 											<span class="rating_star"> <span class="star">
 													<span style="width: 100%"><span class="hide">별점
-															5.0점</span></span>
+															${vo.reviewStar }점</span></span>
 											</span>
 											</span>
 										</div>
 										<div class="user_id">
 											<a href="javascript:cj.prodReview.open('2632066','01');"><span
-												class="hide">작성자</span>red*********</a>
+												class="hide">작성자</span>${vo.userId }</a>
 										</div>
 										<div class="purchase_num">
 
@@ -796,8 +797,7 @@ input, select, textarea, button {
 									<a href="javascript:;" class="link_more"> </a>
 									<div class="txt_wrap">
 										<div class="txt_cont">
-											<p class="txt mt_elps">냉장패키지로 나올때보다 맛은 좀 아쉽긴 한데 간편하게 해동만
-												시켜서 팬에 넣고 끓이면 되니 간편하네요 !</p>
+											<p class="txt mt_elps">${vo.reviewContent }</p>
 										</div>
 									</div>
 									<div class="img_left_wrap">
@@ -827,6 +827,7 @@ input, select, textarea, button {
 							</div>
 				</div>
 				</li>
+				</c:forEach>
 				</ul>
 			</div>
 		</div>
