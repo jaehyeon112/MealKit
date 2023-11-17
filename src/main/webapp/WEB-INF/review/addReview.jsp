@@ -4,6 +4,7 @@
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+
 <style>
 #content {
 	min-height: 900px;
@@ -38,8 +39,8 @@
 }
 
 .review_module {
-	width: 1180px;
-	height: 250px;
+	width: 1050px;
+	height: 280px;
 	padding: 5px;
 	border: 1px solid black;
 }
@@ -134,7 +135,7 @@ a {
 }
 
 .text {
-	width: 1000px;
+	width: 1040px;
 	height: 150px;
 }
 </style>
@@ -154,7 +155,7 @@ a {
 			<div class="#!">
 				<!-- 상품리스트 -->
 				<div class="prd_list row">
-					<form action="addMyReview.do" method="post" id="formReview">
+					<form action="addMyReview.do" method="post" id="formReview" enctype="multipart/form-data">
 						<ul>
 							<li>
 								<div class="review_module">
@@ -164,13 +165,13 @@ a {
 
 
 											<!-- //190510_수정 및 케이스 추가 -->
-											<span class="name"><input name="menuName" value="[냉동] 참치" readonly></span>
+											<span class="name"><input name="menuName" placeholder="상품명 작성" ></span>
 											<!-- 개발 요청 사항 : 검색된 단어에 <strong></strong>태그 추가 -->
 										</p>
 										<div class="top_wrap--right">
 											<!-- 20220609 div 추가 -->
 
-											<time datetime="2023-11-15"><input type="text" value="2023-11-16" name="reviewDate" readonly></time>
+											<time datetime="2023-11-15"><input type="text" placeholder="오늘날짜" name="reviewDate" readonly></time>
 											<!-- 데이터 없을 때 노출 -->
 											<!-- <li class="no_data"><span class="ico"></span> <strong>작성
 								가능한 리뷰가 없습니다.</strong></li> -->
@@ -194,7 +195,7 @@ a {
 										</div>
 										<!-- 190610_수정 -->
 										<div class="user_id">
-											<a><span class="hide">작성자</span><input type="text" name="userId"></a>
+											<a><span>작성자</span><input type="text" name="userId"></a>
 										</div>
 										<!-- //190610_수정 -->
 
@@ -204,9 +205,9 @@ a {
 										<!-- 개발 요청 사항 : 첫구매시에는 노출되지 않음 -->
 
 									</div>
-									<input type="text" name="reviewContent" class="text" placeholder="리뷰를 작성해주세요"> <input
-										type="submit" value="리뷰등록" form="formReview"> <input type="submit"
-										value="사진등록">
+									<input type="text" name="reviewContent" class="text" placeholder="리뷰를 작성해주세요"> 
+									<input type="file" name="reviewImage" accept="image/*" value="사진등록">
+									<input type="submit" value="리뷰등록" form="formReview">
 								</div>
 							</li>
 						</ul>

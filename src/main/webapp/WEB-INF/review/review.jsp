@@ -15,6 +15,18 @@
 	padding: 52px 0 140px;
 }
 
+.taste_review_list .link_more .thumb_img img {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    margin: auto;
+    top: 50%;
+    left: 0;
+    -ms-transform: translateY( -50% );
+    -moz-transform: translateY( -50% );
+    transform: translateY( -50% );
+}
+
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code,
 	form, fieldset, legend, textarea, p, blockquote, table, th, td, input,
 	select, textarea, button {
@@ -102,9 +114,7 @@ a {
 	display: block;
 	width: 88px;
 	height: 16px;
-	background:
-		url(https://www.cjcookit.com/cjkit/web/images/pd/ico_set.png)
-		no-repeat -374px -26px;
+
 	background-size: 800px 800px;
 }
 
@@ -804,9 +814,12 @@ input, select, textarea, button {
 									<div class="link_wrap">
 										<div class="etc_info">
 											<div class="rating_wrap">
-												<span class="rating_star"> <span class="star">
-														<span style="width: 100%"><span class="hide">별점
-																${vo.reviewStar }점</span></span>
+												<span class="rating_star">
+	<!-- 11-17 별 색상 변경하기 -->											<c:forEach begin="0" end="${vo.reviewStar }" var="i"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+  <path style="fill:bs-warning;"d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+</svg></c:forEach>
+												 <span class="star">
+														<span style="width: 100%"><span></span></span>
 												</span>
 												</span>
 											</div>
@@ -831,26 +844,18 @@ input, select, textarea, button {
 
 												<div class="img">
 													<img
-														src="//img.cjcookit.com/images/file/RVW/2023/1117/3d53d564-0e37-4230-93cb-4e445879b6a4_20231117092502_thum.jpg?RS=372&amp;CG=5&amp;CS=186X186"
+														src="image/${vo.reviewImage }"
 														alt="1번 이미지" onerror="cj.com.noImg(this, 'P')">
 												</div>
-												<span class="lang"><span class="hide">총 사진 개수</span>1</span>
+												<span class="lang"><span class="hide">총 사진 개수</span></span>
 												<!-- 스크립트 요청 사항 : .review_module .img_wrap 안에 있는 .img 갯수 체크 -->
 											</div>
 											<!-- 큰 이미지 영역 -->
-											<div class="img_wrap">
-
-												<div class="img">
-													<img
-														src="//img.cjcookit.com/images/file/RVW/2023/1117/3d53d564-0e37-4230-93cb-4e445879b6a4_20231117092502_thum.jpg"
-														alt="1번 이미지" onerror="cj.com.noImg(this, 'P')">
-												</div>
-
-											</div>
+									
 											<!-- //큰 이미지 영역 -->
 										</div>
 									</div>
-								</div>f
+								</div>
 							</li>
 						</c:forEach>
 					</ul>
