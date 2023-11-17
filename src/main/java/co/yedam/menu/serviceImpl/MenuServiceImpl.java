@@ -33,9 +33,9 @@ public class MenuServiceImpl implements MenuService{
 	}
 
 	@Override
-	public boolean deleteMenu(String menuName) {
+	public boolean deleteMenu(String menuId) {
 		// TODO Auto-generated method stub
-		return false;
+		return mapper.deleteMenu(menuId) == 1;
 	}
 
 	@Override
@@ -43,5 +43,12 @@ public class MenuServiceImpl implements MenuService{
 		// TODO Auto-generated method stub
 		return mapper.selectMenu(menuId);
 	}
+
+	@Override
+	public MenuVO getMenu(String menuId) {
+		// TODO Auto-generated method stub
+		return mapper.getMenu(menuId);
+	}
+	
 	
 }

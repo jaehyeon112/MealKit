@@ -2,11 +2,11 @@
 <!DOCTYPE mapper SYSTEM "path/mybatis-3-mapper.dtd">
 <mapper namespace="co.yedam.review.mapper.ReviewMapper">
 	<select id="selectList" resultType="co.yedam.review.service.ReviewVO">
-		SELECT * FROM REVIEW  ORDER BY USER_ID
+		SELECT * FROM REVIEW  ORDER BY REVIEW_DATE DESC
 	</select>
 	
 	<insert id="insert" parameterType="co.yedam.review.service.ReviewVO">
-		INSERT INTO REVIEW(REVIEW_STAR, REVIEW_CONTENT, USER_ID, REVIEW_DATE, MENU_NAME)
-		VALUES(#{reviewStar}, #{reviewContent}, #{userId}, SYSDATE, #{menuName})
+		INSERT INTO REVIEW(REVIEW_STAR, REVIEW_CONTENT, USER_ID, REVIEW_DATE, MENU_NAME, REVIEW_IMAGE)
+		VALUES(#{reviewStar}, #{reviewContent}, #{userId}, SYSDATE, #{menuName}, #{reviewImage})
 	</insert>
 </mapper>

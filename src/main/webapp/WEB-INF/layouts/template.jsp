@@ -34,6 +34,7 @@
 	</div>
 	<!-- footer 부분 -->
 	<tiles:insertAttribute name="footer"></tiles:insertAttribute>
+	
 	<!-- 기능구현완료 -->
 </body>
 </html>

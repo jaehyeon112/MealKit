@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>   
 <footer class="bottom bg-black p-3">
 		<!-- Grid container -->
 		<div class="container">

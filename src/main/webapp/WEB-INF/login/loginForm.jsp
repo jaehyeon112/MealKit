@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <style>
 #idContainer {
@@ -61,7 +62,7 @@ input:focus, input:not(:placeholder-shown) {
 	outline: none;
 }
 
-input[type=submit] {
+#loginBtn {
 	background-color: #BDD61A;
 	border: none;
 	color: white;
@@ -103,52 +104,44 @@ li {
 	<header>
 		<h2>LOGIN</h2>
 	</header>
-	<form action="signIn.do" method="POST" onsubmit="return submit_check()">
-		<div class="input-box">
-			<input id="userId" type="text" name="userId" placeholder="아이디">
-			<label for="userId">아이디</label>
-		</div>
-		<div class="input-box">
-			<input id="userPassword" type="password" name="userPassword"
-				placeholder="비밀번호"> <label for="userPassword">비밀번호</label>
-		</div>
-		<input type="submit" value="로그인">
 
-		<ul id="submitUl">
-			<li id="forgot">아이디 또는 비밀번호 찾기</li>
-			<li></li>
-			<li>|</li>
-			<li></li>
-			<li id="signUp"><a href="join.do">회원가입</a></li>
-		</ul>
-	</form>
-	<%
-	String errMsg = (String) session.getAttribute("errMsg");
-	if (errMsg == null)
-		errMsg = "";
-	%>
-	<div id="errMsg" style="color: red"><%=errMsg%></div>
+	<div class="input-box">
+		<input id="userId" type="text" name="userId" placeholder="아이디">
+		<label for="userId">아이디</label>
+	</div>
+	<div class="input-box">
+		<input id="userPassword" type="password" name="userPassword"
+			placeholder="비밀번호"> <label for="userPassword">비밀번호</label>
+	</div>
+	<c:if test="${!empty errMsg }">
+		<div id="errMsg" style="color: red">${errMsg}</div>
+	</c:if>
+	<button id="loginBtn" onclick="test()">로그인</button>
+
+	<ul id="submitUl">
+		<li id="forgot">아이디 또는 비밀번호 찾기</li>
+		<li></li>
+		<li>|</li>
+		<li></li>
+		<li id="signUp"><a href="join.do">회원가입</a></li>
+	</ul>
 </div>
 
 <!-- 유효성 검사 -->
 <script>
-	function submit_check() {
+	function test() {
+		let userId = document.getElementById("userId").value;
+		let userPassword = document.getElementById("userPassword").value;
 
-		// 입력 폼 아이디값 담기
-		var userId = document.getElementById("userId");
-		var userPassword = document.getElementById("userPassword");
-
-		if (userId.value == "") {
-			alert("아이디를 입력하세요.");
-			userId.focus();
-			return false;
-		} else if (userPassword.value == "") {
-			alert("비밀번호를 입력하세요.");
-			userPassword.focus();
-			return false;
-		} else {
-			submit();
+		if (userId.length <= 0) {
+			alert('아이디 입력해주세요');
+			return;
 		}
 
-	};
+		if (userPassword.length <= 0) {
+			alert('비밀번호 입력해주세요');
+			return;
+		}
+		window.location.href = "signIn.do?userId=" + userId + '&userPassword=' + userPassword;
+	}
 </script>
