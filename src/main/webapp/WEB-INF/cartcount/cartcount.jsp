@@ -199,8 +199,6 @@ font-weight: 700;
 }
   
  </style>
- ${menuList }
- ${list }
  <!-- 메뉴 list를 가져와서 가격 * 수량이 되야 장바구니의 금액이 된다. -->
   <h2 style="font-weight:800">장바구니</h2>
     <section class="cart">
@@ -220,8 +218,8 @@ font-weight: 700;
                 <c:forEach var="vo" items="${list}">
                     <tr class="cart__list__detail">
                         <td><input type="checkbox"></td>
-                        <td><img id="images" src="image/${vo.menuImage1 }"></td>
-                        <td id="description"><a id="menuSelector" href="#">${vo.menuName }</a></td>
+                        <td><img id="images" src="image/${menuImage1 }"></td>
+                        <td id="description"><a id="menuSelector" href="#">${menuName }</a></td>
                         <td id="amount_center">
                         <input type="button" class="bnt_size" value="-" id="minus">
                         <input style="border:0; width:20px;" readonly id="amounts" value="1" size="9">

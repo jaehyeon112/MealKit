@@ -277,6 +277,10 @@ h2 {
 			alert("생년월일을 입력해주세요.")
 			userBirth.focus();
 			return false;
+		}else if(userBirth.value.length != 6){
+			alert("생년월일 뒷 6자리를 입력해주세요.")
+			userBirth.focus();
+			return false;
 		}
 		if (userEmail.value == "") {
 			alert("이메일을 입력해주세요.")
@@ -297,17 +301,17 @@ h2 {
 			return false;
 		}
 		if (userAddress1.value == "") {
-			alert("우편번호를 입력해주세요.")
+			alert("주소를 입력해주세요.")
 			userAddress1.focus();
 			return false;
 		}
 		if (userAddress2.value == "") {
-			alert("주소를 입력해주세요.")
+			alert("상세주소를 입력해주세요.")
 			userAddress2.focus();
 			return false;
 		}
 		if (userAddress3.value == "") {
-			alert("상세주소를 입력해주세요.")
+			alert("우편번호를 입력해주세요.")
 			userAddress3.focus();
 			return false;
 		}
