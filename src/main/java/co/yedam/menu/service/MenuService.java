@@ -7,7 +7,8 @@ public interface MenuService {
 	public List<MenuVO> menuList();
 	public boolean addMenu(MenuVO vo);
 	public boolean updateMenu(MenuVO vo);
-	public boolean deleteMenu(String menuName);//s
+	public boolean deleteMenu(String menuId);//s
+	public MenuVO getMenu(String menuId);
 	
 	
 	// 팀장이 작업함

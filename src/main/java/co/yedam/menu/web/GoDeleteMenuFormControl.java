@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.common.command;
 
-public class adminFormControl implements command {
+public class GoDeleteMenuFormControl implements command {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO Auto-generated method stub
 		try {
-			req.getRequestDispatcher("menu/adminMenu.tiles").forward(req, resp);
-		} catch (ServletException | IOException e) {
+			req.getRequestDispatcher("menu/deleteMenuForm.tiles").forward(req, resp);
+		} catch(ServletException | IOException e) {
 			e.printStackTrace();
 		}
+
 	}
 
 }
