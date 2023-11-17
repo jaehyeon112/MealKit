@@ -102,7 +102,9 @@ a {
 	display: block;
 	width: 88px;
 	height: 16px;
-	background: url(/cjkit/web/images/pd/ico_set.png) no-repeat -374px -26px;
+	background:
+		url(https://www.cjcookit.com/cjkit/web/images/pd/ico_set.png)
+		no-repeat -374px -26px;
 	background-size: 800px 800px;
 }
 
@@ -163,7 +165,9 @@ a {
 	position: absolute;
 	width: 24px;
 	height: 24px;
-	background: url(/cjkit/web/images/common/ico_set.png) no-repeat;
+	background:
+		url(https://www.cjcookit.com/cjkit/web/images/common/ico_set.png)
+		no-repeat;
 	background-size: 800px 800px;
 }
 
@@ -406,8 +410,9 @@ input, select, textarea, button {
 	width: 32px;
 	height: 32px;
 	margin-top: -16px;
-	background: url(/cjkit/web/images/pd/ico_set.png) -600px -150px
-		no-repeat;
+	background:
+		url(https://www.cjcookit.com/cjkit/web/images/pd/ico_set.png) -600px
+		-150px no-repeat;
 	background-size: 800px 800px;
 }
 
@@ -438,6 +443,25 @@ input, select, textarea, button {
 .cn_review_wrap .taste_list .top_sec .chk_wrap label {
 	font-size: 16px;
 	line-height: 24px;
+}
+
+.cn_review_wrap .chk_wrap input+label:before {
+	margin-top: -5px;
+}
+
+.chk_wrap input+label:before {
+	content: '';
+	zoom: 1;
+	display: inline-block;
+	width: 25px;
+	height: 26px;
+	margin: -3px 6px 0 0;
+	background:
+		url(https://www.cjcookit.com/cjkit/web/images/common/ico_set.png)
+		no-repeat;
+	background-position: -1px -40px;
+	background-size: 800px 800px;
+	vertical-align: middle;
 }
 
 .chk_wrap label {
@@ -682,7 +706,7 @@ input, select, textarea, button {
 											<span class="flag_txt">Best</span>
 										</div>
 										<img
-											src="//img.cjcookit.com/images/file/RVW/2023/1029/71aab7e9-f5d1-4257-a33e-06e194d3934e_20231029174333_thum.jpg?RS=640&amp;CG=5&amp;CS=520X390"
+											src="https://img.cjcookit.com/images/file/RVW/2023/1031/f523a7c8-4039-49d4-91e5-b285ce330c49_20231031182201_thum.jpg?RS=640&CG=5&CS=520X390"
 											alt="[냉동] 얼큰시원 동태탕" onerror="cj.com.noImg(this, 'P')" />
 									</div>
 									<div class="txt_wrap">
@@ -761,76 +785,77 @@ input, select, textarea, button {
 				<div class="taste_review_list">
 					<div class="no_data" style="display: none"></div>
 					<ul class="reviewArea">
-					<c:forEach var="vo" items="${reviewList}" >
-						<li>
-							<div class="review_module">
-								<div class="top_wrap">
-									<p class="tit">
-										<span class="name">${vo.menuName }</span>
-									</p>
-									<div class="top_wrap--right">
-										<time datetime="2023-11-16"><fmt:formatDate value="${vo.reviewDate}" pattern="yyyy.MM.dd"/></time>
-										<a
-											href="#!"
-											class="btn-report">신고</a>
-									</div>
-
-								</div>
-								<div class="link_wrap">
-									<div class="etc_info">
-										<div class="rating_wrap">
-											<span class="rating_star"> <span class="star">
-													<span style="width: 100%"><span class="hide">별점
-															${vo.reviewStar }점</span></span>
-											</span>
-											</span>
-										</div>
-										<div class="user_id">
-											<a href="javascript:cj.prodReview.open('2632066','01');"><span
-												class="hide">작성자</span>${vo.userId }</a>
-										</div>
-										<div class="purchase_num">
-
-											<span class="hide">구매 횟수 : </span>구매 6회
-										</div>
-									</div>
-									<a href="javascript:;" class="link_more"> </a>
-									<div class="txt_wrap">
-										<div class="txt_cont">
-											<p class="txt mt_elps">${vo.reviewContent }</p>
-										</div>
-									</div>
-									<div class="img_left_wrap">
-									<!-- 첫번째 이미지 -->
-									<div class="thumb_img">
-
-										<div class="img">
-											<img
-												src="//img.cjcookit.com/images/file/RVW/2023/1117/3d53d564-0e37-4230-93cb-4e445879b6a4_20231117092502_thum.jpg?RS=372&amp;CG=5&amp;CS=186X186"
-												alt="1번 이미지" onerror="cj.com.noImg(this, 'P')">
-										</div>
-										<span class="lang"><span class="hide">총 사진 개수</span>1</span>
-										<!-- 스크립트 요청 사항 : .review_module .img_wrap 안에 있는 .img 갯수 체크 -->
-									</div>
-									<!-- 큰 이미지 영역 -->
-									<div class="img_wrap">
-
-										<div class="img">
-											<img
-												src="//img.cjcookit.com/images/file/RVW/2023/1117/3d53d564-0e37-4230-93cb-4e445879b6a4_20231117092502_thum.jpg"
-												alt="1번 이미지" onerror="cj.com.noImg(this, 'P')">
+						<c:forEach var="vo" items="${reviewList}">
+							<li>
+								<div class="review_module">
+									<div class="top_wrap">
+										<p class="tit">
+											<span class="name">${vo.menuName }</span>
+										</p>
+										<div class="top_wrap--right">
+											<time datetime="2023-11-16">
+												<fmt:formatDate value="${vo.reviewDate}"
+													pattern="yyyy.MM.dd" />
+											</time>
+											<a href="#!" class="btn-report">신고</a>
 										</div>
 
 									</div>
-									<!-- //큰 이미지 영역 -->
-								</div>
-							</div>
+									<div class="link_wrap">
+										<div class="etc_info">
+											<div class="rating_wrap">
+												<span class="rating_star"> <span class="star">
+														<span style="width: 100%"><span class="hide">별점
+																${vo.reviewStar }점</span></span>
+												</span>
+												</span>
+											</div>
+											<div class="user_id">
+												<a href="javascript:cj.prodReview.open('2632066','01');"><span
+													class="hide">작성자</span>${vo.userId }</a>
+											</div>
+											<div class="purchase_num">
+
+												<span class="hide">구매 횟수 : </span>구매 6회
+											</div>
+										</div>
+										<a href="javascript:;" class="link_more"> </a>
+										<div class="txt_wrap">
+											<div class="txt_cont">
+												<p class="txt mt_elps">${vo.reviewContent }</p>
+											</div>
+										</div>
+										<div class="img_left_wrap">
+											<!-- 첫번째 이미지 -->
+											<div class="thumb_img">
+
+												<div class="img">
+													<img
+														src="//img.cjcookit.com/images/file/RVW/2023/1117/3d53d564-0e37-4230-93cb-4e445879b6a4_20231117092502_thum.jpg?RS=372&amp;CG=5&amp;CS=186X186"
+														alt="1번 이미지" onerror="cj.com.noImg(this, 'P')">
+												</div>
+												<span class="lang"><span class="hide">총 사진 개수</span>1</span>
+												<!-- 스크립트 요청 사항 : .review_module .img_wrap 안에 있는 .img 갯수 체크 -->
+											</div>
+											<!-- 큰 이미지 영역 -->
+											<div class="img_wrap">
+
+												<div class="img">
+													<img
+														src="//img.cjcookit.com/images/file/RVW/2023/1117/3d53d564-0e37-4230-93cb-4e445879b6a4_20231117092502_thum.jpg"
+														alt="1번 이미지" onerror="cj.com.noImg(this, 'P')">
+												</div>
+
+											</div>
+											<!-- //큰 이미지 영역 -->
+										</div>
+									</div>
+								</div>f
+							</li>
+						</c:forEach>
+					</ul>
 				</div>
-				</li>
-				</c:forEach>
-				</ul>
 			</div>
 		</div>
-	</div>
 	</div>
 </section>
