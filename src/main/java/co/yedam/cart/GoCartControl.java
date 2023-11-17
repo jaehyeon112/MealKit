@@ -31,16 +31,12 @@ public class GoCartControl implements command {
 		
 		
 		List<CartVO> list = svc.CartList(userId);
-		String cartList = gson.toJson(list);
-		
-		
-		req.setAttribute("list", cartList);
+		req.setAttribute("list", list);
 		
 		 List<MenuVO> menuList = menuSvc.menuList();
-		 System.out.println(menuList+"일반버전");
 		String menuListJson = gson.toJson(menuList);
         req.setAttribute("menuList", menuListJson);
-        System.out.println(menuListJson+"json버전");
+
 		
 		
 		try {
