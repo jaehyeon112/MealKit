@@ -48,7 +48,7 @@
                 </select>
             </div>
         </div>
-       
+
 
         <div class="form-group row">
             <label class="hotstep">맵기단계</label>
@@ -105,7 +105,6 @@
             </label>
         </div>
         <div class="image-show" id="image-show"></div>
-
 
         <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" name="menuImage1"/>
         <div id="image_container1"></div> 
@@ -173,7 +172,6 @@
             }
         </script>
         <br>
-
         <script src="index.js"></script>
 
         <div class="form-group row">

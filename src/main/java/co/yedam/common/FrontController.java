@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.cart.GoCartControl;
+import co.yedam.cart.web.DelCartListControl;
 import co.yedam.cart.web.HowManyControl;
 import co.yedam.menu.web.GoAddFormControl;
-import co.yedam.menu.web.GoUpdateMunuControl;
+import co.yedam.menu.web.GoDeleteMenuFormControl;
+import co.yedam.menu.web.GoMenuListFormControl;
 import co.yedam.join.GoJoinFormControl;
 import co.yedam.join.JoinControl;
 import co.yedam.join.RepeatedIdControl;
@@ -34,6 +36,7 @@ public class FrontController extends HttpServlet {
 		map.put("/main.do", new GoMainControl());
 		map.put("/cart.do", new GoCartControl());
 		map.put("/calcart.do", new HowManyControl());
+		map.put("/deleteCartList.do", new DelCartListControl());
 		map.put("/order.do", new GoOrderControl());
 		map.put("/menu.do", new GoMenuControl());
 		
@@ -52,8 +55,13 @@ public class FrontController extends HttpServlet {
 		map.put("/addMyReview.do", new AddMyReviewControl()); // 리뷰작성페이지
 		map.put("/addMenu.do", new GoAddMenuControl());
 		map.put("/addForm.do", new GoAddFormControl());
-		map.put("/addCart.do", new AddCartList()); //장바구니 버튼 클릭시 장바구니에 메뉴 추가
-		map.put("/updateMenu.do", new GoUpdateMunuControl());
+		map.put("/addCart.do", new AddCartList()); //장바구니 버튼 클릭시 장바구니에 메뉴 추가	
+		map.put("/Menulist.do", new GoMenuListControl());
+		map.put("/menuListForm.do", new GoMenuListFormControl());
+		map.put("/delteMenu.do", new GoDeleteMenuControl());
+		map.put("/deleteMenuForm.do", new GoDeleteMenuFormControl());
+		
+		
 
 	}
 

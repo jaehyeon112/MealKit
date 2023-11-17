@@ -1,4 +1,4 @@
-package co.yedam.common;
+package co.yedam.menu.web;
 
 import java.io.IOException;
 import java.util.List;
@@ -7,27 +7,26 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.yedam.common.command;
 import co.yedam.menu.service.MenuService;
 import co.yedam.menu.service.MenuVO;
 import co.yedam.menu.serviceImpl.MenuServiceImpl;
 
-public class GoMenuPageControl implements command {
+public class GoMenuListFormControl implements command {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		String menuId = req.getParameter("menuId");
 		MenuService svc = new MenuServiceImpl();
-		MenuVO vo = svc.getMenu(menuId);
-		System.out.println(svc.getMenu(menuId));
-		req.setAttribute("menuId", vo);
+		List<MenuVO> list = svc.menuList();
+		req.setAttribute("list", list);
 		
 		try {
-
-			req.getRequestDispatcher("menu/menupage.tiles").forward(req, resp);
-
+			req.getRequestDispatcher("menu/menuList.tiles").forward(req, resp);
 		} catch (ServletException | IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	}
 
 }

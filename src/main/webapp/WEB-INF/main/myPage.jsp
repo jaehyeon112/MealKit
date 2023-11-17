@@ -107,6 +107,19 @@ font-weight: bold;
 					</ul>
 				</dd>
 			</dl>
+
+			<dl class="adminMenu">
+				<dt>관리자페이지</dt>
+				<dd>
+					<ul class="addMenu">
+						<li id="leftaddMenu"><a href="addForm.do">상품등록</a></li>
+						<li id="leftaddMenuList"><a href="menuListForm.do">상품리스트</a></li>
+					</ul>
+				</dd>
+			</dl>
+
+			
+
 		</div>
 		<div class="rightCon">
 			<div class="myMain">
@@ -128,8 +141,11 @@ font-weight: bold;
 						</a></li>
 					</ul>
 				</div>
-			</div>
 				</div>
+			</div>
+
+			
+
 			<div class="mainBottom">
 				<div class="myInfoWrap">
 					<div class="infoBox"></div>
