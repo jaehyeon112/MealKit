@@ -11,7 +11,7 @@
 	<insert id="insertCart" parameterType="co.yedam.cart.service.CartVO">
 	<selectKey keyProperty="cartNum" resultType="int" order="BEFORE">
 	    	SELECT seq_cart_no.NEXTVAL as cartNum FROM DUAL
-		</selectKey>
+			</selectKey>
 	insert into cart values(#{cartNum},#{menuId},#{menuName},#{menuImage1},#{menuPrice},1,#{userId})
 	</insert>
 	
@@ -20,13 +20,13 @@
 		select count(*) from cart where user_id = #{userId} group by user_Id
 	</select>
 	
+	
 	<select id="joinCartMenu">
 	select c.user_id , sum(c.menu_price) as price , sum(m.menu_priceOFF) as priceOff, sum(m.menu_priceOFF-m.menu_many)as total 
 	from cart c 
 	left join menu m on c.menu_id = m.menu_id 
 	where c.user_id = #{userId}
 	group by c.user_id
-	
 	</select>
 	
 	<delete id="">
