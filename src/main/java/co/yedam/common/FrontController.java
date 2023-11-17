@@ -15,6 +15,7 @@ import co.yedam.menu.web.GoAddFormControl;
 import co.yedam.menu.web.GoUpdateMunuControl;
 import co.yedam.join.GoJoinFormControl;
 import co.yedam.join.JoinControl;
+import co.yedam.join.RepeatedIdControl;
 import co.yedam.login.GoLoginFormControl;
 import co.yedam.login.LoginControl;
 import co.yedam.login.LogoutControl;
@@ -42,6 +43,7 @@ public class FrontController extends HttpServlet {
 		
 		map.put("/join.do", new GoJoinFormControl());
 		map.put("/signUp.do", new JoinControl());
+		map.put("/repeatedId.do", new RepeatedIdControl());
 		
 		map.put("/myPage.do", new GoMyPageControl());
 		

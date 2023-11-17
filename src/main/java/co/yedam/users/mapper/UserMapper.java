@@ -11,4 +11,5 @@ public interface UserMapper {
 	public int insertUser(UserVO vo);
 	
 	public UserVO getUser(@Param("userId") String userId, @Param("userPassword") String userPassword);
+	public UserVO userId(String id);
 }
