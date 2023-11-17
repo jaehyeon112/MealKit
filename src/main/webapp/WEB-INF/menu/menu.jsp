@@ -6,6 +6,7 @@
 <div>
     <h1><b>COOKIT 메뉴</b></h1>
     <a href="addForm.do"><button>상품등록</button></a>
+    <a href="adminForm.do"><button>관리자페이지</button></a>
 </div>
 <br>
 <div>

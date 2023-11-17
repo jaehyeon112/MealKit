@@ -13,6 +13,7 @@ import co.yedam.cart.GoCartControl;
 import co.yedam.cart.web.HowManyControl;
 import co.yedam.menu.web.GoAddFormControl;
 import co.yedam.menu.web.GoUpdateMunuControl;
+import co.yedam.menu.web.adminFormControl;
 import co.yedam.join.GoJoinFormControl;
 import co.yedam.join.JoinControl;
 import co.yedam.login.GoLoginFormControl;
@@ -52,6 +53,8 @@ public class FrontController extends HttpServlet {
 		map.put("/addForm.do", new GoAddFormControl());
 		map.put("/addCart.do", new AddCartList()); //장바구니 버튼 클릭시 장바구니에 메뉴 추가
 		map.put("/updateMenu.do", new GoUpdateMunuControl());
+		map.put("/adminMenu.do", new adminMenuControl());
+		map.put("/adminForm.do", new adminFormControl());
 
 	}
 
