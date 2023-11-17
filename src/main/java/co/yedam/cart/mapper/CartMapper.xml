@@ -12,7 +12,7 @@
 	<selectKey keyProperty="cartNum" resultType="int" order="BEFORE">
 	    	SELECT seq_cart_no.NEXTVAL as cartNum FROM DUAL
 		</selectKey>
-	insert into cart values(#{cartNum},#{menuId},#{menuName},#{menuImage1},1,#{userId})
+	insert into cart values(#{cartNum},#{menuId},#{menuName},#{menuImage1},#{menuPrice},1,#{userId})
 	</insert>
 	
 	<!-- 메뉴에 장바구니 갯수 확인하는.. -->
