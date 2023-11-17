@@ -281,8 +281,11 @@ font-weight: 700;
     console.log(json)
     let userId = "${userId}"
     
-    
-   
+    let cart = '${list}'
+   	let cartObj = JSON.parse(cart)
+   	console.log(cartObj)
+   	
+   	
     document.querySelectorAll('#menuSelector').forEach(ele => console.log(ele.value))
     
     document.querySelectorAll('#plus').forEach(ele => {
