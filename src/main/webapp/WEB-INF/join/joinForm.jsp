@@ -109,9 +109,6 @@ h2 {
 	<form action="signUp.do" method="POST">
 		<div id="box">
 			<div class="input-box">
-				<!--<input style="border: none" id="userid" type="text" name="userid" placeholder="아이디">
-						<label for="userid">아이디</label>
-				-->
 				<div class="row">
 					<div class="col-sm-8 ">
 						<input style="border: none" id="userid" type="text" name="userid"
@@ -122,6 +119,7 @@ h2 {
 					</div>
 				</div>
 			</div>
+					
 			<input type="hidden" name="idUncheck" value="idUncheck">
 			<div class="input-box">
 				<input id="password" type="password" name="password"
@@ -151,7 +149,7 @@ h2 {
 			</div>
 			<div class="input-box">
 				<input id="phone" type="text" name="phone" placeholder="휴대전화"
-				maxlength="11"> <label for="phone">휴대전화("-" 제외)</label>
+					maxlength="11"> <label for="phone">휴대전화("-" 제외)</label>
 			</div>
 		</div>
 
@@ -196,7 +194,7 @@ h2 {
 
 				// 각 주소의 노출 규칙에 따라 주소를 조합한다.
 				// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-				var addr = ''; // 주소 변수
+				let addr = ''; // 주소 변수
 
 				//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
 				if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
@@ -215,26 +213,26 @@ h2 {
 	}
 
 	function check() {
-		var userId = document.getElementById("userid");
-		var userPassword = document.getElementById("password");
-		var userRePassword = document.getElementById("repassword");
-		var userName = document.getElementById("username");
-		var userBirth = document.getElementById("birth");
-		var userEmail = document.getElementById("email");
-		var userPhone = document.getElementById("phone");
-		var userAddress1 = document.getElementById("address1");
-		var userAddress2 = document.getElementById("address2");
-		var userAddress3 = document.getElementById("address3");
+		let userId = document.getElementById("userid");
+		let userPassword = document.getElementById("password");
+		let userRePassword = document.getElementById("repassword");
+		let userName = document.getElementById("username");
+		let userBirth = document.getElementById("birth");
+		let userEmail = document.getElementById("email");
+		let userPhone = document.getElementById("phone");
+		let userAddress1 = document.getElementById("address1");
+		let userAddress2 = document.getElementById("address2");
+		let userAddress3 = document.getElementById("address3");
 
 		// 정규식
 		// id, pw
-		var regIdPw = /^[a-zA-Z0-9]{4,12}$/;
+		let regIdPw = /^[a-zA-Z0-9]{4,12}$/;
 		// 이름
-		var regName = /^[가-힣a-zA-Z]{2,15}$/;
+		let regName = /^[가-힣a-zA-Z]{2,15}$/;
 		// 이메일
-		var regMail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+		let regMail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
 		// 휴대전화
-		var regPhone = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+		let regPhone = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
 
 		if (userId.value == "") {
 			alert("아이디를 입력해주세요.")
@@ -277,6 +275,10 @@ h2 {
 			alert("생년월일을 입력해주세요.")
 			userBirth.focus();
 			return false;
+		} else if (userBirth.value.length != 6) {
+			alert("생년월일 뒷 6자리를 입력해주세요.")
+			userBirth.focus();
+			return false;
 		}
 		if (userEmail.value == "") {
 			alert("이메일을 입력해주세요.")
@@ -297,27 +299,65 @@ h2 {
 			return false;
 		}
 		if (userAddress1.value == "") {
-			alert("우편번호를 입력해주세요.")
+			alert("주소를 입력해주세요.")
 			userAddress1.focus();
 			return false;
 		}
 		if (userAddress2.value == "") {
-			alert("주소를 입력해주세요.")
+			alert("상세주소를 입력해주세요.")
 			userAddress2.focus();
 			return false;
 		}
 		if (userAddress3.value == "") {
-			alert("상세주소를 입력해주세요.")
+			alert("우편번호를 입력해주세요.")
 			userAddress3.focus();
 			return false;
 		}
-		if (idUncheck.value != "idCheck") {
-			alert("아이디 중복체크를 해주세요.")
-		}
 
 	}
 
+	//id 중복체크
 	function idCheck() {
-		window.open("IdCheckForm.jsp", "idwin", "width=400", "height=350");
+		let cnt = 0;
+		let cntn = 0;
+		let userId = document.getElementById("userid");
+		let userPassword = document.getElementById("password");
+		cnt += 1;
+		fetch('repeatedId.do',{
+			method:'post',
+			headers:{'Content-Type': 'application/x-www-form-urlencoded'},
+			body:'userId=' + userId.value
+		})
+		.then(resolve=>resolve.json())
+		.then(result=>{
+			console.log(userId.value);
+			console.log(result);
+
+			if(result.retCode == "Exists"){
+				alert("중복된 아이디입니다.")
+				userId.value = ""
+				return false;
+			}else{
+				alert("사용가능한 아이디입니다.")
+				userPassword.focus();
+				return;
+			}
+		})
 	}
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

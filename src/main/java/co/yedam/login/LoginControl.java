@@ -18,27 +18,29 @@ public class LoginControl implements command {
 		String userId = req.getParameter("userId");
 		String userPassword = req.getParameter("userPassword");
 		UserService svc = new UserServiceImpl();
-
 		HttpSession session = req.getSession();
 		UserVO vo = svc.loginCheck(userId, userPassword);
 
 		if (svc.loginCheck(userId, userPassword) != null) {
+
+			session.setAttribute("userId", vo.getUserId());
+			session.setAttribute("userPassword", vo.getUserPassword());
+			session.setAttribute("userName", vo.getUserName());
 			try {
-				session.setAttribute("userId", vo.getUserId());
-				session.setAttribute("userPassword", vo.getUserPassword());
-				session.setAttribute("userName", vo.getUserName());
 				resp.sendRedirect("main.do");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+
 		} else {
+			req.setAttribute("errMsg", "로그인 정보가 올바르지 않습니다.");
+			
 			try {
-				session.setAttribute("errMsg", "로그인 정보가 올바르지 않습니다.");
-				resp.sendRedirect("login.do");
-			} catch (IOException e) {
+				req.getRequestDispatcher("login/loginForm.tiles").forward(req, resp);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-
 	}
+
 }

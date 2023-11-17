@@ -12,6 +12,7 @@ public class CartVO {
 	private String menuId;
 	private String menuName;
 	private String menuImage1;
+	private int menuPrice;
 	private int cartCount;
 	private String userId;
 }

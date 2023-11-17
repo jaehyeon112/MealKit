@@ -25,5 +25,8 @@ public class UserServiceImpl implements UserService {
 	public UserVO loginCheck(String id, String pw) {
 		return mapper.getUser(id, pw);
 	}
-	
+	@Override
+	public UserVO userId(String id) {
+		return mapper.userId(id);
+	}
 }

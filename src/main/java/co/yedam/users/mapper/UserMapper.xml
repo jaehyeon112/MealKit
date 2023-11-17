@@ -15,4 +15,8 @@
 	<select id="getUser" resultType="co.yedam.users.service.UserVO">
 		SELECT*FROM USERS WHERE USER_ID=#{userId} AND USER_PASSWORD=#{userPassword}
 	</select>
+	
+	<select id="userId" resultType="co.yedam.users.service.UserVO">
+		SELECT*FROM USERS WHERE USER_ID=#{userId}
+	</select>
 </mapper>

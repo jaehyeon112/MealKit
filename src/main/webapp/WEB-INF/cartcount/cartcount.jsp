@@ -199,18 +199,16 @@ font-weight: 700;
 }
   
  </style>
- ${menuList }
- ${list }
  <!-- 메뉴 list를 가져와서 가격 * 수량이 되야 장바구니의 금액이 된다. -->
   <h2 style="font-weight:800">장바구니</h2>
     <section class="cart">
             <form>
         <table class="cart__list">
-              <button class="cart__list__optionbtn">선택상품 삭제</button>
-              <button class="cart__list__optionbtn">품절상품 삭제</button>
+              <input type="button" id="deleteCheck"value="선택상품 삭제" class="cart__list__optionbtn">
+              <input type="button" value="품절상품 삭제" class="cart__list__optionbtn">
                 <thead>
                     <tr>
-                      <td><input type="checkbox"></td>   
+                      <td><input type="checkbox" id="checkAll" checked></td>   
                         <td colspan="2">상품정보</td>
                         <td>수량</td>
                         <td>상품금액</td>
@@ -220,6 +218,9 @@ font-weight: 700;
                 <c:forEach var="vo" items="${list}">
                     <tr class="cart__list__detail">
                         <td><input type="checkbox"></td>
+                        <td><img id="images" src="image/${menuImage1 }"></td>
+                        <td id="description"><a id="menuSelector" href="#">${menuName }</a></td>
+                        <td><input id="checkList" type="checkbox" checked></td>
                         <td><img id="images" src="image/${vo.menuImage1 }"></td>
                         <td id="description"><a id="menuSelector" href="#">${vo.menuName }</a></td>
                         <td id="amount_center">
@@ -229,7 +230,7 @@ font-weight: 700;
                         
                         <td><span class="price" id="price">
                           
-                        </span>원</td>
+                        ${vo.menuPrice }</span>원</td>
                     </tr>
                     </c:forEach>
                 </tbody>
@@ -241,7 +242,7 @@ font-weight: 700;
   <div class="row">
     <div class="col">
       <span class="font_size">총 상품금액</span>
-      <p class="font_size_p">10000원</p>
+      <p class="font_size_p" id="total"></p><b>원</b>
     </div>
     <div class="col">
       <span class="font_size_p">+</span>
@@ -276,36 +277,89 @@ font-weight: 700;
 
     
     <script>
-    let json = '${menuList}'
-    json = JSON.parse(json);
-    console.log(json)
+
+    let list = '${listJson}'
+    list = JSON.parse(list)
     let userId = "${userId}"
+    let totalPay = 0;
     
     let cart = '${list}'
    	let cartObj = JSON.parse(cart)
    	console.log(cartObj)
    	
    	
+    
+      document.querySelector('#checkAll').addEventListener('click', checkAll)
+
+      function checkAll(){
+        let check = document.querySelector('#checkAll').checked
+		if(check){
+      	document.querySelectorAll('.cart__list__detail').forEach((ele,index)=>{
+          ele.querySelector('#checkList').checked = true;
+      })
+		}else{
+			document.querySelectorAll('.cart__list__detail').forEach((ele,index)=>{
+		          ele.querySelector('#checkList').checked = false;
+		})
+      }
+    }
+
+   
+    list.forEach(ele=>{
+      totalPay += ele.menuPrice
+    })
+      
+      document.querySelector('#deleteCheck').addEventListener('click',function(){
+        fetch("deleteCartList.do")
+        
+      })
+      
+      
+      
+      
+      
+      let tr = document.querySelectorAll('.cart__list__detail')
+      
+      
+      document.querySelector('#total').innerHTML = totalPay
+     
+      
+    document.querySelectorAll('.cart__list__detail').forEach((ele,index)=>{
+      ele.children[0].children[0].addEventListener('click',function(){
+    	  let a = ele.children[4].children[0].innerHTML
+        if(ele.children[0].children[0].checked){        	
+    	  totalPay += Number(a)
+        }else{
+    	  totalPay -= Number(a)
+        }
+    	  console.log(totalPay)
+        let count = 0;
+        tr.forEach(ele => {
+          if(ele.children[0].children[0].checked){
+        	  count++;
+          }
+        })
+        if(tr.length==count){
+        	document.querySelector('#checkAll').checked = true;
+        }else{
+        	document.querySelector('#checkAll').checked = false;
+        }
+      })
+    })
     document.querySelectorAll('#menuSelector').forEach(ele => console.log(ele.value))
     
     document.querySelectorAll('#plus').forEach(ele => {
       ele.addEventListener('click',function(e){
-    	  
-    	  
         ele.parentNode.children[1].value++
-        updatePrice();
-        
-          
+        updatePricePlus();
         })
-
-       
-        
         })
       
-        function updatePrice() {
+        function updatePricePlus() {
     document.querySelectorAll('.cart__list__detail').forEach((row, index) => {
+    	
       let quantity = row.querySelector('#amounts').value;
-      let price = json[index].menuPrice;
+      let price = list[index].menuPrice;
       let totalPrice = quantity * price;
       row.querySelector('#price').innerText = totalPrice;
     });
@@ -317,12 +371,24 @@ font-weight: 700;
       ele.addEventListener('click',function(){
         if(ele.parentNode.children[1].value>1){
           ele.parentNode.children[1].value--
+          updatePriceMinus();
         }else{
           alert('최소 1개 이상은 구매해야합니다.')
         }
-      
       })
-
     })
+
+
+    function updatePriceMinus(){
+    	document.querySelectorAll('.cart__list__detail').forEach((ele, index)=>{
+        
+        let quantity = ele.querySelector('#amounts').value;
+        let price = list[index].menuPrice;
+        let totalPrice = price * quantity;
+        ele.querySelector('#price').innerText = totalPrice;
+
+      })
+    	
+    }
     
     </script>

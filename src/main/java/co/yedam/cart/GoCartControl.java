@@ -33,7 +33,8 @@ public class GoCartControl implements command {
 		
 		List<CartVO> list = svc.CartList(userId);
 		String cartList = gson.toJson(list);
-		req.setAttribute("list", cartList);
+		req.setAttribute("listJson", cartList);
+		req.setAttribute("list", list);
 		
 		
 		
