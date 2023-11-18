@@ -199,6 +199,8 @@ font-weight: 700;
 }
   
  </style>
+ ${list }
+ ${listJson }
  <!-- 메뉴 list를 가져와서 가격 * 수량이 되야 장바구니의 금액이 된다. -->
   <h2 style="font-weight:800">장바구니</h2>
     <section class="cart">
@@ -217,9 +219,6 @@ font-weight: 700;
                 <tbody>
                 <c:forEach var="vo" items="${list}">
                     <tr class="cart__list__detail">
-                        <td><input type="checkbox"></td>
-                        <td><img id="images" src="image/${menuImage1 }"></td>
-                        <td id="description"><a id="menuSelector" href="#">${menuName }</a></td>
                         <td><input id="checkList" type="checkbox" checked></td>
                         <td><img id="images" src="image/${vo.menuImage1 }"></td>
                         <td id="description"><a id="menuSelector" href="#">${vo.menuName }</a></td>
@@ -227,9 +226,7 @@ font-weight: 700;
                         <input type="button" class="bnt_size" value="-" id="minus">
                         <input style="border:0; width:20px;" readonly id="amounts" value="1" size="9">
                         <input type="button" class="bnt_size" value="+"  id="plus"></td>
-                        
                         <td><span class="price" id="price">
-                          
                         ${vo.menuPrice }</span>원</td>
                     </tr>
                     </c:forEach>
@@ -283,6 +280,25 @@ font-weight: 700;
     let userId = "${userId}"
     let totalPay = 0;
     
+   	
+   	
+    
+      document.querySelector('#checkAll').addEventListener('click', checkAll)
+
+      function checkAll(){
+        let check = document.querySelector('#checkAll').checked
+		if(check){
+      	document.querySelectorAll('.cart__list__detail').forEach((ele,index)=>{
+          ele.querySelector('#checkList').checked = true;
+      })
+		}else{
+			document.querySelectorAll('.cart__list__detail').forEach((ele,index)=>{
+		          ele.querySelector('#checkList').checked = false;
+		})
+      }
+    }
+
+   
     list.forEach(ele=>{
       totalPay += ele.menuPrice
     })
@@ -324,23 +340,6 @@ font-weight: 700;
         }
       })
     })
-    
-      document.querySelector('#checkAll').addEventListener('click', checkAll)
-
-      function checkAll(){
-        let check = document.querySelector('#checkAll').checked
-		if(check){
-      	document.querySelectorAll('.cart__list__detail').forEach((ele,index)=>{
-          ele.querySelector('#checkList').checked = true;
-      })
-		}else{
-			document.querySelectorAll('.cart__list__detail').forEach((ele,index)=>{
-		          ele.querySelector('#checkList').checked = false;
-		})
-      }
-    }
-
-   
     document.querySelectorAll('#menuSelector').forEach(ele => console.log(ele.value))
     
     document.querySelectorAll('#plus').forEach(ele => {

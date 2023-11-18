@@ -29,17 +29,20 @@ public class GoCartControl implements command {
 		HttpSession session = req.getSession();
 		String userId = (String) session.getAttribute("userId");
 		
+
 		
 		List<CartVO> list = svc.CartList(userId);
 		String cartList = gson.toJson(list);
 		req.setAttribute("listJson", cartList);
 		req.setAttribute("list", list);
 		
+		
+		
 		 List<MenuVO> menuList = menuSvc.menuList();
 		String menuListJson = gson.toJson(menuList);
         req.setAttribute("menuList", menuListJson);
-
 		
+        
 		
 		try {
 			req.getRequestDispatcher("/cartcount/cartcount.tiles").forward(req, resp);
