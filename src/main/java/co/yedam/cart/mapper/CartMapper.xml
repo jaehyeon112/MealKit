@@ -7,12 +7,17 @@
 		resultType="co.yedam.cart.service.CartVO">
 		select * from cart where user_Id = #{userId}
 	</select>
+	
+	<select id="selectCartOne" parameterType="int"
+		resultType="co.yedam.cart.service.CartVO">
+		select * from cart where Cart_num = #{cartNum}
+		</select>
 
 	<insert id="insertCart" parameterType="co.yedam.cart.service.CartVO">
 	<selectKey keyProperty="cartNum" resultType="int" order="BEFORE">
 	    	SELECT seq_cart_no.NEXTVAL as cartNum FROM DUAL
 			</selectKey>
-	insert into cart values(#{cartNum},#{menuId},#{menuName},#{menuImage1},#{menuPrice},1,#{userId})
+	insert into cart values(#{cartNum},#{menuId},#{menuName},#{menuImage1},#{menuPrice},#{menuPriceOff},1,#{userId})
 	</insert>
 	
 	<!-- 메뉴에 장바구니 갯수 확인하는.. -->
@@ -20,9 +25,18 @@
 		select count(*) from cart where user_id = #{userId} group by user_Id
 	</select>
 	
+	<update id="updateCartPlus" parameterType="co.yedam.cart.service.CartVO">
+	update cart set cart.cart_count = cart.cart_count+1 where cart_num = #{cartNum}
+	</update>
+	<update id="updateCartMinus" parameterType="co.yedam.cart.service.CartVO">
+	update cart set cart.cart_count = cart.cart_count-1 where cart_num = #{cartNum}
+	</update>
 	
-	<select id="joinCartMenu">
-	select c.user_id , sum(c.menu_price) as price , sum(m.menu_priceOFF) as priceOff, sum(m.menu_priceOFF-m.menu_many)as total 
+	<select id="joinCartMenu" parameterType="String"
+	resultType="co.yedam.cart.service.CartMenuJoinVO">
+		select c.user_id , sum(c.menu_price*c.cart_count) as price , 
+    sum(m.menu_priceOFF*c.cart_count) as priceOff,
+    sum((c.menu_price*c.cart_count)-((m.menu_priceOFF*c.cart_count)))as total 
 	from cart c 
 	left join menu m on c.menu_id = m.menu_id 
 	where c.user_id = #{userId}

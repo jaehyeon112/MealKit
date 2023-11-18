@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import co.yedam.cart.GoCartControl;
 import co.yedam.cart.web.DelCartListControl;
 import co.yedam.cart.web.HowManyControl;
+import co.yedam.cart.web.cartListControl;
 import co.yedam.menu.web.GoAddFormControl;
 import co.yedam.menu.web.GoDeleteMenuFormControl;
 import co.yedam.menu.web.GoMenuListFormControl;
@@ -35,6 +36,7 @@ public class FrontController extends HttpServlet {
 		map.put("/review.do", new GoReviewControl()); // 전체 리뷰 조회 페이지
 		map.put("/main.do", new GoMainControl());
 		map.put("/cart.do", new GoCartControl());
+		map.put("/updatecart.do", new cartListControl());
 		map.put("/calcart.do", new HowManyControl());
 		map.put("/deleteCartList.do", new DelCartListControl());
 		map.put("/order.do", new GoOrderControl());
@@ -61,18 +63,15 @@ public class FrontController extends HttpServlet {
 		map.put("/delteMenu.do", new GoDeleteMenuControl());
 		map.put("/deleteMenuForm.do", new GoDeleteMenuFormControl());
 		
-		
-
 	}
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
-		resp.setContentType("text/html; charset=utf-8");
-
 		String page = req.getServletPath();
-
+		System.out.println("Page: " + page);
 		command controller = map.get(page);
+		resp.setContentType("application/json;charset=utf-8");
 		controller.execute(req, resp);
 
 	}

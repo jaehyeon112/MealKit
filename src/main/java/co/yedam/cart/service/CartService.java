@@ -8,4 +8,7 @@ public interface CartService {
 	public List<CartVO> CartList(String userId);
 	public boolean addCartList(CartVO vo);
 	public Integer checkCartList(String userId);
+	public CartVO cartOne(int CartNum);
+	public CartVO updateCartList(CartVO vo, int cartNum, boolean check);
+	public CartMenuJoinVO joinCartMenu(String userId);
 }
