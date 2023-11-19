@@ -11,4 +11,5 @@ public interface CartService {
 	public CartVO cartOne(int CartNum);
 	public CartVO updateCartList(CartVO vo, int cartNum, boolean check);
 	public CartMenuJoinVO joinCartMenu(String userId);
+	public List<CartVO> removeCart(String CartNum, String userId);
 }

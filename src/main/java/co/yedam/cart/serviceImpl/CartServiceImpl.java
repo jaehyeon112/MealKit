@@ -51,4 +51,11 @@ public class CartServiceImpl implements CartService{
 	public CartMenuJoinVO joinCartMenu(String userId) {
 		return mapper.joinCartMenu(userId);
 	}
+	@Override
+	public List<CartVO> removeCart(String CartNum, String userId) {
+		mapper.deleteCartList(CartNum);
+		
+		
+		return mapper.selectList(userId);
+	}
 }

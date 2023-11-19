@@ -14,7 +14,7 @@ public interface CartMapper {
 
 	public Integer cartListCheck(String userId);
 	
-	public int deleteCart(int CartNum);
+	public int deleteCartList(String CartNum);
 	
 	public CartMenuJoinVO joinCartMenu(String userId);
 	
