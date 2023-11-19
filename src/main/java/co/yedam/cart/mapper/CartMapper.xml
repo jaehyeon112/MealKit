@@ -34,17 +34,30 @@
 	
 	<select id="joinCartMenu" parameterType="String"
 	resultType="co.yedam.cart.service.CartMenuJoinVO">
-		select c.user_id , sum(c.menu_price*c.cart_count) as price , 
-    sum(m.menu_priceOFF*c.cart_count) as priceOff,
-    sum((c.menu_price*c.cart_count)-((m.menu_priceOFF*c.cart_count)))as total 
-	from cart c 
-	left join menu m on c.menu_id = m.menu_id 
-	where c.user_id = #{userId}
-	group by c.user_id
+		SELECT
+    c.user_id,
+    SUM(c.menu_price * c.cart_count) AS price,
+    SUM(m.menu_priceOFF * c.cart_count) AS priceOff,
+    CASE
+        WHEN SUM(m.menu_price * c.cart_count) > 40000 THEN 0
+        ELSE 4000
+    END AS delivery,
+    CASE
+        WHEN SUM(c.menu_price * c.cart_count) >= 40000 THEN SUM(c.menu_price * c.cart_count) - SUM(m.menu_priceOFF * c.cart_count)
+        ELSE SUM(c.menu_price * c.cart_count) - SUM(m.menu_priceOFF * c.cart_count) + 4000
+    END AS total
+FROM
+    cart c
+LEFT JOIN
+    menu m ON c.menu_id = m.menu_id
+WHERE
+    c.user_id = #{userId}
+GROUP BY
+    c.user_id
 	</select>
 	
-	<delete id="">
-	delete from cart where cart_num = #{cartNum}
+	<delete id="deleteCartList" parameterType="String">
+	delete from cart where Cart_num in (${cartNum})
 	</delete>
 	
 </mapper>	

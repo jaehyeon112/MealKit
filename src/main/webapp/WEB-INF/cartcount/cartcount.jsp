@@ -200,10 +200,10 @@ font-weight: 700;
   
  </style>
  <!-- ${list }
- ${listJson }
  ${total }
-  -->
   ${menuList }
+ ${listJson }
+  -->
  <!-- 메뉴 list를 가져와서 가격 * 수량이 되야 장바구니의 금액이 된다. -->
   <h2 style="font-weight:800">장바구니</h2>
     <section class="cart">
@@ -216,20 +216,23 @@ font-weight: 700;
                       <td><input type="checkbox" id="checkAll" checked></td>   
                         <td colspan="2">상품정보</td>
                         <td>수량</td>
-                        <td>상품금액</td>
+                        <td>원가</td>
+                        <td>할인가</td>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tbody">
                 <c:forEach var="vo" items="${list}">
                     <tr class="cart__list__detail">
-                        <td><input id="checkList" type="checkbox" checked></td>
+                        <td><input class="checkList" type="checkbox" checked id="${vo.cartNum }"></td>
                         <td><img id="images" src="image/${vo.menuImage1 }"></td>
                         <td id="description"><a id="menuSelector" href="#">${vo.menuName }</a></td>
                         <td id="amount_center">
                         <input type="button" class="bnt_size" value="-" id="minus">
                         <input style="border:0; width:20px;" readonly id="amounts" value="${vo.cartCount }" size="9">
                         <input type="button" class="bnt_size" value="+"  id="plus"></td>
-                        <td><span class="price" id="${vo.cartNum }">
+                        <td><span style=" text-decoration:line-through"class="priceOriginal" >
+                        ${Integer.parseInt(vo.menuPrice) * Integer.parseInt(vo.cartCount) }</span>원</td>
+                        <td><span class="price" >
                         ${Integer.parseInt(vo.menuPrice-vo.menuPriceOff) * Integer.parseInt(vo.cartCount) }</span>원</td>
                     </tr>
                     </c:forEach>
@@ -245,7 +248,7 @@ font-weight: 700;
       <p class="font_size_p" id="total">${total.price }원</p>
     </div>
     <div class="col">
-      <span class="font_size_p">+</span>
+      <span class="font_size_p">-</span>
     </div>
     <div class="col">
       <span class="font_size">총 할인금액</span>
@@ -257,22 +260,15 @@ font-weight: 700;
     <div class="col">
     
       <span class="font_size">총 배송비</span>
-      <c:choose>
-    <c:when test="${total.price > 40000}">
-       <p class="font_size_p" style="color:red">0원</p>
-    </c:when>
-    <c:otherwise>
-       <p class="font_size_p">4000원</p>
-    	<p style="color:#101010; font-size: 10px;">${40000-total.price}원만 더 시키면 배송비가 무료!</p>
-    </c:otherwise>
-    </c:choose>
+       <p id="delivery" class="font_size_p" style="color:red">${total.delivery }원</p>
+    	<p id="deliCheck" style="display:none; color:#101010; font-size: 10px;">${40000-total.price }원 더 구매시 배송비가 무료! </p>
     </div>
       <div class="col">
       <span class="font_size_p">=</span>
     </div>
     <div class="col">
       <span class="font_size">총 결제금액</span>
-       <p class="font_size_p" id="totalBuy">${total.total }원</p>
+       <p class="font_size_p" id="totalBuy">${total.total}원</p>
     </div>
   </div>
 </div>
@@ -294,48 +290,187 @@ font-weight: 700;
     list = JSON.parse(list);
     menuList = JSON.parse(menuList);
     
+    //장바구니가 처음에 비어있다면 이렇게!
+    cartListCheck()
+    
+    //객체의 길이를 반환
+    console.log(Object.keys(list).length)
+    
+    function cartListCheck(){
+    	if(Object.keys(list).length == 0){
+    		let tr = document.createElement('tr')
+    		let td = document.createElement('td')
+    		let p = document.createElement('h1')
+        td.setAttribute('colspan',6)
+        
+        p.innerHTML = "장바구니가 텅~"
+        document.querySelector('#tbody').append(tr);
+        tr.append(td);
+    	td.append(p);
+    	}
+    }
+    
+    
+    // 삭제 버튼
+    document.querySelector('#deleteCheck').addEventListener('click',function(){
+    	  let count=0
+    	  let arr= []
+      document.querySelectorAll('.cart__list__detail').forEach(ele => {
+        if(ele.querySelector('.checkList').checked){
+        arr.push(ele.querySelector('.checkList').id)
+        ele.remove();
+        
+
+        	count++;
+        }
+      })
+        	console.log(arr.join(','))
+      if(count==0){
+        alert('최소 하나는 선택하셔야 합니다.')
+        return;
+      }
+    	const data = {
+                     method: 'POST',
+                     headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded'
+                              },
+                      body: "cartNum="+arr.join(','),
+    };
+      fetch('deleteCartList.do',data).then(resolve => resolve.json()).then(result => {
+    	  console.log(result)
+    	  console.log(result.total)
+    	  payChange(result.total)
+    	 document.querySelector('#cartAmounts').innerText = result.newList.length
+    	 console.log(result.newList)
+    	 let cartList = Object.keys( document.querySelectorAll('.cart__list__detail')).length
+    	 console.log('carList값이다 '+cartList)
+        if(cartList == 0){
+          let tr = document.createElement('tr')
+    		let td = document.createElement('td')
+    		let p = document.createElement('h1')
+        td.setAttribute('colspan',6)
+        
+        p.innerHTML = "장바구니가 텅~"
+        document.querySelector('#tbody').append(tr);
+        tr.append(td);
+    	td.append(p);
+        }
+
+      })
+    })
+	
+    check40000();
+    
+    function check40000(){
+      let check = 0;
+      let arr = [];
+      let total = 0;
+      let price = 0;
+      let priceOff = 0;
+      let delivery = 0;
+      list.forEach((ele,index)=>{
+    	 price += ele.menuPrice*ele.cartCount
+    	 priceOff += ele.menuPriceOff*ele.cartCount
+        check += ele.menuPrice*ele.cartCount;
+      })
+    	 total += price - priceOff;
+      if(check < 40000){
+        document.querySelector('#deliCheck').style.display= 'block';
+        delivery = 4000;
+      }
+      arr.push(price,priceOff,total,delivery);
+      return arr;
+    }
 
     // 이벤트 리스너 추가
     document.querySelector('#checkAll').addEventListener('click', checkAll);
 
     // 전체 체크/언체크 함수
     function checkAll() {
+    	// 체크되어있으면 true / 아니면 false
         let check = document.querySelector('#checkAll').checked;
-
+		
+    	if(!check){
+        document.querySelector('#total').innerText = '0원'
+            document.querySelector('#totalOff').innerText = '0원'
+            document.querySelector('#totalBuy').innerText = '4000원'
+            document.querySelector('#delivery').innerText = '4000원'
+            document.querySelector('#deliCheck').innerText=	'40000원 더 구매시 배송비가 무료!'
+    	}else{
+    		let arr = check40000();
+        document.querySelector('#total').innerText = arr[0] + '원'
+            document.querySelector('#totalOff').innerText = arr[1] + '원'
+            document.querySelector('#totalBuy').innerText = arr[2] + '원'
+            document.querySelector('#delivery').innerText = arr[3] + '원'
+            if(total.price < 40000){
+            	document.querySelector('#deliCheck').style.display= 'block';
+            	document.querySelector('#deliCheck').innerText= 40000-total.price+'원 더 구매시 배송비가 무료!' 
+            }else{
+            	document.querySelector('#deliCheck').style.display= 'none';
+            }
+      }
         document.querySelectorAll('.cart__list__detail').forEach((ele, index) => {
-            ele.querySelector('#checkList').checked = check;
+            ele.querySelector('.checkList').checked = check;
         });
     }
 
-    // 초기 총 가격 계산
-    list.forEach(ele => {
-        totalPay += ele.menuPrice;
-    });
 
 
     // 각 상품의 체크박스에 이벤트 리스너 추가
     document.querySelectorAll('.cart__list__detail').forEach((ele, index) => {
         ele.children[0].children[0].addEventListener('click', function () {
-            updateTotalPrice(this);
-
-            // 전체 체크박스 상태 갱신
-            let count = 0;
-            document.querySelectorAll('.cart__list__detail').forEach(ele => {
-                if (ele.children[0].children[0].checked) {
-                    count++;
-                }
-            });
-            document.querySelector('#checkAll').checked = (document.querySelectorAll('.cart__list__detail').length === count);
+          payChange()
         });
     });
 
-    // 메뉴 선택자 값 출력
-    document.querySelectorAll('#menuSelector').forEach(ele => console.log(ele.value));
+    function payChange(result) {
+            let count = 0;
+            let total = 0;
+            let price = 0;
+            let priceOff = 0;
+            document.querySelectorAll('.cart__list__detail').forEach((ele,index) => {
+            	 let qauntity = list[index].cartCount
+            	
+            	let listPrice = list[index].menuPrice * qauntity 
+            	let listPriceOff = list[index].menuPriceOff * qauntity
+            	
+                if (ele.children[0].children[0].checked) {
+                    count++;
+            	 price += list[index].menuPrice * list[index].cartCount
+            	 priceOff += list[index].menuPriceOff * list[index].cartCount
+            	 if(price < 40000){            		 
+            	 total = price - priceOff + 4000
+            	 }else{
+            		 total = price - priceOff
+            	 }
+                }
+            });
+            let delivery = 0;
+            if(price < 40000){
+            	delivery = 4000;
+            }
+             document.querySelector('#total').innerText = price + '원'
+            document.querySelector('#totalOff').innerText = priceOff + '원'
+            document.querySelector('#totalBuy').innerText = total + '원'
+            document.querySelector('#delivery').innerText = delivery + '원'
+            if(price < 40000){
+            	document.querySelector('#deliCheck').style.display= 'block';
+            	document.querySelector('#deliCheck').innerText= 40000-price + '원 더 구매시 배송비가 무료!' 
+            }else{
+            	document.querySelector('#deliCheck').style.display= 'none';
+            }
+            document.querySelector('#checkAll').checked = (document.querySelectorAll('.cart__list__detail').length == count);
+
+    }
 
     // 플러스 버튼 이벤트 리스너 추가
     document.querySelectorAll('#plus').forEach((ele,index) => {
         ele.addEventListener('click', function (e) {
-          
+        	let bnt = e.target.parentNode.parentNode.querySelector('.checkList')
+          if(!bnt.checked){
+            alert('장바구니에서 선택이 되어있지 않습니다.')
+            return;
+          }
         	if(menuList[index].menuCount <= ele.parentNode.children[1].value){
         		alert('구매할 수 있는 최대 수량은 '+menuList[index].menuCount+'개 입니다.')
         		return;
@@ -346,7 +481,7 @@ font-weight: 700;
             ele.parentNode.children[1].value++;
             updatePrice(result,ele);
             
-            }).catch()
+            }).catch(err => console.log(err))
         	}
         });
     });
@@ -356,20 +491,33 @@ font-weight: 700;
         document.querySelectorAll('.cart__list__detail').forEach((row, index) => {
             let quantity = result.cart.cartCount;
             let price = result.cart.menuPrice;
-            console.log(result)
             let priceOff = result.cart.menuPriceOff;
             let totalPrice = quantity * (price-priceOff);
-            ele.parentNode.parentNode.children[4].children[0].innerText = totalPrice;
+            let totalPriceOriginal = quantity * (price);
+            ele.parentNode.parentNode.children[5].children[0].innerText = totalPrice;
+            ele.parentNode.parentNode.children[4].children[0].innerText = totalPriceOriginal;
             document.querySelector('#total').innerText = result.total.price + '원'
             document.querySelector('#totalOff').innerText = result.total.priceOff + '원'
             document.querySelector('#totalBuy').innerText = result.total.total + '원'
+            document.querySelector('#delivery').innerText = result.total.delivery + '원'
+            if(result.total.price < 40000){
+            	document.querySelector('#deliCheck').style.display= 'block';
+            	document.querySelector('#deliCheck').innerText= 40000-result.total.price + '원 더 구매시 배송비가 무료!' 
+            }else{
+            	document.querySelector('#deliCheck').style.display= 'none';
+            }
         });
        
     }
 
     // 마이너스 버튼 이벤트 리스너 추가
     document.querySelectorAll('#minus').forEach((ele,index) => {
-        ele.addEventListener('click', function () {
+        ele.addEventListener('click', function (e) {
+        	let bnt = e.target.parentNode.parentNode.querySelector('.checkList')
+        	if(!bnt.checked){
+                alert('장바구니에서 선택이 되어있지 않습니다.')
+                return;
+              }
             if (ele.parentNode.children[1].value > 1) {
                 
                 let cartNum = list[index].cartNum

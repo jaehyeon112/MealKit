@@ -7,5 +7,6 @@ public class CartMenuJoinVO {
 	private String userId;
 	private int price;
 	private int priceOff;
+	private int delivery;
 	private int total;
 }
