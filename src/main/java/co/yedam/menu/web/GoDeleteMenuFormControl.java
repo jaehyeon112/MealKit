@@ -7,14 +7,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.common.command;
+import co.yedam.menu.service.MenuService;
+import co.yedam.menu.service.MenuVO;
+import co.yedam.menu.serviceImpl.MenuServiceImpl;
 
 public class GoDeleteMenuFormControl implements command {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
+		String mid = req.getParameter("mid");
+
+		MenuService svc = new MenuServiceImpl();
+		MenuVO vo = svc.getMenu(mid);
+		req.setAttribute("mid", vo);
+		
 		try {
 			req.getRequestDispatcher("menu/deleteMenuForm.tiles").forward(req, resp);
-		} catch(ServletException | IOException e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 

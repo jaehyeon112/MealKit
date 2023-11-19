@@ -73,7 +73,8 @@ public class GoAddMenuControl implements command {
 								new DefaultFileRenamePolicy()			
 								);
 				
-				
+//				System.out.println(req.getParameter("menuId"));
+//				System.out.println(mr.getParameter("menuId"));
 				String menuId = mr.getParameter("menuId");
 				String menuName = mr.getParameter("menuName");
 				String menuNameInfo = mr.getParameter("menuNameInfo");

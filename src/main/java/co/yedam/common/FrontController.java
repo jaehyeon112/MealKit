@@ -61,9 +61,9 @@ public class FrontController extends HttpServlet {
 		map.put("/addForm.do", new GoAddFormControl());
 
 		map.put("/addCart.do", new AddCartList()); //장바구니 버튼 클릭시 장바구니에 메뉴 추가	
-		map.put("/Menulist.do", new GoMenuListControl());
+		map.put("/menulist.do", new GoMenuListControl());
 		map.put("/menuListForm.do", new GoMenuListFormControl());
-		map.put("/delteMenu.do", new GoDeleteMenuControl());
+		map.put("/deleteMenu.do", new GoDeleteMenuControl());
 		map.put("/deleteMenuForm.do", new GoDeleteMenuFormControl());
 		
 
