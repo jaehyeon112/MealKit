@@ -168,6 +168,23 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
     width: 1040px;
     height: 150px;
   }
+
+  .buttons {
+    float: right;
+    margin-top: 10px;
+  }
+
+  .button {
+    color: #101010;
+    border: 1px solid #bdd61a;
+    background-color: #bdd61a;
+    height: 30px;
+    width: 80px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+  }
 </style>
 <div id="content" class="my_wrap">
   <div class="right_con">
@@ -252,19 +269,27 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
                     </div>
                     <!-- 개발 요청 사항 : 첫구매시에는 노출되지 않음 -->
                   </div>
+
                   <input
                     type="text"
                     name="reviewContent"
                     class="text"
                     placeholder="리뷰를 작성해주세요"
                   />
-                  <input
-                    type="file"
-                    name="reviewImage"
-                    accept="image/*"
-                    value="사진등록"
-                  />
-                  <input type="submit" value="리뷰등록" form="formReview" />
+                  <div class="buttons">
+                    <input
+                      type="file"
+                      name="reviewImage"
+                      accept="image/*"
+                      value="사진등록"
+                    />
+                    <input
+                      type="submit"
+                      class="button"
+                      value="리뷰등록"
+                      form="formReview"
+                    />
+                  </div>
                 </div>
               </li>
             </ul>
