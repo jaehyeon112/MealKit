@@ -200,9 +200,9 @@ font-weight: 700;
   
  </style>
  <!-- ${list }
- ${listJson }
  ${total }
   ${menuList }
+ ${listJson }
   -->
  <!-- 메뉴 list를 가져와서 가격 * 수량이 되야 장바구니의 금액이 된다. -->
   <h2 style="font-weight:800">장바구니</h2>
@@ -220,7 +220,7 @@ font-weight: 700;
                         <td>할인가</td>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tbody">
                 <c:forEach var="vo" items="${list}">
                     <tr class="cart__list__detail">
                         <td><input class="checkList" type="checkbox" checked id="${vo.cartNum }"></td>
@@ -290,6 +290,27 @@ font-weight: 700;
     list = JSON.parse(list);
     menuList = JSON.parse(menuList);
     
+    //장바구니가 처음에 비어있다면 이렇게!
+    cartListCheck()
+    
+    //객체의 길이를 반환
+    console.log(Object.keys(list).length)
+    
+    function cartListCheck(){
+    	if(Object.keys(list).length == 0){
+    		let tr = document.createElement('tr')
+    		let td = document.createElement('td')
+    		let p = document.createElement('h1')
+        td.setAttribute('colspan',6)
+        
+        p.innerHTML = "장바구니가 텅~"
+        document.querySelector('#tbody').append(tr);
+        tr.append(td);
+    	td.append(p);
+    	}
+    }
+    
+    
     // 삭제 버튼
     document.querySelector('#deleteCheck').addEventListener('click',function(){
     	  let count=0
@@ -298,7 +319,7 @@ font-weight: 700;
         if(ele.querySelector('.checkList').checked){
         arr.push(ele.querySelector('.checkList').id)
         ele.remove();
-        payChange()
+        
 
         	count++;
         }
@@ -308,7 +329,6 @@ font-weight: 700;
         alert('최소 하나는 선택하셔야 합니다.')
         return;
       }
-    	  
     	const data = {
                      method: 'POST',
                      headers: {
@@ -317,7 +337,25 @@ font-weight: 700;
                       body: "cartNum="+arr.join(','),
     };
       fetch('deleteCartList.do',data).then(resolve => resolve.json()).then(result => {
+    	  console.log(result)
+    	  console.log(result.total)
+    	  payChange(result.total)
     	 document.querySelector('#cartAmounts').innerText = result.newList.length
+    	 console.log(result.newList)
+    	 let cartList = Object.keys( document.querySelectorAll('.cart__list__detail')).length
+    	 console.log('carList값이다 '+cartList)
+        if(cartList == 0){
+          let tr = document.createElement('tr')
+    		let td = document.createElement('td')
+    		let p = document.createElement('h1')
+        td.setAttribute('colspan',6)
+        
+        p.innerHTML = "장바구니가 텅~"
+        document.querySelector('#tbody').append(tr);
+        tr.append(td);
+    	td.append(p);
+        }
+
       })
     })
 	
@@ -385,7 +423,7 @@ font-weight: 700;
         });
     });
 
-    function payChange() {
+    function payChange(result) {
             let count = 0;
             let total = 0;
             let price = 0;
@@ -415,13 +453,15 @@ font-weight: 700;
             document.querySelector('#totalOff').innerText = priceOff + '원'
             document.querySelector('#totalBuy').innerText = total + '원'
             document.querySelector('#delivery').innerText = delivery + '원'
-            document.querySelector('#checkAll').checked = (document.querySelectorAll('.cart__list__detail').length === count);
+            if(price < 40000){
+            	document.querySelector('#deliCheck').style.display= 'block';
+            	document.querySelector('#deliCheck').innerText= 40000-price + '원 더 구매시 배송비가 무료!' 
+            }else{
+            	document.querySelector('#deliCheck').style.display= 'none';
+            }
+            document.querySelector('#checkAll').checked = (document.querySelectorAll('.cart__list__detail').length == count);
 
     }
-
-
-
-
 
     // 플러스 버튼 이벤트 리스너 추가
     document.querySelectorAll('#plus').forEach((ele,index) => {
@@ -449,10 +489,6 @@ font-weight: 700;
     //  수량 버튼 클릭
     function updatePrice(result,ele) {
         document.querySelectorAll('.cart__list__detail').forEach((row, index) => {
-        	
-        	
-        	
-        	
             let quantity = result.cart.cartCount;
             let price = result.cart.menuPrice;
             let priceOff = result.cart.menuPriceOff;
@@ -466,7 +502,7 @@ font-weight: 700;
             document.querySelector('#delivery').innerText = result.total.delivery + '원'
             if(result.total.price < 40000){
             	document.querySelector('#deliCheck').style.display= 'block';
-            	document.querySelector('#deliCheck').innerText= 40000-result.total.price+'원 더 구매시 배송비가 무료!' 
+            	document.querySelector('#deliCheck').innerText= 40000-result.total.price + '원 더 구매시 배송비가 무료!' 
             }else{
             	document.querySelector('#deliCheck').style.display= 'none';
             }

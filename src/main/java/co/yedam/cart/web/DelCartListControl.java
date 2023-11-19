@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import co.yedam.cart.service.CartMenuJoinVO;
 import co.yedam.cart.service.CartService;
 import co.yedam.cart.service.CartVO;
 import co.yedam.cart.serviceImpl.CartServiceImpl;
@@ -30,8 +31,10 @@ public class DelCartListControl implements command {
 		  System.out.println(cart);
 		  CartService svc = new CartServiceImpl();
 		  List<CartVO> vo = svc.removeCart(cart, userId);
+		  CartMenuJoinVO vo2 = svc.joinCartMenu(userId);
 		  Map<String, Object> map = new HashMap<>();
 		  map.put("newList",vo);
+		  map.put("total",vo2);
 		  try {
 			resp.getWriter().print(gson.toJson(map));
 		} catch (IOException e) {
