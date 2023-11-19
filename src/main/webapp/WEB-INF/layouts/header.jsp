@@ -26,7 +26,7 @@
 
 <nav class="navbar navbar-expand-sm bg-body-tertiary">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="main.do">  <p class="fst-italic">4MEN</p></a>
+		<a class="navbar-brand" href="main.do">  <h3></h3> class="fst-italic">4MEN</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarNav" aria-controls="navbarNav"
 			aria-expanded="false" aria-label="Toggle navigation">

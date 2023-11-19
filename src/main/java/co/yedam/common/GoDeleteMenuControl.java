@@ -12,7 +12,7 @@ public class GoDeleteMenuControl implements command {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		String mid = req.getParameter("mid");
+		String mid = req.getParameter("menuId");
 		MenuService svc = new MenuServiceImpl();
 		
 		if(svc.deleteMenu(mid)) {
