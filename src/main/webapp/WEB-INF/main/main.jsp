@@ -236,6 +236,37 @@ pageEncoding="UTF-8"%>
     font-size: 40px;
     line-height: 56px;
   }
+
+  #textBox1,
+  #textBox2,
+  #textBox3 {
+    margin-bottom: 150px;
+    margin-right: 600px;
+  }
+
+  #textBox1 h1,
+  #textBox2 h1,
+  #textBox3 h1 {
+    text-align: left;
+    color: white;
+    font-weight: 700;
+    line-height: 1.24;
+    letter-spacing: -6px;
+    font-size: 50px;
+    font-family: "Noto Sans", "맑은 고딕", "Malgun Gothic", Dotum, "굴림", arial,
+      sans-serif;
+  }
+
+  #textBox1 p,
+  #textBox2 p,
+  #textBox3 p {
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.24;
+    float: left;
+    margin-top: 15px;
+  }
 </style>
 <div id="carouselExampleDark" class="carousel carousel-dark slide">
   <div class="carousel-indicators">
@@ -261,37 +292,37 @@ pageEncoding="UTF-8"%>
     ></button>
   </div>
   <div class="carousel-inner">
-    <div class="carousel-item active" data-bs-interval="10000">
+    <div class="carousel-item active" data-bs-interval="500">
       <img
         src="//img.cjcookit.com/images/file/display/890/20190828155709248.jpg?RS=1920x640"
         class="d-block w-100"
         alt="..."
       />
-      <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>Some representative placeholder content for the first slide.</p>
+      <div class="carousel-caption d-none d-md-block" id="textBox1">
+        <h1>목등심과 쫄깃한 버섯<br />버섯소불고기</h1>
+        <p>3인분 / 조리 8분</p>
       </div>
     </div>
-    <div class="carousel-item" data-bs-interval="2000">
+    <div class="carousel-item" data-bs-interval="500">
       <img
         src="//img.cjcookit.com/images/file/display/648/20200730105857306.jpg?RS=1920x640"
         class="d-block w-100"
         alt="..."
       />
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>Some representative placeholder content for the second slide.</p>
+      <div class="carousel-caption d-none d-md-block" id="textBox2">
+        <h1>진한 국물이 일품<br />스팸리치치즈 존슨탕</h1>
+        <p>3인분 / 조리 25분</p>
       </div>
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item" data-bs-interval="500">
       <img
         src="//img.cjcookit.com/images/file/display/043/20200429180744043.jpg?RS=1920x640"
         class="d-block w-100"
         alt="..."
       />
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Some representative placeholder content for the third slide.</p>
+      <div class="carousel-caption d-none d-md-block" id="textBox3">
+        <h1>근사한 소울푸드<br />토마토비프스튜</h1>
+        <p>2인분 / 조리 30분</p>
       </div>
     </div>
   </div>
