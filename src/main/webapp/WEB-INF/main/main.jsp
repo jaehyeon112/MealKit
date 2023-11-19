@@ -242,6 +242,7 @@ pageEncoding="UTF-8"%>
   #textBox3 {
     margin-bottom: 150px;
     margin-right: 600px;
+    background-color: rgba(200, 200, 200, 0.1);
   }
 
   #textBox1 h1,
