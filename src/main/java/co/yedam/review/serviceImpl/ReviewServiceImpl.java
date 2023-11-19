@@ -25,6 +25,12 @@ public class ReviewServiceImpl implements ReviewService {
 		// TODO Auto-generated method stub
 		return mapper.insert(vo) == 1;
 	}
+
+	@Override
+	public List<ReviewVO> getReview(String userId) {
+		// TODO Auto-generated method stub
+		return mapper.select(userId);
+	}
 	
 		
 

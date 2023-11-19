@@ -24,8 +24,10 @@ import co.yedam.login.LogoutControl;
 import co.yedam.menu.web.AddCartList;
 import co.yedam.order.GoOrderControl;
 import co.yedam.review.web.AddMyReviewControl;
+import co.yedam.review.web.GetMyReviewControl;
 import co.yedam.review.web.GoAddReviewControl;
 import co.yedam.review.web.GoReviewControl;
+
 
 public class FrontController extends HttpServlet {
 	Map<String, command> map = new HashMap<>();
@@ -53,6 +55,7 @@ public class FrontController extends HttpServlet {
 		map.put("/menupage.do", new GoMenuPageControl());
 		map.put("/addReview.do", new GoAddReviewControl()); // 마이페이지 -> 리뷰작성, 조회페이지로 이동
 		map.put("/addMyReview.do", new AddMyReviewControl()); // 리뷰작성페이지
+		map.put("/getMyReview.do", new GetMyReviewControl()); // 내가 작성한 리뷰 확인.
 		map.put("/addMenu.do", new GoAddMenuControl());
 		map.put("/addForm.do", new GoAddFormControl());
 		map.put("/addCart.do", new AddCartList()); //장바구니 버튼 클릭시 장바구니에 메뉴 추가	
