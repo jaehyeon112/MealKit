@@ -32,18 +32,47 @@
 	update cart set cart.cart_count = cart.cart_count-1 where cart_num = #{cartNum}
 	</update>
 	
-	<select id="joinCartMenu" parameterType="String"
+	<select id="joinCartMenu" parameterType="hashmap"
 	resultType="co.yedam.cart.service.CartMenuJoinVO">
 		SELECT
     c.user_id,
     SUM(c.menu_price * c.cart_count) AS price,
     SUM(m.menu_priceOFF * c.cart_count) AS priceOff,
     CASE
-        WHEN SUM(m.menu_price * c.cart_count) > 40000 THEN 0
+        WHEN SUM((m.menu_price-m.menu_priceOff) * c.cart_count) > 40000 THEN 0
         ELSE 4000
     END AS delivery,
     CASE
-        WHEN SUM(c.menu_price * c.cart_count) >= 40000 THEN SUM(c.menu_price * c.cart_count) - SUM(m.menu_priceOFF * c.cart_count)
+        WHEN SUM((m.menu_price-m.menu_priceOff) * c.cart_count) >= 40000 THEN SUM(c.menu_price * c.cart_count) - SUM(m.menu_priceOFF * c.cart_count)
+        ELSE SUM(c.menu_price * c.cart_count) - SUM(m.menu_priceOFF * c.cart_count) + 4000
+    END AS total
+FROM
+    cart c
+LEFT JOIN
+    menu m ON c.menu_id = m.menu_id
+WHERE
+    c.user_id = #{userId}
+    and
+    c.menu_id in 
+    <foreach collection="cartArr" item="cartArr" open="(" separator="," close=")">
+    #{cartArr}
+    </foreach>
+GROUP BY
+    c.user_id
+	</select>
+	
+	<select id="joinCartMenuAll" parameterType="String"
+	resultType="co.yedam.cart.service.CartMenuJoinVO">
+		SELECT
+    c.user_id,
+    SUM(c.menu_price * c.cart_count) AS price,
+    SUM(m.menu_priceOFF * c.cart_count) AS priceOff,
+    CASE
+        WHEN SUM((m.menu_price-m.menu_priceOff) * c.cart_count) > 40000 THEN 0
+        ELSE 4000
+    END AS delivery,
+    CASE
+        WHEN SUM((m.menu_price-m.menu_priceOff) * c.cart_count) >= 40000 THEN SUM(c.menu_price * c.cart_count) - SUM(m.menu_priceOFF * c.cart_count)
         ELSE SUM(c.menu_price * c.cart_count) - SUM(m.menu_priceOFF * c.cart_count) + 4000
     END AS total
 FROM

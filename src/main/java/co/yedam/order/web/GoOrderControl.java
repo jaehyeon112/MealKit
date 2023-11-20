@@ -42,12 +42,20 @@ public class GoOrderControl implements command {
 		
 		//장바구니에 있는 물건을 리스트에 담아놨음.
 		OrderService orderSvc = new OrderServiceImpl();
-		List<CartVO> vo = orderSvc.orderList(cartArr);
+		Map<String, Object> map2 = new HashMap<>();
+		map2.put("cartArr",cartArr);
+		map2.put("userId", userId);
+		
+		List<CartVO> vo = orderSvc.orderList(map2);
+		System.out.println(vo);
 		System.out.println(vo);
 		
 		//총 결제 금액
+		Map<String, Object> map3 = new HashMap<>();
+		map3.put("userId", userId);
+		map3.put("cartArr", cartArr);
 		CartService cartSvc = new CartServiceImpl();
-		CartMenuJoinVO vo2 = cartSvc.joinCartMenu(userId);
+		CartMenuJoinVO vo2 = cartSvc.joinCartMenu(map3);
 		String pay = gson.toJson(vo2);
 		//유저 정보
 		UserService userSvc = new UserServiceImpl();

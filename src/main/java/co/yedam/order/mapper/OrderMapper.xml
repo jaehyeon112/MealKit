@@ -3,9 +3,9 @@
 <mapper namespace="co.yedam.order.mapper.OrderMapper">
 
 <select id="orderList"	resultType="co.yedam.cart.service.CartVO"
-	parameterType="String">
-		select * from cart where menu_id in
-		<foreach collection="array" item="cartArr" open="(" close=")" separator=",">
+	parameterType="hashmap">
+		select * from cart where user_id = #{userId} and menu_id in
+		<foreach collection="cartArr" item="cartArr" open="(" close=")" separator=",">
 		#{cartArr}
 		</foreach>
 		

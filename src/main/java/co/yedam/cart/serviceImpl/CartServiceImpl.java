@@ -1,6 +1,7 @@
 package co.yedam.cart.serviceImpl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -48,8 +49,8 @@ public class CartServiceImpl implements CartService{
 		return mapper.selectCartOne(CartNum);
 	}
 	@Override
-	public CartMenuJoinVO joinCartMenu(String userId) {
-		return mapper.joinCartMenu(userId);
+	public CartMenuJoinVO joinCartMenu(Map<String, Object> map) {
+		return mapper.joinCartMenu(map);
 	}
 	@Override
 	public List<CartVO> removeCart(String CartNum, String userId) {
@@ -57,5 +58,9 @@ public class CartServiceImpl implements CartService{
 		
 		
 		return mapper.selectList(userId);
+	}
+	@Override
+	public CartMenuJoinVO joinCartMenuAll(String userId) {
+		return mapper.joinCartMenuAll(userId);
 	}
 }
