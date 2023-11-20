@@ -29,4 +29,12 @@ public class UserServiceImpl implements UserService {
 	public UserVO userId(String id) {
 		return mapper.userId(id);
 	}
+	@Override
+	public boolean editUser(UserVO vo) {
+		return mapper.editUser(vo) == 1 ;
+	}
+	@Override
+	public boolean delUser(String userId, String userPassword) {
+		return mapper.delUser(userId, userPassword);
+	}
 }

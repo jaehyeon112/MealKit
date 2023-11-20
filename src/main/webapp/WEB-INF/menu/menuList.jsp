@@ -25,7 +25,7 @@
 </div>
 
 <table class="table" border="3">
-
+    
     <tr>
         <th>상품번호</th>
         <th>상품이름</th>
@@ -39,14 +39,16 @@
         <th>상품포인트</th>
         <th>상품조리시간</th>
         <th>상품인분체크</th>
-     
+        <th class="menu_list_delete">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">전체삭제</th>
+         
     </tr>
 
 
 
     <c:forEach items="${list }" var="vo">
         <tr>
-            <td>${vo.menuId }</td>
+            <td>${vo.menuId }</td>    
             <td>${vo.menuName}</td>
             <td>${vo.menuNameInfo}</td>
             <td><img src="image/${vo.menuImage1}" width="130" height="120"></td>
@@ -58,11 +60,15 @@
             <td>${vo.menuPoint}</td>
             <td>${vo.menuTime}</td>
             <td>${vo.menuMany}</td>
-        </tr>
+            <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">삭제</td>
+        </tr>  
     </c:forEach>
 </table>
 
 <div class="ud">
     <a href="deleteMenuForm.do"><button type="button" class="btn btn-outline-danger">삭제하기</button></a>
-    <a href="#"><button type="button" class="btn btn-outline-primary">수정하기</button></a>
+    <a href="updateMenuForm.do"><button type="button" class="btn btn-outline-primary">수정하기</button></a>
 </div>
+<script>
+    document.querySelectorAll('.')
+</script>

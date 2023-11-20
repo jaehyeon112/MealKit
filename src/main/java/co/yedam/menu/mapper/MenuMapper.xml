@@ -26,7 +26,8 @@
 	
 
 	<update id="updateMenu" parameterType="co.yedam.menu.service.MenuVO">
-		update menu set menu_name =#{vo.menuName}, #{vo.menuNameInfo}, #{vo.menuImage1}, #{menuImage2} , #{menuImage3} ,#{menuKind}, #{menuPrice}, #{menuPriceOff}, #{menuContent}, #{menuCount}, #{menuPoint}, #{menuTime}, #{menuMany} where menu_Id =#{menuId} 
+		update menu set menu_name =#{menuName}, menu_name_Info =#{menuNameInfo}, menu_Image1 =#{menuImage1}, menu_Image2 =#{menuImage2} , menu_Image3 =#{menuImage3},
+		 menu_kind =#{menuKind}, menu_Price =#{menuPrice}, menu_PriceOff =#{menuPriceOff}, menu_Content =#{menuContent}, menu_Count =#{menuCount}, menu_Point =#{menuPoint}, menu_Time#{menuTime}, menu_Many =#{menuMany} where menu_Id =#{menuId} 
 	</update>
 
 </mapper> 
