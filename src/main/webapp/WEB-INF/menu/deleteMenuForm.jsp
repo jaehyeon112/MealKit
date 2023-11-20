@@ -10,7 +10,7 @@
     <form action="deleteMenu.do" method="post" id="delMenu" enctype="application/x-www-form-urlencoded">
         <h5>삭제할 상품 번호</h5>
         <div class="col-sm-2">
-            <input type="number" name="menuId" />
+            <input type="text" name="menuId" />
         </div>
 
         <!-- <h5>삭제내용</h5>

@@ -19,7 +19,7 @@ import co.yedam.menu.web.GoAddFormControl;
 
 import co.yedam.menu.web.GoDeleteMenuFormControl;
 import co.yedam.menu.web.GoMenuListFormControl;
-                 
+import co.yedam.menu.web.GoUpdateMenuFormControl;
 import co.yedam.join.GoJoinFormControl;
 import co.yedam.join.JoinControl;
 import co.yedam.join.RepeatedIdControl;
@@ -33,6 +33,11 @@ import co.yedam.review.web.DeleteMyReviewControl;
 import co.yedam.review.web.GetMyReviewControl;
 import co.yedam.review.web.GoAddReviewControl;
 import co.yedam.review.web.GoReviewControl;
+import co.yedam.users.web.DelUserControl;
+import co.yedam.users.web.EditUserControl;
+import co.yedam.users.web.GoDelUserFormControl;
+import co.yedam.users.web.GoDelUserSuccessControl;
+import co.yedam.users.web.GoEditUserFormControl;
 
 
 public class FrontController extends HttpServlet {
@@ -58,6 +63,11 @@ public class FrontController extends HttpServlet {
 		map.put("/repeatedId.do", new RepeatedIdControl());
 		
 		map.put("/myPage.do", new GoMyPageControl());
+		map.put("/editMypage.do", new GoEditUserFormControl());
+		map.put("/editUser.do", new EditUserControl());
+		map.put("/delMypage.do", new GoDelUserFormControl());
+		map.put("/delUser.do", new DelUserControl());
+		map.put("/delSuccess.do", new GoDelUserSuccessControl());
 		
 		map.put("/menupage.do", new GoMenuPageControl());
 		map.put("/addReview.do", new GoAddReviewControl()); // 마이페이지 -> 리뷰작성, 조회페이지로 이동
@@ -68,11 +78,12 @@ public class FrontController extends HttpServlet {
 		map.put("/addForm.do", new GoAddFormControl());
 
 		map.put("/addCart.do", new AddCartList()); //장바구니 버튼 클릭시 장바구니에 메뉴 추가	
-		map.put("/menulist.do", new GoMenuListControl());
+		map.put("/menuList.do", new GoMenuListControl());
 		map.put("/menuListForm.do", new GoMenuListFormControl());
 		map.put("/deleteMenu.do", new GoDeleteMenuControl());
 		map.put("/deleteMenuForm.do", new GoDeleteMenuFormControl());
 		map.put("/updateMenu.do", new GoUpdateMenuControl());
+		map.put("/updateMenuForm.do", new GoUpdateMenuFormControl());
 		
 
 		
