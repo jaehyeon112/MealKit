@@ -217,6 +217,7 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
         <div class="prd_list row">
           <ul>
           <c:forEach items="${getReview}" var="vo">
+          
             <li>
               <div class="review_module">
                 <div class="top_wrap">
@@ -229,7 +230,8 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
                   </p>
                   <div class="top_wrap--right">
                     <!-- 20220609 div 추가 -->
-
+					
+						<span><input name="detailNo" value="${vo.orderDetailNumber }" type="hidden"></input>주문상세번호: ${vo.orderDetailNumber } |</span>													
                     <time datetime="2023-11-15"
                       ><fmt:formatDate value="${vo.reviewDate}"
 													pattern="yyyy.MM.dd" /></time>
@@ -257,7 +259,7 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
                   <!-- 190610_수정 -->
                   <div class="user_id">
                     <a
-                      ><span>${vo.userId }</span></a>
+                      ><span> | ${vo.userId }</span></a>
                   </div>
                   <!-- //190610_수정 -->
 
@@ -270,8 +272,8 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
                   <pre>${vo.reviewContent }</pre>
                 </div>
                 <div class="buttons">
-                <input type="submit" class="button" value="리뷰수정">
-                <input type="submit" class="button"value="리뷰삭제">
+                <input type="submit" class="button" value="리뷰수정" >
+                <input type="button" class="button"  value="리뷰삭제" onclick="location.href='deleteMyReview.do?detailNo=${vo.orderDetailNumber }'">
                 </div>
               </div>
             </li>
