@@ -29,7 +29,7 @@ public class MenuServiceImpl implements MenuService{
 	@Override
 	public boolean updateMenu(MenuVO vo) {
 		// TODO Auto-generated method stub
-		return false;
+		return mapper.updateMenu(vo) == 1;
 	}
 
 	@Override

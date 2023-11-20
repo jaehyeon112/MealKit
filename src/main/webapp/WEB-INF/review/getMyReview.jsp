@@ -205,6 +205,7 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
       <div class="top_sec">
         <div class="tab_menu">
           <ul>
+          
             <li><a href="addReview.do">작성 가능한 리뷰</a></li>
             <!-- 선택된 메뉴에 on클래스 추가 -->
             <li class="on"><a href="getMyReview.do">작성한 리뷰</a></li>
@@ -215,6 +216,7 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
         <!-- 상품리스트 -->
         <div class="prd_list row">
           <ul>
+          <c:forEach items="${getReview}" var="vo">
             <li>
               <div class="review_module">
                 <div class="top_wrap">
@@ -222,14 +224,15 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
                     <!-- 190510_수정 및 케이스 추가 -->
 
                     <!-- //190510_수정 및 케이스 추가 -->
-                    <span class="name">상품명 작성</span>
+                    <span class="name">${vo.menuName }</span>
                     <!-- 개발 요청 사항 : 검색된 단어에 <strong></strong>태그 추가 -->
                   </p>
                   <div class="top_wrap--right">
                     <!-- 20220609 div 추가 -->
 
                     <time datetime="2023-11-15"
-                      >작성날짜</time>
+                      ><fmt:formatDate value="${vo.reviewDate}"
+													pattern="yyyy.MM.dd" /></time>
                     <!-- 데이터 없을 때 노출 -->
                     <!-- <li class="no_data"><span class="ico"></span> <strong>작성
 								가능한 리뷰가 없습니다.</strong></li> -->
@@ -242,36 +245,37 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
                       <span class="star">
                         <!-- background image 커스텀 영역 -->
                         <span style="width: 100%">
-                          <span class="star"><c:forEach begin="1" end="5"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gold" class="bi bi-star-fill" viewBox="0 0 16 16">
+                          <span class="star"><c:forEach begin="1" end="${vo.reviewStar }" var="i"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gold" class="bi bi-star-fill" viewBox="0 0 16 16">
                             <path 
                             d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                           </svg></c:forEach></span>                          
                         <!-- backgorund image 활성화 영역 (20%에 한개씩 점수가 채워 집니다.) -->
                       </span>
                     </span>
+                    </span>
                   </div>
                   <!-- 190610_수정 -->
                   <div class="user_id">
                     <a
-                      ><span>작성자아이디</span></a>
+                      ><span>${vo.userId }</span></a>
                   </div>
                   <!-- //190610_수정 -->
 
-                  <div class="purchase_num">
+                  <!-- <div class="purchase_num">
                     <span class="hide">구매 횟수 : </span>구매 3회
-                  </div>
+                  </div> -->
                   <!-- 개발 요청 사항 : 첫구매시에는 노출되지 않음 -->
                 </div>
                 <div class="text">
-                  <pre>리뷰 영역입니다(text)</pre>
+                  <pre>${vo.reviewContent }</pre>
                 </div>
                 <div class="buttons">
                 <input type="submit" class="button" value="리뷰수정">
                 <input type="submit" class="button"value="리뷰삭제">
                 </div>
               </div>
-              
             </li>
+            </c:forEach>
           </ul>
         </div>
       </div>
