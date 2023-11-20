@@ -11,6 +11,7 @@ public interface MenuMapper {
 	public int updateMenu(MenuVO vo);
 	public int deleteMenu(String menuId);
 	public MenuVO getMenu(String menuId);
+	
 
 	
 	//팀장이 작업함

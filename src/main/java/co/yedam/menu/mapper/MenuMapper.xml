@@ -15,14 +15,16 @@
 		insert into menu values(#{menuId}, #{menuName}, #{menuNameInfo}, #{menuImage1}, #{menuImage2} , #{menuImage3} ,#{menuKind}, #{menuPrice}, #{menuPriceOff}, #{menuContent}, #{menuCount}, #{menuPoint}, #{menuTime}, #{menuMany})
 	</insert>
 	
+
 	<select id="getMenu" resultType="co.yedam.menu.service.MenuVO">
 		select * from menu where menu_id =#{vo.menuId}
 	</select>
 	
 	<delete id="deleteMenu" parameterType="co.yedam.menu.service.MenuVO">
-		delete from menu where menu_id =#{vo.menuId}
+		delete from menu where menu_id =#{menuId}
 	</delete>
 	
+
 	<update id="updateMenu" parameterType="co.yedam.menu.service.MenuVO">
 		update menu set menu_name =#{vo.menuName}, #{vo.menuNameInfo}, #{vo.menuImage1}, #{menuImage2} , #{menuImage3} ,#{menuKind}, #{menuPrice}, #{menuPriceOff}, #{menuContent}, #{menuCount}, #{menuPoint}, #{menuTime}, #{menuMany} where menu_Id =#{menuId} 
 	</update>
