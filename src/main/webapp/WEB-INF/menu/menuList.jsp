@@ -64,5 +64,5 @@
 
 <div class="ud">
     <a href="deleteMenuForm.do"><button type="button" class="btn btn-outline-danger">삭제하기</button></a>
-    <a href="#"><button type="button" class="btn btn-outline-primary">수정하기</button></a>
+    <a href="updateMenuForm.do"><button type="button" class="btn btn-outline-primary">수정하기</button></a>
 </div>
