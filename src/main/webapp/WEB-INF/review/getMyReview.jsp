@@ -272,7 +272,7 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
                   <pre>${vo.reviewContent }</pre>
                 </div>
                 <div class="buttons">
-                <input type="submit" class="button" value="리뷰수정" >
+                <input type="button" class="button" value="리뷰수정" onclick="location.href='modMyReviewForm.do?detailNo=${vo.orderDetailNumber}'">
                 <input type="button" class="button"  value="리뷰삭제" onclick="location.href='deleteMyReview.do?detailNo=${vo.orderDetailNumber }'">
                 </div>
               </div>

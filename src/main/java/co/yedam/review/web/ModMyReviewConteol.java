@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.common.command;
 
-public class ModMyReviewControl implements command {
+public class ModMyReviewConteol implements command {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {

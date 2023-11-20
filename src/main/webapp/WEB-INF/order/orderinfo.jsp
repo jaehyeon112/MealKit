@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <style>
 .cart__bigorderbtn.right {
 	background-color: #bdd61a;
@@ -16,7 +17,10 @@
 	margin-bottom: 20px;
 }
 
-input {
+#address > input,
+#phone > input,
+.person > input
+ {
 	border: #bbb solid 1px;
 	height: 40px;
 	width: 250px;
@@ -84,18 +88,20 @@ width: 400px;
 }
 
 </style>
-
+${map.cartList}
+${map.totalPay}
+${map.userList}
 <div class="row">
 	<div class="col">
 		<h1>주문하기</h1>
 		<h3>주문자</h3>
 		<div id="test"></div>
 		<div class="row">
-			<div class="col">
+			<div class="col person">
 				<p>이름</p>
-				<input type="text">
+				<input id="userName" type="text">
 			</div>
-			<div class="col">
+			<div class="col person">
 				<p>휴대폰</p>
 				<div id="phone">
 					<input type="text"><input type="text"><input
@@ -106,36 +112,40 @@ width: 400px;
 		<h3>배송정보</h3>
 		<div id="test"></div>
 		<div id="address">
-			<input type="text" id="sample6_postcode" placeholder="우편번호">
+			<input type="text" id="address3" placeholder="우편번호">
 			<input type="button" onclick="sample6_execDaumPostcode()"
 				value="우편번호 찾기"><br> <input type="text"
-				id="sample6_address" style="width: 420px" placeholder="주소"><br>
-			<input type="text" id="sample6_detailAddress" placeholder="상세주소">
-			<input type="text" id="sample6_extraAddress" placeholder="참고항목">
+				id="address1" style="width: 420px" placeholder="주소"><br>
+			<input type="text" style="width: 420px" id="address2" placeholder="상세주소">
 		</div>
 		<h3>구매할물건</h3>
 		<div id="test"></div>
 		<div class="recieve_date">
-		<strong>11-16(목) 도착예정</strong>
+		<strong id="nextDate">11-16(목) 도착예정</strong>
 		</div>
 		<ul style="list-style-type: none; margin-top:20px">
+		
+		<c:forEach items="${cartList }" var="cart">
 		<li style="margin-bottom: 20px">
 		<div class="row" style="vertical-align: center">
-		<div class="col"><img src="https://picsum.photos/80/80"></div>
-		<div class="col-6"><span style="font-size: 20px;line-height: 80px; ">[냉장]어쩌구저쩌구볶음</span></div>
-		<div class="col"><span style="font-size: 14px;line-height: 80px;">1개</span></div>
-		<div class="col"><span style="font-size: 20px;line-height: 80px;; font-weight: 700">30,000원</span></div>
+		<div class="col"><img src="image/${cart.menuImage1 }"></div>
+		<div class="col-6"><span style="font-size: 20px;line-height: 80px; ">${cart.menuName }</span></div>
+		<div class="col"><span style="font-size: 14px;line-height: 80px;">${cart.cartCount }개</span></div>
+		<div class="col"><span style="font-size: 20px;line-height: 80px;; font-weight: 700">${(cart.menuPrice-cart.menuPriceOff)*cart.cartCount}원</span></div>
 		</div>
 		</li>
-		<li style="margin-bottom: 20px">
-		<div class="row" style="vertical-align: center">
-		<div class="col"><img src="https://picsum.photos/80/80"></div>
-		<div class="col-6"><span style="font-size: 20px;line-height: 80px; ">상품명</span></div>
-		<div class="col"><span style="font-size: 14px;line-height: 80px;">수량</span></div>
-		<div class="col"><span style="font-size: 22px;line-height: 80px;; font-weight: 700">가격</span></div>
-		</div>
-		</li>
+		</c:forEach>
 		</ul>
+
+		<h3>포인트사용 여부</h3>
+		<div id="test"></div>
+		<p>나의 포인트 : <span id="myPoint" style="font-weight: 700;"></span></p>
+		<p>사용한 포인트 : <span id="pointMinus" style="font-weight: 700;">0 point</span></p>
+		<div style="height: 40px;">
+		<input id="checkPoint" type="checkbox" style="width:60px" for="point"  >
+		<input id="howManyUsePoint"type="text" placeholder="숫자만 입력해주세요.">
+		<input class="btn" id="usePoint" style="border:1px solid #000;" type="button" value="적용">
+		</div>
 		<h3>결제수단</h3>
 		<div id="test"></div>
 		
@@ -164,19 +174,19 @@ width: 400px;
 		<table>
 			<tr>
 				<th>총 상품금액</th>
-				<td>10000원</td>
+				<td id="totalPay"></td>
 			</tr>
 			<tr>
-				<th>총 배송비</th>
-				<td>+3000원</td>
+				<th>배송비</th>
+				<td id="delivery"></td>
 			</tr>
 			<tr>
-				<th>추가포인트사용</th>
-				<td>-2000원</td>
+				<th>총 할인금액</th>
+				<td id="priceOff"></td>
 			</tr>
 			<tr>
 				<th>총 결제 금액</th>
-				<td id="lastPay">2000원</td>
+				<td id="realPay"></td>
 			</tr>
 		</table>
 		<button onclick="requestPay()" class="cart__bigorderbtn right">결제하기</button>
@@ -196,8 +206,80 @@ width: 400px;
     
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+	// 값 가져오고
+	let userList = '${map.userList}'
+	let payList = '${map.totalPay}'
 	
-	;
+	// json -> object (script에서 쓰기 위함)
+	userList = JSON.parse(userList);
+	payList = JSON.parse(payList);
+	console.log(payList)
+
+	let date = new Date();
+	let day = ['일','월','화','수','목','금','토']
+
+	let recieveDate = (date.getMonth()+1) + '-' + Number(date.getDate()+2) + '(' + day[date.getDay()+2] + ')'  
+
+	console.log(date)
+	// 로그인 한 정보로 구매
+	first()
+	function first(){
+		console.log(userList.userPoint)
+		document.getElementById('myPoint').innerHTML = userList.userPoint + ' Point'
+		document.getElementById('totalPay').innerHTML = payList.price + '원'
+		document.getElementById('delivery').innerHTML = payList.delivery + '원'
+		document.getElementById('priceOff').innerHTML = payList.priceOff + '원'
+		document.getElementById('realPay').innerHTML = payList.total + '원'
+		document.getElementById('nextDate').innerHTML = recieveDate + ' 도착예정'
+		document.getElementById('userName').value = userList.userName
+		document.getElementById('phone').children[0].value = userList.userPhone.substr(0,3)
+		document.getElementById('phone').children[1].value = userList.userPhone.substr(3,4)
+		document.getElementById('phone').children[2].value = userList.userPhone.substr(7,4)
+		document.getElementById('address3').value = userList.userAddress3
+		document.getElementById('address1').value = userList.userAddress1
+		document.getElementById('address2').value = userList.userAddress2
+	}
+
+	document.querySelector('#usePoint').addEventListener('click',function(){
+		// 숫자만 받는 정규식
+		let check = /^[0-9]+$/;
+		if(!check.test(parseInt(document.querySelector('#howManyUsePoint').value))){
+			alert("숫자만 입력할 수 있습니다.")
+			document.querySelector('#howManyUsePoint').value = '';
+			return;
+		}
+
+		
+
+		if(document.querySelector('#checkPoint').checked){
+			console.log('체크')
+
+
+			if(userList.userPoint < parseInt(document.querySelector('#howManyUsePoint').value)){
+				alert("가지고 있는 포인트를 확인하세요.")
+				document.querySelector('#howManyUsePoint').value  = '';
+				return;
+			}else{
+				console.log('포인트가 넘친다.')
+			}
+
+
+			if(document.querySelector('#howManyUsePoint').value >= 1000){
+				console.log('사용가능')
+
+
+
+			}else{
+				alert('최소 사용 포인트는 1000 입니다.')
+				console.log(document.querySelector('#howManyUsePoint').value)
+			}
+		}else{
+			alert('포인트를 체크하세요.')
+			console.log('언체크')
+		}
+
+	})
+
 
 	function sample6_execDaumPostcode() {
 		new daum.Postcode(
