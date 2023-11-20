@@ -17,4 +17,10 @@
 	<delete id="delete" parameterType="int">
 		DELETE FROM REVIEW WHERE ORDER_DETAIL_NUMBER = #{orderDetailNumber}
 	</delete>
+	
+	<update id="update"
+		parameterType="co.yedam.review.service.ReviewVO">
+		UPDATE REVIEW SET REVIEW_STAR = #{reviewStar}, REVIEW_IMAGE = #{reviewImage}, REVIEW_CONTENT = #{reviewContent} WHERE ORDER_DETAIL_NUMBER =
+		#{orderDetailNumber}
+	</update>
 </mapper>

@@ -12,4 +12,7 @@ public interface ReviewMapper {
 	public List<ReviewVO> select(String userId);
 	
 	public int delete(int orderDetailNumber);
+	
+	public int update(ReviewVO vo); // 수정.
+
 }
