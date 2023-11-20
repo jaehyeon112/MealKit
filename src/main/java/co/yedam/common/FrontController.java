@@ -28,6 +28,7 @@ import co.yedam.login.LoginControl;
 import co.yedam.login.LogoutControl;
 import co.yedam.menu.web.AddCartList;
 import co.yedam.order.GoOrderControl;
+import co.yedam.qa.GoQaFormControl;
 import co.yedam.review.web.AddMyReviewControl;
 import co.yedam.review.web.DeleteMyReviewControl;
 import co.yedam.review.web.GetMyReviewControl;
@@ -69,6 +70,8 @@ public class FrontController extends HttpServlet {
 		map.put("/delMypage.do", new GoDelUserFormControl());
 		map.put("/delUser.do", new DelUserControl());
 		map.put("/delSuccess.do", new GoDelUserSuccessControl());
+		
+		map.put("/Qa.do", new GoQaFormControl());
 		
 		map.put("/menupage.do", new GoMenuPageControl());
 		map.put("/addReview.do", new GoAddReviewControl()); // 마이페이지 -> 리뷰작성, 조회페이지로 이동

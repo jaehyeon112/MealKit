@@ -19,7 +19,21 @@
 	float: right;
 	width: 840px;
 }
+.h2tit {
+	padding-bottom: 30px;
+	color: #101010;
+	font-size: 40px;
+	line-height: 56px;
+	font-weight: 700;
+}
 
+.menuList {
+	padding-left: 0;
+}
+
+.addMenu {
+	padding-left: 0;
+}
 .bottomInfo {
 	margin-bottom: 32px;
 }
@@ -52,7 +66,13 @@
 }
 
 .myMain {
-	margin-bottom: 60px;
+	display: block;
+	padding-bottom: 36px;
+	border-bottom: 4px solid #202020;
+	font-size: 36px;
+	line-height: 50px;
+	font-weight: 700;
+	color: #101010;
 }
 
 #leftMenu {
@@ -62,11 +82,18 @@
 #test {
 	border-top: solid 2.5px black;
 }
-
+dt {
+	color: #101010;
+	font-size: 20px;
+	line-height: 30px;
+	font-weight: 700;
+}
 ul {
 	list-style: none;
 }
-
+h1 {
+	font-weight: bold;
+}
 h2 {
 	font-weight: bold;
 }
@@ -77,7 +104,10 @@ h3 {
 
 a {
 	text-decoration-line: none;
-	color: black;
+	color: #606060;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 22px;
 }
 
 .name {
@@ -115,7 +145,7 @@ a {
 				<dd>
 					<ul class="menuList">
 						<li id="leftMenu"><a href="addReview.do">작성 리뷰 조회</a></li>
-						<li id="leftMenu"><a href="#">1:1 문의</a></li>
+						<li id="leftMenu"><a href="Qa.do">1:1 문의</a></li>
 					</ul>
 				</dd>
 			</dl>
