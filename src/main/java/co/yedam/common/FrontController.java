@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import co.yedam.cart.GoCartControl;
 import co.yedam.cart.web.DelCartListControl;
 import co.yedam.cart.web.HowManyControl;
+import co.yedam.cart.web.cartListControl;
 import co.yedam.menu.web.GoAddFormControl;
 
 
@@ -28,8 +29,10 @@ import co.yedam.login.LogoutControl;
 import co.yedam.menu.web.AddCartList;
 import co.yedam.order.GoOrderControl;
 import co.yedam.review.web.AddMyReviewControl;
+import co.yedam.review.web.GetMyReviewControl;
 import co.yedam.review.web.GoAddReviewControl;
 import co.yedam.review.web.GoReviewControl;
+
 
 public class FrontController extends HttpServlet {
 	Map<String, command> map = new HashMap<>();
@@ -39,6 +42,7 @@ public class FrontController extends HttpServlet {
 		map.put("/review.do", new GoReviewControl()); // 전체 리뷰 조회 페이지
 		map.put("/main.do", new GoMainControl());
 		map.put("/cart.do", new GoCartControl());
+		map.put("/updatecart.do", new cartListControl());
 		map.put("/calcart.do", new HowManyControl());
 		map.put("/deleteCartList.do", new DelCartListControl());
 		map.put("/order.do", new GoOrderControl());
@@ -57,6 +61,7 @@ public class FrontController extends HttpServlet {
 		map.put("/menupage.do", new GoMenuPageControl());
 		map.put("/addReview.do", new GoAddReviewControl()); // 마이페이지 -> 리뷰작성, 조회페이지로 이동
 		map.put("/addMyReview.do", new AddMyReviewControl()); // 리뷰작성페이지
+		map.put("/getMyReview.do", new GetMyReviewControl()); // 내가 작성한 리뷰 확인.
 		map.put("/addMenu.do", new GoAddMenuControl());
 		map.put("/addForm.do", new GoAddFormControl());
 
@@ -68,17 +73,15 @@ public class FrontController extends HttpServlet {
 		
 
 		
-
 	}
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
-		resp.setContentType("text/html; charset=utf-8");
-
 		String page = req.getServletPath();
-
+		System.out.println("Page: " + page);
 		command controller = map.get(page);
+		resp.setContentType("application/json;charset=utf-8");
 		controller.execute(req, resp);
 
 	}

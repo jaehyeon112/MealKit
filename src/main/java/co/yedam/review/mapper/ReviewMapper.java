@@ -8,4 +8,6 @@ public interface ReviewMapper {
 	public List<ReviewVO> selectList();
 
 	public int insert(ReviewVO vo);
+	
+	public List<ReviewVO> select(String userId);
 }

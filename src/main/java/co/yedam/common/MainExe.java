@@ -6,8 +6,13 @@ import org.apache.ibatis.session.SqlSession;
 
 import co.yedam.cart.mapper.CartMapper;
 import co.yedam.cart.service.CartMenuJoinVO;
+import co.yedam.cart.service.CartService;
 import co.yedam.cart.service.CartVO;
+<<<<<<< HEAD
 import co.yedam.menu.mapper.MenuMapper;
+=======
+import co.yedam.cart.serviceImpl.CartServiceImpl;
+>>>>>>> 43e4ef8bdd37278cb587424d9925a7f05da94823
 import co.yedam.menu.service.MenuService;
 import co.yedam.menu.service.MenuVO;
 import co.yedam.menu.serviceImpl.MenuServiceImpl;
@@ -32,5 +37,8 @@ public class MainExe {
 		SqlSession se = DataSourceMybatis.getInstance().openSession(true);
 		MenuMapper mapper = se.getMapper(MenuMapper.class);
 		System.out.println(mapper.deleteMenu("1"));
+		CartService svc = new CartServiceImpl();
+		CartVO vo = svc.cartOne(53);
+		System.out.println(vo);
 	}
 }

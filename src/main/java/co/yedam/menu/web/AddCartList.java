@@ -46,6 +46,7 @@ public class AddCartList implements command {
 		vo2.setUserId(userId);
 		vo2.setMenuImage1(vo.getMenuImage1());
 		vo2.setMenuPrice(vo.getMenuPrice());
+		vo2.setMenuPriceOff(vo.getMenuPriceOff());
 		System.out.println(vo2);
 		
 		

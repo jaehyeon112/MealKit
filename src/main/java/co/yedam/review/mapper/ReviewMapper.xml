@@ -9,4 +9,8 @@
 		INSERT INTO REVIEW(REVIEW_STAR, REVIEW_CONTENT, USER_ID, REVIEW_DATE, MENU_NAME, REVIEW_IMAGE)
 		VALUES(#{reviewStar}, #{reviewContent}, #{userId}, SYSDATE, #{menuName}, #{reviewImage})
 	</insert>
+	
+	<select id="select" resultType="co.yedam.review.service.ReviewVO">
+		SELECT * FROM REVIEW WHERE USER_ID = #{userId}
+	</select>
 </mapper>

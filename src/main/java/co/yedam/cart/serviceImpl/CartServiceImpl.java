@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import co.yedam.cart.mapper.CartMapper;
+import co.yedam.cart.service.CartMenuJoinVO;
 import co.yedam.cart.service.CartService;
 import co.yedam.cart.service.CartVO;
 import co.yedam.common.DataSourceMybatis;
@@ -24,5 +25,37 @@ public class CartServiceImpl implements CartService{
 	@Override
 	public Integer checkCartList(String userId) {
 		return mapper.cartListCheck(userId);
+	} 
+	
+	@Override
+	public CartVO updateCartList(CartVO vo, int cartNum ,boolean check) {
+		
+		if(check) {
+			mapper.updateCartPlus(vo);
+		}else {
+			mapper.updateCartMinus(vo);
+		}
+		
+		System.out.println("====");
+		System.out.println(vo);
+		System.out.println("====");
+		CartVO vo2 = mapper.selectCartOne(cartNum);
+		System.out.println("vo2");
+		return vo2;
+	}
+	@Override
+	public CartVO cartOne(int CartNum) {
+		return mapper.selectCartOne(CartNum);
+	}
+	@Override
+	public CartMenuJoinVO joinCartMenu(String userId) {
+		return mapper.joinCartMenu(userId);
+	}
+	@Override
+	public List<CartVO> removeCart(String CartNum, String userId) {
+		mapper.deleteCartList(CartNum);
+		
+		
+		return mapper.selectList(userId);
 	}
 }
