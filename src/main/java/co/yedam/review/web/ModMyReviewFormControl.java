@@ -15,7 +15,7 @@ public class ModMyReviewFormControl implements command {
 		// TODO Auto-generated method stub
 		
 		try {
-			req.getRequestDispatcher("/review/modMyReview.tiles").forward(req, resp);
+			req.getRequestDispatcher("review/modMyReviewForm.tiles").forward(req, resp);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
