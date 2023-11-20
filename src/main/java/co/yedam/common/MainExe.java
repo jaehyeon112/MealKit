@@ -8,11 +8,8 @@ import co.yedam.cart.mapper.CartMapper;
 import co.yedam.cart.service.CartMenuJoinVO;
 import co.yedam.cart.service.CartService;
 import co.yedam.cart.service.CartVO;
-<<<<<<< HEAD
 import co.yedam.menu.mapper.MenuMapper;
-=======
 import co.yedam.cart.serviceImpl.CartServiceImpl;
->>>>>>> 43e4ef8bdd37278cb587424d9925a7f05da94823
 import co.yedam.menu.service.MenuService;
 import co.yedam.menu.service.MenuVO;
 import co.yedam.menu.serviceImpl.MenuServiceImpl;
