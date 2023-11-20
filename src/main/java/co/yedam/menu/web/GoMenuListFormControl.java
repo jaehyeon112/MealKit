@@ -22,7 +22,7 @@ public class GoMenuListFormControl implements command {
 		
 		try {
 			req.getRequestDispatcher("menu/menuList.tiles").forward(req, resp);
-		} catch (ServletException | IOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
