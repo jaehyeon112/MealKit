@@ -272,12 +272,12 @@ font-weight: 700;
     </div>
   </div>
 </div>
-                <form >
+               
         <div class="cart__mainbtns">
             <input formaction="menu.do" type="submit" class="cart__bigorderbtn left"   value="쇼핑 계속하기">
-            <input formaction="order.do" type="submit" class="cart__bigorderbtn right" value="주문하기" >
+            <input id="buy" type="button" class="cart__bigorderbtn right" value="주문하기" >
         </div>
-        </form>
+        
     </section>
 
     <script>
@@ -295,6 +295,22 @@ font-weight: 700;
     
     //객체의 길이를 반환
     console.log(Object.keys(list).length)
+    
+    //주문할때 넘어가는 정보..
+    document.querySelector('#buy').addEventListener('click', function(){
+      let arr = [];
+      document.querySelectorAll('.cart__list__detail').forEach(ele => {
+        if(ele.querySelector('.checkList').checked){
+        arr.push(ele.querySelector('.checkList').id)
+        }
+      })
+      arr = arr.join(',')
+      console.log(arr)
+      fetch('order.do', {method :'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded'},
+      body: "cartNum="+arr})
+
+    })
+    
     
     function cartListCheck(){
     	if(Object.keys(list).length == 0){
@@ -319,8 +335,6 @@ font-weight: 700;
         if(ele.querySelector('.checkList').checked){
         arr.push(ele.querySelector('.checkList').id)
         ele.remove();
-        
-
         	count++;
         }
       })

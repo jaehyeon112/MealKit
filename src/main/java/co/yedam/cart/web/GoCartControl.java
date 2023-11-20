@@ -1,4 +1,4 @@
-package co.yedam.cart;
+package co.yedam.cart.web;
 
 import java.io.IOException;
 import java.util.List;
