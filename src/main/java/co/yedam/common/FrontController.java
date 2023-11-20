@@ -9,9 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.yedam.cart.GoCartControl;
 import co.yedam.cart.web.DelCartListControl;
-import co.yedam.cart.web.HowManyControl;
+import co.yedam.cart.web.GoCartControl;
 import co.yedam.cart.web.cartListControl;
 import co.yedam.menu.web.GoAddFormControl;
 
@@ -19,6 +18,8 @@ import co.yedam.menu.web.GoAddFormControl;
 
 import co.yedam.menu.web.GoDeleteMenuFormControl;
 import co.yedam.menu.web.GoMenuListFormControl;
+import co.yedam.order.web.GoOrderControl;
+                 
 import co.yedam.menu.web.GoUpdateMenuFormControl;
 import co.yedam.join.GoJoinFormControl;
 import co.yedam.join.JoinControl;
@@ -27,7 +28,6 @@ import co.yedam.login.GoLoginFormControl;
 import co.yedam.login.LoginControl;
 import co.yedam.login.LogoutControl;
 import co.yedam.menu.web.AddCartList;
-import co.yedam.order.GoOrderControl;
 import co.yedam.review.web.AddMyReviewControl;
 import co.yedam.review.web.DeleteMyReviewControl;
 import co.yedam.review.web.GetMyReviewControl;
@@ -51,7 +51,6 @@ public class FrontController extends HttpServlet {
 		map.put("/main.do", new GoMainControl());
 		map.put("/cart.do", new GoCartControl());
 		map.put("/updatecart.do", new cartListControl());
-		map.put("/calcart.do", new HowManyControl());
 		map.put("/deleteCartList.do", new DelCartListControl());
 		map.put("/order.do", new GoOrderControl());
 		map.put("/menu.do", new GoMenuControl());
