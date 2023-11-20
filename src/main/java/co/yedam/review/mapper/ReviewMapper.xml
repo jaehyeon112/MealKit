@@ -13,4 +13,8 @@
 	<select id="select" resultType="co.yedam.review.service.ReviewVO">
 		SELECT * FROM REVIEW WHERE USER_ID = #{userId}
 	</select>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM REVIEW WHERE ORDER_DETAIL_NUMBER = #{orderDetailNumber}
+	</delete>
 </mapper>

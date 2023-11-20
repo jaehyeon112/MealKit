@@ -26,8 +26,10 @@ public class ReviewExe {
 //		
 //		mapper.insert(vo);
 		
-		List<ReviewVO> list = mapper.select("asdasd123");
-		list.forEach(vo -> System.out.println(vo));
+//		List<ReviewVO> list = mapper.select("asdasd123");
+//		list.forEach(vo -> System.out.println(vo));
+		
+		mapper.delete(5);
 		
 	}
 	

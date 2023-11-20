@@ -10,4 +10,6 @@ public interface ReviewMapper {
 	public int insert(ReviewVO vo);
 	
 	public List<ReviewVO> select(String userId);
+	
+	public int delete(int orderDetailNumber);
 }

@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class ReviewVO {
+	private int orderDetailNumber;
 	private int reviewBoomup;
 	private String menuName;
 	private int reviewStar;

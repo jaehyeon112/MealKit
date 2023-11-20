@@ -31,6 +31,12 @@ public class ReviewServiceImpl implements ReviewService {
 		// TODO Auto-generated method stub
 		return mapper.select(userId);
 	}
+
+	@Override
+	public boolean deleteReview(int orderDetailNumber) {
+		// TODO Auto-generated method stub
+		return mapper.delete(orderDetailNumber) > 0 ? true : false;
+	}
 	
 		
 
