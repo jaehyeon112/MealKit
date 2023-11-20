@@ -6,18 +6,20 @@
     th {
         font-size: 13px;
     }
+
     td {
         text-align: center;
         font-size: 15px;
         border: 1;
     }
-    .ud{
-        text-align: center;      
+
+    .ud {
+        text-align: center;
     }
-    .btn{
+
+    .btn {
         display: inline-block;
     }
-   
 </style>
 
 <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
@@ -25,7 +27,7 @@
 </div>
 
 <table class="table" border="3">
-    
+
     <tr>
         <th>상품번호</th>
         <th>상품이름</th>
@@ -39,16 +41,16 @@
         <th>상품포인트</th>
         <th>상품조리시간</th>
         <th>상품인분체크</th>
-        <th class="menu_list_delete">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">전체삭제</th>
-         
+        <th>삭제하기</th>
+        <th>수정하기</th>
+
+
     </tr>
 
-
-
     <c:forEach items="${list }" var="vo">
-        <tr>
-            <td>${vo.menuId }</td>    
+        <tr class="menu_list">
+
+            <td name="menuId" value="${vo.menuId }">${vo.menuId }</td>
             <td>${vo.menuName}</td>
             <td>${vo.menuNameInfo}</td>
             <td><img src="image/${vo.menuImage1}" width="130" height="120"></td>
@@ -60,15 +62,34 @@
             <td>${vo.menuPoint}</td>
             <td>${vo.menuTime}</td>
             <td>${vo.menuMany}</td>
-            <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">삭제</td>
-        </tr>  
+            <td><button type="button" class="deleteCheck">삭제</button></td>
+            <td><a href="updateMenuForm.do"><button type="button">수정</button></a></td>         
+            
+        </tr>
     </c:forEach>
 </table>
 
-<div class="ud">
-    <a href="deleteMenuForm.do"><button type="button" class="btn btn-outline-danger">삭제하기</button></a>
-    <a href="updateMenuForm.do"><button type="button" class="btn btn-outline-primary">수정하기</button></a>
-</div>
+
+
+<!-- 삭제버튼 -->
 <script>
-    document.querySelectorAll('.')
+    // 배열로 됨.
+    document.querySelectorAll('.deleteCheck').forEach((ele, index) => {
+        ele.addEventListener('click', function () {
+            // 화면단 삭제
+            ele.parentNode.parentNode.remove();
+            let menuId = ele.parentNode.parentNode.children[0].id
+            // json => object 변환
+            fetch('deleteMenu.do?mid=' + menuId).then(resolve => resolve.json()).then(result => {
+                if (result.test == "OK") {
+                    alert('삭제 성공!~')
+                } else {
+                    alert('삭제 실패~@!')
+                }
+
+            })
+
+        })
+    })
 </script>
+

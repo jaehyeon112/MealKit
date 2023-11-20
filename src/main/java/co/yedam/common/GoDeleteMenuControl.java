@@ -1,39 +1,41 @@
 package co.yedam.common;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.ibatis.session.SqlSession;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
-import co.yedam.menu.mapper.MenuMapper;
 import co.yedam.menu.service.MenuService;
+import co.yedam.menu.service.MenuVO;
 import co.yedam.menu.serviceImpl.MenuServiceImpl;
 
 public class GoDeleteMenuControl implements command {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		String mid = req.getParameter("menuId");
+		Gson gson = new GsonBuilder().create();
+		String mid = req.getParameter("mid"); // 나는 fetch의 get방식인 mid='이걸 받겠다'
+		Map<String, Object> map = new HashMap<>();
 		MenuService svc = new MenuServiceImpl();
-		
 		if(svc.deleteMenu(mid)) {
-			
-			try {
-				resp.sendRedirect("menuList.do");
-			} catch(IOException e) {
-				e.printStackTrace();
-			}
-		} else {
-			try {
-				resp.sendRedirect("deleteMenuForm.do");
-			} catch(IOException e) {
-				e.printStackTrace();
-			}
-		} 
+			map.put("test", "OK");
+		}else {
+			map.put("test", "NG");
+		}
+		;
 		
+		try {
+			// Object => json으로 변환
+			resp.getWriter().print(gson.toJson(mid));
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
-	
+
 }

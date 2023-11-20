@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import co.yedam.cart.service.CartVO;
 import co.yedam.common.DataSourceMybatis;
 import co.yedam.menu.mapper.MenuMapper;
 import co.yedam.menu.service.MenuService;

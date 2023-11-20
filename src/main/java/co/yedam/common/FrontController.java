@@ -83,6 +83,7 @@ public class FrontController extends HttpServlet {
 		map.put("/updateMenu.do", new GoUpdateMenuControl());
 		map.put("/updateMenuForm.do", new GoUpdateMenuFormControl());
 		
+		
 
 		
 	}

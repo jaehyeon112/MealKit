@@ -19,7 +19,7 @@ public class GoUpdateMenuFormControl implements command {
 		req.setAttribute("mid", vo);
 		
 		try {
-			req.getRequestDispatcher("menu/updateMenuForm.tiles");
+			req.getRequestDispatcher("menu/updateMenuForm.tiles").forward(req, resp);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

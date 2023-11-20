@@ -74,9 +74,9 @@
                                     <div class="bi-star-fill"></div>
                                 </div>
                                 <!-- Product price-->
-                                <span class="text-muted text-decoration-line-through">${vo.menuPrice }원</span><br>
+                                <span class="text-muted text-decoration-line-through">제품금액  ${vo.menuPrice }원</span><br>
 
-                                <span class="text">${vo.menuPriceOff }원</span>
+                                <span class="text">할인금액  ${vo.menuPriceOff }원</span>
                                 <p>조리시간 ${vo.menuTime }분 | ${vo.menuMany }인분 | ${vo.menuKind } <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"></svg>
 
                                 <strong><span class="text">${vo.menuPriceOff }원</span></strong>

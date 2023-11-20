@@ -1,6 +1,6 @@
 package co.yedam.common;
 
-import java.io.IOException;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,8 +19,11 @@ public class GoUpdateMenuControl implements command {
 		String mid = req.getParameter("mid");
 		String name = req.getParameter("name");
 		String nameIn = req.getParameter("nameIn");
+		String imgo = req.getParameter("imgo");
+		String imgt = req.getParameter("imgt");
+		String imgtr = req.getParameter("imgtr");
 		String kind = req.getParameter("kind");
-		String pri = req.getParameter("kind");
+		String pri = req.getParameter("pri");
 		String prO = req.getParameter("prO");
 		String cont = req.getParameter("cont");
 		String cout = req.getParameter("cout");
@@ -29,8 +32,11 @@ public class GoUpdateMenuControl implements command {
 		String many = req.getParameter("many");
 		
 		vo.setMenuId(mid);
-		vo.setMenuName(nameIn);
-		vo.setMenuName(nameIn);
+		vo.setMenuName(name);
+		vo.setMenuNameInfo(nameIn);
+		vo.setMenuImage1(imgo);
+		vo.setMenuImage2(imgt);
+		vo.setMenuImage3(imgtr);
 		vo.setMenuKind(kind);
 		vo.setMenuPrice(Integer.parseInt(pri));
 		vo.setMenuPriceOff(Integer.parseInt(prO));
@@ -40,16 +46,18 @@ public class GoUpdateMenuControl implements command {
 		vo.setMenuTime(Integer.parseInt(time));
 		vo.setMenuMany(Integer.parseInt(many));
 		
+		
+		
 		if(svc.updateMenu(vo)) {
 			try {
 				resp.sendRedirect("menuList.do");
-			} catch(IOException e) {
+			} catch(Exception e) {
 				e.printStackTrace();
 			}
 		} else {
 			try {
 				resp.sendRedirect("updateMenuForm.do");
-			} catch(IOException e) {
+			} catch(Exception e) {
 				e.printStackTrace();
 			}
 		}

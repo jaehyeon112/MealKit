@@ -152,8 +152,8 @@
 
 							<button
 								style="background-color: #BDD61A; width: 250px; border: 1px solid #BDD61A; height: 64px;"
-								class="btn btn-primary" type="button">장바구니</button> <a
-								href="deleteMenuForm.do"><button>삭제</button></a>
+								class="btn btn-primary" type="button">장바구니</button> 
+								<a href="deleteMenuForm.do"><button>삭제</button></a>
 						</div>
 					</div>
 				</div>
