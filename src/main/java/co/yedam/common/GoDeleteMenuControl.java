@@ -21,6 +21,12 @@ public class GoDeleteMenuControl implements command {
 			} catch(IOException e) {
 				e.printStackTrace();
 			}
+		}else {
+			try {
+				resp.sendRedirect("deleteMenuForm.do");
+			} catch(IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

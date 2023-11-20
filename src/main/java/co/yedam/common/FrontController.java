@@ -65,6 +65,7 @@ public class FrontController extends HttpServlet {
 		map.put("/menuListForm.do", new GoMenuListFormControl());
 		map.put("/delteMenu.do", new GoDeleteMenuControl());
 		map.put("/deleteMenuForm.do", new GoDeleteMenuFormControl());
+		map.put("/updateMenu.do", new GoUpdateMenuControl());
 		
 	}
 

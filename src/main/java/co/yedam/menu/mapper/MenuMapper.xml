@@ -23,5 +23,8 @@
 		delete from menu where menu_id =#{vo.menuId}
 	</delete>
 	
+	<update id="updateMenu" parameterType="co.yedam.menu.service.MenuVO">
+		update menu set menu_name =#{vo.menuName}, #{vo.menuNameInfo}, #{vo.menuImage1}, #{menuImage2} , #{menuImage3} ,#{menuKind}, #{menuPrice}, #{menuPriceOff}, #{menuContent}, #{menuCount}, #{menuPoint}, #{menuTime}, #{menuMany} where menu_Id =#{menuId} 
+	</update>
 
 </mapper> 
