@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper SYSTEM "path/mybatis-3-mapper.dtd">
+<mapper namespace="co.yedam.order.mapper.OrderMapper">
+
+<select id="orderList"	resultType="co.yedam.cart.service.CartVO"
+	parameterType="String">
+		select * from cart where menu_id in
+		<foreach collection="array" item="cartArr" open="(" close=")" separator=",">
+		#{cartArr}
+		</foreach>
+		
+	</select>
+
+</mapper> 
