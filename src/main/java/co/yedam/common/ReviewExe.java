@@ -29,8 +29,14 @@ public class ReviewExe {
 //		List<ReviewVO> list = mapper.select("asdasd123");
 //		list.forEach(vo -> System.out.println(vo));
 		
-		mapper.delete(5);
+//		mapper.delete(5);
 		
+//		ReviewVO vo = new ReviewVO();
+//		vo.setReviewStar(3);
+//		vo.setReviewImage("감자.jpg");
+//		vo.setReviewContent("감자감자감자감자");
+//		vo.setOrderDetailNumber(10);
+//		mapper.update(vo);
 	}
 	
 	
