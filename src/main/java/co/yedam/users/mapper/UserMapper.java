@@ -12,4 +12,7 @@ public interface UserMapper {
 	
 	public UserVO getUser(@Param("userId") String userId, @Param("userPassword") String userPassword);
 	public UserVO userId(String id);
+	
+	public int editUser(UserVO vo);
+	public boolean delUser(@Param("userId") String userId, @Param("userPassword") String userPassword);
 }

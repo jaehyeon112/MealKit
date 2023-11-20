@@ -102,8 +102,8 @@ font-weight: bold;
 				<dt>나의 정보</dt>
 				<dd>
 					<ul class="menuList">
-						<li id ="leftMenu"><a href="#">개인정보 변경</a></li>
-						<li id ="leftMenu"><a href="#">회원탈퇴</a></li>
+						<li id ="leftMenu"><a href="editMypage.do">개인정보 변경</a></li>
+						<li id ="leftMenu"><a href="delMypage.do">회원탈퇴</a></li>
 					</ul>
 				</dd>
 			</dl>

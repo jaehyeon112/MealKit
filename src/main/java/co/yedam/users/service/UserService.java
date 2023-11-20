@@ -8,4 +8,6 @@ public interface UserService {
 	UserVO loginCheck(String id, String pw);
 	
 	UserVO userId(String id);
+	public boolean editUser(UserVO vo);
+	public boolean delUser(String userId ,String userPassword);
 }
