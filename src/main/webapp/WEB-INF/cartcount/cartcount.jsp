@@ -225,7 +225,7 @@ font-weight: 700;
                     <tr class="cart__list__detail">
                         <td><input class="checkList" type="checkbox" checked id="${vo.cartNum }"></td>
                         <td><img id="images" src="image/${vo.menuImage1 }"></td>
-                        <td id="description"><a id="menuSelector" href="#">${vo.menuName }</a></td>
+                        <td id="description"><a class="menuId" id="${vo.menuId }" href="#">${vo.menuName }</a></td>
                         <td id="amount_center">
                         <input type="button" class="bnt_size" value="-" id="minus">
                         <input style="border:0; width:20px;" readonly id="amounts" value="${vo.cartCount }" size="9">
@@ -272,12 +272,13 @@ font-weight: 700;
     </div>
   </div>
 </div>
-                <form >
-        <div class="cart__mainbtns">
-            <input formaction="menu.do" type="submit" class="cart__bigorderbtn left"   value="쇼핑 계속하기">
-            <input formaction="order.do" type="submit" class="cart__bigorderbtn right" value="주문하기" >
-        </div>
-        </form>
+               <form name="myForm" method="POST"> 
+                 <div class="cart__mainbtns">
+                   <input formaction="menu.do" type="submit" class="cart__bigorderbtn left"   value="쇼핑 계속하기">
+                   <input id="buy" type="button" class="cart__bigorderbtn right" value="주문하기" >
+                  </div>
+                </form>
+        
     </section>
 
     <script>
@@ -295,6 +296,23 @@ font-weight: 700;
     
     //객체의 길이를 반환
     console.log(Object.keys(list).length)
+    
+    //주문할때 넘어가는 정보..
+    document.querySelector('#buy').addEventListener('click', function(e){
+      let arr = [];
+      document.querySelectorAll('.cart__list__detail').forEach(ele => {
+        if(ele.querySelector('.checkList').checked){
+          arr.push(ele.querySelector('.menuId').id)
+        }
+      })
+      
+      console.log(arr)
+      document.forms.myForm.action = 'order.do?cartNum='+arr
+      
+			document.forms.myForm.submit();
+
+    })
+    
     
     function cartListCheck(){
     	if(Object.keys(list).length == 0){
@@ -319,8 +337,6 @@ font-weight: 700;
         if(ele.querySelector('.checkList').checked){
         arr.push(ele.querySelector('.checkList').id)
         ele.remove();
-        
-
         	count++;
         }
       })

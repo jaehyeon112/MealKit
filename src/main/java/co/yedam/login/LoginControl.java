@@ -24,9 +24,12 @@ public class LoginControl implements command {
 		if (svc.loginCheck(userId, userPassword) != null) {
 
 			session.setAttribute("userId", vo.getUserId());
-			session.setAttribute("userPassword", vo.getUserPassword());
 			session.setAttribute("userName", vo.getUserName());
-			session.setAttribute("userBirth", vo.getUserBirth());
+			
+			UserVO vo2 = svc.userId(userId);
+			System.out.println(vo2);
+			req.setAttribute("user", vo2);
+			
 			try {
 				resp.sendRedirect("main.do");
 			} catch (IOException e) {

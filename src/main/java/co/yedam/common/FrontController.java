@@ -9,9 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.yedam.cart.GoCartControl;
 import co.yedam.cart.web.DelCartListControl;
-import co.yedam.cart.web.HowManyControl;
+import co.yedam.cart.web.GoCartControl;
 import co.yedam.cart.web.cartListControl;
 import co.yedam.menu.web.GoAddFormControl;
 
@@ -19,6 +18,8 @@ import co.yedam.menu.web.GoAddFormControl;
 
 import co.yedam.menu.web.GoDeleteMenuFormControl;
 import co.yedam.menu.web.GoMenuListFormControl;
+import co.yedam.order.web.GoOrderControl;
+                 
 import co.yedam.menu.web.GoUpdateMenuFormControl;
 import co.yedam.join.GoJoinFormControl;
 import co.yedam.join.JoinControl;
@@ -27,11 +28,14 @@ import co.yedam.login.GoLoginFormControl;
 import co.yedam.login.LoginControl;
 import co.yedam.login.LogoutControl;
 import co.yedam.menu.web.AddCartList;
-import co.yedam.order.GoOrderControl;
+import co.yedam.qa.GoQaFormControl;
 import co.yedam.review.web.AddMyReviewControl;
+import co.yedam.review.web.DeleteMyReviewControl;
 import co.yedam.review.web.GetMyReviewControl;
 import co.yedam.review.web.GoAddReviewControl;
 import co.yedam.review.web.GoReviewControl;
+import co.yedam.review.web.ModMyReviewConteol;
+import co.yedam.review.web.ModMyReviewFormControl;
 import co.yedam.users.web.DelUserControl;
 import co.yedam.users.web.EditUserControl;
 import co.yedam.users.web.GoDelUserFormControl;
@@ -48,7 +52,6 @@ public class FrontController extends HttpServlet {
 		map.put("/main.do", new GoMainControl());
 		map.put("/cart.do", new GoCartControl());
 		map.put("/updatecart.do", new cartListControl());
-		map.put("/calcart.do", new HowManyControl());
 		map.put("/deleteCartList.do", new DelCartListControl());
 		map.put("/order.do", new GoOrderControl());
 		map.put("/menu.do", new GoMenuControl());
@@ -68,10 +71,15 @@ public class FrontController extends HttpServlet {
 		map.put("/delUser.do", new DelUserControl());
 		map.put("/delSuccess.do", new GoDelUserSuccessControl());
 		
+		map.put("/Qa.do", new GoQaFormControl());
+		
 		map.put("/menupage.do", new GoMenuPageControl());
 		map.put("/addReview.do", new GoAddReviewControl()); // 마이페이지 -> 리뷰작성, 조회페이지로 이동
 		map.put("/addMyReview.do", new AddMyReviewControl()); // 리뷰작성페이지
 		map.put("/getMyReview.do", new GetMyReviewControl()); // 내가 작성한 리뷰 확인.
+		map.put("/deleteMyReview.do", new DeleteMyReviewControl()); // 내가 작성한 리뷰 삭제.
+		map.put("/modMyReviewForm", new ModMyReviewFormControl()); // 리뷰 수정 폼으로 이동.
+		map.put("/modMyReview", new ModMyReviewConteol());
 		map.put("/addMenu.do", new GoAddMenuControl());
 		map.put("/addForm.do", new GoAddFormControl());
 

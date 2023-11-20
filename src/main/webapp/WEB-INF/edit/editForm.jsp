@@ -142,7 +142,7 @@ h2 {
 			</div>
 			<div class="input-box">
 				<input id="birth" type="text" name="birth" placeholder="생년월일"
-					maxlength="6" value="${userBirth}" readonly="readonly"> <label
+					maxlength="6" value="${user.userBirth}" readonly="readonly"> <label
 					for="birth">생년월일</label>
 			</div>
 		</div>
@@ -191,6 +191,8 @@ h2 {
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+let user = '${user}'
+console.log(user)
 	function DaumPostcode() {
 		new daum.Postcode({
 			oncomplete : function(data) {
