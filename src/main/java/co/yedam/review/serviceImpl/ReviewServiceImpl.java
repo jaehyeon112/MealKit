@@ -9,17 +9,16 @@ import co.yedam.review.mapper.ReviewMapper;
 import co.yedam.review.service.ReviewService;
 import co.yedam.review.service.ReviewVO;
 
-
 public class ReviewServiceImpl implements ReviewService {
 	SqlSession sqlSession = DataSourceMybatis.getInstance().openSession(true);
 	ReviewMapper mapper = sqlSession.getMapper(ReviewMapper.class);
-	
+
 	@Override
 	public List<ReviewVO> reviewList() {
 		// TODO Auto-generated method stub
 		return mapper.selectList();
 	}
-		
+
 	@Override
 	public boolean addReview(ReviewVO vo) {
 		// TODO Auto-generated method stub
@@ -49,7 +48,10 @@ public class ReviewServiceImpl implements ReviewService {
 		return mapper.selectJustOne(orderDetailNumber);
 	}
 
-	
-		
+	@Override
+	public List<ReviewVO> selectMenu(String userId) {
+		// TODO Auto-generated method stub
+		return mapper.selectMenuOne(userId);
+	}
 
 }

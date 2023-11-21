@@ -2,21 +2,21 @@
 <!DOCTYPE mapper SYSTEM "path/mybatis-3-mapper.dtd">
 <mapper namespace="co.yedam.review.mapper.ReviewMapper">
 
-    <!-- 헤더리뷰목록 전체조회 -->
+	<!-- 헤더리뷰목록 전체조회 -->
 	<select id="selectList"
 		resultType="co.yedam.review.service.ReviewVO">
 		SELECT * FROM REVIEW ORDER BY REVIEW_DATE DESC
 	</select>
-	
-	<!-- 구매한건에 대한 리뷰작성 **[수정예정]**--> 
+
+	<!-- 구매한건에 대한 리뷰작성 **[수정예정]** -->
 	<insert id="insert"
 		parameterType="co.yedam.review.service.ReviewVO">
 		INSERT INTO REVIEW(REVIEW_STAR, REVIEW_CONTENT, USER_ID,
 		REVIEW_DATE, MENU_NAME, REVIEW_IMAGE, ORDER_DETAIL_NUMBER)
 		VALUES(#{reviewStar}, #{reviewContent}, #{userId}, SYSDATE,
-		#{menuName}, #{reviewImage}, #{order_detail_number})
+		#{menuName}, #{reviewImage}, #{orderDetailNumber})
 	</insert>
-	
+
 	<!-- 내가 쓴 리뷰 조회 -->
 	<select id="select"
 		resultType="co.yedam.review.service.ReviewVO">
@@ -28,7 +28,7 @@
 		DELETE FROM REVIEW WHERE
 		ORDER_DETAIL_NUMBER = #{orderDetailNumber}
 	</delete>
-	
+
 	<!-- 한건 조회 -->
 	<select id="selectJustOne" parameterType="int"
 		resultType="co.yedam.review.service.ReviewVO">
@@ -44,4 +44,12 @@
 		ORDER_DETAIL_NUMBER =
 		#{orderDetailNumber} AND USER_ID = #{userId}
 	</update>
+
+	<!-- 구매한 상품 선택 -->
+	<select id="selectMenuOne"
+		parameterType="co.yedam.review.service.ReviewVO">
+		SELECT ORDER_DETAIL_NUMBER, MENU_NAME, USER_ID FROM
+		ORDER_DETAIL O JOIN MENU M ON(O.MENU_ID = M.MENU_ID) WHERE USER_ID =
+		#{userId} ORDER BY ORDER_DETAIL_NUMBER
+	</select>
 </mapper>

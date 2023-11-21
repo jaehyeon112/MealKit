@@ -261,6 +261,7 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
                   <div class="user_id">
                     <a
                       ><span> | ${vo.userId }</span></a>
+                      
                   </div>
                   <!-- //190610_수정 -->
 

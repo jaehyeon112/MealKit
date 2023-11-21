@@ -30,14 +30,11 @@ public class GetMyReviewControl implements command {
 		String arr = gson.toJson(list);
 		req.setAttribute("getReviewJson", arr);
 		
-		
-		String path = "/review/getMyReview.tiles";
-		
 		if(userId==null) {
 			session.setAttribute("userId", "guest");
 		}
 		try {
-			req.getRequestDispatcher(path).forward(req, resp);
+			req.getRequestDispatcher("review/getMyReview.tiles").forward(req, resp);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
