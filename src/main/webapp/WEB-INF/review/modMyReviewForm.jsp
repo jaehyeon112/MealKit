@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%> <%@taglib uri="http://java.sun.com/jsp/jstl/core"
+    pageEncoding="UTF-8"%>
+ <%@taglib uri="http://java.sun.com/jsp/jstl/core"
 prefix="c"%> <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%> <%@ taglib
 prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
@@ -175,7 +176,7 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
   }
 
   .text {
-    margin-top: 70px;
+    
     width: 1040px;
     height: 150px;
     border: 1px solid black;
@@ -198,7 +199,6 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
     line-height: 16px;
   }
 </style>
-
 <div id="content" class="my_wrap">
   <div class="right_con">
     <div class="order_view my_activity">
@@ -206,7 +206,6 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
       <div class="top_sec">
         <div class="tab_menu">
           <ul>
-          
             <li><a href="addReview.do">작성 가능한 리뷰</a></li>
             <!-- 선택된 메뉴에 on클래스 추가 -->
             <li class="on"><a href="getMyReview.do">작성한 리뷰</a></li>
@@ -216,8 +215,11 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
       <div class="#!">
         <!-- 상품리스트 -->
         <div class="prd_list row">
+        
+          <form action="modMyReview.do"  method="post"
+            id="formReview"
+            enctype="multipart/form-data">
           <ul>
-          <c:forEach items="${getReview}" var="vo">
           
             <li>
               <div class="review_module">
@@ -226,7 +228,8 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
                     <!-- 190510_수정 및 케이스 추가 -->
 
                     <!-- //190510_수정 및 케이스 추가 -->
-                    <span class="name">${vo.menuName }</span>
+                    <input type="hidden" name="menuName" value="${vo.menuName }"/>
+                    <span class="name">${vo.menuName}</span>
                     <!-- 개발 요청 사항 : 검색된 단어에 <strong></strong>태그 추가 -->
                   </p>
                   <div class="top_wrap--right">
@@ -248,19 +251,24 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
                       <span class="star">
                         <!-- background image 커스텀 영역 -->
                         <span style="width: 100%">
-                          <span class="star"><c:forEach begin="1" end="${vo.reviewStar }" var="i"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gold" class="bi bi-star-fill" viewBox="0 0 16 16">
-                            <path 
-                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                          </svg></c:forEach></span>                          
+                          <select name="reviewStar">
+                              <option value="">별점</option>
+                              <option value="1">1점</option>
+                              <option value="2">2점</option>
+                              <option value="3">3점</option>
+                              <option value="4">4점</option>
+                              <option value="5">5점</option>
+                            </select>
+                            </span>                          
                         <!-- backgorund image 활성화 영역 (20%에 한개씩 점수가 채워 집니다.) -->
                       </span>
-                    </span>
                     </span>
                   </div>
                   <!-- 190610_수정 -->
                   <div class="user_id">
-                    <a
+                    <a 
                       ><span> | ${vo.userId }</span></a>
+                      <input value="${vo.userId }" name="userId" type="hidden"/>
                   </div>
                   <!-- //190610_수정 -->
 
@@ -269,19 +277,35 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
                   </div> -->
                   <!-- 개발 요청 사항 : 첫구매시에는 노출되지 않음 -->
                 </div>
-                <div class="text">
-                  <pre>${vo.reviewContent }</pre>
-                </div>
+               
+                <input
+                    type="text"
+                    name="reviewContent"
+                    class="text"
+                    placeholder="리뷰를 작성해주세요"
+                  />
+                  <input style="padding-top: 10px"
+                      type="file"
+                      name="reviewImage"
+                      accept="image/*"
+                      value="${vo.reviewImage }"
+         
+                    />
                 <div class="buttons">
-                <input type="button" class="button" value="리뷰수정" onclick="location.href='modMyReviewForm.do?orderDetailNumber=${vo.orderDetailNumber}'">
-                <input type="button" class="button"  value="리뷰삭제" onclick="location.href='deleteMyReview.do?orderDetailNumber=${vo.orderDetailNumber }'">
+                 
+                <input type="submit" class="button" value="수정완료">
+                
                 </div>
+                
               </div>
             </li>
-            </c:forEach>
+           
           </ul>
+          </form>
+        
         </div>
       </div>
     </div>
   </div>
 </div>
+
