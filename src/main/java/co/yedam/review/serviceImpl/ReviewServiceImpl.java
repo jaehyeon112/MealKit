@@ -41,8 +41,9 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public boolean updateReview(ReviewVO vo) {
 		// TODO Auto-generated method stub
-		return mapper.update(vo) > 0 ? true : false;
+		return mapper.update(vo);
 	}
+
 	
 		
 

@@ -45,6 +45,7 @@ pageEncoding="UTF-8"%>
     -moz-line-clamp: 2;
     -ms-line-clamp: 2;
     -webkit-line-clamp: 2;
+    font-family: 'Noto Sans', '맑은 고딕', 'Malgun Gothic', Dotum, '굴림', arial, sans-serif;
   }
   *,
   *:after,
@@ -267,7 +268,8 @@ pageEncoding="UTF-8"%>
     line-height: 1.24;
     float: left;
     margin-top: 15px;
-  }
+  }  
+  
 </style>
 <div id="carouselExampleDark" class="carousel carousel-dark slide">
   <div class="carousel-indicators">
@@ -370,7 +372,7 @@ pageEncoding="UTF-8"%>
             </a>
           </div>
           <div class="txt_wrap">
-            <a href="#!" class="conts">
+            <a href="#!" class="conts"></a>
               <div class="tit_info">
                 <!-- 추후 수정 -->
                 <span class="tit mt_elps">[냉동] 진한육수 곱창전골</span>
@@ -383,7 +385,7 @@ pageEncoding="UTF-8"%>
                 </p>
                 <p class="servings">/ 2~3인분</p>
               </div>
-            </a>
+            
           </div>
           <div class="act_btn_wrap">
             <button type="button" class="btn btn_cart" onclick="#!">
