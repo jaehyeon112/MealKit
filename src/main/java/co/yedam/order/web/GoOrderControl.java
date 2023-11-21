@@ -31,10 +31,8 @@ public class GoOrderControl implements command {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		Gson gson = new GsonBuilder().create();
 		String cartNum = req.getParameter("cartNum");
-		System.out.println("이거 값이 안되나?"+cartNum);
 		// 문자열을 배열로 바꾸자. ,을 기준으로!
 		String[] cartArr = cartNum.split(",");
-		System.out.println(Arrays.toString(cartArr));
 		
 		HttpSession session = req.getSession();
 		String userId = (String) session.getAttribute("userId");
@@ -47,8 +45,6 @@ public class GoOrderControl implements command {
 		map2.put("userId", userId);
 		
 		List<CartVO> vo = orderSvc.orderList(map2);
-		System.out.println(vo);
-		System.out.println(vo);
 		
 		//총 결제 금액
 		Map<String, Object> map3 = new HashMap<>();
@@ -66,6 +62,8 @@ public class GoOrderControl implements command {
 		Map<String, Object> map = new HashMap<>();
 		map.put("totalPay", pay);
 		map.put("userList", user);
+		
+		
 		req.setAttribute("cartList", vo);
 		req.setAttribute("map", map);
 		try {

@@ -18,6 +18,21 @@ public class OrderServiceImpl implements OrderService {
 	public List<CartVO> orderList(Map<String, Object> map) {
 		return mapper.orderList(map);
 	}
+
+	@Override
+	public String getPoint(Map<String, Object> map) {
+		return mapper.gainPoint(map);
+	}
+
+	@Override
+	public int updateUserInfo(Map<String, Object> map) {
+		return mapper.UpdateUserinfoAfterdecideOrder(map);
+	}
+
+	@Override
+	public int updateMenuInfo(String menuId, int menuCount) {
+		return mapper.menuUpdate(menuId, menuCount);
+	}
 	
 	//String[] cartNum, String userId
 
