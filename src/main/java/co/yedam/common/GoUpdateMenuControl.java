@@ -2,6 +2,8 @@ package co.yedam.common;
 
 
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,48 +18,51 @@ public class GoUpdateMenuControl implements command {
 		MenuVO vo = new MenuVO();
 		MenuService svc = new MenuServiceImpl();
 		
-		String mid = req.getParameter("mid");
-		String name = req.getParameter("name");
-		String nameIn = req.getParameter("nameIn");
-		String imgo = req.getParameter("imgo");
-		String imgt = req.getParameter("imgt");
-		String imgtr = req.getParameter("imgtr");
-		String kind = req.getParameter("kind");
-		String pri = req.getParameter("pri");
-		String prO = req.getParameter("prO");
-		String cont = req.getParameter("cont");
-		String cout = req.getParameter("cout");
-		String poin = req.getParameter("poin");
-		String time = req.getParameter("time");
-		String many = req.getParameter("many");
+		String menuId = req.getParameter("menuId");
+		String menuName = req.getParameter("menuName");
+		String menuNameInfo = req.getParameter("menuNameInfo");
 		
-		vo.setMenuId(mid);
-		vo.setMenuName(name);
-		vo.setMenuNameInfo(nameIn);
-		vo.setMenuImage1(imgo);
-		vo.setMenuImage2(imgt);
-		vo.setMenuImage3(imgtr);
-		vo.setMenuKind(kind);
-		vo.setMenuPrice(Integer.parseInt(pri));
-		vo.setMenuPriceOff(Integer.parseInt(prO));
-		vo.setMenuContent(cont);
-		vo.setMenuCount(Integer.parseInt(cout));
-		vo.setMenuPoint(Integer.parseInt(poin));
-		vo.setMenuTime(Integer.parseInt(time));
-		vo.setMenuMany(Integer.parseInt(many));
+		String menuImage1 = req.getParameter("menuImage1");
+		String menuImage2 = req.getParameter("menuImage2");
+		String menuImage3 = req.getParameter("menuImage3");
+		
+		String menuKind = req.getParameter("menuKind");
+		String menuPrice = req.getParameter("menuPrice");
+		String menuPriceOff = req.getParameter("menuPriceOff");
+		String menuContent = req.getParameter("menuContent");
+		String menuCount = req.getParameter("menuCount");
+		String menuPoint = req.getParameter("menuPoint");
+		String menuTime = req.getParameter("menuTime");
+		String menuMany = req.getParameter("menuMany");
+		System.out.println(menuId);
+		vo.setMenuId(menuId);
+		vo.setMenuName(menuName);
+		vo.setMenuNameInfo(menuNameInfo);
+		vo.setMenuImage1(menuImage1);
+		vo.setMenuImage2(menuImage2);
+		vo.setMenuImage3(menuImage3);
+		vo.setMenuKind(menuKind);
+		vo.setMenuPrice(Integer.parseInt(menuPrice));
+		vo.setMenuPriceOff(Integer.parseInt(menuPriceOff));
+		vo.setMenuContent(menuContent);
+		vo.setMenuCount(Integer.parseInt(menuCount));
+		vo.setMenuPoint(Integer.parseInt(menuPoint));
+		vo.setMenuTime(Integer.parseInt(menuTime));
+		vo.setMenuMany(Integer.parseInt(menuMany));
 		
 		
 		
 		if(svc.updateMenu(vo)) {
+			System.out.println(menuId);
 			try {
-				resp.sendRedirect("menuList.do");
-			} catch(Exception e) {
+				resp.sendRedirect("menuListForm.do");
+			} catch(IOException e) {
 				e.printStackTrace();
 			}
 		} else {
 			try {
 				resp.sendRedirect("updateMenuForm.do");
-			} catch(Exception e) {
+			} catch(IOException e) {
 				e.printStackTrace();
 			}
 		}
