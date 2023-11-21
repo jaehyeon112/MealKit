@@ -6,7 +6,9 @@ public interface QaService {
 	public boolean addQa(QaVO vo);
 	public boolean editQa(QaVO vo);
 	public boolean removeQa(int qaNo);
-	public List<QaVO> qaList();
+	public List<QaVO> qaList(String userId);
 	public QaVO getQa(int qaNo);
+	
+	public List<QaVO> qaListAll();
 	
 }

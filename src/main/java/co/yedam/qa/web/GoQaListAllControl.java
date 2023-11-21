@@ -6,26 +6,21 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import co.yedam.common.command;
 import co.yedam.qa.service.QaService;
 import co.yedam.qa.service.QaVO;
 import co.yedam.qa.serviceImpl.QaServiceImpl;
 
-public class GoQaListControl implements command {
+public class GoQaListAllControl implements command {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		HttpSession session = req.getSession();
-		String userId = (String) session.getAttribute("userId");
-		
-		
 		QaService svc= new QaServiceImpl();
-		List<QaVO> list = svc.qaList(userId);
+		List<QaVO> list = svc.qaListAll();
 		req.setAttribute("list", list);
 		try {
-			req.getRequestDispatcher("/qa/qaList.tiles").forward(req, resp);
+			req.getRequestDispatcher("/qa/qaListAll.tiles").forward(req, resp);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
