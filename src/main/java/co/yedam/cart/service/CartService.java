@@ -1,6 +1,7 @@
 package co.yedam.cart.service;
 
 import java.util.List;
+import java.util.Map;
 
 import co.yedam.menu.service.MenuVO;
 
@@ -10,6 +11,8 @@ public interface CartService {
 	public Integer checkCartList(String userId);
 	public CartVO cartOne(int CartNum);
 	public CartVO updateCartList(CartVO vo, int cartNum, boolean check);
-	public CartMenuJoinVO joinCartMenu(String userId);
+	public CartMenuJoinVO joinCartMenuAll(String userId);
+	public CartMenuJoinVO joinCartMenu(Map<String, Object> map);
+	
 	public List<CartVO> removeCart(String CartNum, String userId);
 }

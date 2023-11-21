@@ -20,6 +20,7 @@ public class AddMyReviewControl implements command {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
+		
 		ReviewService svc = new ReviewServiceImpl();
 		String savaDir = req.getServletContext().getRealPath("image");
 

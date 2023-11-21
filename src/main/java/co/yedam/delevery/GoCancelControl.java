@@ -1,4 +1,4 @@
-package co.yedam.qa;
+package co.yedam.delevery;
 
 import java.io.IOException;
 
@@ -12,7 +12,7 @@ import co.yedam.users.service.UserService;
 import co.yedam.users.service.UserVO;
 import co.yedam.users.serviceImpl.UserServiceImpl;
 
-public class GoQaFormControl implements command {
+public class GoCancelControl implements command {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
@@ -22,7 +22,7 @@ public class GoQaFormControl implements command {
 		UserVO vo = svc.userId(userId);
 		req.setAttribute("user", vo);
 		try {
-			req.getRequestDispatcher("/qa/qaPage.tiles").forward(req, resp);
+			req.getRequestDispatcher("/delivery/cancel.tiles").forward(req, resp);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}

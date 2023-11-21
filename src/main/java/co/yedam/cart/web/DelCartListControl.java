@@ -31,7 +31,9 @@ public class DelCartListControl implements command {
 		  System.out.println(cart);
 		  CartService svc = new CartServiceImpl();
 		  List<CartVO> vo = svc.removeCart(cart, userId);
-		  CartMenuJoinVO vo2 = svc.joinCartMenu(userId);
+		  
+		  
+		  CartMenuJoinVO vo2 = svc.joinCartMenuAll(userId);
 		  Map<String, Object> map = new HashMap<>();
 		  map.put("newList",vo);
 		  map.put("total",vo2);

@@ -3,12 +3,45 @@
 <mapper namespace="co.yedam.order.mapper.OrderMapper">
 
 <select id="orderList"	resultType="co.yedam.cart.service.CartVO"
-	parameterType="String">
-		select * from cart where menu_id in
-		<foreach collection="array" item="cartArr" open="(" close=")" separator=",">
+	parameterType="hashmap">
+		select * from cart where user_id = #{userId} and menu_id in
+		<foreach collection="cartArr" item="cartArr" open="(" close=")" separator=",">
 		#{cartArr}
 		</foreach>
-		
+	</select>
+	
+	<!-- 구매할 목록까지 간 제품들의 포인트의 합계 -->
+	<select id="gainPoint" resultType="String"
+	parameterType="hashmap" >
+	select sum(menu_Point) from cart c
+	left join menu m on m.menu_id = c.menu_id
+	where user_id = #{userId} and
+	m.menu_id in 
+	<foreach collection="cartArr" item="cartArr" open="(" separator="," close=")">
+	#{cartArr}
+	</foreach>
+	group by user_id
 	</select>
 
+	<!-- 유저 업데이트하는 쿼리 -->
+	<update id="UpdateUserinfoAfterdecideOrder" parameterType="hashmap">
+		
+		update users set user_price = user_price + #{totalPay} , user_grade = 
+		 case 
+  		  when user_price + #{totalPay} > 200000 then 'gold'
+   		  when user_price + #{totalPay} > 100000 then 'silver'
+  		  else 'bronze' end,
+		user_point = user_point - #{point} + #{getPoint}
+		where user_id = #{userId}
+		
+	</update>
+
+	<!-- 물건 수량 업데이트! -->
+	<update id="menuUpdate" >
+		update menu set menu_count = menu_count - #{menuCount} 
+		where menu_id = #{menuId}
+	</update>
+
+
 </mapper> 
+

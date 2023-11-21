@@ -1,6 +1,7 @@
 package co.yedam.order.serviceImpl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -14,8 +15,26 @@ public class OrderServiceImpl implements OrderService {
 	OrderMapper mapper = session.getMapper(OrderMapper.class);
 	
 	@Override
-	public List<CartVO> orderList(String[] cartNum) {
-		return mapper.orderList(cartNum);
+	public List<CartVO> orderList(Map<String, Object> map) {
+		return mapper.orderList(map);
 	}
+
+	@Override
+	public String getPoint(Map<String, Object> map) {
+		return mapper.gainPoint(map);
+	}
+
+	@Override
+	public int updateUserInfo(Map<String, Object> map) {
+		return mapper.UpdateUserinfoAfterdecideOrder(map);
+	}
+
+	@Override
+	public int updateMenuInfo(String menuId, int menuCount) {
+		return mapper.menuUpdate(menuId, menuCount);
+	}
+	
+	//String[] cartNum, String userId
+
 	
 }
