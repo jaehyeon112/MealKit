@@ -1,26 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper SYSTEM "path/mybatis-3-mapper.dtd">
 <mapper namespace="co.yedam.review.mapper.ReviewMapper">
-	<select id="selectList" resultType="co.yedam.review.service.ReviewVO">
-		SELECT * FROM REVIEW  ORDER BY REVIEW_DATE DESC
+	<select id="selectList"
+		resultType="co.yedam.review.service.ReviewVO">
+		SELECT * FROM REVIEW ORDER BY REVIEW_DATE DESC
 	</select>
-	
-	<insert id="insert" parameterType="co.yedam.review.service.ReviewVO">
-		INSERT INTO REVIEW(REVIEW_STAR, REVIEW_CONTENT, USER_ID, REVIEW_DATE, MENU_NAME, REVIEW_IMAGE)
-		VALUES(#{reviewStar}, #{reviewContent}, #{userId}, SYSDATE, #{menuName}, #{reviewImage})
+
+	<insert id="insert"
+		parameterType="co.yedam.review.service.ReviewVO">
+		INSERT INTO REVIEW(REVIEW_STAR, REVIEW_CONTENT, USER_ID,
+		REVIEW_DATE, MENU_NAME, REVIEW_IMAGE, ORDER_DETAIL_NUMBER)
+		VALUES(#{reviewStar}, #{reviewContent}, #{userId}, SYSDATE,
+		#{menuName}, #{reviewImage}, #{order_detail_number})
 	</insert>
-	
-	<select id="select" resultType="co.yedam.review.service.ReviewVO">
+
+	<select id="select"
+		resultType="co.yedam.review.service.ReviewVO">
 		SELECT * FROM REVIEW WHERE USER_ID = #{userId}
 	</select>
-	
+
 	<delete id="delete" parameterType="int">
-		DELETE FROM REVIEW WHERE ORDER_DETAIL_NUMBER = #{orderDetailNumber}
+		DELETE FROM REVIEW WHERE
+		ORDER_DETAIL_NUMBER = #{orderDetailNumber}
 	</delete>
-	
+
+	<select id="selectJustOne" parameterType="int"
+		resultType="co.yedam.review.service.ReviewVO">
+		Select * FROM REVIEW WHERE ORDER_DETAIL_NUMBER =
+		#{orderDetailNumber}
+	</select>
+
+
+
+
 	<update id="update"
 		parameterType="co.yedam.review.service.ReviewVO">
-		UPDATE REVIEW SET REVIEW_STAR = #{reviewStar}, REVIEW_IMAGE = #{reviewImage}, REVIEW_CONTENT = #{reviewContent} WHERE ORDER_DETAIL_NUMBER =
+		UPDATE REVIEW SET REVIEW_STAR = #{reviewStar},
+		REVIEW_IMAGE = #{reviewImage}, REVIEW_CONTENT = #{reviewContent} WHERE
+		ORDER_DETAIL_NUMBER =
 		#{orderDetailNumber} AND USER_ID = #{userId}
 	</update>
 </mapper>
