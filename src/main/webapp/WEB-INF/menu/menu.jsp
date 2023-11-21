@@ -9,6 +9,7 @@
         height: 300px;
         object-fit: cover;
     }
+    
 </style>
 
 <div>
@@ -32,9 +33,9 @@
 
         </div>
         <div class="col">
-            <input type="button" id="a1" value="인기메뉴순">
-            <input type="button" id="a2" value="높은가격순">
-            <input type="button" id="a3" value="낮은가격순">
+            <button type="button" class="btn btn-outline-success" id="a1">인기메뉴순</button>
+            <button type="button" class="btn btn-outline-info" id="a2">높은가격순</button>
+            <button type="button" class="btn btn-outline-warning" id="a">낮은가격순</button>
         </div>
     </div>
 </div>
@@ -59,8 +60,7 @@
                                 <!-- Product image--><a href="menupage.do?menuId=${vo.menuId}">
 
                                     <img class="card-img-top" src="image/${vo.menuImage1 }" alt="..." />
-                                    <p>품절입니다.</p>
-                                </a>
+                                    <h3 style="color:red;position:absolute;top:30%;left:50%;transform: translate(-50%, -50%);" id="sold">SOLD OUT</h3>
                                 <!-- Product details-->
                                 <div class="card-body p-4">
                                     <div class="text-center">
