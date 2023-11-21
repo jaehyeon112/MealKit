@@ -164,26 +164,18 @@ a {
 				<dt>나의 주문정보</dt>
 				<dd>
 					<ul class="menuList">
-						<li id="leftMenu"><a href="#">주문/배송 조회</a></li>
-						<li id="leftMenu"><a href="#">취소/반품 조회</a></li>
+						<li id="leftMenu"><a href="delivery.do">주문/배송 조회</a></li>
+						<li id="leftMenu"><a href="cancel.do">취소/반품 조회</a></li>
 					</ul>
 				</dd>
 			</dl>
-			<dl class="myMenu">
-				<dt>나의 혜택</dt>
-				<dd>
-					<ul class="menuList">
-						<li id="leftMenu"><a href="#">포인트</a></li>
-						<li id="leftMenu"><a href="#">회원 등급</a></li>
-					</ul>
-				</dd>
-			</dl>
+			
 			<dl class="myMenu">
 				<dt>나의 활동</dt>
 				<dd>
 					<ul class="menuList">
 						<li id="leftMenu"><a href="addReview.do">작성 리뷰 조회</a></li>
-						<li id="leftMenu"><a href="Qa.do">1:1 문의</a></li>
+						<li id="leftMenu"><a href="qa.do">1:1 문의</a></li>
 					</ul>
 				</dd>
 			</dl>
@@ -217,38 +209,43 @@ a {
 			</div>
 			<div class="tabMenu">
 				<ul id="ulTabMenu">
-					<li id="liTabMenu"><a href="Qa.do" id="liTabMenuA">1:1 문의 작성</a></li>
-					<li id="liTabMenu"><a href="#" id="liTabMenuA">1:1 문의 내역</a></li>
+					<li id="liTabMenu"><a href="qa.do" id="liTabMenuA">1:1 문의 작성</a></li>
+					<li id="liTabMenu"><a href="qaList.do" id="liTabMenuB" style="font-size:24px">1:1 문의 내역</a></li>
 				</ul>
 			</div>
 
 			<h4>문의유형</h4>
-			<select class="form-select" aria-label="Default select example">
-				<option selected>선택</option>
-				<option value="1">주문/결제</option>
-				<option value="2">취소/반품</option>
-				<option value="3">메뉴/상품</option>
-				<option value="4">회원/포인트</option>
-				<option value="5">사이트이용</option>
-				<option value="6">기타</option>
-				<option value="7">신고</option>
-			</select>
 			<form action="addQa.do" method="post" enctype="multipart/form-data">
+			<select class="form-select" aria-label="Default select example" onchange="selectBoxChange(this.value);">
+				<option selected>선택</option>
+				<option value="주문/결제">주문/결제</option>
+				<option value="취소/반품">취소/반품</option>
+				<option value="메뉴/상품">메뉴/상품</option>
+				<option value="회원/포인트">회원/포인트</option>
+				<option value="사이트이용">사이트이용</option>
+				<option value="기타">기타</option>
+				<option value="신고">신고</option>
+			</select>
+			<input type="text" id = "changeInput" name= "qaState">
 		<table class="table">
 			<tr>
 				<th>제목</th>
 				<td><input type="text" name="title" class="form-control"></td>
 			</tr>
 			<tr>
-				<th>작성자</th>
-				<td><input type="text" name="writer"class="form-control" readonly value="${userName }"></td>
+				<th>아이디</th>
+				<td><input type="text" name="userId"class="form-control" readonly value="${userId }"></td>
 			</tr>
 			<tr>
-				<td colspan="2"><textarea cols="40" rows="6" name="content" class="form-control"></textarea></td>
+				<th>이름</th>
+				<td><input type="text" name="userName"class="form-control" readonly value="${userName }"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><textarea cols="40" rows="6" name="qaContent" class="form-control"></textarea></td>
 			</tr>
 			<tr>
 				<th>파일명</th>
-				<td><input type="file" name="img" class="form-control"></td>
+				<td><input type="file" name="qaImage" class="form-control"></td>
 			</tr>
 			<tr>
 				<td colspan="2" style="text-align: center">
@@ -261,3 +258,11 @@ a {
 		</div>
 	</div>
 </section>
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<script>
+var selectBoxChange = function (value) {
+	console.log("값변경테스트: " + value);
+	$("#changeInput").val(value);
+}
+</script>

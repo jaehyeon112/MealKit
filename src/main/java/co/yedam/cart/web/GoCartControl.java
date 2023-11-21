@@ -30,7 +30,7 @@ public class GoCartControl implements command {
 		HttpSession session = req.getSession();
 		String userId = (String) session.getAttribute("userId");
 		
-		CartMenuJoinVO vo = svc.joinCartMenu(userId);
+		CartMenuJoinVO vo = svc.joinCartMenuAll(userId);
 		String join = gson.toJson(vo);
 		req.setAttribute("totalJson", join);
 		req.setAttribute("total", vo);

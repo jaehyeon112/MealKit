@@ -88,9 +88,10 @@ width: 400px;
 }
 
 </style>
-${map.cartList}
-${map.totalPay}
-${map.userList}
+
+${cartList}
+${map}
+
 <div class="row">
 	<div class="col">
 		<h1>주문하기</h1>
@@ -112,24 +113,23 @@ ${map.userList}
 		<h3>배송정보</h3>
 		<div id="test"></div>
 		<div id="address">
-			<input type="text" id="address3" placeholder="우편번호">
+			<div style="width:100px">우편번호</div> <input type="text" id="address3" placeholder="우편번호">
 			<input type="button" onclick="sample6_execDaumPostcode()"
-				value="우편번호 찾기"><br> <input type="text"
+				value="우편번호 찾기"><br> <div style="width:100px">주소</div><input type="text"
 				id="address1" style="width: 420px" placeholder="주소"><br>
-			<input type="text" style="width: 420px" id="address2" placeholder="상세주소">
+			<div style="width:100px">상세주소</div><input type="text" style="width: 420px" id="address2" placeholder="상세주소">
 		</div>
 		<h3>구매할물건</h3>
 		<div id="test"></div>
 		<div class="recieve_date">
-		<strong id="nextDate">11-16(목) 도착예정</strong>
+		<strong id="nextDate">날짜+2 도착예정</strong>
 		</div>
 		<ul style="list-style-type: none; margin-top:20px">
-		
 		<c:forEach items="${cartList }" var="cart">
 		<li style="margin-bottom: 20px">
 		<div class="row" style="vertical-align: center">
-		<div class="col"><img src="image/${cart.menuImage1 }"></div>
-		<div class="col-6"><span style="font-size: 20px;line-height: 80px; ">${cart.menuName }</span></div>
+		<div class="col"><img style="width:100px;height:100px" src="image/${cart.menuImage1 }"></div>
+		<div class="col-6"><span class="menuIdClass" style="font-size: 20px;line-height: 80px; " id="${cart.menuId}">${cart.menuName }</span></div>
 		<div class="col"><span style="font-size: 14px;line-height: 80px;">${cart.cartCount }개</span></div>
 		<div class="col"><span style="font-size: 20px;line-height: 80px;; font-weight: 700">${(cart.menuPrice-cart.menuPriceOff)*cart.cartCount}원</span></div>
 		</div>
@@ -168,7 +168,7 @@ ${map.userList}
 	
 	
 	<!-- 옆에서 결제창 -->
-	<div class="col-md-4 sticky-top" style="height: 50vh;">
+	<div class="col-md-5 sticky-top" style="height: 70vh;">
 
 		<h3>결제정보</h3>
 		<table>
@@ -184,12 +184,18 @@ ${map.userList}
 				<th>총 할인금액</th>
 				<td id="priceOff"></td>
 			</tr>
+			<tr id="totalPoint" >
+				<th>사용 포인트</th>
+				<td></td>
+			</tr>
 			<tr>
 				<th>총 결제 금액</th>
-				<td id="realPay"></td>
+				<td style="font-size: 24px; font-weight: 700; color:red" id="realPay"></td>
 			</tr>
 		</table>
-		<button onclick="requestPay()" class="cart__bigorderbtn right">결제하기</button>
+		<form name="go" method="post">
+		<input type="button" onclick="requestPay()" value="결제하기" class="cart__bigorderbtn right">
+		</form>
 		
 	</div>
 </div>
@@ -206,6 +212,67 @@ ${map.userList}
     
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+	// 값에 대한 변수
+	let total = 0;
+	let pointValue = 0;
+
+	let totalPoint1 = document.querySelector('#totalPoint')
+	let myPoint1 = document.getElementById('myPoint')
+	let totalPay1 = document.getElementById('totalPay')
+	let delivery1= document.getElementById('delivery')
+	let priceOff1= document.getElementById('priceOff')
+	let realPay1 = document.getElementById('realPay')
+	let nextDate1 = document.getElementById('nextDate')
+	let userName1 = document.getElementById('userName')
+	let phone1 = document.getElementById('phone').children[0]
+	let phone2 = document.getElementById('phone').children[1]
+	let phone3 = document.getElementById('phone').children[2]
+	let address3_ = document.getElementById('address3')
+	let address1_ = document.getElementById('address1')
+	let address2_= document.getElementById('address2')
+
+	
+		 
+		function test1(){
+		//일단 테스트
+		let buy = document.createElement('form');
+		buy.method = "post";
+		buy.action = "orderfinish.do"
+		buy.enctype = "application/x-www-form-urlencoded"
+		document.body.append(buy);
+
+		let postForward = document.querySelectorAll('.menuIdClass')
+
+		postForward.forEach((ele,index) =>{
+				let input = document.createElement('input');
+				input.type = 'hidden'
+				input.value = ele.id; // 마라마라 value // menuName
+				input.name = ele.id // 마라탕 // key // menuId
+				buy.append(input)
+		})
+
+
+		let pointInput = document.createElement('input');
+		pointInput.type= 'hidden'
+		pointInput.name= 'usePoint'
+		if(document.querySelector('#pointMinus').innerHTML.split(' ')[0]==0){
+			pointInput.value = 0;
+		}else{
+			pointInput.value = document.querySelector('#pointMinus').innerHTML.split(' ')[0];
+		}
+
+		buy.append(pointInput);
+
+		buy.submit();
+
+	}
+	
+
+	
+
+
+
+
 	// 값 가져오고
 	let userList = '${map.userList}'
 	let payList = '${map.totalPay}'
@@ -213,18 +280,17 @@ ${map.userList}
 	// json -> object (script에서 쓰기 위함)
 	userList = JSON.parse(userList);
 	payList = JSON.parse(payList);
+
 	console.log(payList)
 
 	let date = new Date();
 	let day = ['일','월','화','수','목','금','토']
-
 	let recieveDate = (date.getMonth()+1) + '-' + Number(date.getDate()+2) + '(' + day[date.getDay()+2] + ')'  
-
-	console.log(date)
+	let payNum = date.getFullYear()+''+(date.getMonth())+''+date.getDate()+''+date.getHours()+''+date.getMinutes()+''+date.getSeconds()+''+userList.userId;
 	// 로그인 한 정보로 구매
 	first()
 	function first(){
-		console.log(userList.userPoint)
+		document.querySelector('#totalPoint').style.display = 'none';
 		document.getElementById('myPoint').innerHTML = userList.userPoint + ' Point'
 		document.getElementById('totalPay').innerHTML = payList.price + '원'
 		document.getElementById('delivery').innerHTML = payList.delivery + '원'
@@ -240,7 +306,24 @@ ${map.userList}
 		document.getElementById('address2').value = userList.userAddress2
 	}
 
+
+	// 포인트 체크박스를 누르면 결제화면에 포인트 사용 금액 띄우기
+	document.querySelector('#checkPoint').addEventListener('click',function(){
+		if(document.querySelector('#checkPoint').checked){
+			document.querySelector('#totalPoint').style += 'display:block';
+			document.querySelector('#totalPoint').children[1].innerHTML = '0 Point'
+
+		}else{
+			document.querySelector('#totalPoint').style.display = 'none';
+			document.getElementById('realPay').innerHTML = payList.total + '원'
+		}
+
+	})
+
+	// 포인트 적용하기.
 	document.querySelector('#usePoint').addEventListener('click',function(){
+		
+		
 		// 숫자만 받는 정규식
 		let check = /^[0-9]+$/;
 		if(!check.test(parseInt(document.querySelector('#howManyUsePoint').value))){
@@ -253,29 +336,32 @@ ${map.userList}
 
 		if(document.querySelector('#checkPoint').checked){
 			console.log('체크')
-
+			document.querySelector('#totalPoint').style += 'display:block'
 
 			if(userList.userPoint < parseInt(document.querySelector('#howManyUsePoint').value)){
-				alert("가지고 있는 포인트를 확인하세요.")
+				alert("가지고 있는 포인트보다 더 많이 사용할 수 없습니다.")
 				document.querySelector('#howManyUsePoint').value  = '';
 				return;
-			}else{
-				console.log('포인트가 넘친다.')
 			}
 
 
 			if(document.querySelector('#howManyUsePoint').value >= 1000){
-				console.log('사용가능')
+				//포인트가 사용포인트보다 더 많고, 체크도 되었을때,
+				//브라우저 화면 상에서만 일단 처리하자.
+				
+				alert('포인트가 적용되었습니다! 총 금액을 확인해보세요.')
+				pointValue = document.querySelector('#howManyUsePoint').value;
+				document.querySelector('#totalPoint').children[1].innerHTML = document.querySelector('#howManyUsePoint').value + ' Point' 
+				document.querySelector('#pointMinus').innerHTML = document.querySelector('#howManyUsePoint').value + ' Point';
+				document.querySelector('#realPay').innerHTML = payList.total - pointValue + '원'
 
-
-
+				
 			}else{
-				alert('최소 사용 포인트는 1000 입니다.')
-				console.log(document.querySelector('#howManyUsePoint').value)
+				alert('최소 1000 Point부터 사용할 수 있습니다.')
 			}
 		}else{
-			alert('포인트를 체크하세요.')
-			console.log('언체크')
+			alert('포인트 사용여부를 체크하세요.')
+			document.querySelector('#totalPoint').style.display = 'none';
 		}
 
 	})
@@ -338,32 +424,53 @@ ${map.userList}
      IMP.init("imp87028837"); 
  	
     function requestPay(){
-    	if(document.querySelector('input[name="kindOfPayment"]:checked').id=='kg'){
 
+
+
+		//장바구니에 
+		//for(let cart in )
+
+
+
+		if(phone1.value==''){
+			console.log('비어있는거같은데..?')
+		}else{
+			console.log('안비어있어~')
+		}
+		
+    	let total = payList.total - pointValue;
+    	if(document.querySelector('input[name="kindOfPayment"]:checked').id=='kg'){
     		
     	IMP.request_pay({
     	    pg : 'html5_inicis',
     	    pay_method : 'card',
-    	    merchant_uid: "order_no_0001", // 상점에서 관리하는 주문 번호를 전달
+    	    merchant_uid: payNum, // 상점에서 관리하는 주문 번호를 전달
     	    name : '주문명:결제테스트',
-    	    amount : 10000,// 가격 넣기
-    	    buyer_email : 'iamport@siot.do',
-    	    buyer_name : '구매자이름',
-    	    buyer_tel : '010-1234-5678',
-    	    buyer_addr : '서울특별시 강남구 삼성동',
-    	    buyer_postcode : '123-456',
-    	    m_redirect_url : '{모바일에서 결제 완료 후 리디렉션 될 URL}' // 예: https://www.my-service.com/payments/complete/mobile
+    	    amount : 10,// 가격 넣기
+    	    buyer_email : userList.userEmail,
+    	    buyer_name :  userName1.value,
+    	    buyer_tel : phone1.value+phone2.value+phone3.value,
+    	    buyer_addr : address1_.value + address2_.value ,
+    	    buyer_postcode : address3_.value,
+    	    m_redirect_url : '{orderfinish.do}' // 예: https://www.my-service.com/payments/complete/mobile
     	}, function(rsp) { // callback 로직
-    		//* ...중략 (README 파일에서 상세 샘플코드를 확인하세요)... *//
+    		if(rsp.success){
+    			console.log('성공!')
+				test1()
+    			
+    		}else{
+    			alert('결제가 실패하였습니다. 다시 한번 확인해주세요.')
+    		}
+    		
+    		
     	})
 	}else{
 		alert('아직 구현 안했어요!')
 	}
-    	
 	
 	}
 	
-	
+	 test1()
 </script>
 
 

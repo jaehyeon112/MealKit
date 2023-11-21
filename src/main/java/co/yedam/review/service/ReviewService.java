@@ -8,4 +8,5 @@ public interface ReviewService {
 	public List<ReviewVO> getReview(String userId);
 	public boolean deleteReview(int orderDetailNumber);
 	public boolean updateReview(ReviewVO vo);
+	public ReviewVO selectOne(int orderDetailNumber);
 }

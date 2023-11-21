@@ -261,7 +261,7 @@ font-weight: 700;
     
       <span class="font_size">총 배송비</span>
        <p id="delivery" class="font_size_p" style="color:red">${total.delivery }원</p>
-    	<p id="deliCheck" style="display:none; color:#101010; font-size: 10px;">${40000-total.price }원 더 구매시 배송비가 무료! </p>
+    	<p id="deliCheck" style="display:none; color:#101010; font-size: 10px;">${40000- total.total + total.delivery}원 더 구매시 배송비가 무료! </p>
     </div>
       <div class="col">
       <span class="font_size_p">=</span>
@@ -300,12 +300,17 @@ font-weight: 700;
     //주문할때 넘어가는 정보..
     document.querySelector('#buy').addEventListener('click', function(e){
       let arr = [];
+      let count = 0;
       document.querySelectorAll('.cart__list__detail').forEach(ele => {
         if(ele.querySelector('.checkList').checked){
           arr.push(ele.querySelector('.menuId').id)
+          count++
         }
       })
-      
+      if(count==0){
+    	  alert('장바구니에 물건이 없어요!')
+    	  return;
+      }
       console.log(arr)
       document.forms.myForm.action = 'order.do?cartNum='+arr
       
@@ -389,10 +394,12 @@ font-weight: 700;
     	 priceOff += ele.menuPriceOff*ele.cartCount
         check += ele.menuPrice*ele.cartCount;
       })
-    	 total += price - priceOff;
-      if(check < 40000){
+    	 total = price - priceOff;
+      if(total < 40000){
         document.querySelector('#deliCheck').style.display= 'block';
         delivery = 4000;
+        console.log(total)
+        console.log('40000원 못넘은거야?')
       }
       arr.push(price,priceOff,total,delivery);
       return arr;
@@ -418,9 +425,9 @@ font-weight: 700;
             document.querySelector('#totalOff').innerText = arr[1] + '원'
             document.querySelector('#totalBuy').innerText = arr[2] + '원'
             document.querySelector('#delivery').innerText = arr[3] + '원'
-            if(total.price < 40000){
+            if(total.total < 40000){
             	document.querySelector('#deliCheck').style.display= 'block';
-            	document.querySelector('#deliCheck').innerText= 40000-total.price+'원 더 구매시 배송비가 무료!' 
+            	document.querySelector('#deliCheck').innerText= 40000-total.price+total.delivery+'원 더 구매시 배송비가 무료!' 
             }else{
             	document.querySelector('#deliCheck').style.display= 'none';
             }
@@ -454,7 +461,7 @@ font-weight: 700;
                     count++;
             	 price += list[index].menuPrice * list[index].cartCount
             	 priceOff += list[index].menuPriceOff * list[index].cartCount
-            	 if(price < 40000){            		 
+            	 if(price-priceOff < 40000){            		 
             	 total = price - priceOff + 4000
             	 }else{
             		 total = price - priceOff
@@ -462,16 +469,16 @@ font-weight: 700;
                 }
             });
             let delivery = 0;
-            if(price < 40000){
+            if(total < 40000){
             	delivery = 4000;
             }
              document.querySelector('#total').innerText = price + '원'
             document.querySelector('#totalOff').innerText = priceOff + '원'
             document.querySelector('#totalBuy').innerText = total + '원'
             document.querySelector('#delivery').innerText = delivery + '원'
-            if(price < 40000){
+            if(total < 40000){
             	document.querySelector('#deliCheck').style.display= 'block';
-            	document.querySelector('#deliCheck').innerText= 40000-price + '원 더 구매시 배송비가 무료!' 
+            	document.querySelector('#deliCheck').innerText= 40000-total +delivery+ '원 더 구매시 배송비가 무료!' 
             }else{
             	document.querySelector('#deliCheck').style.display= 'none';
             }
@@ -516,9 +523,9 @@ font-weight: 700;
             document.querySelector('#totalOff').innerText = result.total.priceOff + '원'
             document.querySelector('#totalBuy').innerText = result.total.total + '원'
             document.querySelector('#delivery').innerText = result.total.delivery + '원'
-            if(result.total.price < 40000){
+            if(result.total.total < 40000+result.total.delivery){
             	document.querySelector('#deliCheck').style.display= 'block';
-            	document.querySelector('#deliCheck').innerText= 40000-result.total.price + '원 더 구매시 배송비가 무료!' 
+            	document.querySelector('#deliCheck').innerText= 40000-result.total.total +result.total.delivery+ '원 더 구매시 배송비가 무료!' 
             }else{
             	document.querySelector('#deliCheck').style.display= 'none';
             }

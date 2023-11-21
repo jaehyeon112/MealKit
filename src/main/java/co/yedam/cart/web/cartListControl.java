@@ -35,7 +35,7 @@ public class cartListControl implements command {
 		HttpSession session = req.getSession();
 		String userId = (String) session.getAttribute("userId");
 		
-		CartMenuJoinVO vo2 = svc.joinCartMenu(userId);
+		CartMenuJoinVO vo2 = svc.joinCartMenuAll(userId);
 		
 		Map<String, Object> map = new HashMap<>();
 		map.put("cart", vo);

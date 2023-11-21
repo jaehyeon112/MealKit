@@ -198,6 +198,7 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
     line-height: 16px;
   }
 </style>
+
 <div id="content" class="my_wrap">
   <div class="right_con">
     <div class="order_view my_activity">
@@ -231,7 +232,7 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
                   <div class="top_wrap--right">
                     <!-- 20220609 div 추가 -->
 					
-						<span><input name="detailNo" value="${vo.orderDetailNumber }" type="hidden"></input>주문상세번호: ${vo.orderDetailNumber } |</span>													
+						<span><input name="orderDetailNumber" value="${vo.orderDetailNumber }" type="hidden"></input>주문상세번호: ${vo.orderDetailNumber } |</span>													
                     <time datetime="2023-11-15"
                       ><fmt:formatDate value="${vo.reviewDate}"
 													pattern="yyyy.MM.dd" /></time>
@@ -272,8 +273,8 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
                   <pre>${vo.reviewContent }</pre>
                 </div>
                 <div class="buttons">
-                <input type="button" class="button" value="리뷰수정" onclick="location.href='modMyReviewForm.do?detailNo=${vo.orderDetailNumber}'">
-                <input type="button" class="button"  value="리뷰삭제" onclick="location.href='deleteMyReview.do?detailNo=${vo.orderDetailNumber }'">
+                <input type="button" class="button" value="리뷰수정" onclick="location.href='modMyReviewForm.do?orderDetailNumber=${vo.orderDetailNumber}'">
+                <input type="button" class="button"  value="리뷰삭제" onclick="location.href='deleteMyReview.do?orderDetailNumber=${vo.orderDetailNumber }'">
                 </div>
               </div>
             </li>

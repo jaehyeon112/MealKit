@@ -271,7 +271,7 @@ pageEncoding="UTF-8"%>
   }  
   
 </style>
-<div id="carouselExampleDark" class="carousel carousel-dark slide">
+<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button
       type="button"
@@ -295,7 +295,7 @@ pageEncoding="UTF-8"%>
     ></button>
   </div>
   <div class="carousel-inner">
-    <div class="carousel-item active" data-bs-interval="500">
+    <div class="carousel-item active" data-bs-interval="5000">
       <img
         src="//img.cjcookit.com/images/file/display/890/20190828155709248.jpg?RS=1920x640"
         class="d-block w-100"
@@ -306,7 +306,7 @@ pageEncoding="UTF-8"%>
         <p>3인분 / 조리 8분</p>
       </div>
     </div>
-    <div class="carousel-item" data-bs-interval="500">
+    <div class="carousel-item" data-bs-interval="5000">
       <img
         src="//img.cjcookit.com/images/file/display/648/20200730105857306.jpg?RS=1920x640"
         class="d-block w-100"
@@ -317,7 +317,7 @@ pageEncoding="UTF-8"%>
         <p>3인분 / 조리 25분</p>
       </div>
     </div>
-    <div class="carousel-item" data-bs-interval="500">
+    <div class="carousel-item" data-bs-interval="5000">
       <img
         src="//img.cjcookit.com/images/file/display/043/20200429180744043.jpg?RS=1920x640"
         class="d-block w-100"
