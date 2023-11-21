@@ -3,6 +3,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<style>
+	#e { font-family: cursive; }
+</style>
+
+
 <ul class="nav justify-content-end bg-black" id="nav">
 	<c:choose>
 		<c:when test="${userId == 'guest'}">
@@ -26,7 +32,7 @@
 
 <nav class="navbar navbar-expand-sm bg-body-tertiary">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="main.do">  <h3>4MEN</h3> </a>
+		<a class="navbar-brand" href="main.do">  <h1 id="e" >4MEN</h1> </a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarNav" aria-controls="navbarNav"
 			aria-expanded="false" aria-label="Toggle navigation">

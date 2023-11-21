@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="container">
-        <form name="updateMenu" action="updateMenu.do"  method="post" class="form-horizontal" enctype="multipart/form-data">
+        <form name="updateMenu" action="updateMenu.do" method="post" class="form-horizontal" enctype="multipart/form-data">
             <div class="form-group row">
                 <label class="col-sm-2">제품번호</label>
                 <div class="col-sm-3">
