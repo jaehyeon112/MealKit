@@ -1,26 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper SYSTEM "path/mybatis-3-mapper.dtd">
 <mapper namespace="co.yedam.review.mapper.ReviewMapper">
-	<select id="selectList" resultType="co.yedam.review.service.ReviewVO">
-		SELECT * FROM REVIEW  ORDER BY REVIEW_DATE DESC
+
+    <!-- 헤더리뷰목록 전체조회 -->
+	<select id="selectList"
+		resultType="co.yedam.review.service.ReviewVO">
+		SELECT * FROM REVIEW ORDER BY REVIEW_DATE DESC
 	</select>
 	
-	<insert id="insert" parameterType="co.yedam.review.service.ReviewVO">
-		INSERT INTO REVIEW(REVIEW_STAR, REVIEW_CONTENT, USER_ID, REVIEW_DATE, MENU_NAME, REVIEW_IMAGE)
-		VALUES(#{reviewStar}, #{reviewContent}, #{userId}, SYSDATE, #{menuName}, #{reviewImage})
+	<!-- 구매한건에 대한 리뷰작성 **[수정예정]**--> 
+	<insert id="insert"
+		parameterType="co.yedam.review.service.ReviewVO">
+		INSERT INTO REVIEW(REVIEW_STAR, REVIEW_CONTENT, USER_ID,
+		REVIEW_DATE, MENU_NAME, REVIEW_IMAGE, ORDER_DETAIL_NUMBER)
+		VALUES(#{reviewStar}, #{reviewContent}, #{userId}, SYSDATE,
+		#{menuName}, #{reviewImage}, #{order_detail_number})
 	</insert>
 	
-	<select id="select" resultType="co.yedam.review.service.ReviewVO">
+	<!-- 내가 쓴 리뷰 조회 -->
+	<select id="select"
+		resultType="co.yedam.review.service.ReviewVO">
 		SELECT * FROM REVIEW WHERE USER_ID = #{userId}
 	</select>
-	
+
+	<!-- 내가 쓴 리뷰 삭제 -->
 	<delete id="delete" parameterType="int">
-		DELETE FROM REVIEW WHERE ORDER_DETAIL_NUMBER = #{orderDetailNumber}
+		DELETE FROM REVIEW WHERE
+		ORDER_DETAIL_NUMBER = #{orderDetailNumber}
 	</delete>
 	
+	<!-- 한건 조회 -->
+	<select id="selectJustOne" parameterType="int"
+		resultType="co.yedam.review.service.ReviewVO">
+		Select * FROM REVIEW WHERE ORDER_DETAIL_NUMBER =
+		#{orderDetailNumber}
+	</select>
+
+	<!-- 내가 쓴 리뷰 수정 -->
 	<update id="update"
 		parameterType="co.yedam.review.service.ReviewVO">
-		UPDATE REVIEW SET REVIEW_STAR = #{reviewStar}, REVIEW_IMAGE = #{reviewImage}, REVIEW_CONTENT = #{reviewContent} WHERE ORDER_DETAIL_NUMBER =
-		#{orderDetailNumber}
+		UPDATE REVIEW SET REVIEW_STAR = #{reviewStar},
+		REVIEW_IMAGE = #{reviewImage}, REVIEW_CONTENT = #{reviewContent} WHERE
+		ORDER_DETAIL_NUMBER =
+		#{orderDetailNumber} AND USER_ID = #{userId}
 	</update>
 </mapper>

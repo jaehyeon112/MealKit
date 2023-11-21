@@ -43,6 +43,11 @@ public class ReviewServiceImpl implements ReviewService {
 		// TODO Auto-generated method stub
 		return mapper.update(vo) > 0 ? true : false;
 	}
+
+	@Override
+	public ReviewVO selectOne(int orderDetailNumber) {
+		return mapper.selectJustOne(orderDetailNumber);
+	}
 	
 		
 

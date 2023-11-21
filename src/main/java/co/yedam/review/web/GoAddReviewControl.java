@@ -18,11 +18,13 @@ public class GoAddReviewControl implements command {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-
-		String path = "/review/addReview.tiles";
+		ReviewService svc = new ReviewServiceImpl();
+		HttpSession session = req.getSession();
+		String userId = (String) session.getAttribute("userId");
+		
 		
 		try {
-			req.getRequestDispatcher(path).forward(req, resp);
+			req.getRequestDispatcher("/review/addReview.tiles").forward(req, resp);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}

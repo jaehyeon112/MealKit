@@ -14,5 +14,6 @@ public interface ReviewMapper {
 	public int delete(int orderDetailNumber);
 	
 	public int update(ReviewVO vo); // 수정.
-
+	
+	public ReviewVO selectJustOne(int orderDetailNumber);
 }

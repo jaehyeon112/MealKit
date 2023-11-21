@@ -7,7 +7,7 @@
 	width: 40%;
 	margin: 0 auto;
 	margin-top: 20px;
-	margin-bottom: 200px;
+	margin-bottom: 300px;
 	border: solid 1px #ccc;
 }
 
