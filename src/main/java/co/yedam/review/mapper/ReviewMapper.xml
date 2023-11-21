@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper SYSTEM "path/mybatis-3-mapper.dtd">
 <mapper namespace="co.yedam.review.mapper.ReviewMapper">
+
+    <!-- 헤더리뷰목록 전체조회 -->
 	<select id="selectList"
 		resultType="co.yedam.review.service.ReviewVO">
 		SELECT * FROM REVIEW ORDER BY REVIEW_DATE DESC
 	</select>
-
+	
+	<!-- 구매한건에 대한 리뷰작성 **[수정예정]**--> 
 	<insert id="insert"
 		parameterType="co.yedam.review.service.ReviewVO">
 		INSERT INTO REVIEW(REVIEW_STAR, REVIEW_CONTENT, USER_ID,
@@ -13,26 +16,27 @@
 		VALUES(#{reviewStar}, #{reviewContent}, #{userId}, SYSDATE,
 		#{menuName}, #{reviewImage}, #{order_detail_number})
 	</insert>
-
+	
+	<!-- 내가 쓴 리뷰 조회 -->
 	<select id="select"
 		resultType="co.yedam.review.service.ReviewVO">
 		SELECT * FROM REVIEW WHERE USER_ID = #{userId}
 	</select>
 
+	<!-- 내가 쓴 리뷰 삭제 -->
 	<delete id="delete" parameterType="int">
 		DELETE FROM REVIEW WHERE
 		ORDER_DETAIL_NUMBER = #{orderDetailNumber}
 	</delete>
-
+	
+	<!-- 한건 조회 -->
 	<select id="selectJustOne" parameterType="int"
 		resultType="co.yedam.review.service.ReviewVO">
 		Select * FROM REVIEW WHERE ORDER_DETAIL_NUMBER =
 		#{orderDetailNumber}
 	</select>
 
-
-
-
+	<!-- 내가 쓴 리뷰 수정 -->
 	<update id="update"
 		parameterType="co.yedam.review.service.ReviewVO">
 		UPDATE REVIEW SET REVIEW_STAR = #{reviewStar},
