@@ -295,6 +295,37 @@ font-weight: 700;
     //장바구니가 처음에 비어있다면 이렇게!
     cartListCheck()
     
+    //품절일시 버튼 클릭 x , 내용은 품절 붉은 글씨, 버튼 수량 조작
+    start()
+    function start(){
+		let arr = [];
+            menuList.forEach((item,index) => {
+              console.log(item.menuCount<1 + "이거 값은?")
+               if(item.menuCount < 1){
+             		arr.push(item.menuId)
+               } 
+            })
+            
+            
+            
+             document.querySelectorAll('.cart__list__detail').forEach((ele,index) => {
+				let step = ele.children[2].children[0].id
+              console.log(step)
+        
+
+              for(let i in arr){
+                console.log(i+"들어 있었던 값")
+                 if(i == step){
+                  console.log('이거 하나 같아요!')
+                  ele.style += ""
+                 }
+              }
+
+             }) 
+    }
+    
+    
+    
     //객체의 길이를 반환
     console.log(Object.keys(list).length)
     
