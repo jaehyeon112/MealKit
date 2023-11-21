@@ -1,7 +1,6 @@
-<%@page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
 #myContainer {
 	width: 1180px;
@@ -206,61 +205,56 @@ a {
 		</div>
 		<div class="rightCon">
 			<div class="myMain">
-				<h2>문의 내역</h2>
+				<h2>취소/반품 조회</h2>
 			</div>
-		<form action="modifyForm.do" name="modQa">
-			<input type="hidden" name="qno" value="${qno.qaNo}" class="form-control">
-	<table class="table">
-		<tr>
-			<th>글 번호</th>
-			<td class="qaNo">${qno.qaNo}</td>
-			<th>작성일자</th>
-			<td><fmt:formatDate value="${qno.qaDate}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
-		</tr>
-		<tr>
-			<th>아이디</th>
-			<td>${qno.userId}</td>
-			<th>이름</th>
-			<td>${qno.userName}</td>
-		</tr>
-		<tr>
-			<th>문의 유형</th>
-			<td>${qno.qaState}</td>
-			<th>제목</th>
-			<td colspan="3">${qno.title}</td>
-		</tr>
-		<tr>
-			<td colspan="4"><textarea rows="5" cols="40" class="form-control" readonly="readonly">${qno.qaContent}</textarea></td>
-		</tr>
-		<tr>
-			<th>이미지</th>
-			<c:choose>
-				<c:when test="${empty qno.qaImage }">
-					<td colspan="3"></td>
-				</c:when>
-				<c:otherwise>
-					<td colspan="3"><img src="image/${qno.qaImage}" width="100px" style="display: block; margin: 0px auto;"></td>
-				</c:otherwise>
-			</c:choose>
-		</tr>
-		<tr>
-			<td colspan="4" align="center">
-				<c:choose>
-					<c:when test="${!empty userId && userId == qno.userId}">
-						<input type="submit" value="수정" class="btn btn-primary"> 
-						<input type="button" value="삭제" onclick="location.href='removeQa.do?qno=${qno.qaNo}'" class="btn btn-warning"> 
-					</c:when>
-					<c:otherwise>
-						<input type="submit" value="수정" disabled> <input type="button" value="삭제" disabled> 			
-					</c:otherwise>
-				</c:choose>
-			</td>
-		</tr>
-	</table>
-	<p>
-	<a href="qaList.do">목록으로</a>
-	</p>
-	</form>
+			<div class="mainBottom">
+				<div class="myInfoWrap">
+					<div class="infoBox"></div>
+					<h3>취소/반품 목록</h3>
+					<div id="test"></div>
+					<div class="recieve_date">
+						<strong>11-16(목) 도착예정</strong>
+					</div>
+					<ul style="list-style-type: none; margin-top: 20px">
+						<li style="margin-bottom: 20px">
+							<div class="row" style="vertical-align: center">
+								<div class="col">
+									<img src="https://picsum.photos/80/80">
+								</div>
+								<div class="col-6">
+									<span style="font-size: 20px; line-height: 80px;">[냉장]어쩌구저쩌구볶음</span>
+								</div>
+								<div class="col">
+									<span style="font-size: 14px; line-height: 80px;">1개</span>
+								</div>
+								<div class="col">
+									<span
+										style="font-size: 20px; line-height: 80px;; font-weight: 700">30,000원</span>
+								</div>
+							</div>
+						</li>
+						<li style="margin-bottom: 20px">
+							<div class="row" style="vertical-align: center">
+								<div class="col">
+									<img src="https://picsum.photos/80/80">
+								</div>
+								<div class="col-6">
+									<span style="font-size: 20px; line-height: 80px;">상품명</span>
+								</div>
+								<div class="col">
+									<span style="font-size: 14px; line-height: 80px;">수량</span>
+								</div>
+								<div class="col">
+									<span
+										style="font-size: 22px; line-height: 80px;; font-weight: 700">가격</span>
+								</div>
+							</div>
+						</li>
+					</ul>
+
+
+				</div>
+			</div>
 		</div>
 	</div>
 </section>

@@ -206,61 +206,46 @@ a {
 		</div>
 		<div class="rightCon">
 			<div class="myMain">
-				<h2>문의 내역</h2>
+				<h2>1:1 문의 내역</h2>
 			</div>
-		<form action="modifyForm.do" name="modQa">
-			<input type="hidden" name="qno" value="${qno.qaNo}" class="form-control">
-	<table class="table">
-		<tr>
-			<th>글 번호</th>
-			<td class="qaNo">${qno.qaNo}</td>
-			<th>작성일자</th>
-			<td><fmt:formatDate value="${qno.qaDate}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
-		</tr>
-		<tr>
-			<th>아이디</th>
-			<td>${qno.userId}</td>
-			<th>이름</th>
-			<td>${qno.userName}</td>
-		</tr>
-		<tr>
-			<th>문의 유형</th>
-			<td>${qno.qaState}</td>
-			<th>제목</th>
-			<td colspan="3">${qno.title}</td>
-		</tr>
-		<tr>
-			<td colspan="4"><textarea rows="5" cols="40" class="form-control" readonly="readonly">${qno.qaContent}</textarea></td>
-		</tr>
-		<tr>
-			<th>이미지</th>
-			<c:choose>
-				<c:when test="${empty qno.qaImage }">
-					<td colspan="3"></td>
-				</c:when>
-				<c:otherwise>
-					<td colspan="3"><img src="image/${qno.qaImage}" width="100px" style="display: block; margin: 0px auto;"></td>
-				</c:otherwise>
-			</c:choose>
-		</tr>
-		<tr>
-			<td colspan="4" align="center">
-				<c:choose>
-					<c:when test="${!empty userId && userId == qno.userId}">
-						<input type="submit" value="수정" class="btn btn-primary"> 
-						<input type="button" value="삭제" onclick="location.href='removeQa.do?qno=${qno.qaNo}'" class="btn btn-warning"> 
-					</c:when>
-					<c:otherwise>
-						<input type="submit" value="수정" disabled> <input type="button" value="삭제" disabled> 			
-					</c:otherwise>
-				</c:choose>
-			</td>
-		</tr>
-	</table>
-	<p>
-	<a href="qaList.do">목록으로</a>
-	</p>
-	</form>
+			
+			<h4>1:1문의 목록</h4>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>문의 유형</th>
+						<th>글 번호</th>
+						<th>제목</th>
+						<th>아이디</th>
+						<th>이름</th>
+						<th>작성일</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${list }" var="vo">
+						<tr>
+							<td>${vo.qaState }</td>
+							<td>${vo.qaNo }</td>
+							<c:choose>
+							<c:when test="${userId == 'admin'}">
+							<td><a href="getQa.do?qaNo=${vo.qaNo }">${vo.title }</a></td>
+							</c:when>
+							<c:otherwise>
+							<td>${vo.title }</td>
+							</c:otherwise>
+							</c:choose>
+							<td>${vo.userId }</td>
+							<td>${vo.userName }</td>
+							<td><fmt:formatDate value="${vo.qaDate}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
+							
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+			<p>
+				<a href="qa.do">등록화면</a>
+			</p>
 		</div>
 	</div>
 </section>
+

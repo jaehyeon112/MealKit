@@ -126,20 +126,12 @@ a {
 				<dt>나의 주문정보</dt>
 				<dd>
 					<ul class="menuList">
-						<li id="leftMenu"><a href="#">주문/배송 조회</a></li>
-						<li id="leftMenu"><a href="#">취소/반품 조회</a></li>
+						<li id="leftMenu"><a href="delivery.do">주문/배송 조회</a></li>
+						<li id="leftMenu"><a href="cancel.do">취소/반품 조회</a></li>
 					</ul>
 				</dd>
 			</dl>
-			<dl class="myMenu">
-				<dt>나의 혜택</dt>
-				<dd>
-					<ul class="menuList">
-						<li id="leftMenu"><a href="#">포인트</a></li>
-						<li id="leftMenu"><a href="#">회원 등급</a></li>
-					</ul>
-				</dd>
-			</dl>
+			
 			<dl class="myMenu">
 				<dt>나의 활동</dt>
 				<dd>
@@ -163,6 +155,7 @@ a {
 				<dt>관리자페이지</dt>
 				<dd>
 					<ul class="addMenu">
+						<li id="leftaddMenu"><a href="qaListAll.do">문의내역</a></li>
 						<li id="leftaddMenu"><a href="addForm.do">상품등록</a></li>
 						<li id="leftaddMenuList"><a href="menuListForm.do">상품리스트</a></li>
 					</ul>

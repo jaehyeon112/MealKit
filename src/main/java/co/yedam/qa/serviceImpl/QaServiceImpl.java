@@ -26,11 +26,15 @@ public class QaServiceImpl implements QaService{
 		return mapper.select(qaNo);
 	}
 	@Override
-	public List<QaVO> qaList() {
-		return mapper.selectList();
+	public List<QaVO> qaList(String userId) {
+		return mapper.selectList(userId);
 	}
 	@Override
 	public boolean removeQa(int qaNo) {
 		return mapper.delete(qaNo) == 1;
+	}
+	@Override
+	public List<QaVO> qaListAll() {
+		return mapper.selectListAll();
 	}
 }

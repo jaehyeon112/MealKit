@@ -165,20 +165,12 @@ a {
 				<dt>나의 주문정보</dt>
 				<dd>
 					<ul class="menuList">
-						<li id="leftMenu"><a href="#">주문/배송 조회</a></li>
-						<li id="leftMenu"><a href="#">취소/반품 조회</a></li>
+						<li id="leftMenu"><a href="delivery.do">주문/배송 조회</a></li>
+						<li id="leftMenu"><a href="cancel.do">취소/반품 조회</a></li>
 					</ul>
 				</dd>
 			</dl>
-			<dl class="myMenu">
-				<dt>나의 혜택</dt>
-				<dd>
-					<ul class="menuList">
-						<li id="leftMenu"><a href="#">포인트</a></li>
-						<li id="leftMenu"><a href="#">회원 등급</a></li>
-					</ul>
-				</dd>
-			</dl>
+			
 			<dl class="myMenu">
 				<dt>나의 활동</dt>
 				<dd>
@@ -241,7 +233,14 @@ a {
 						<tr>
 							<td>${vo.qaState }</td>
 							<td>${vo.qaNo }</td>
+							<c:choose>
+							<c:when test="${userId == vo.userId || userId == 'admin' }">
 							<td><a href="getQa.do?qaNo=${vo.qaNo }">${vo.title }</a></td>
+							</c:when>
+							<c:otherwise>
+							<td>${vo.title }</td>
+							</c:otherwise>
+							</c:choose>
 							<td>${vo.userId }</td>
 							<td>${vo.userName }</td>
 							<td><fmt:formatDate value="${vo.qaDate}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
