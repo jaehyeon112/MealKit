@@ -18,7 +18,9 @@ import co.yedam.cart.serviceImpl.CartServiceImpl;
 import co.yedam.common.command;
 import co.yedam.menu.service.MenuService;
 import co.yedam.menu.serviceImpl.MenuServiceImpl;
+import co.yedam.order.service.OrderDetailVO;
 import co.yedam.order.service.OrderService;
+import co.yedam.order.service.OrdersVO;
 import co.yedam.order.serviceImpl.OrderServiceImpl;
 
 public class finishOrderControl implements command {
@@ -29,6 +31,8 @@ public class finishOrderControl implements command {
 		CartService cartSvc = new CartServiceImpl();
 		MenuService menuSvc = new MenuServiceImpl();
 		
+		
+		String orderNumber = req.getParameter("orderNumber");
 		
 		HttpSession session = req.getSession();
 		String userId = (String) session.getAttribute("userId");
@@ -93,14 +97,31 @@ public class finishOrderControl implements command {
 		
 		//메뉴 테이블에서 변경해야할것 : 수량 - 구매 수량// 규현씨가 맡음 : 만약 구매 수량이 0이면 장바구니에도 못 담고, 구매안되야함.
 		
+		//1. 메뉴 수량 업데이트 , 2. 구매목록 장바구니에서 삭제, 3. 구매한 내역 테이블로..
 		for(CartVO i : vo2) {
-			OrderSvc.updateMenuInfo(i.getMenuId(), i.getCartCount());			
-
+			OrderSvc.updateMenuInfo(i.getMenuId(), i.getCartCount());
+			OrderSvc.deleteCartNum(i.getCartNum());
+			OrderDetailVO deVO = new OrderDetailVO();
+			System.out.println(orderNumber);
+			deVO.setOrderNumber(orderNumber);
+			deVO.setUserId(userId);
+			deVO.setMenuCount(i.getCartCount());
+			deVO.setMenuId(i.getMenuId());
+			OrderSvc.insertDetail(deVO);
 		}
 		
 		
 		//나는 장바구니.jsp에 들어가면 장바구니 테이블에서 만약 수량이 0이면 체크박스의 버튼을 disable => 위에 빨간색 글씨로 품절~ 
+		//일단 패스!
 		
+		
+		OrdersVO ordersVO = new OrdersVO();
+		ordersVO.setOrderNumber(orderNumber);
+		ordersVO.setTotalPay(total);
+		ordersVO.setGainPoint(Integer.parseInt(getPoint));
+		ordersVO.setUserId(userId);
+		
+		OrderSvc.insertOrder(ordersVO);
 		// 장바구니테이블에 구매한 물건은 지우고 =>  구매 상세 테이블, 구매 테이블을 만들자
 		
 		

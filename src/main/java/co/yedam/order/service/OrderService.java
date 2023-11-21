@@ -10,4 +10,7 @@ public interface OrderService {
 	public String getPoint(Map<String, Object> map);
 	public int updateUserInfo(Map<String, Object> map);
 	public int updateMenuInfo(String menuId, int menuCount);
+	public int deleteCartNum(int cartNum);
+	public int insertOrder(OrdersVO vo);
+	public int insertDetail(OrderDetailVO vo);
 }

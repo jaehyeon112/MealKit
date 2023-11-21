@@ -48,6 +48,7 @@ public class ReviewServiceImpl implements ReviewService {
 	public ReviewVO selectOne(int orderDetailNumber) {
 		return mapper.selectJustOne(orderDetailNumber);
 	}
+
 	
 		
 

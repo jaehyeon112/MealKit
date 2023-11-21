@@ -262,8 +262,14 @@ ${map}
 		}
 
 		buy.append(pointInput);
+		
+		
+		let input3 = document.createElement('input');
+		input3.type= 'hidden'
+		input3.name= "orderNumber"
+		input3.value = payNum;
+		buy.append(input3);
 
-		buy.submit();
 
 	}
 	
@@ -281,7 +287,6 @@ ${map}
 	userList = JSON.parse(userList);
 	payList = JSON.parse(payList);
 
-	console.log(payList)
 
 	let date = new Date();
 	let day = ['일','월','화','수','목','금','토']

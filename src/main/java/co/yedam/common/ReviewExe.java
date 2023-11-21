@@ -1,11 +1,8 @@
 package co.yedam.common;
 
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 
 import co.yedam.review.mapper.ReviewMapper;
-import co.yedam.review.service.ReviewVO;
 
 
 

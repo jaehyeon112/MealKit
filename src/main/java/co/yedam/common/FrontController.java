@@ -45,8 +45,10 @@ import co.yedam.review.web.GetMyReviewControl;
 import co.yedam.review.web.GoAddReviewControl;
 import co.yedam.review.web.GoReviewControl;
 
+
 import co.yedam.review.web.ModMyReviewControl;
 import co.yedam.review.web.ModMyReviewFormControl;
+
 import co.yedam.users.web.DelUserControl;
 import co.yedam.users.web.EditUserControl;
 import co.yedam.users.web.GoDelUserFormControl;
@@ -101,8 +103,10 @@ public class FrontController extends HttpServlet {
 		map.put("/addMyReview.do", new AddMyReviewControl()); // 리뷰작성페이지
 		map.put("/getMyReview.do", new GetMyReviewControl()); // 내가 작성한 리뷰 확인.
 		map.put("/deleteMyReview.do", new DeleteMyReviewControl()); // 내가 작성한 리뷰 삭제.
+
 		map.put("/modMyReviewForm.do", new ModMyReviewFormControl()); // 리뷰 수정 폼으로 이동.
 		map.put("/modMyReview.do", new ModMyReviewControl());
+
 		map.put("/addMenu.do", new GoAddMenuControl());
 		map.put("/addForm.do", new GoAddFormControl());
 
