@@ -289,6 +289,7 @@ font-weight: 700;
     let menuList = '${menuList}'
     // JSON 파싱
     list = JSON.parse(list);
+    console.log(list)
     menuList = JSON.parse(menuList);
     
     //장바구니가 처음에 비어있다면 이렇게!
@@ -494,8 +495,17 @@ font-weight: 700;
             alert('장바구니에서 선택이 되어있지 않습니다.')
             return;
           }
-        	if(menuList[index].menuCount <= ele.parentNode.children[1].value){
-        		alert('구매할 수 있는 최대 수량은 '+menuList[index].menuCount+'개 입니다.')
+        	let compare = ele.parentNode.parentNode.children[2].children[0].id
+        	
+        	let quan = 0;
+        	menuList.forEach(ele => {
+        		 if(ele.menuId==compare){
+        			quan = ele.menuCount
+        		} 
+        	})
+        	
+        	if(quan <= ele.parentNode.children[1].value){
+        		alert('구매할 수 있는 최대 수량은 '+quan+'개 입니다.')
         		return;
         	}else{
         	

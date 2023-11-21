@@ -64,6 +64,7 @@ public class FrontController extends HttpServlet {
 		map.put("/review.do", new GoReviewControl()); // 전체 리뷰 조회 페이지
 		map.put("/main.do", new GoMainControl());
 		map.put("/cart.do", new GoCartControl());
+		map.put("/bottom.do", new footerPath());
 		map.put("/updatecart.do", new cartListControl());
 		map.put("/deleteCartList.do", new DelCartListControl());
 		map.put("/order.do", new GoOrderControl());

@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>   
+    
+    
+    
+    
+    
 <footer class="bottom bg-black p-3">
 		<!-- Grid container -->
 		<div class="container">
@@ -10,7 +15,7 @@
 					<!-- Grid column -->
 					<div class="col-md-2">
 						<h6 class="text-uppercase font-weight-bold">
-							<a href="#!" class="text-white">이용약관</a>
+							<a href="bottom.do?id=1" class="text-white">이용약관</a>
 						</h6>
 					</div>
 					<!-- Grid column -->
@@ -21,23 +26,7 @@
 							<a href="#!" class="text-white">팀소개</a>
 						</h6>
 					</div>
-					<!-- Grid column -->
 
-					<!-- Grid column -->
-					<div class="col-md-2">
-						<h6 class="text-uppercase font-weight-bold">
-							<a href="#!" class="text-white">추가할까?</a>
-						</h6>
-					</div>
-					<!-- Grid column -->
-
-					<!-- Grid column -->
-					<div class="col-md-2">
-						<h6 class="text-uppercase font-weight-bold">
-							<a href="#!" class="text-white">Contact</a>
-						</h6>
-					</div>
-					<!-- Grid column -->
 				</div>
 				<!-- Grid row-->
 			</section>
