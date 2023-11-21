@@ -20,6 +20,13 @@ import co.yedam.menu.web.GoDeleteMenuFormControl;
 import co.yedam.menu.web.GoMenuListFormControl;
 import co.yedam.order.web.GoOrderControl;
 import co.yedam.order.web.finishOrderControl;
+import co.yedam.qa.web.AddQaControl;
+import co.yedam.qa.web.GoQaFormControl;
+import co.yedam.qa.web.GoQaListControl;
+import co.yedam.qa.web.ModifyFormControl;
+import co.yedam.qa.web.ModifyQaControl;
+import co.yedam.qa.web.RemoveQaControl;
+import co.yedam.qa.web.getQaControl;
 import co.yedam.menu.web.GoUpdateMenuFormControl;
 import co.yedam.join.GoJoinFormControl;
 import co.yedam.join.JoinControl;
@@ -28,7 +35,6 @@ import co.yedam.login.GoLoginFormControl;
 import co.yedam.login.LoginControl;
 import co.yedam.login.LogoutControl;
 import co.yedam.menu.web.AddCartList;
-
 import co.yedam.review.web.AddMyReviewControl;
 import co.yedam.review.web.DeleteMyReviewControl;
 import co.yedam.review.web.GetMyReviewControl;
@@ -73,7 +79,13 @@ public class FrontController extends HttpServlet {
 		map.put("/delUser.do", new DelUserControl());
 		map.put("/delSuccess.do", new GoDelUserSuccessControl());
 		
-		//map.put("/Qa.do", new GoQaFormControl());
+		map.put("/qa.do", new GoQaFormControl());
+		map.put("/qaList.do", new GoQaListControl());
+		map.put("/addQa.do", new AddQaControl());
+		map.put("/getQa.do", new getQaControl());
+		map.put("/removeQa.do", new RemoveQaControl());
+		map.put("/modifyForm.do", new ModifyFormControl());
+		map.put("/modifyQa.do", new ModifyQaControl());
 		
 		map.put("/menupage.do", new GoMenuPageControl());
 		map.put("/addReview.do", new GoAddReviewControl()); // 마이페이지 -> 리뷰작성, 조회페이지로 이동

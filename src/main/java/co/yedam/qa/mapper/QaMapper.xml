@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "path/mybatis-3-mapper.dtd">
+<mapper namespace="co.yedam.qa.mapper.QaMapper">
+<select id="selectList" resultType="co.yedam.qa.service.QaVO">
+	SELECT * FROM QA ORDER BY QA_NO
+</select>
+<select id="select" resultType="co.yedam.qa.service.QaVO">
+	SELECT * FROM QA WHERE QA_NO = #{qaNo}
+</select>
+<insert id="insert" parameterType="co.yedam.qa.service.QaVO">
+	INSERT INTO QA (user_id, qa_no, qa_content, user_name, qa_image, qa_state, title) VALUES (#{userId}, SEQ_QA.NEXTVAL, #{qaContent}, #{userName}, #{qaImage}, #{qaState}, #{title})
+</insert>
+<delete id="delete" parameterType="int">
+	DELETE FROM QA WHERE QA_NO = #{qaNo}
+</delete>
+<update id="update" parameterType="co.yedam.qa.service.QaVO">
+	UPDATE QA SET title = #{title}, qa_content =#{qaContent}, qa_image = NVL(#{qaImage}, qa_image) WHERE qa_no =#{qaNo}
+</update>
+</mapper>
