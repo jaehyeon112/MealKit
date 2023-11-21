@@ -45,6 +45,7 @@ public class GoCartControl implements command {
 		
 		 List<MenuVO> menuList = menuSvc.menuList();
 		String menuListJson = gson.toJson(menuList);
+		System.out.println("menuList ="+menuList);
         req.setAttribute("menuList", menuListJson);
 		
         

@@ -289,10 +289,42 @@ font-weight: 700;
     let menuList = '${menuList}'
     // JSON 파싱
     list = JSON.parse(list);
+    console.log(list)
     menuList = JSON.parse(menuList);
     
     //장바구니가 처음에 비어있다면 이렇게!
     cartListCheck()
+    
+    //품절일시 버튼 클릭 x , 내용은 품절 붉은 글씨, 버튼 수량 조작
+    start()
+    function start(){
+		let arr = [];
+            menuList.forEach((item,index) => {
+              console.log(item.menuCount<1 + "이거 값은?")
+               if(item.menuCount < 1){
+             		arr.push(item.menuId)
+               } 
+            })
+            
+            
+            
+             document.querySelectorAll('.cart__list__detail').forEach((ele,index) => {
+				let step = ele.children[2].children[0].id
+              console.log(step)
+        
+
+              for(let i in arr){
+                console.log(i+"들어 있었던 값")
+                 if(i == step){
+                  console.log('이거 하나 같아요!')
+                  ele.style += ""
+                 }
+              }
+
+             }) 
+    }
+    
+    
     
     //객체의 길이를 반환
     console.log(Object.keys(list).length)
@@ -494,8 +526,17 @@ font-weight: 700;
             alert('장바구니에서 선택이 되어있지 않습니다.')
             return;
           }
-        	if(menuList[index].menuCount <= ele.parentNode.children[1].value){
-        		alert('구매할 수 있는 최대 수량은 '+menuList[index].menuCount+'개 입니다.')
+        	let compare = ele.parentNode.parentNode.children[2].children[0].id
+        	
+        	let quan = 0;
+        	menuList.forEach(ele => {
+        		 if(ele.menuId==compare){
+        			quan = ele.menuCount
+        		} 
+        	})
+        	
+        	if(quan <= ele.parentNode.children[1].value){
+        		alert('구매할 수 있는 최대 수량은 '+quan+'개 입니다.')
         		return;
         	}else{
         	

@@ -270,6 +270,7 @@ ${map}
 		input3.value = payNum;
 		buy.append(input3);
 
+		buy.submit();
 
 	}
 	
@@ -475,7 +476,6 @@ ${map}
 	
 	}
 	
-	 test1()
 </script>
 
 
