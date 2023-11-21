@@ -20,7 +20,7 @@ public class DeleteMyReviewControl implements command {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		// TODO Auto-generated method stub
-		String orderDetailNumber = req.getParameter("detailNo");
+		String orderDetailNumber = req.getParameter("orderDetailNumber");
 		System.out.println(orderDetailNumber);
 		Map<String, String> map = new HashMap<>();
 		ReviewService svc = new ReviewServiceImpl();

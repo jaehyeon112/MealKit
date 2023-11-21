@@ -215,7 +215,8 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
       <div class="#!">
         <!-- 상품리스트 -->
         <div class="prd_list row">
-          <form action="ModMyReview.do"  method="post"
+        
+          <form action="modMyReview.do"  method="post"
             id="formReview"
             enctype="multipart/form-data">
           <ul>
@@ -227,15 +228,16 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
                     <!-- 190510_수정 및 케이스 추가 -->
 
                     <!-- //190510_수정 및 케이스 추가 -->
-                    <span class="name">${menuName}</span>
+                    <input type="hidden" name="menuName" value="${vo.menuName }"/>
+                    <span class="name">${vo.menuName}</span>
                     <!-- 개발 요청 사항 : 검색된 단어에 <strong></strong>태그 추가 -->
                   </p>
                   <div class="top_wrap--right">
                     <!-- 20220609 div 추가 -->
 					
-						<span><input name="orderDetailNumber" value="${orderDetailNumber }" type="hidden"></input>주문상세번호: ${orderDetailNumber } |</span>													
+						<span><input name="orderDetailNumber" value="${vo.orderDetailNumber }" type="hidden"></input>주문상세번호: ${vo.orderDetailNumber } |</span>													
                     <time datetime="2023-11-15"
-                      ><fmt:formatDate value="${reviewDate}"
+                      ><fmt:formatDate value="${vo.reviewDate}"
 													pattern="yyyy.MM.dd" /></time>
                     <!-- 데이터 없을 때 노출 -->
                     <!-- <li class="no_data"><span class="ico"></span> <strong>작성
@@ -264,8 +266,9 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
                   </div>
                   <!-- 190610_수정 -->
                   <div class="user_id">
-                    <a
-                      ><span> | ${userId }</span></a>
+                    <a 
+                      ><span> | ${vo.userId }</span></a>
+                      <input value="${vo.userId }" name="userId" type="hidden"/>
                   </div>
                   <!-- //190610_수정 -->
 
@@ -274,23 +277,35 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
                   </div> -->
                   <!-- 개발 요청 사항 : 첫구매시에는 노출되지 않음 -->
                 </div>
+               
                 <input
                     type="text"
                     name="reviewContent"
                     class="text"
                     placeholder="리뷰를 작성해주세요"
                   />
+                  <input style="padding-top: 10px"
+                      type="file"
+                      name="reviewImage"
+                      accept="image/*"
+                      value="${vo.reviewImage }"
+         
+                    />
                 <div class="buttons">
-                <input type="button" class="button" value="수정완료">
+                 
+                <input type="submit" class="button" value="수정완료">
                 
                 </div>
+                
               </div>
             </li>
            
           </ul>
           </form>
+        
         </div>
       </div>
     </div>
   </div>
 </div>
+

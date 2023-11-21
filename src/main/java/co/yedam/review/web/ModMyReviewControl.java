@@ -19,31 +19,31 @@ public class ModMyReviewControl implements command {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		// TODO Auto-generated method stub
-		HttpSession session = req.getSession();
 		ReviewVO vo = new ReviewVO();
 		String savaDir = req.getServletContext().getRealPath("image");
 		int size = 5 * 1024 * 1024;
 		try {
 			MultipartRequest mr = new MultipartRequest(req, savaDir, size, "UTF-8", new DefaultFileRenamePolicy());
-		
-		String userId = (String) session.getAttribute("userId");
+		String menuName = mr.getParameter("menuName");
+		String userId = mr.getParameter("userId");
 		int orderDetailNumber = Integer.parseInt(mr.getParameter("orderDetailNumber"));
 		int reviewStar = Integer.parseInt(mr.getParameter("reviewStar"));
 		String reviewImage = mr.getParameter("reviewImage");
 		String reviewContent = mr.getParameter("reviewContent");
-		
+		vo.setUserId(userId);
 		vo.setReviewStar(reviewStar);
 		vo.setReviewImage(reviewImage);
 		vo.setReviewContent(reviewContent);
 		vo.setOrderDetailNumber(orderDetailNumber);
-		if(userId==null) {
-			session.setAttribute("userId", "guest");
-		}
+		vo.setMenuName(menuName);
+		
 		
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println(vo);
+		
 		ReviewService svc = new ReviewServiceImpl();
 		if(svc.updateReview(vo)) {
 			

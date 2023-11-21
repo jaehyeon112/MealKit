@@ -198,6 +198,7 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
     line-height: 16px;
   }
 </style>
+
 <div id="content" class="my_wrap">
   <div class="right_con">
     <div class="order_view my_activity">
@@ -272,7 +273,7 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
                   <pre>${vo.reviewContent }</pre>
                 </div>
                 <div class="buttons">
-                <input type="button" class="button" value="리뷰수정" onclick="location.href='modMyReviewForm.do?orderDetailNumber=${vo.orderDetailNumber }'">
+                <input type="button" class="button" value="리뷰수정" onclick="location.href='modMyReviewForm.do?orderDetailNumber=${vo.orderDetailNumber}'">
                 <input type="button" class="button"  value="리뷰삭제" onclick="location.href='deleteMyReview.do?orderDetailNumber=${vo.orderDetailNumber }'">
                 </div>
               </div>
