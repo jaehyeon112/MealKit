@@ -145,7 +145,7 @@ a {
 				<dd>
 					<ul class="menuList">
 						<li id="leftMenu"><a href="addReview.do">작성 리뷰 조회</a></li>
-						<li id="leftMenu"><a href="Qa.do">1:1 문의</a></li>
+						<li id="leftMenu"><a href="qa.do">1:1 문의</a></li>
 					</ul>
 				</dd>
 			</dl>

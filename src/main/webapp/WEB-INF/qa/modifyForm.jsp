@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <style>
 #myContainer {
 	width: 1180px;
@@ -213,64 +214,56 @@ a {
 		</div>
 		<div class="rightCon">
 			<div class="myMain">
-				<h2>1:1 문의</h2>
+				<h2>문의 수정화면</h2>
 			</div>
-			<div class="tabMenu">
-				<ul id="ulTabMenu">
-					<li id="liTabMenu"><a href="qa.do" id="liTabMenuA">1:1 문의 작성</a></li>
-					<li id="liTabMenu"><a href="qaList.do" id="liTabMenuB" style="font-size:24px">1:1 문의 내역</a></li>
-				</ul>
-			</div>
-
-			<h4>문의유형</h4>
-			<form action="addQa.do" method="post" enctype="multipart/form-data">
-			<select class="form-select" aria-label="Default select example" onchange="selectBoxChange(this.value);">
-				<option selected>선택</option>
-				<option value="주문/결제">주문/결제</option>
-				<option value="취소/반품">취소/반품</option>
-				<option value="메뉴/상품">메뉴/상품</option>
-				<option value="회원/포인트">회원/포인트</option>
-				<option value="사이트이용">사이트이용</option>
-				<option value="기타">기타</option>
-				<option value="신고">신고</option>
-			</select>
-			<input type="text" id = "changeInput" name= "qaState">
-		<table class="table">
-			<tr>
-				<th>제목</th>
-				<td><input type="text" name="title" class="form-control"></td>
-			</tr>
-			<tr>
-				<th>아이디</th>
-				<td><input type="text" name="userId"class="form-control" readonly value="${userId }"></td>
-			</tr>
-			<tr>
-				<th>이름</th>
-				<td><input type="text" name="userName"class="form-control" readonly value="${userName }"></td>
-			</tr>
-			<tr>
-				<td colspan="2"><textarea cols="40" rows="6" name="qaContent" class="form-control"></textarea></td>
-			</tr>
-			<tr>
+		<form action="modifyQa.do" name="modQa" method="post">
+			<input type="hidden" name="qno" value="${vo.qaNo}" class="form-control">
+	<table class="table">
+		<tr>
+			<th>글 번호</th>
+			<td class="qaNo">${vo.qaNo}</td>
+			<th>작성일자</th>
+			<td><fmt:formatDate value="${vo.qaDate}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
+		</tr>
+		<tr>
+			<th>아이디</th>
+			<td>${vo.userId}</td>
+			<th>이름</th>
+			<td>${vo.userName}</td>
+		</tr>
+		<tr>
+			<th>문의 유형</th>
+			<td>${vo.qaState}</td>
+			<th>제목</th>
+			<td colspan="3"><input type="text" name="title" value="${vo.title}" class="form-control"></td>
+		</tr>
+		<tr>
+			<td colspan="4"><textarea cols="40" rows="5" name="qaContent" class="form-control">${vo.qaContent}</textarea></td>
+		</tr>
+		<tr>
 				<th>파일명</th>
 				<td><input type="file" name="qaImage" class="form-control"></td>
 			</tr>
-			<tr>
-				<td colspan="2" style="text-align: center">
-				<input type="submit" value="저장" class="btn btn-primary">
-				<input type="reset" value="초기화" class="btn btn-warning">
-				</td>
-			</tr>
-		</table>
+		<tr>
+			<td colspan="4" align="center">
+				<c:choose>
+					<c:when test="${!empty userId && userId == vo.userId}">
+						<input type="submit" value="수정" class="btn btn-primary"> 
+						<input type="button" value="삭제" onclick="location.href='removeQa.do?qno=${vo.qaNo}'" class="btn btn-warning"> 
+					</c:when>
+					<c:otherwise>
+						<input type="submit" value="수정" disabled> <input type="button" value="삭제" disabled> 			
+					</c:otherwise>
+				</c:choose>
+			</td>
+		</tr>
+	</table>
+	<p>
+	<a href="qaList.do">목록으로</a>
+	</p>
 	</form>
 		</div>
 	</div>
 </section>
-<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+	
 
-<script>
-var selectBoxChange = function (value) {
-	console.log("값변경테스트: " + value);
-	$("#changeInput").val(value);
-}
-</script>
