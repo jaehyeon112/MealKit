@@ -1,25 +1,15 @@
 package co.yedam.common;
 
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 
-import co.yedam.cart.mapper.CartMapper;
-import co.yedam.cart.service.CartMenuJoinVO;
-import co.yedam.cart.service.CartService;
-import co.yedam.cart.service.CartVO;
 import co.yedam.menu.mapper.MenuMapper;
-import co.yedam.cart.serviceImpl.CartServiceImpl;
-import co.yedam.menu.service.MenuService;
 import co.yedam.menu.service.MenuVO;
-import co.yedam.menu.serviceImpl.MenuServiceImpl;
-import co.yedam.users.service.UserService;
-import co.yedam.users.service.UserVO;
-import co.yedam.users.serviceImpl.UserServiceImpl;
 
 public class MainExe {
 
 	public static void main(String[] args) {
+		SqlSession sqlSession = DataSourceMybatis.getInstance().openSession(true);
+		MenuMapper mapper = sqlSession.getMapper(MenuMapper.class);
 //		MenuService svc = new MenuServiceImpl();
 //		MenuVO vo = svc.addCart("P001");
 //		System.out.println(vo);
@@ -31,11 +21,28 @@ public class MainExe {
 //		vo2.setMenuPrice(vo.getMenuPrice());
 //		System.out.println(vo2);
 		
-		SqlSession se = DataSourceMybatis.getInstance().openSession(true);
-		MenuMapper mapper = se.getMapper(MenuMapper.class);
-		System.out.println(mapper.deleteMenu("1"));
-		CartService svc = new CartServiceImpl();
-		CartVO vo = svc.cartOne(53);
-		System.out.println(vo);
-	}
+//		SqlSession se = DataSourceMybatis.getInstance().openSession(true);
+//		MenuMapper mapper = se.getMapper(MenuMapper.class);
+//		System.out.println(mapper.deleteMenu("1"));
+//		CartService svc = new CartServiceImpl();
+//		CartVO vo = svc.cartOne(53);
+//		System.out.println(vo);
+		
+		MenuVO vo = new MenuVO();
+		vo.setMenuId("2");
+		vo.setMenuName("국밥");
+		vo.setMenuNameInfo("할매국밥");
+		vo.setMenuImage1("1.jpg");
+		vo.setMenuImage2("2.jpg");
+		vo.setMenuImage3("3.jpg");
+		vo.setMenuKind("1단계");
+		vo.setMenuPrice(10000);
+		vo.setMenuPriceOff(5000);
+		vo.setMenuContent("20년 전통할매국밥");
+		vo.setMenuCount(10);
+		vo.setMenuPoint(100);
+		vo.setMenuTime(10);
+		vo.setMenuMany(10);
+		mapper.updateMenu(vo);
+}
 }

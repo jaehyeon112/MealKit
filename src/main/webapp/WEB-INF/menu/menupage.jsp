@@ -78,23 +78,27 @@
 								d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM4.053 4.276a.5.5 0 0 1 .67-.223l2 1a.5.5 0 0 1 .166.76c.071.206.111.44.111.687C7 7.328 6.552 8 6 8s-1-.672-1-1.5c0-.408.109-.778.285-1.049l-1.009-.504a.5.5 0 0 1-.223-.67zm.232 8.157a.5.5 0 0 1-.183-.683A4.498 4.498 0 0 1 8 9.5a4.5 4.5 0 0 1 3.898 2.25.5.5 0 1 1-.866.5A3.498 3.498 0 0 0 8 10.5a3.498 3.498 0 0 0-3.032 1.75.5.5 0 0 1-.683.183zM10 8c-.552 0-1-.672-1-1.5 0-.247.04-.48.11-.686a.502.502 0 0 1 .166-.761l2-1a.5.5 0 1 1 .448.894l-1.009.504c.176.27.285.64.285 1.049 0 .828-.448 1.5-1 1.5z" />
 						</svg>
 					</p>
+
+					
 					<div class="container text-center">
 						<div class="row">
 							<div class="col-6 col-sm-3">
-								<h4>판매가</h4>
+								<h4><del>판매가</del></h4>
 							</div>
 							<div class="col-6 col-sm-3">
-								<del>${menuId.menuPrice}원</del>
+								<h3><del>${menuId.menuPrice}원</del></h3>
 							</div>
+
+							
 
 							<!-- Force next columns to break to new line -->
 							<div class="w-100"></div>
 
 							<div class="col-6 col-sm-3">
-								<h4>할인가</h4>
+								<h2 style="color: crimson;">할인가</h2>
 							</div>
 							<div class="col-6 col-sm-3">
-								<b>${menuId.menuPriceOff}원</b>
+								<h2><b>${menuId.menuPriceOff}원</b></h2>
 							</div>
 						</div>
 					</div>
@@ -102,7 +106,7 @@
 					<div class="container text-center">
 						<div class="row">
 							<div class="col-6 col-sm-3">포인트 적립</div>
-							<div class="col-6 col-sm-5">CJ ONE 포인트 0.2% 적립</div>
+							<div class="col-6 col-sm-5">${menuId.menuPoint} 포인트 적립</div>
 						</div>
 					</div>
 					<hr>
@@ -123,7 +127,7 @@
 							<div class="w-100"></div>
 
 							<div class="col-6 col-sm-3">배송비</div>
-							<div class="col-6 col-sm-5">3000원 4만원 이상 무료배송</div>
+							<div class="col-6 col-sm-5">4000원 4만원 이상 무료배송</div>
 						</div>
 					</div>
 					<hr style="border: double 5px">
@@ -153,7 +157,6 @@
 							<button
 								style="background-color: #BDD61A; width: 250px; border: 1px solid #BDD61A; height: 64px;"
 								class="btn btn-primary" type="button">장바구니</button> 
-								<a href="deleteMenuForm.do"><button>삭제</button></a>
 						</div>
 					</div>
 				</div>

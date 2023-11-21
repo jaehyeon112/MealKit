@@ -38,6 +38,11 @@ public class AddCartList implements command {
 		String menuId = req.getParameter("menuId");
 		
 		MenuService svc = new MenuServiceImpl();
+		
+		//
+		//
+		
+		
 		MenuVO vo = svc.addCart(menuId);
 		System.out.println(vo);
 		CartVO vo2 = new CartVO();
@@ -79,6 +84,8 @@ public class AddCartList implements command {
 		}else {
 			map.put("number",cartAmounts);
 		}
+		
+		map.put("count", vo.getMenuCount());
 
 		try {
 			resp.getWriter().print(gson.toJson(map));
