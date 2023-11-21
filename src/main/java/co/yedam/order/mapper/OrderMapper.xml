@@ -25,7 +25,6 @@
 
 	<!-- 유저 업데이트하는 쿼리 -->
 	<update id="UpdateUserinfoAfterdecideOrder" parameterType="hashmap">
-		
 		update users set user_price = user_price + #{totalPay} , user_grade = 
 		 case 
   		  when user_price + #{totalPay} > 200000 then 'gold'
@@ -37,11 +36,26 @@
 	</update>
 
 	<!-- 물건 수량 업데이트! -->
-	<update id="menuUpdate" >
+	<update id="menuUpdate">
 		update menu set menu_count = menu_count - #{menuCount} 
 		where menu_id = #{menuId}
 	</update>
 
+	<delete id="deleteCart" parameterType="int">
+	delete from cart where cart_num = #{cartNum}
+	</delete>
+	
+	<insert id="insertOrder" parameterType="co.yedam.order.service.OrdersVO">
+	insert into orders values(#{orderNumber}, #{userId}, SYSDATE ,#{totalPay}, #{gainPoint}, '배송 준비중')
+	</insert>
+
+	<insert id="insertOrderDetail" parameterType="co.yedam.order.service.OrderDetailVO">
+		<selectKey keyProperty="orderDetailNumber" resultType="int" order="BEFORE">
+			SELECT orderdetail_seq.NEXTVAL as orderDetailNumber FROM DUAL
+		</selectKey>
+		insert into order_detail values(#{orderDetailNumber},#{orderNumber},SYSDATE,#{menuId},#{menuCount},#{userId} )
+	
+	</insert>
 
 </mapper> 
 
