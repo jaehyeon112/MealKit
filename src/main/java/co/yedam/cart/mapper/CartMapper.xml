@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper SYSTEM "path/mybatis-3-mapper.dtd">
 
+
 <mapper namespace="co.yedam.cart.mapper.CartMapper">
 	<!-- id = 메소드이름 resultType = 반환타입 -->
 	<select id="selectList" parameterType="String"
@@ -52,7 +53,8 @@ LEFT JOIN
     menu m ON c.menu_id = m.menu_id
 WHERE
     c.user_id = #{userId}
-    and
+    
+     and
     c.menu_id in 
     <foreach collection="cartArr" item="cartArr" open="(" separator="," close=")">
     #{cartArr}
@@ -60,6 +62,9 @@ WHERE
 GROUP BY
     c.user_id
 	</select>
+	
+	
+	
 	
 	<select id="joinCartMenuAll" parameterType="String"
 	resultType="co.yedam.cart.service.CartMenuJoinVO">

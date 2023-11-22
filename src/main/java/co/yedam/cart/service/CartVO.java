@@ -16,4 +16,6 @@ public class CartVO {
 	private int menuPriceOff;
 	private int cartCount;
 	private String userId;
+	//재고 수량
+	private int restCount;
 }
