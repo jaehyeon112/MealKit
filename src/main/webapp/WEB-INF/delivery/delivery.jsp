@@ -189,16 +189,18 @@ a {
 					</ul>
 				</dd>
 			</dl>
-
+			<c:if test="${!empty userId && userId == 'admin' }">
 			<dl class="adminMenu">
 				<dt>관리자페이지</dt>
 				<dd>
 					<ul class="addMenu">
+						<li id="leftaddMenu"><a href="qaListAll.do">문의내역</a></li>
 						<li id="leftaddMenu"><a href="addForm.do">상품등록</a></li>
 						<li id="leftaddMenuList"><a href="menuListForm.do">상품리스트</a></li>
 					</ul>
 				</dd>
 			</dl>
+			</c:if>
 
 
 

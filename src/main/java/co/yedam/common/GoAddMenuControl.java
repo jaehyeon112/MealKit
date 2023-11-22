@@ -91,6 +91,7 @@ public class GoAddMenuControl implements command {
 				String menuPoint = mr.getParameter("menuPoint");
 				String menuTime = mr.getParameter("menuTime");
 				String menuMany = mr.getParameter("menuMany");
+				String menuTip = mr.getParameter("menuTip");
 				
 				vo.setMenuId(menuId);
 				vo.setMenuName(menuName);
@@ -106,6 +107,9 @@ public class GoAddMenuControl implements command {
 				vo.setMenuPoint(Integer.parseInt(menuPoint));
 				vo.setMenuTime(Integer.parseInt(menuTime));
 				vo.setMenuMany(Integer.parseInt(menuMany));
+				vo.setMenuTip(menuTip);
+				
+				System.out.println(vo);
 				
 			} catch (IOException e) {
 				e.printStackTrace();
