@@ -41,6 +41,9 @@ public class CartServiceImpl implements CartService{
 		CartVO vo2 = mapper.selectCartOne(cartNum);
 		return vo2;
 	}
+		
+	
+	
 	@Override
 	public CartVO cartOne(int CartNum) {
 		return mapper.selectCartOne(CartNum);

@@ -175,7 +175,6 @@
                     img.setAttribute("src", event.target.result);
                     document.querySelector("div#image_container3").appendChild(img);
                 };
-
                 reader.readAsDataURL(event.target.files[0]);
             }
         </script>

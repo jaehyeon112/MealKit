@@ -630,7 +630,6 @@
                     //값은 갯수 가져왔음.
                     if (result.count < 1) {
                         //돔으로.. 뭐 품절이라고 띄운다던가...
-
                         alert('수량이 부족합니다.')
                         return;
                     }
@@ -649,7 +648,10 @@
                 }).catch(err => {
                     console.log(err)
                 })
-            } else {}
+            } else {
+            	alert('로그인을 하세요!')
+            	
+            }
         })
     })
 </script>
