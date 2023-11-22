@@ -257,10 +257,10 @@ margin-right: 150px;
 					<tr>
 						<td colspan="4" align="center"><c:choose>
 								<c:when test="${!empty userId && userId == qno.userId}">
-									<input type="submit" value="수정" class="btn btn-primary">
+									<input type="submit" value="수정" class="btn btn-dark">
 									<input type="button" value="삭제"
 										onclick="location.href='removeQa.do?qno=${qno.qaNo}'"
-										class="btn btn-warning">
+										class="btn btn-light">
 								</c:when>
 								<c:otherwise>
 									<input type="submit" value="수정" disabled>
