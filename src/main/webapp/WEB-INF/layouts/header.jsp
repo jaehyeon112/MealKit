@@ -10,7 +10,7 @@
 
 <ul class="nav justify-content-end bg-black" id="nav">
     <c:choose>
-        <c:when test="${userId == 'guest'}">
+        <c:when test="${empty userId}">
             <li class="nav-item"><a class="nav-link" href="join.do">회원가입</a></li>
         </c:when>
         <c:otherwise>
@@ -18,7 +18,7 @@
         </c:otherwise>
     </c:choose>
     <c:choose>
-        <c:when test="${userId == 'guest'}">
+        <c:when test="${empty userId}">
             <li class="nav-item"><a class="nav-link" href="login.do">로그인</a></li>
         </c:when>
         <c:otherwise>
@@ -44,7 +44,7 @@
                 <li class="nav-item"><a class="nav-link" href="menu.do"> 메뉴 </a></li>
                 <li class="nav-item"><a class="nav-link" href="review.do">리뷰 </a></li>
                 <c:choose>
-                    <c:when test="${userId == 'guest' }">
+                    <c:when test="${empty userId}">
                         <li class="nav-item"><a class="nav-link" href="login.do">마이페이지</a></li>
                     </c:when>
                     <c:otherwise>
@@ -55,7 +55,7 @@
             <ul class="navbar-nav ml-auto">
                 <li>
                 <c:choose>
-      			  <c:when test="${userId == 'guest'}">      			  
+      			  <c:when test="${empty userId}">      			  
                     <a href="login.do" class="btn position-relative" style="--bs-btn-border-color: none">
       			  </c:when>
      		   <c:otherwise>

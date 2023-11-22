@@ -14,7 +14,7 @@ public class GoMainControl implements command {
 		HttpSession session = req.getSession();
 		String userId = (String) session.getAttribute("userId");
 		if(userId==null) {
-			session.setAttribute("userId", "guest");
+			session.setAttribute("userId", null);
 		}
 		
 		try {
