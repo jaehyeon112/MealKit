@@ -642,18 +642,17 @@ input, select, textarea, button {
 				<h3 class="hide">리뷰 찾아보기</h3>
 				
 				<!-- 검색 -->
-				<form>
+				<form action="searchReview.do" method="post">
 				<div class="box_search">
 					<div class="sch_wrap">
 						<div class="input_wrap sch_area ui_inputfield">
 							<label for="fn_txt_srch" class="hide">검색어 입력</label> <input
-								type="text" class="txt" name="searchText" id="fn_txt_srch"
-								placeholder="검색어를 입력해주세요"
-								onkeyup="" />
+								type="text" class="txt" name="word" 
+								placeholder="검색어를 입력해주세요">
 							<button class="ico del" type="button">
 								<span class="hide">입력 삭제</span>
 							</button>
-							<button type="button" class="btn btn_srch" onclick="">
+							<button type="submit" class="btn btn_srch" onclick="">
 								<span class="hide">검색</span>
 							</button>
 						</div>
@@ -744,3 +743,46 @@ input, select, textarea, button {
 		</div>
 	</div>
 </section>
+
+<%-- <section class="py-5">
+
+	<div class="container px-4 px-lg-5 mt-5">
+	<h2 class="fw-bolder mb-4">'${searchWord }' 검색 결과</h2>
+	<c:choose>
+		<c:when test='${empty mlist}'>
+			<h3 class="fw-bolder mb-4">검색 결과가 없습니다.</h3>
+		</c:when>
+		<c:otherwise>
+			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+				<c:forEach items="${mlist }" var="vo">
+					<div class="col mb-5">
+						<div class="card h-100">
+							<img class="card-img-top" src="resources/images/rsimg/${vo.image1 }.jpg" alt="..." />
+							<div class="card-body p-4">
+								<div class="text-center">
+									<p>${vo.rsCategory }</p>
+									<h5 class="fw-bolder">${vo.rsName }</h5>
+									<p>${vo.rsGu }</p>
+									<div class="d-flex justify-content-center small text-warning mb-2">
+										<c:forEach var="i" begin="1" end="${vo.starcnt }">
+											<div class="bi-star-fill"></div>
+										</c:forEach>
+										<span class="text-muted">&nbsp;&nbsp;(${vo.likecnt })</span>
+									</div>
+								</div>
+							</div>
+							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+								<div class="text-center">
+									<a class="btn btn-outline-dark mt-auto"href="restaurantInfo.do?rcode=${vo.rsCode }">상세보기</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+		</c:otherwise>
+	</c:choose>
+		
+	</div>
+	
+</section> --%>
