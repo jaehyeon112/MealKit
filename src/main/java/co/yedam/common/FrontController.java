@@ -25,7 +25,7 @@ import co.yedam.menu.web.GoAddFormControl;
 
 import co.yedam.menu.web.GoDeleteMenuFormControl;
 import co.yedam.menu.web.GoMenuListFormControl;
-import co.yedam.menu.web.GoTestControl;
+
 import co.yedam.order.web.GoOrderControl;
 import co.yedam.order.web.finishOrderControl;
 import co.yedam.qa.web.AddQaControl;
@@ -136,7 +136,7 @@ public class FrontController extends HttpServlet {
 		map.put("/deleteMenuForm.do", new GoDeleteMenuFormControl());
 		map.put("/updateMenu.do", new GoUpdateMenuControl());
 		map.put("/updateMenuForm.do", new GoUpdateMenuFormControl());
-		map.put("/test.do", new GoTestControl());
+		
 			
 	}
 

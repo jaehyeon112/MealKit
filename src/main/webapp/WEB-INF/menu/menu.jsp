@@ -4,11 +4,7 @@
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <!-- 메뉴바-->
 <style>
-    img {
-        width: 300px;
-        height: 300px;
-        object-fit: cover;
-    }
+
     .best{
         text-align: right;
     }
@@ -76,9 +72,10 @@
                                         <span class="text-muted text-decoration-line-through">제품금액
                                             ${vo.menuPrice}원</span><br>
 
-                                        <strong><span class="text">할인금액 ${vo.menuPrice-vo.menuPriceOff }원</span></strong>
+                                        <strong><span class="text">할인금액 ${vo.menuPriceOff }원</span></strong>  
                                         <p>조리 ${vo.menuTime }분 | ${vo.menuMany }인분 | ${vo.menuKind } <svg
-                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"></svg>
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"></svg></p>
+                                        
 
                                             <!-- <strong><span class="text">${vo.menuPriceOff }원</span></strong> -->
                                             <!-- <span class="text">${vo.menuPrice} - ${vo.menuPriceOff }원</span> -->
@@ -134,10 +131,10 @@
                                         <!-- Product price-->
                                         <span class="text-muted text-decoration-line-through">제품금액
                                             ${vo.menuPrice}원</span><br>
-
-                                        <strong><span class="text">할인금액 ${vo.menuPrice-vo.menuPriceOff }원</span></strong>
+                                        <strong><span class="text">할인금액 ${vo.menuPriceOff }원</span></strong>
+                                        <strong><h5>판매금액 ${vo.menuPrice-vo.menuPriceOff }원</h5></strong>
                                         <p>조리 ${vo.menuTime }분 | ${vo.menuMany }인분 | ${vo.menuKind } <svg
-                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"></svg>
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"></svg></p>
 
                                             <!-- <strong><span class="text">${vo.menuPriceOff }원</span></strong> -->
                                             <!-- <span class="text">${vo.menuPrice} - ${vo.menuPriceOff }원</span> -->
@@ -176,6 +173,7 @@
     <div class="container px-4 px-lg-5 mt-5"> -->
         <div id="div1" style="display: none;">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <!-- 오름차순으로 -->
             <c:forEach items="${listUp }" var="vo" >
                 <c:choose>
                     <c:when test="${vo.menuCount == 0}">
@@ -191,7 +189,7 @@
                                 <!-- Product image--><a href="menupage.do?menuId=${vo.menuId}">
 
                                     <img class="card-img-top" src="resources/menu/${vo.menuImage1 }" alt="..." />
-                                    <p>품절입니다.</p>
+                                    <h3 style="color:red;position:absolute;top:30%;left:50%;transform: translate(-50%, -50%);" id="sold">SOLD OUT</h3>
                                 </a>
                                 <!-- Product details-->
                                 <div class="card-body p-4">
@@ -210,9 +208,10 @@
                                         <span class="text-muted text-decoration-line-through">제품금액
                                             ${vo.menuPrice}원</span><br>
                                             
-                                        <strong><span class="text">할인금액 ${vo.menuPrice-vo.menuPriceOff }원</span></strong>
+                                        <strong><span class="text">할인금액 ${vo.menuPriceOff }원</span></strong>
+                                        <strong><h5>판매금액 ${vo.menuPrice-vo.menuPriceOff }원</h5></strong>
                                         <p>조리 ${vo.menuTime }분 | ${vo.menuMany }인분 | ${vo.menuKind } <svg
-                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"></svg>
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"></svg></p>
 
                                             <!-- <strong><span class="text">${vo.menuPriceOff }원</span></strong> -->
                                             <!-- <span class="text">${vo.menuPrice} - ${vo.menuPriceOff }원</span> -->
@@ -270,8 +269,9 @@
                                             ${vo.menuPrice}원</span><br>
 
                                         <strong><span class="text">할인금액 ${vo.menuPrice-vo.menuPriceOff }원</span></strong>
+                                        <strong><h5>판매금액 ${vo.menuPrice-vo.menuPriceOff }원</h5></strong>
                                         <p>조리 ${vo.menuTime }분 | ${vo.menuMany }인분 | ${vo.menuKind } <svg
-                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"></svg>
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"></svg></p>
 
                                         
 
@@ -312,6 +312,7 @@
     <div class="container px-4 px-lg-5 mt-5"> -->
         <div id="div2" style="display: none;">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <!-- 내림차순으로 -->
             <c:forEach items="${listDown }" var="vo">
                 <c:choose>
                     <c:when test="${vo.menuCount == 0}">
@@ -327,7 +328,7 @@
                                 <!-- Product image--><a href="menupage.do?menuId=${vo.menuId}">
 
                                     <img class="card-img-top" src="resources/menu/${vo.menuImage1 }" alt="..." />
-                                    <p>품절입니다.</p>
+                                    <h3 style="color:red;position:absolute;top:30%;left:50%;transform: translate(-50%, -50%);" id="sold">SOLD OUT</h3>
                                 </a>
                                 <!-- Product details-->
                                 <div class="card-body p-4">
@@ -347,8 +348,9 @@
                                             ${vo.menuPrice}원</span><br>
 
                                         <strong><span class="text">할인금액 ${vo.menuPriceOff }원</span></strong>
+                                        <strong><h5>판매금액 ${vo.menuPrice-vo.menuPriceOff }원</h5></strong>
                                         <p>조리 ${vo.menuTime }분 | ${vo.menuMany }인분 | ${vo.menuKind } <svg
-                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"></svg>
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"></svg></p>
 
                                             <!-- <strong><span class="text">${vo.menuPriceOff }원</span></strong> -->
                                             <!-- <span class="text">${vo.menuPrice} - ${vo.menuPriceOff }원</span> -->
@@ -406,8 +408,9 @@
                                             ${vo.menuPrice}원</span><br>
 
                                         <strong><span class="text">할인금액 ${vo.menuPriceOff }원</span></strong>
+                                        <strong><h5>판매금액 ${vo.menuPrice-vo.menuPriceOff }원</h5></strong>
                                         <p>조리 ${vo.menuTime }분 | ${vo.menuMany }인분 | ${vo.menuKind } <svg
-                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"></svg>
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"></svg></p>
 
                                             <!-- <strong><span class="text">${vo.menuPriceOff }원</span></strong> -->
                                             <!-- <span class="text">${vo.menuPrice} - ${vo.menuPriceOff }원</span> -->
@@ -462,7 +465,7 @@
                                 <!-- Product image--><a href="menupage.do?menuId=${vo.menuId}">
 
                                     <img class="card-img-top" src="resources/menu/${vo.menuImage1 }" alt="..." />
-                                    <p>품절입니다.</p>
+                                    <h3 style="color:red;position:absolute;top:30%;left:50%;transform: translate(-50%, -50%);" id="sold">SOLD OUT</h3>
                                 </a>
                                 <!-- Product details-->
                                 <div class="card-body p-4">
@@ -482,8 +485,9 @@
                                             ${vo.menuPrice}원</span><br>
 
                                         <strong><span class="text">할인금액 ${vo.menuPriceOff }원</span></strong>
+                                        <strong><h5>판매금액 ${vo.menuPrice-vo.menuPriceOff }원</h5></strong>
                                         <p>조리 ${vo.menuTime }분 | ${vo.menuMany }인분 | ${vo.menuKind } <svg
-                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"></svg>
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"></svg></p>
 
                                             <!-- <strong><span class="text">${vo.menuPriceOff }원</span></strong> -->
                                             <!-- <span class="text">${vo.menuPrice} - ${vo.menuPriceOff }원</span> -->
@@ -541,8 +545,9 @@
                                             ${vo.menuPrice}원</span><br>
 
                                         <strong><span class="text">할인금액 ${vo.menuPriceOff }원</span></strong>
+                                        <strong><h5>판매금액 ${vo.menuPrice-vo.menuPriceOff }원</h5></strong>
                                         <p>조리 ${vo.menuTime }분 | ${vo.menuMany }인분 | ${vo.menuKind } <svg
-                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"></svg>
+                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16"></svg></p>
 
                                             <!-- <strong><span class="text">${vo.menuPriceOff }원</span></strong> -->
                                             <!-- <span class="text">${vo.menuPrice} - ${vo.menuPriceOff }원</span> -->
