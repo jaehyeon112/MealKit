@@ -1,40 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <style>
-  body,
-  div,
-  dl,
-  dt,
-  dd,
-  ul,
-  ol,
-  li,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  pre,
-  code,
-  form,
-  fieldset,
-  legend,
-  textarea,
-  p,
-  blockquote,
-  table,
-  th,
-  td,
-  input,
-  select,
-  textarea,
-  button {
-    margin: 0;
-    padding: 0;
-    word-break: break-all;
-    letter-spacing: -0.5px;
-  }
   .mt_elps {
     width: 100%;
     overflow: hidden;
@@ -236,6 +202,7 @@ pageEncoding="UTF-8"%>
     font-weight: 700;
     font-size: 40px;
     line-height: 56px;
+    padding-bottom: 30px;
   }
 
   #textBox1,
@@ -271,6 +238,7 @@ pageEncoding="UTF-8"%>
   }  
   
 </style>
+<!-- 슬라이드 영역 -->
 <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button
@@ -347,53 +315,19 @@ pageEncoding="UTF-8"%>
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
-</div>
-<hr />
+</div> 
+<!-- 슬라이드 종료영역 -->
 <div class="ma_best">
   <div class="sec_tit">
-    <h2 class="tit">실시간 베스트</h2>
+    <h2 class="tit">베스트 메뉴</h2>
   </div>
-  <div class="prod_list">
-    <ul>
-      <!-- 반복 -->
-      <li>
-        <div class="pro_module">
-          <div class="img_wrap">
-            <a href="#!" class="conts">
-              <img
-                src="https://img.cjcookit.com/images/file/product/511/20230901140905314.jpg?RS=549x549"
-                alt="#!"
-                onerror="#!"
-              />
-              <span class="flag_num best">
-                <span>BEST</span>
-                01
-              </span>
-            </a>
-          </div>
-          <div class="txt_wrap">
-            <a href="#!" class="conts"></a>
-              <div class="tit_info">
-                <!-- 추후 수정 -->
-                <span class="tit mt_elps">[냉동] 진한육수 곱창전골</span>
-              </div>
-              <div class="price_info">
-                <!-- 추후 수정 -->
-                <p class="sale">
-                  <span class="price">13,992</span>
-                  <span class="won">원</span>
-                </p>
-                <p class="servings">/ 2~3인분</p>
-              </div>
-            
-          </div>
-          <div class="act_btn_wrap">
-            <button type="button" class="btn btn_cart" onclick="#!">
-              <span class="hide">장바구니 담기</span>
-            </button>
-          </div>
-        </div>
-      </li>
-    </ul>
+  
+  <div class="card" style="width: 18rem;">
+  <img src="https://img.cjcookit.com/images/file/product/511/20230901140905314.jpg?RS=549x549" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
+</div>
 </div>

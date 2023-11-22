@@ -182,17 +182,18 @@ a {
 										<p class="tit">
 
 											<!-- 구매한 상품 선택. -->
-											<span class="name"> <select name="orderDatailNumber" multiple>
+											<span class="name"> <select name="orderDetailNumber" name="menuName" >
 													<option selected>주문하신 상품 선택</option>
 													<c:forEach items="${list }" var="vo">
-														<option value="${vo.orderDetailNumber }"/><c:out value="[${vo.orderDetailNumber}] ${vo.menuName }"/>
+														<option value="${vo.orderDetailNumber }" >[${vo.orderDetailNumber}] ${vo.menuName }</option>
 													</c:forEach>
 											
 
 											</select></span>
-											<input type="hidden" name="menuName"/>
 											<!-- 개발 요청 사항 : 검색된 단어에 <strong></strong>태그 추가 -->
 										</p>
+											<input value="${vo.menuName }" type="hidden" name="menuName"  />
+											
 										<div class="top_wrap--right">
 											<!-- 20220609 div 추가 -->
 											<span>

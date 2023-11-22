@@ -846,7 +846,7 @@ input, select, textarea, button {
 												<div class="img">
 													<img
 														src="image/${vo.reviewImage }"
-														alt="1번 이미지" onerror="cj.com.noImg(this, 'P')">
+														>
 												</div>
 												<span class="lang"><span class="hide">총 사진 개수</span></span>
 												<!-- 스크립트 요청 사항 : .review_module .img_wrap 안에 있는 .img 갯수 체크 -->

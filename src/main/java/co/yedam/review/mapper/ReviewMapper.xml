@@ -12,9 +12,9 @@
 	<insert id="insert"
 		parameterType="co.yedam.review.service.ReviewVO">
 		INSERT INTO REVIEW(REVIEW_STAR, REVIEW_CONTENT, USER_ID,
-		REVIEW_DATE, MENU_NAME, REVIEW_IMAGE, ORDER_DETAIL_NUMBER)
+		REVIEW_DATE, REVIEW_IMAGE, ORDER_DETAIL_NUMBER)
 		VALUES(#{reviewStar}, #{reviewContent}, #{userId}, SYSDATE,
-		#{menuName}, #{reviewImage}, #{orderDetailNumber})
+		#{reviewImage}, #{orderDetailNumber})
 	</insert>
 
 	<!-- 내가 쓴 리뷰 조회 -->
