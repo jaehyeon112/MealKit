@@ -182,23 +182,25 @@ a {
 										<p class="tit">
 
 											<!-- 구매한 상품 선택. -->
-											<span class="name"> <select name="orderDatailNumber">
+											<span class="name"> <select name="orderDatailNumber" multiple>
 													<option selected>주문하신 상품 선택</option>
 													<c:forEach items="${list }" var="vo">
-														<option value="<c:out value="${orderDetailNumber }"/>"><c:out value="[${vo.orderDetailNumber}] ${vo.menuName }"/>
-
+														<option value="${vo.orderDetailNumber }"/><c:out value="[${vo.orderDetailNumber}] ${vo.menuName }"/>
 													</c:forEach>
+											
 
 											</select></span>
+											<input type="hidden" name="menuName"/>
 											<!-- 개발 요청 사항 : 검색된 단어에 <strong></strong>태그 추가 -->
 										</p>
 										<div class="top_wrap--right">
 											<!-- 20220609 div 추가 -->
-											<span><input name="orderDetailNumber"
-												value="${vo.orderDetailNumber }" type="hidden"></input></span>
+											<span>
+												</span>
 											<time datetime="2023-11-15">
 												<input type="hidden" name="reviewDate" />
 											</time>
+											
 											<!-- 데이터 없을 때 노출 -->
 											<!-- <li class="no_data"><span class="ico"></span> <strong>작성
 								가능한 리뷰가 없습니다.</strong></li> -->
