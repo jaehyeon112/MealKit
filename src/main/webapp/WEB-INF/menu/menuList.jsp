@@ -22,6 +22,7 @@
 
 <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
     <h2>상품목록</h2>
+    
 </div>
 
 <table class="table" border="3" id="menu_list_table">
@@ -52,7 +53,7 @@
             <td >${vo.menuId }</td>
             <td>${vo.menuName}</td>
             <td>${vo.menuNameInfo}</td>
-            <td><img src="image/${vo.menuImage1}" width="130" height="120"></td>
+            <td><img src="resources/menu/${vo.menuImage1}" width="130" height="120"></td>
             <td>${vo.menuKind}</td>
             <td>${vo.menuPrice}</td>
             <td>${vo.menuPriceOff}</td>
