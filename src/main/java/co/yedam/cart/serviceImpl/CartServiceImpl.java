@@ -64,4 +64,8 @@ public class CartServiceImpl implements CartService{
 	public CartMenuJoinVO joinCartMenuAll(String userId) {
 		return mapper.joinCartMenuAll(userId);
 	}
+	@Override
+	public List<CartVO> CartListUseCartNum(Map<String, Object> map) {
+		return mapper.selectListUseCartNum(map);
+	}
 }

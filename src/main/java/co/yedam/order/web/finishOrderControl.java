@@ -29,8 +29,6 @@ public class finishOrderControl implements command {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		OrderService OrderSvc = new OrderServiceImpl();
 		CartService cartSvc = new CartServiceImpl();
-		MenuService menuSvc = new MenuServiceImpl();
-		
 		
 		String orderNumber = req.getParameter("orderNumber");
 		

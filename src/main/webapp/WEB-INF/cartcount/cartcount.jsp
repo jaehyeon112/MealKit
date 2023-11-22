@@ -477,7 +477,6 @@ font-weight: 700;
             ele.querySelector('.checkList').checked = check;
           }
         });		
-
     	if(!check){
         document.querySelector('#total').innerText = '0원'
             document.querySelector('#totalOff').innerText = '0원'
@@ -521,39 +520,32 @@ font-weight: 700;
             let total = 0;
             let price = 0;
             let priceOff = 0;
-            document.querySelectorAll('.cart__list__detail').forEach((ele,index) => {
-            	 let qauntity = list[index].cartCount
-            	
-            	let listPrice = list[index].menuPrice * qauntity 
-            	let listPriceOff = list[index].menuPriceOff * qauntity
-            	
-                if (ele.children[0].children[0].checked) {
-                    count++;
-            	 price += list[index].menuPrice * list[index].cartCount
-            	 priceOff += list[index].menuPriceOff * list[index].cartCount
-            	 if(price-priceOff < 40000){            		 
-            	 total = price - priceOff + 4000
-            	 }else{
-            		 total = price - priceOff
-            	 }
-                }
-            });
-            let delivery = 0;
-            if(total < 40000){
-            	delivery = 4000;
-            }
-             document.querySelector('#total').innerText = price + '원'
-            document.querySelector('#totalOff').innerText = priceOff + '원'
-            document.querySelector('#totalBuy').innerText = total + '원'
-            document.querySelector('#delivery').innerText = delivery + '원'
-            if(total < 40000){
-            	document.querySelector('#deliCheck').style.display= 'block';
-            	document.querySelector('#deliCheck').innerText= 40000-total + '원 더 구매시 배송비가 무료!' 
-            }else{
-            	document.querySelector('#deliCheck').style.display= 'none';
-            }
-            document.querySelector('#checkAll').checked = (document.querySelectorAll('.cart__list__detail').length == count);
-
+            
+		     let arr= []
+		      	  
+		      document.querySelectorAll('.cart__list__detail').forEach(ele => {
+		       if(ele.children[0].children[0].checked){
+		         arr.push(ele.querySelector('.checkList').id)
+		          }
+		        })
+            	arr = arr.join(',')
+            fetch("updatecart2.do?arr="+arr).then(resolve => resolve.json()).then(result => {
+                document.querySelector('#total').innerText = result.price + '원'
+               document.querySelector('#totalOff').innerText = result.priceOff + '원'
+               document.querySelector('#totalBuy').innerText = result.total + '원'
+               document.querySelector('#delivery').innerText = result.delivery + '원'
+               if(total < 40000){
+               	document.querySelector('#deliCheck').style.display= 'block';
+               	document.querySelector('#deliCheck').innerText= 40000-result.total + '원 더 구매시 배송비가 무료!' 
+               }else{
+               	document.querySelector('#deliCheck').style.display= 'none';
+               }
+            })
+            
+            
+            
+            
+            
     }
 
     // 플러스 버튼 이벤트 리스너 추가
@@ -577,20 +569,9 @@ font-weight: 700;
 	 arr = arr.join(',')
 
 
-
-
-      
-
-
-
-
-
-
-
         if(ele.parentNode.parentNode.children[0].children[0].checked){
  			 cartNum = list[index].cartNum
       }
- 			 console.log(cartNum)
         	let bnt = e.target.parentNode.parentNode.querySelector('.checkList')
           if(!bnt.checked){
             alert('장바구니에서 선택이 되어있지 않습니다.')
