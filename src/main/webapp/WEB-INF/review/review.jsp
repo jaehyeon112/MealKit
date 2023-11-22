@@ -642,6 +642,7 @@ input, select, textarea, button {
 				<h3 class="hide">리뷰 찾아보기</h3>
 				
 				<!-- 검색 -->
+				
 				<form action="searchReview.do" method="post">
 				<div class="box_search">
 					<div class="sch_wrap">
@@ -652,13 +653,14 @@ input, select, textarea, button {
 							<button class="ico del" type="button">
 								<span class="hide">입력 삭제</span>
 							</button>
-							<button type="submit" class="btn btn_srch" onclick="">
+							<button type="submit" class="btn btn_srch">
 								<span class="hide">검색</span>
 							</button>
 						</div>
 					</div>
 				</div>
 				</form>
+				
 				<!-- 검색 마지막 문단 -->
 				<div class="top_sec">
 					<p class="total">

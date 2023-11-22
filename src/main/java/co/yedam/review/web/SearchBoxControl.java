@@ -15,16 +15,17 @@ public class SearchBoxControl implements command {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		// TODO Auto-generated method stub
-		String path = "review/review.tiles";
+		
 		String word = req.getParameter("word");
 
 		ReviewService svc = new ReviewServiceImpl();
 		List <ReviewVO> list = svc.searchBoxList(word);
 		req.setAttribute("searchWord", word);
 		req.setAttribute("list", list);
-
+		System.out.println(word);
+		System.out.println(list);
 		try {
-			req.getRequestDispatcher(path).forward(req, resp);
+			req.getRequestDispatcher("review/searchBox.tiles").forward(req, resp);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
