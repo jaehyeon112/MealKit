@@ -4,16 +4,8 @@
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <style>
-#container {
-	width: 1180px;
-	height: 100%;
-	margin: 0 auto;
-}
 
-#content {
-	min-height: 900px;
-	padding: 52px 0 140px;
-}
+
 
 .taste_review_list .link_more .thumb_img img {
     position: absolute;
@@ -27,16 +19,7 @@
     transform: translateY( -50% );
 }
 
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code,
-	form, fieldset, legend, textarea, p, blockquote, table, th, td, input,
-	select, textarea, button {
-	margin: 0;
-	padding: 0;
-	word-break: break-all;
-	letter-spacing: -0.5px;
-}
-
-*, *:after, *:before {
+*:after, *:before {
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
@@ -73,10 +56,6 @@ element.style {
 	overflow: hidden;
 }
 
-a {
-	color: inherit;
-	text-decoration: none;
-}
 
 .cn_review_wrap .best_review .img_wrap.slide_wrap .slide_conts {
 	margin-right: 48px;
@@ -156,19 +135,6 @@ a {
 	position: relative;
 }
 
-.cn_review_wrap .best_review .img_wrap.slide_wrap .slide_arrow_wrap .btn_arrow.prev
-	{
-	bottom: 0;
-	left: 0;
-	background-position: -540px 0;
-}
-
-.cn_review_wrap .best_review .img_wrap.slide_wrap .slide_arrow_wrap .btn_arrow.next
-	{
-	bottom: 0;
-	right: 0;
-	background-position: -564px 0;
-}
 
 .cn_review_wrap .best_review .img_wrap.slide_wrap .slide_arrow_wrap .btn_arrow
 	{
@@ -316,27 +282,8 @@ h2 {
 	line-height: normal;
 	word-break: break-all;
 }
-
-* {
-	margin: 0;
-	padding: 0;
-	-webkit-text-size-adjust: none;
-	word-break: break-all;
-	box-sizing: border-box;
-}
-
 div {
 	display: block;
-}
-
-body, input, textarea, select, button, table {
-	font-family: 'Noto Sans', '맑은 고딕', 'Malgun Gothic', Dotum, '굴림', arial,
-		sans-serif;
-	font-size: 15px;
-	font-weight: 400;
-	line-height: 23px;
-	color: #606060;
-	letter-spacing: -0.5px;
 }
 
 .cn_review_wrap .taste_list h3 {
@@ -426,15 +373,7 @@ input, select, textarea, button {
 	background-size: 800px 800px;
 }
 
-.btn {
-	display: inline-block;
-	width: 100%;
-	height: 56px;
-	text-align: center;
-	font-weight: 700;
-	font-size: 18px;
-	line-height: 54px;
-}
+
 
 .cn_review_wrap .taste_list .top_sec {
 	margin-top: 56px;
@@ -698,98 +637,38 @@ input, select, textarea, button {
 	<div id="content" class="cn_wrap">
 		<div class="cn_review_wrap">
 			<h2>리뷰</h2>
-			<div class="best_review">
-				<div
-					class="img_wrap slide_wrap ui_carousel carousel-initialized ui_carousel_slider ui_carousel_dots"
-					ui-modules="">
-					<div class="ui_carousel_list ui_static" style="overflow: hidden">
-						<div class="ui_carousel_track ui_static"
-							style="opacity: 1; width: 25000px; transform: translate3d(-568px, 0px, 0px);">
-							<div class="slide_conts ui_carousel_slide ui_carousel_cloned"
-								data-ui_carousel_index="-1" style="float: left"
-								aria-hidden="true">
-								<div class="item">
-									<a href="javascript:openDetail('2607621');" class="cont"
-										tabindex="-1"> </a>
-									<div class="img_wrap">
-										<div class="best_flag">
-											<span class="flag_txt">Best</span>
-										</div>
-										<img
-											src="https://img.cjcookit.com/images/file/RVW/2023/1031/f523a7c8-4039-49d4-91e5-b285ce330c49_20231031182201_thum.jpg?RS=640&CG=5&CS=520X390"
-											alt="[냉동] 얼큰시원 동태탕" onerror="cj.com.noImg(this, 'P')" />
-									</div>
-									<div class="txt_wrap">
-										<span class="tit">[냉동] 얼큰시원 동태탕</span>
-										<div class="etc_info">
-											<div class="rating_wrap">
-												<span class="rating_star"> <span class="star">
-														<span style="width: 100%"><span class="hide">별점
-																5.0점</span></span>
-												</span>
-												</span>
-											</div>
-											<div class="user_id">
-												<span class="hide">작성자아이디</span>kg1*****
-											</div>
-										</div>
-										<div class="txt">제일 좋은게 한봉지 안에 다 들어 있어서 좋습니다 편하게 손질도 없이
-											뚝딱 만들어서 좋습니다 동태도 쫄깃하고 맛있고 국물이 최고 입니다</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="count_wrap">
-							<span class="num"><em>1</em>/5</span>
-						</div>
-
-						<div class="slide_arrow_wrap">
-							<div class="arr_area">
-								<button type="button"
-									class="btn_arrow prev ui_carousel_prev ui_carousel_arrow"
-									style="display: block">
-									<span class="hide">이전 보기</span>
-								</button>
-								<button type="button"
-									class="btn_arrow next ui_carousel_next ui_carousel_arrow"
-									style="display: block">
-									<span class="hide">다음 보기</span>
-								</button>
-							</div>
-						</div>
-						::after
-					</div>
-				</div>
-			</div>
+			
 			<div class="taste_list review_info" id="reviewTop">
 				<h3 class="hide">리뷰 찾아보기</h3>
+				
+				<!-- 검색 -->
+				<form>
 				<div class="box_search">
 					<div class="sch_wrap">
 						<div class="input_wrap sch_area ui_inputfield">
 							<label for="fn_txt_srch" class="hide">검색어 입력</label> <input
 								type="text" class="txt" name="searchText" id="fn_txt_srch"
 								placeholder="검색어를 입력해주세요"
-								onkeyup="if(event.keyCode=='13'){search();}" />
+								onkeyup="" />
 							<button class="ico del" type="button">
 								<span class="hide">입력 삭제</span>
 							</button>
-							<button type="button" class="btn btn_srch" onclick="search()">
+							<button type="button" class="btn btn_srch" onclick="">
 								<span class="hide">검색</span>
 							</button>
 						</div>
 					</div>
 				</div>
+				</form>
+				<!-- 검색 마지막 문단 -->
 				<div class="top_sec">
 					<p class="total">
-						리뷰 <span class="rvwTotalCnt">204,713</span>건
+						리뷰
+						
+						 <span class="rvwTotalCnt"></span>${reviewCnt }건
 					</p>
 					<div class="list_sort">
-						<div class="chk_wrap">
-							<input type="checkbox" id="sorting_photo" onchange="loadList(1)"
-								class="accessibility-keyboard" /> <label for="sorting_photo">포토리뷰만
-								보기</label>
-						</div>
+						
 					</div>
 				</div>
 				<div class="taste_review_list">
@@ -846,7 +725,7 @@ input, select, textarea, button {
 												<div class="img">
 													<img
 														src="image/${vo.reviewImage }"
-														alt="1번 이미지" onerror="cj.com.noImg(this, 'P')">
+														>
 												</div>
 												<span class="lang"><span class="hide">총 사진 개수</span></span>
 												<!-- 스크립트 요청 사항 : .review_module .img_wrap 안에 있는 .img 갯수 체크 -->

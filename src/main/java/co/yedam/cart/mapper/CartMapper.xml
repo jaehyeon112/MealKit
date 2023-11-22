@@ -59,6 +59,8 @@ WHERE
     <foreach collection="cartArr" item="cartArr" open="(" separator="," close=")">
     #{cartArr}
     </foreach>
+    
+    
 GROUP BY
     c.user_id
 	</select>
