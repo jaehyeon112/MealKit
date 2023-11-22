@@ -22,12 +22,12 @@ public class AddQaReplyControl implements command {
 		QaReplyVO vo = new QaReplyVO();
 		QaReplyService svc = new QaReplyServiceImpl();
 		String qaNo = req.getParameter("qaNo");
-		String qaReply = req.getParameter("qaReply");
 		String userName = req.getParameter("userName");
+		String qaReply = req.getParameter("qaReply");
 
 		vo.setQaNo(Integer.parseInt(qaNo));
-		vo.setQaReply(qaReply);
 		vo.setUserName(userName);
+		vo.setQaReply(qaReply);
 		vo.setReplyDate(new Date());
 
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
