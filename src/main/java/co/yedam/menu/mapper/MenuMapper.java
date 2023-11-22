@@ -7,6 +7,7 @@ import co.yedam.menu.service.MenuVO;
 
 public interface MenuMapper {
 	public List<MenuVO> list();
+	public List<MenuVO> list2();
 	public int insertMenu(MenuVO vo);
 	public int updateMenu(MenuVO vo);
 	public int deleteMenu(String menuId);

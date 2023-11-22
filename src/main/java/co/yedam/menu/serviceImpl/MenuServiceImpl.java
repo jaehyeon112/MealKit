@@ -57,6 +57,11 @@ public class MenuServiceImpl implements MenuService{
 		// TODO Auto-generated method stub
 		return mapper.getMenu(menuId);
 	}
+
+	@Override
+	public List<MenuVO> menuList2() {
+		return mapper.list2();
+	}
 	
 	
 }

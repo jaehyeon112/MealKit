@@ -1,6 +1,7 @@
 package co.yedam.order.web;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +20,9 @@ import co.yedam.cart.service.CartService;
 import co.yedam.cart.service.CartVO;
 import co.yedam.cart.serviceImpl.CartServiceImpl;
 import co.yedam.common.command;
+import co.yedam.menu.service.MenuService;
+import co.yedam.menu.service.MenuVO;
+import co.yedam.menu.serviceImpl.MenuServiceImpl;
 import co.yedam.order.service.OrderService;
 import co.yedam.order.serviceImpl.OrderServiceImpl;
 import co.yedam.users.service.UserService;
@@ -29,14 +33,13 @@ public class GoOrderControl implements command {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		Gson gson = new GsonBuilder().create();
-		String cartNum = req.getParameter("cartNum");
-		// 문자열을 배열로 바꾸자. ,을 기준으로!
-		String[] cartArr = cartNum.split(",");
-		
 		HttpSession session = req.getSession();
 		String userId = (String) session.getAttribute("userId");
+		Gson gson = new GsonBuilder().create();
+		String cartNum = req.getParameter("cartNum");
 		
+		// 문자열을 배열로 바꾸자. ,을 기준으로!
+		String[] cartArr = cartNum.split(",");
 		
 		//장바구니에 있는 물건을 리스트에 담아놨음.
 		OrderService orderSvc = new OrderServiceImpl();

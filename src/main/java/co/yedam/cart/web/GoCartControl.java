@@ -1,7 +1,11 @@
 package co.yedam.cart.web;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -30,33 +34,56 @@ public class GoCartControl implements command {
 		HttpSession session = req.getSession();
 		String userId = (String) session.getAttribute("userId");
 		
-		CartMenuJoinVO vo = svc.joinCartMenuAll(userId);
-		String join = gson.toJson(vo);
-		req.setAttribute("totalJson", join);
-		req.setAttribute("total", vo);
 		
-		 List<MenuVO> menuList = menuSvc.menuList();
+	
+		// 여기 select * 로 하니까 값을 다 가져옴..
+		 List<MenuVO> menuList = menuSvc.menuList2();
 			String menuListJson = gson.toJson(menuList);
-			System.out.println("menuList ="+menuList);
 	        req.setAttribute("menuList", menuListJson);
 		
-		
+		 //
+	        List<String> cartArr = new ArrayList<>();
+	     //
+	        
 		List<CartVO> list = svc.CartList(userId);
+		
+		List<CartVO> newList = new ArrayList<>();
 		for(CartVO cVO : list) {
 			for(MenuVO mVO : menuList) {
-				if(cVO.getMenuId() == mVO.getMenuId()) {
+				if(cVO.getMenuId().equals(mVO.getMenuId())) {
 					cVO.setRestCount(mVO.getMenuCount());
+					
+					newList.add(cVO);
+					if(cVO.getRestCount()>0) {
+						cartArr.add(mVO.getMenuId());
+					}
 				}
+				
 			}
 		}
 		
-		
-		String cartList = gson.toJson(list);
+		System.out.println(cartArr);
+		String cartList = gson.toJson(newList);
 		req.setAttribute("listJson", cartList);
-		req.setAttribute("list", list);
+		req.setAttribute("list", newList);
 		
 		
 		
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("cartArr",cartArr );
+		map.put("userId", userId);
+		System.out.println(userId);
+		System.out.println(userId);
+		System.out.println(userId);
+		System.out.println(userId);
+		CartMenuJoinVO vo = svc.joinCartMenu(map);
+		System.out.println("저는 품절을 뺀 상품이에요 " + vo);
+		
+		
+		String join = gson.toJson(vo);
+		req.setAttribute("totalJson", join);
+		req.setAttribute("total", vo);
 		
 		
         
