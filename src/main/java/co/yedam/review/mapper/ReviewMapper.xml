@@ -13,7 +13,7 @@
 	</select>
 	
 	<select id="searchBox" resultType="co.yedam.review.service.ReviewVO">
-		SELECT * FROM REVIEW WHERE MENU_NAME LIKE '%' || #{word} || '%' ;
+		SELECT * FROM REVIEW WHERE MENU_NAME LIKE '%' || #{word} || '%'
 	</select> 
 	
 	<!-- 구매한건에 대한 리뷰작성 **[수정예정]** -->

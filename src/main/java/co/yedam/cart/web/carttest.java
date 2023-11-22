@@ -64,7 +64,10 @@ public class carttest implements command {
 			CartMenuJoinVO vo = new CartMenuJoinVO();
 			System.out.println(cartArr);
 			if(cartArr.size()==0) {
-				 vo = svc.joinCartMenuAll(userId);
+				 vo.setPriceOff(0);
+				 vo.setDelivery(4000);
+				 vo.setPrice(0);
+				 vo.setTotal(0);
 			}else{
 				Map<String, Object> map = new HashMap<>();
 				map.put("cartArr",cartArr );

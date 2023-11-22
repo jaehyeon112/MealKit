@@ -229,7 +229,7 @@ font-weight: 700;
                   <c:when test="${vo.restCount < 1}">
                   
                     <tr class="cart__list__detail" >
-                 <td><button class="checkList" type="button" disabled="disabled" style="color:red" id="${vo.cartNum }">X</button></td>
+                 <td><button class="soldOut" type="button" disabled="disabled" style="color:red" id="${vo.cartNum }">X</button></td>
                         <td><img id="images" src="image/${vo.menuImage1}" style="display: table;
     width: 100px;
     height: 100px;
@@ -460,7 +460,19 @@ font-weight: 700;
             document.querySelector('#deliCheck').innerText=	'40000원 더 구매시 배송비가 무료!'
     	}else{
 
-        fetch('carttest.do')
+        fetch('carttest.do').then(resolve => resolve.json()).then(result => {
+          document.querySelector('#totalOff').innerText = result.priceOff + '원'
+              document.querySelector('#totalBuy').innerText = result.total +  '원'
+              document.querySelector('#delivery').innerText = result.delivery + '원'
+              if(totalJson.total < 40000){
+                document.querySelector('#deliCheck').style.display = 'block';
+                document.querySelector('#deliCheck').innerText = '40000원 더 구매시 배송비가 무료!' 
+              }else{
+                document.querySelector('#deliCheck').style.display= 'none';
+              }
+
+
+        })
 
 
         if(totalJson.total!=0){

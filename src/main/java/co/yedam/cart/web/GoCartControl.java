@@ -66,14 +66,16 @@ public class GoCartControl implements command {
 		System.out.println(cartArr);
 		if(cartArr.size()==0) {
 			 vo = svc.joinCartMenuAll(userId);
+			 String join = gson.toJson(vo);
+			 req.setAttribute("totalJson", join);
+			 req.setAttribute("total", vo);
+			 String cartList = gson.toJson(newList);
+			 req.setAttribute("listJson", cartList);
+			 req.setAttribute("list", newList);
 		}else{
 			Map<String, Object> map = new HashMap<>();
 			map.put("cartArr",cartArr );
 			map.put("userId", userId);
-			System.out.println(userId);
-			System.out.println(userId);
-			System.out.println(userId);
-			System.out.println(userId);
 			 vo = svc.joinCartMenu(map);
 			System.out.println("저는 품절을 뺀 상품이에요 " + vo);
 			String join = gson.toJson(vo);
