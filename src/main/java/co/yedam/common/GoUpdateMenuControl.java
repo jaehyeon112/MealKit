@@ -57,6 +57,9 @@ public class GoUpdateMenuControl implements command {
          String menuPoint = mr.getParameter("menuPoint");
          String menuTime = mr.getParameter("menuTime");
          String menuMany = mr.getParameter("menuMany");
+         String menuTip = mr.getParameter("menuTip");
+         
+         
          
          vo.setMenuId(menuId);
          vo.setMenuName(menuName);
@@ -72,6 +75,8 @@ public class GoUpdateMenuControl implements command {
          vo.setMenuPoint(Integer.parseInt(menuPoint));
          vo.setMenuTime(Integer.parseInt(menuTime));
          vo.setMenuMany(Integer.parseInt(menuMany));
+         vo.setMenuTip(menuTip);
+         
          
       } catch (IOException e) {
          e.printStackTrace();

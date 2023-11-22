@@ -31,6 +31,14 @@ public class GoMenuListControl implements command {
 		List<MenuVO> list = svc.menuList();
 		req.setAttribute("list", list);
 		
+		
+		List<MenuVO> list2 = svc.menuList("up");
+		List<MenuVO> list3 = svc.menuList("down");
+		
+		req.setAttribute("listUp", list2);
+		req.setAttribute("listDown", list3);
+		
+		
 		try {
 			req.getRequestDispatcher("menu/menuList.tiles").forward(req, resp);
 

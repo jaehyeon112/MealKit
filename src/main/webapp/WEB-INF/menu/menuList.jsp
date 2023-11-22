@@ -39,6 +39,7 @@
         <th>상품포인트</th>
         <th>상품조리시간</th>
         <th>상품인분체크</th>
+        <th>메뉴팁</th>
         <th>삭제하기</th>
         <th>수정하기</th>
 
@@ -60,6 +61,7 @@
             <td>${vo.menuPoint}</td>
             <td>${vo.menuTime}</td>
             <td>${vo.menuMany}</td>
+            <td>${vo.menuTip}</td>
             <td><button type="button" class="deleteCheck">삭제</button></td>
             <td><a href="updateMenuForm.do"><button type="button">수정</button></a></td>         
             
