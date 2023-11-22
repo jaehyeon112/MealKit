@@ -147,7 +147,7 @@
 	<div class="row">
 		<div class="col">
 			<div class="mainImg">
-				<img src="image/${menuId.menuImage1}" width="600" height="600">
+				<img src="resources/menu/${menuId.menuImage1}" width="600" height="600">
 			</div>
 
 
@@ -326,7 +326,7 @@
 				<input type="radio" name="radio-btn" id="img-1" checked />
 				<li class="slide-container">
 					<div class="slide">
-						<img src="image/${menuId.menuImage2}" width="700" height="900">
+						<img src="resources/menu/${menuId.menuImage2}" width="700" height="900">
 					</div>
 					<div class="nav">
 						<label for="img-6" class="prev">&#x2039;</label>
@@ -338,7 +338,7 @@
 				<input type="radio" name="radio-btn" id="img-2" />
 				<li class="slide-container">
 					<div class="slide">
-						<img src="image/${menuId.menuImage1}" width="700" height="900">
+						<img src="resources/menu/${menuId.menuImage1}" width="700" height="900">
 					</div>
 					<div class="nav">
 						<label for="img-1" class="prev">&#x2039;</label>
@@ -349,7 +349,7 @@
 				<input type="radio" name="radio-btn" id="img-3" />
 				<li class="slide-container">
 					<div class="slide">
-						<img src="image/${menuId.menuImage3}" width="700" height="900">
+						<img src="resources/menu/${menuId.menuImage3}" width="700" height="900">
 					</div>
 					<div class="nav">
 						<label for="img-2" class="prev">&#x2039;</label>

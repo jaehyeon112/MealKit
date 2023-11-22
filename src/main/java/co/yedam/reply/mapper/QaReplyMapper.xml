@@ -8,8 +8,7 @@
 	<insert id="insertReply"
 		parameterType="co.yedam.reply.service.QaReplyVO">
 		INSERT INTO QA_REPLY(REPLY_NO, QA_NO, QA_REPLY, USER_NAME, REPLY_DATE)
-		VALUES(SEQ_REPLY.NEXTVAL, #{qaNo}, #{qaReply}, #{userName},
-		#{replyDate})
+		VALUES(SEQ_REPLY.NEXTVAL,#{qaNo},#{qaReply},#{userName},#{replyDate})
 	</insert>
 	<update id="updateReply"
 		parameterType="co.yedam.reply.service.QaReplyVO">

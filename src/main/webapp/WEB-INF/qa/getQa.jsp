@@ -156,6 +156,12 @@ a {
 #point, #tier {
 	display: inline-block;
 }
+span{
+margin-right: 100px;
+}
+b{
+margin-right: 150px;
+}
 </style>
 <section id="myContainer">
 	<div id="content" class="myWrap">
@@ -264,23 +270,23 @@ a {
 					</tr>
 				</table>
 			</form>
-				<h4>답변등록</h4>
-				<table class="table">
-					<tr>
-						<th>답변내용</th>
-						<td><input type="text" id="replyContent"></td>
-						<td><button id="addReply">답변등록</button></td>
-					</tr>
-				</table>
+			<h4>답변등록</h4>
+			<table class="table">
+				<tr>
+					<th>답변내용</th>
+					<td><input type="text" id="replyContent"></td>
+					<td><button id="addReply">답변등록</button></td>
+				</tr>
+			</table>
 
-				<h4>답변목록</h4>
-				<ul id="list">
-					<li style="display: none;" id="template"><span>답변번호</span><span>유저이름</span><b>답변내용</b><span>작성일자</span>
-						<button>삭제</button></li>
-				</ul>
-				<p>
-					<a href="qaList.do">문의내역</a>
-				</p>
+			<h4>답변목록</h4>
+			<ul id="list">
+				<li style="display: none;" id="template"><span>답변번호</span><span>유저이름</span><b>답변내용</b><span>작성일자</span>
+					<button>삭제</button></li>
+			</ul>
+			<p>
+				<a href="qaList.do">문의내역</a>
+			</p>
 		</div>
 	</div>
 </section>
@@ -291,9 +297,6 @@ a {
 	qaNo = document.querySelector('.qaNo').innerHTML;
 	let userName = "${userName }";
 	let qaReply = "${qaNo.qaReply}";
-	console.log(qaNo);
-	console.log(userName);
-	console.log(qaReply);
 
 	function showList() {
 		document.querySelectorAll('#list li:not(:nth-of-type(1))').forEach(li => li.remove());
@@ -354,7 +357,7 @@ a {
 	//등록버튼
 	document.querySelector('#addReply').addEventListener('click', function (e) {
 		let reply = document.querySelector('#replyContent').value;
-		if (qaReply == 'null') {
+		if (reply == 'null') {
 			alert("값을 확인하세요.");
 			return;
 		}
@@ -364,16 +367,17 @@ a {
 				headers: {
 					'Content-Type': 'application/x-www-form-urlencoded'
 				},
-				body: 'qaNo=' + qaNo + '&userName=' + userName + '&qaReply=' + qaReply 
+				body: 'qaNo=' + qaNo + '&userName=' + userName + '&qaReply=' + reply 
 			})
 			.then(resolve => resolve.json())
 			.then(result => {
 				if (result.retCode == 'OK') {
 					showList(-1);	
 				} else {
-					alert('Error.');
+					alert('등록 실패');
 				}
 			})
+			.catch(err => console.log(err));
 	})
 </script>
 
