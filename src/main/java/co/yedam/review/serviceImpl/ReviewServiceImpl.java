@@ -66,4 +66,6 @@ public class ReviewServiceImpl implements ReviewService {
 		return mapper.searchBox(menuName);
 	}
 
+
+
 }
