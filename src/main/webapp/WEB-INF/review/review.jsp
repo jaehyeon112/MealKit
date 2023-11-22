@@ -658,7 +658,9 @@ input, select, textarea, button {
 				</div>
 				<div class="top_sec">
 					<p class="total">
-						리뷰 <span class="rvwTotalCnt">204,713</span>건
+						리뷰
+						
+						 <span class="rvwTotalCnt"></span>${reviewCnt }건
 					</p>
 					<div class="list_sort">
 						

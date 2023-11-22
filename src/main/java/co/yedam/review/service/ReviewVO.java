@@ -14,5 +14,4 @@ public class ReviewVO {
 	private String userId;
 	private Date reviewDate;
 	private String reviewContent;
-	private int reviewHit;
 }

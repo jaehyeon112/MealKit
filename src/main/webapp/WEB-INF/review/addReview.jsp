@@ -182,7 +182,7 @@ a {
 										<p class="tit">
 
 											<!-- 구매한 상품 선택. -->
-											<span class="name"> <select name="orderDetailNumber" name="menuName" >
+											<span class="name"> <select name="orderDetailNumber">
 													<option selected>주문하신 상품 선택</option>
 													<c:forEach items="${list }" var="vo">
 														<option value="${vo.orderDetailNumber }" >[${vo.orderDetailNumber}] ${vo.menuName }</option>
