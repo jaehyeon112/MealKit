@@ -204,6 +204,7 @@ font-weight: 700;
   ${menuList }
  ${listJson }
   -->
+  ${list}
  <!-- 메뉴 list를 가져와서 가격 * 수량이 되야 장바구니의 금액이 된다. -->
   <h2 style="font-weight:800">장바구니</h2>
     <section class="cart">

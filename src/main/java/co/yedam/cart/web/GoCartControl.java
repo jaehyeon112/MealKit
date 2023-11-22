@@ -35,18 +35,29 @@ public class GoCartControl implements command {
 		req.setAttribute("totalJson", join);
 		req.setAttribute("total", vo);
 		
+		 List<MenuVO> menuList = menuSvc.menuList();
+			String menuListJson = gson.toJson(menuList);
+			System.out.println("menuList ="+menuList);
+	        req.setAttribute("menuList", menuListJson);
+		
 		
 		List<CartVO> list = svc.CartList(userId);
+		for(CartVO cVO : list) {
+			for(MenuVO mVO : menuList) {
+				if(cVO.getMenuId() == mVO.getMenuId()) {
+					cVO.setRestCount(mVO.getMenuCount());
+				}
+			}
+		}
+		
+		
 		String cartList = gson.toJson(list);
 		req.setAttribute("listJson", cartList);
 		req.setAttribute("list", list);
 		
 		
 		
-		 List<MenuVO> menuList = menuSvc.menuList();
-		String menuListJson = gson.toJson(menuList);
-		System.out.println("menuList ="+menuList);
-        req.setAttribute("menuList", menuListJson);
+		
 		
         
 		
