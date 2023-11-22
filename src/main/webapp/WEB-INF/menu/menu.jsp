@@ -35,7 +35,7 @@
         <div class="col">
             <button type="button" class="btn btn-outline-success" id="a1">인기메뉴순</button>
             <button type="button" class="btn btn-outline-info" id="a2">높은가격순</button>
-            <button type="button" class="btn btn-outline-warning" id="a">낮은가격순</button>
+            <button type="button" class="btn btn-outline-warning" id="a3">낮은가격순</button>
         </div>
     </div>
 </div>

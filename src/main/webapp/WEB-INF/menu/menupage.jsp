@@ -126,7 +126,7 @@ input#img-6:checked ~ .nav-dots label#img-dot-6 {
 	<div class="row">
 		<div class="col">
 			<div class="mainImg">
-				<img src="image/${menuId.menuImage1}" width="500" height="600">
+				<img src="image/${menuId.menuImage1}" width="600" height="600">
 			</div>
 
 

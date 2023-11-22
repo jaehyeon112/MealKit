@@ -3,16 +3,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <style>
-    th {
-        font-size: 13px;
-    }
-
-    td {
-        text-align: center;
-        font-size: 15px;
-        border: 1;
-    }
-
     .ud {
         text-align: center;
     }
@@ -20,13 +10,21 @@
     .btn {
         display: inline-block;
     }
+    #menu_list_table, th, td {
+    border: 1px solid #bcbcbc;
+    text-align: center;
+  }
+  table {
+    width: 100%;
+    height: 200px;
+  }
 </style>
 
 <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
     <h2>상품목록</h2>
 </div>
 
-<table class="table" border="3">
+<table class="table" border="3" id="menu_list_table">
 
     <tr>
         <th>상품번호</th>
@@ -37,7 +35,7 @@
         <th>상품가격</th>
         <th>상품할인가격</th>
         <th>상품설명</th>
-        <th>상품재고량</th>
+        <th>상품재고</th>
         <th>상품포인트</th>
         <th>상품조리시간</th>
         <th>상품인분체크</th>
