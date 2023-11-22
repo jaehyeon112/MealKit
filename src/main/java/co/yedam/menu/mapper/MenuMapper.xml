@@ -6,7 +6,7 @@
 	</select>
 	
 	<select id="list2" resultType="co.yedam.menu.service.MenuVO">
-		select MENU_ID, MENU_NAME, MENU_NAME_INFO, MENU_IMAGE1 ,MENU_COUNT,MENU_PRICE,MENU_PRICEOFF,MENU_POINT From menu
+		select MENU_ID, MENU_NAME, MENU_IMAGE1 ,MENU_COUNT,MENU_PRICE,MENU_PRICEOFF,MENU_POINT From menu
 	</select>
 	
 	<!-- 내림차순 정렬 -->

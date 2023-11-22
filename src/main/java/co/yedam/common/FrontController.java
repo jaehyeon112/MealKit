@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import co.yedam.cart.web.DelCartListControl;
 import co.yedam.cart.web.GoCartControl;
 import co.yedam.cart.web.cartListControl;
+import co.yedam.cart.web.carttest;
 import co.yedam.delevery.GoCancelControl;
 import co.yedam.delevery.GoDeliveryControl;
 import co.yedam.menu.web.GoAddFormControl;
@@ -68,6 +69,7 @@ public class FrontController extends HttpServlet {
 		map.put("/main.do", new GoMainControl());
 		map.put("/cart.do", new GoCartControl());
 		map.put("/bottom.do", new footerPath());
+		map.put("/carttest.do", new carttest());
 		map.put("/updatecart.do", new cartListControl());
 		map.put("/deleteCartList.do", new DelCartListControl());
 		map.put("/order.do", new GoOrderControl());

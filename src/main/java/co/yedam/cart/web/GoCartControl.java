@@ -38,6 +38,7 @@ public class GoCartControl implements command {
 	
 		// 여기 select * 로 하니까 값을 다 가져옴..
 		 List<MenuVO> menuList = menuSvc.menuList2();
+		 System.out.println("여기에는 텍스트가 없어야함."+menuList);
 			String menuListJson = gson.toJson(menuList);
 	        req.setAttribute("menuList", menuListJson);
 		
@@ -61,29 +62,30 @@ public class GoCartControl implements command {
 				
 			}
 		}
-		
+		CartMenuJoinVO vo = new CartMenuJoinVO();
 		System.out.println(cartArr);
-		String cartList = gson.toJson(newList);
-		req.setAttribute("listJson", cartList);
-		req.setAttribute("list", newList);
+		if(cartArr.size()==0) {
+			 vo = svc.joinCartMenuAll(userId);
+		}else{
+			Map<String, Object> map = new HashMap<>();
+			map.put("cartArr",cartArr );
+			map.put("userId", userId);
+			System.out.println(userId);
+			System.out.println(userId);
+			System.out.println(userId);
+			System.out.println(userId);
+			 vo = svc.joinCartMenu(map);
+			System.out.println("저는 품절을 뺀 상품이에요 " + vo);
+			String join = gson.toJson(vo);
+			req.setAttribute("totalJson", join);
+			req.setAttribute("total", vo);
+			String cartList = gson.toJson(newList);
+			req.setAttribute("listJson", cartList);
+			req.setAttribute("list", newList);
+		};
 		
 		
 		
-		
-		Map<String, Object> map = new HashMap<>();
-		map.put("cartArr",cartArr );
-		map.put("userId", userId);
-		System.out.println(userId);
-		System.out.println(userId);
-		System.out.println(userId);
-		System.out.println(userId);
-		CartMenuJoinVO vo = svc.joinCartMenu(map);
-		System.out.println("저는 품절을 뺀 상품이에요 " + vo);
-		
-		
-		String join = gson.toJson(vo);
-		req.setAttribute("totalJson", join);
-		req.setAttribute("total", vo);
 		
 		
         
