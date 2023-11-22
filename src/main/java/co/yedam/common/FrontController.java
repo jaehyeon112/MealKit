@@ -14,6 +14,7 @@ import co.yedam.cart.web.GoCartControl;
 import co.yedam.cart.web.SoldoutRemove;
 import co.yedam.cart.web.cartListControl;
 import co.yedam.cart.web.carttest;
+import co.yedam.cart.web.updatecartcontroll;
 import co.yedam.delevery.GoCancelControl;
 import co.yedam.delevery.GoDeliveryControl;
 import co.yedam.find.FindIdControl;
@@ -109,7 +110,7 @@ public class FrontController extends HttpServlet {
 		map.put("/replyList.do", new QaReplyListControl());
 		map.put("/addReply.do", new AddQaReplyControl());
 		map.put("/removeReply.do", new RemoveQaReplyControl());
-		
+		map.put("/updatecart2.do", new updatecartcontroll());// 버튼 눌렀을때도..
 		
 		map.put("/delivery.do", new GoDeliveryControl());
 		map.put("/cancel.do", new GoCancelControl());

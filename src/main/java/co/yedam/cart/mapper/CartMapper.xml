@@ -13,6 +13,15 @@
 		resultType="co.yedam.cart.service.CartVO">
 		select * from cart where Cart_num = #{cartNum}
 		</select>
+		
+	<select id="selectListUseCartNum" parameterType="map"
+		resultType="co.yedam.cart.service.CartVO">
+		select * from cart where Cart_num in 
+		<foreach collection="cartArr" item="cartArr" open="(" separator="," close=")">
+		#{cartArr}
+		</foreach>
+		
+		</select>
 
 	<insert id="insertCart" parameterType="co.yedam.cart.service.CartVO">
 	<selectKey keyProperty="cartNum" resultType="int" order="BEFORE">
@@ -91,6 +100,7 @@ WHERE
 GROUP BY
     c.user_id
 	</select>
+	
 	
 	<delete id="deleteCartList" parameterType="String">
 	delete from cart where Cart_num in (${cartNum})

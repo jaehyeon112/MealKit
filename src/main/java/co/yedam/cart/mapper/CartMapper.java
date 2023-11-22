@@ -19,7 +19,7 @@ public interface CartMapper {
 	
 	public CartMenuJoinVO joinCartMenu(Map<String, Object> map);
 	public CartMenuJoinVO joinCartMenuAll(String userId);
-	
+	public List<CartVO> selectListUseCartNum(Map<String, Object> map);
 	public int updateCartPlus(CartVO vo);
 	public int updateCartMinus(CartVO vo);
 }

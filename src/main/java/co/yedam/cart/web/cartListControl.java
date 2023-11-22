@@ -61,7 +61,6 @@ public class cartListControl implements command {
 				if(cVO.getMenuId().equals(mVO.getMenuId())) {
 					cVO.setRestCount(mVO.getMenuCount());
 					newList.add(cVO);
-					System.out.println(cVO);
 					if(cVO.getRestCount()>0) {
 						cartArr.add(mVO.getMenuId());
 					}
