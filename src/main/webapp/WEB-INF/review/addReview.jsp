@@ -187,7 +187,7 @@ a {
 													<c:forEach items="${list }" var="vo">
 														<option value="${vo.orderDetailNumber }" >[${vo.orderDetailNumber}] ${vo.menuName }</option>
 													</c:forEach>
-											
+													
 
 											</select></span>
 											<!-- 개발 요청 사항 : 검색된 단어에 <strong></strong>태그 추가 -->

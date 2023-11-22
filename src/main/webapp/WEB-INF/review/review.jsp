@@ -640,22 +640,27 @@ input, select, textarea, button {
 			
 			<div class="taste_list review_info" id="reviewTop">
 				<h3 class="hide">리뷰 찾아보기</h3>
+				
+				<!-- 검색 -->
+				<form>
 				<div class="box_search">
 					<div class="sch_wrap">
 						<div class="input_wrap sch_area ui_inputfield">
 							<label for="fn_txt_srch" class="hide">검색어 입력</label> <input
 								type="text" class="txt" name="searchText" id="fn_txt_srch"
 								placeholder="검색어를 입력해주세요"
-								onkeyup="if(event.keyCode=='13'){search();}" />
+								onkeyup="" />
 							<button class="ico del" type="button">
 								<span class="hide">입력 삭제</span>
 							</button>
-							<button type="button" class="btn btn_srch" onclick="search()">
+							<button type="button" class="btn btn_srch" onclick="">
 								<span class="hide">검색</span>
 							</button>
 						</div>
 					</div>
 				</div>
+				</form>
+				<!-- 검색 마지막 문단 -->
 				<div class="top_sec">
 					<p class="total">
 						리뷰
