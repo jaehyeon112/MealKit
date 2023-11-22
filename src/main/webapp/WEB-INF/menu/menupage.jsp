@@ -360,6 +360,8 @@
 		<div class="col">
 			<h4><b>${menuId.menuContent}</b></h4>
 			<br>
+			<h5><b>${menuId.menuNameInfo}</b></h5>
+			<br>
 			<h1 id="b">더 맛있게 즐기는 팁!</h1>
 			<hr>
 			<div>

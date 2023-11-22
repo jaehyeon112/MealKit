@@ -119,8 +119,10 @@ li {
 	<button id="loginBtn" onclick="test()">로그인</button>
 
 	<ul id="submitUl">
-		<li id="forgot">아이디 또는 비밀번호 찾기</li>
+		<li id="forgot"><a href="findId.do">아이디 찾기</a></li>
 		<li></li>
+		<li>|</li>
+		<li id="forgot"><a href="findPw.do">비밀번호 찾기</a></li>
 		<li>|</li>
 		<li></li>
 		<li id="signUp"><a href="join.do">회원가입</a></li>

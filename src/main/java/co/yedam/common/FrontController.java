@@ -14,6 +14,10 @@ import co.yedam.cart.web.GoCartControl;
 import co.yedam.cart.web.cartListControl;
 import co.yedam.delevery.GoCancelControl;
 import co.yedam.delevery.GoDeliveryControl;
+import co.yedam.find.FindIdControl;
+import co.yedam.find.FindPwControl;
+import co.yedam.find.GoFindIdControl;
+import co.yedam.find.GoFindPwControl;
 import co.yedam.menu.web.GoAddFormControl;
 
 
@@ -105,6 +109,11 @@ public class FrontController extends HttpServlet {
 		
 		map.put("/delivery.do", new GoDeliveryControl());
 		map.put("/cancel.do", new GoCancelControl());
+		
+		map.put("/findId.do", new GoFindIdControl());
+		map.put("/findPw.do", new GoFindPwControl());
+		map.put("/id.do", new FindIdControl());
+		map.put("/pw.do", new FindPwControl());
 		
 		map.put("/menupage.do", new GoMenuPageControl());
 		map.put("/addReview.do", new GoAddReviewControl()); // 마이페이지 -> 리뷰작성, 조회페이지로 이동

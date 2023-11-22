@@ -251,8 +251,8 @@ a {
 			</tr>
 			<tr>
 				<td colspan="2" style="text-align: center">
-				<input type="submit" value="저장" class="btn btn-primary">
-				<input type="reset" value="초기화" class="btn btn-warning">
+				<input type="submit" value="저장" class="btn btn-dark">
+				<input type="reset" value="초기화" class="btn btn-light">
 				</td>
 			</tr>
 		</table>
