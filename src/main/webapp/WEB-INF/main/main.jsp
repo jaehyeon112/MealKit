@@ -1,6 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <style>
+.card{
+
+}
+.btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #bdd61a;
+    --bs-btn-border-color: #bdd61a;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #0b5ed7;
+    --bs-btn-hover-border-color: #0a58ca;
+    --bs-btn-focus-shadow-rgb: 49,132,253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #0a58ca;
+    --bs-btn-active-border-color: #0a53be;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #bdd61a;
+    --bs-btn-disabled-border-color: #bdd61a;
+}
   .mt_elps {
     width: 100%;
     overflow: hidden;
@@ -192,6 +213,8 @@ pageEncoding="UTF-8"%>
     padding-top: 200px;
   }
 
+
+
   .tit {
     color: #101010;
     font-weight: 700;
@@ -199,7 +222,6 @@ pageEncoding="UTF-8"%>
     line-height: 56px;
     padding-bottom: 30px;
     margin-top: 30px;
-   
   }
 
   #textBox1,
@@ -319,12 +341,17 @@ pageEncoding="UTF-8"%>
     <h2 class="tit">베스트 메뉴</h2>
   </div>
   
+</div>
+<div class="mx-auto p-2" style="width: 200px;">
+  <c:forEach items="${menuList }" var="vo">
   <div class="card" style="width: 18rem;">
-  <img src="" class="card-img-top" alt="...">
+  <img src="resources/menu/${vo.menuImage1 }" class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title">메뉴이름</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <h5 class="card-title">${vo.menuName }</h5>
+    <p class="card-text"> ${vo.menuPrice}원 / ${vo.menuMany }인분</p>
+    <a href="#" class="btn btn-primary">메뉴 상세페이지</a>
   </div>
 </div>
-</div>
+</c:forEach></div>
+
+

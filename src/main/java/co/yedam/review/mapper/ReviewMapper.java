@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import co.yedam.menu.service.MenuVO;
 import co.yedam.review.service.ReviewVO;
 
 public interface ReviewMapper {
@@ -25,6 +26,4 @@ public interface ReviewMapper {
 	public int selectCnt();
 	
 	public List<ReviewVO> searchBox(@Param("word") String word);
-	
-	
 }

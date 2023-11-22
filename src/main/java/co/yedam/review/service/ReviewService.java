@@ -2,6 +2,8 @@ package co.yedam.review.service;
 
 import java.util.List;
 
+import co.yedam.menu.service.MenuVO;
+
 public interface ReviewService {
 	public List<ReviewVO> reviewList();
 	public boolean addReview(ReviewVO vo);
@@ -13,4 +15,5 @@ public interface ReviewService {
 	public int reviewCnt();
 	
 	public List<ReviewVO> searchBoxList(String menuName);
+	
 }

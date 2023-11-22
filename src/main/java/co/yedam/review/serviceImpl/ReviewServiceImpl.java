@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import co.yedam.common.DataSourceMybatis;
+import co.yedam.menu.service.MenuVO;
 import co.yedam.review.mapper.ReviewMapper;
 import co.yedam.review.service.ReviewService;
 import co.yedam.review.service.ReviewVO;
@@ -59,13 +60,11 @@ public class ReviewServiceImpl implements ReviewService {
 		// TODO Auto-generated method stub
 		return mapper.selectCnt();
 	}
-	
+
 	@Override
 	public List<ReviewVO> searchBoxList(String menuName) {
 		// TODO Auto-generated method stub
 		return mapper.searchBox(menuName);
 	}
-
-
 
 }

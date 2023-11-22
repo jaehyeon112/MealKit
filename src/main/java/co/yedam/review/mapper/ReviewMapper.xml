@@ -60,4 +60,5 @@
 		ORDER_DETAIL O JOIN MENU M ON(O.MENU_ID = M.MENU_ID) WHERE USER_ID =
 		#{userId} ORDER BY ORDER_DETAIL_NUMBER
 	</select>
+	
 </mapper>
