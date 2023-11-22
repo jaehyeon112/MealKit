@@ -323,7 +323,7 @@ pageEncoding="UTF-8"%>
   </div>
   
   <div class="card" style="width: 18rem;">
-  <img src="https://img.cjcookit.com/images/file/product/511/20230901140905314.jpg?RS=549x549" class="card-img-top" alt="...">
+  <img src="" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">Card title</h5>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
