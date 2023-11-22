@@ -23,6 +23,12 @@ public class GoMenuControl implements command {
 		
 		req.setAttribute("list", list);
 		
+		List<MenuVO> list2 = svc.menuList("up");
+		List<MenuVO> list3 = svc.menuList("down");
+		
+		req.setAttribute("listUp", list2);
+		req.setAttribute("listDown", list3);
+		
 		System.out.println(list);
 		try {
 

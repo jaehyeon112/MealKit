@@ -28,6 +28,7 @@ public class CartServiceImpl implements CartService{
 		return mapper.cartListCheck(userId);
 	} 
 	
+	
 	@Override
 	public CartVO updateCartList(CartVO vo, int cartNum ,boolean check) {
 		
@@ -37,11 +38,7 @@ public class CartServiceImpl implements CartService{
 			mapper.updateCartMinus(vo);
 		}
 		
-		System.out.println("====");
-		System.out.println(vo);
-		System.out.println("====");
 		CartVO vo2 = mapper.selectCartOne(cartNum);
-		System.out.println("vo2");
 		return vo2;
 	}
 	@Override
@@ -52,6 +49,7 @@ public class CartServiceImpl implements CartService{
 	public CartMenuJoinVO joinCartMenu(Map<String, Object> map) {
 		return mapper.joinCartMenu(map);
 	}
+	
 	@Override
 	public List<CartVO> removeCart(String CartNum, String userId) {
 		mapper.deleteCartList(CartNum);

@@ -5,10 +5,11 @@
 <div class="jumbotron">
     <div class="container">
         <h1 class="display-3">제품등록</h1>
+
     </div>
 </div>
 <div class="container">
-    <form name="newProduct" action="addMenu.do"  method="post" class="form-horizontal" enctype="multipart/form-data">
+    <form name="newProduct" action="addMenu.do" method="post" class="form-horizontal" enctype="multipart/form-data">
         <div class="form-group row">
             <label class="col-sm-2">제품번호</label>
             <div class="col-sm-3">
@@ -113,8 +114,8 @@
         </div>
         <div class="image-show" id="image-show"></div>
 
-        <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" name="menuImage1"/>
-        <div id="image_container1"></div> 
+        <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" name="menuImage1" />
+        <div id="image_container1"></div>
         <script>
             function setThumbnail(event) {
                 var reader = new FileReader();
@@ -138,7 +139,7 @@
         <div class="image-show" id="image-show"></div>
 
 
-        <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" name="menuImage2"/>
+        <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" name="menuImage2" />
         <div id="image_container2"></div>
         <script>
             function setThumbnail(event) {
@@ -163,7 +164,7 @@
         <div class="image-show" id="image-show"></div>
 
 
-        <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" name="menuImage3"/>
+        <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" name="menuImage3" />
         <div id="image_container3"></div>
         <script>
             function setThumbnail(event) {
@@ -192,7 +193,7 @@
 
 
 
-    
+
 
 <!-- <div class="container">
     <h2>상품 등록</h2>

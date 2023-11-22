@@ -9,13 +9,16 @@
         height: 300px;
         object-fit: cover;
     }
+    .best{
+        text-align: right;
+    }
     
 </style>
 
 <div>
     <h1><b>4MEN 메뉴</b></h1>
     <a href="addForm.do"><button>상품등록</button></a>
-
+    <!-- ${listUp} -->
 </div>
 
 <!-- 개별 상품-->
@@ -26,7 +29,7 @@
             <p class="메뉴2">주문마감은 오전 7시 입니다.</p>
 
         </div>
-        <div class="col">
+        <div class="best">
             <button type="button" class="btn btn-outline-success" id="a1">인기메뉴순</button>
             <button type="button" class="btn btn-outline-info" id="a2">높은가격순</button>
             <button type="button" class="btn btn-outline-warning" id="a3">낮은가격순</button>
@@ -54,7 +57,7 @@
                                 </div>
                                 <!-- Product image--><a href="menupage.do?menuId=${vo.menuId}">
 
-                                    <img class="card-img-top" src="image/${vo.menuImage1 }" alt="..." />
+                                    <img class="card-img-top" src="resources/menu/${vo.menuImage1 }" alt="..." />
                                     <h3 style="color:red;position:absolute;top:30%;left:50%;transform: translate(-50%, -50%);" id="sold">SOLD OUT</h3>
                                 <!-- Product details-->
                                 <div class="card-body p-4">
@@ -73,7 +76,7 @@
                                         <span class="text-muted text-decoration-line-through">제품금액
                                             ${vo.menuPrice}원</span><br>
 
-                                        <strong><span class="text">할인금액 ${vo.menuPriceOff }원</span></strong>
+                                        <strong><span class="text">할인금액 ${vo.menuPrice-vo.menuPriceOff }원</span></strong>
                                         <p>조리 ${vo.menuTime }분 | ${vo.menuMany }인분 | ${vo.menuKind } <svg
                                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16"></svg>
 
@@ -112,7 +115,7 @@
                                 </div>
                                 <!-- Product image--><a href="menupage.do?menuId=${vo.menuId}">
 
-                                    <img class="card-img-top" src="image/${vo.menuImage1 }" alt="..." />
+                                    <img class="card-img-top" src="resources/menu/${vo.menuImage1 }" alt="..." />
                                     
                                 </a>
                                 <!-- Product details-->
@@ -132,7 +135,7 @@
                                         <span class="text-muted text-decoration-line-through">제품금액
                                             ${vo.menuPrice}원</span><br>
 
-                                        <strong><span class="text">할인금액 ${vo.menuPriceOff }원</span></strong>
+                                        <strong><span class="text">할인금액 ${vo.menuPrice-vo.menuPriceOff }원</span></strong>
                                         <p>조리 ${vo.menuTime }분 | ${vo.menuMany }인분 | ${vo.menuKind } <svg
                                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16"></svg>
 
@@ -187,7 +190,7 @@
                                 </div>
                                 <!-- Product image--><a href="menupage.do?menuId=${vo.menuId}">
 
-                                    <img class="card-img-top" src="image/${vo.menuImage1 }" alt="..." />
+                                    <img class="card-img-top" src="resources/menu/${vo.menuImage1 }" alt="..." />
                                     <p>품절입니다.</p>
                                 </a>
                                 <!-- Product details-->
@@ -206,8 +209,8 @@
                                         <!-- Product price-->
                                         <span class="text-muted text-decoration-line-through">제품금액
                                             ${vo.menuPrice}원</span><br>
-
-                                        <strong><span class="text">할인금액 ${vo.menuPriceOff }원</span></strong>
+                                            
+                                        <strong><span class="text">할인금액 ${vo.menuPrice-vo.menuPriceOff }원</span></strong>
                                         <p>조리 ${vo.menuTime }분 | ${vo.menuMany }인분 | ${vo.menuKind } <svg
                                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16"></svg>
 
@@ -246,7 +249,7 @@
                                 </div>
                                 <!-- Product image--><a href="menupage.do?menuId=${vo.menuId}">
 
-                                    <img class="card-img-top" src="image/${vo.menuImage1 }" alt="..." />
+                                    <img class="card-img-top" src="resources/menu/${vo.menuImage1 }" alt="..." />
                                     
                                 </a>
                                 <!-- Product details-->
@@ -266,9 +269,11 @@
                                         <span class="text-muted text-decoration-line-through">제품금액
                                             ${vo.menuPrice}원</span><br>
 
-                                        <strong><span class="text">할인금액 ${vo.menuPriceOff }원</span></strong>
+                                        <strong><span class="text">할인금액 ${vo.menuPrice-vo.menuPriceOff }원</span></strong>
                                         <p>조리 ${vo.menuTime }분 | ${vo.menuMany }인분 | ${vo.menuKind } <svg
                                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16"></svg>
+
+                                        
 
                                             <!-- <strong><span class="text">${vo.menuPriceOff }원</span></strong> -->
                                             <!-- <span class="text">${vo.menuPrice} - ${vo.menuPriceOff }원</span> -->
@@ -321,7 +326,7 @@
                                 </div>
                                 <!-- Product image--><a href="menupage.do?menuId=${vo.menuId}">
 
-                                    <img class="card-img-top" src="image/${vo.menuImage1 }" alt="..." />
+                                    <img class="card-img-top" src="resources/menu/${vo.menuImage1 }" alt="..." />
                                     <p>품절입니다.</p>
                                 </a>
                                 <!-- Product details-->
@@ -380,7 +385,7 @@
                                 </div>
                                 <!-- Product image--><a href="menupage.do?menuId=${vo.menuId}">
 
-                                    <img class="card-img-top" src="image/${vo.menuImage1 }" alt="..." />
+                                    <img class="card-img-top" src="resources/menu/${vo.menuImage1 }" alt="..." />
                                     
                                 </a>
                                 <!-- Product details-->
@@ -456,7 +461,7 @@
                                 </div>
                                 <!-- Product image--><a href="menupage.do?menuId=${vo.menuId}">
 
-                                    <img class="card-img-top" src="image/${vo.menuImage1 }" alt="..." />
+                                    <img class="card-img-top" src="resources/menu/${vo.menuImage1 }" alt="..." />
                                     <p>품절입니다.</p>
                                 </a>
                                 <!-- Product details-->
@@ -515,7 +520,7 @@
                                 </div>
                                 <!-- Product image--><a href="menupage.do?menuId=${vo.menuId}">
 
-                                    <img class="card-img-top" src="image/${vo.menuImage1 }" alt="..." />
+                                    <img class="card-img-top" src="resources/menu/${vo.menuImage1 }" alt="..." />
                                     
                                 </a>
                                 <!-- Product details-->
@@ -609,15 +614,7 @@
             document.querySelector('#div2').style = 'display:none';
             console.log(4)
 
-   /*  document.querySelector('#a3').addEventListener('click', function(){
-            document.querySelector('#div3').style += 'display:block';
-            document.querySelector('#aa').style += 'display:none';
-            document.querySelector('#div1').style += 'display:none';
-            document.querySelector('#div2').style += 'display:none';
-            console.log(4) 
->>>>>>> branch 'develop' of https://github.com/jaehyeon112/MealKit.git
     })
-    */
     
 
     document.querySelectorAll('.btn.btn-outline-dark').forEach(ele => {
