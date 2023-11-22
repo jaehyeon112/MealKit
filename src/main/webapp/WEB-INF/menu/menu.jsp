@@ -608,7 +608,16 @@
             document.querySelector('#div1').style = 'display:none';
             document.querySelector('#div2').style = 'display:none';
             console.log(4)
+
+   /*  document.querySelector('#a3').addEventListener('click', function(){
+            document.querySelector('#div3').style += 'display:block';
+            document.querySelector('#aa').style += 'display:none';
+            document.querySelector('#div1').style += 'display:none';
+            document.querySelector('#div2').style += 'display:none';
+            console.log(4) 
+>>>>>>> branch 'develop' of https://github.com/jaehyeon112/MealKit.git
     })
+    */
     
 
     document.querySelectorAll('.btn.btn-outline-dark').forEach(ele => {
