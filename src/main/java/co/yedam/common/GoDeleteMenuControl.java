@@ -24,18 +24,29 @@ public class GoDeleteMenuControl implements command {
 		Map<String, Object> map = new HashMap<>();
 		MenuService svc = new MenuServiceImpl();
 		if(svc.deleteMenu(mid)) {
-			map.put("test", "OK");
+//			map.put("test", "OK");
+			try {
+				resp.getWriter().print("{\"retCode\":\"OK\"}");
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
 		}else {
-			map.put("test", "NG");
-		}
-		;
+//			map.put("test", "NG");
+			try {
+				resp.getWriter().print("{\"retCode\":\"NG\"}");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		};
 		
-		try {
-			// Object => json으로 변환
-			resp.getWriter().print(gson.toJson(mid));
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			// Object => json으로 변환
+//			resp.getWriter().print(gson.toJson(mid));
+//		} catch(IOException e) {
+//			e.printStackTrace();
+//		}
 	}
 
 }

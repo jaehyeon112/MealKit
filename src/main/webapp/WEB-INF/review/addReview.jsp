@@ -180,19 +180,27 @@ a {
 								<div class="review_module">
 									<div class="top_wrap">
 										<p class="tit">
-											<!-- 190510_수정 및 케이스 추가 -->
 
-											<!-- //190510_수정 및 케이스 추가 -->
-											<span class="name"><input
-												name="menuName" placeholder="상품명 작성" /></span>
+											<!-- 구매한 상품 선택. -->
+											<span class="name"> <select name="orderDatailNumber" multiple>
+													<option selected>주문하신 상품 선택</option>
+													<c:forEach items="${list }" var="vo">
+														<option value="${vo.orderDetailNumber }"/><c:out value="[${vo.orderDetailNumber}] ${vo.menuName }"/>
+													</c:forEach>
+											
+
+											</select></span>
+											<input type="hidden" name="menuName"/>
 											<!-- 개발 요청 사항 : 검색된 단어에 <strong></strong>태그 추가 -->
 										</p>
 										<div class="top_wrap--right">
 											<!-- 20220609 div 추가 -->
-
+											<span>
+												</span>
 											<time datetime="2023-11-15">
 												<input type="hidden" name="reviewDate" />
 											</time>
+											
 											<!-- 데이터 없을 때 노출 -->
 											<!-- <li class="no_data"><span class="ico"></span> <strong>작성
 								가능한 리뷰가 없습니다.</strong></li> -->
@@ -204,7 +212,7 @@ a {
 											<span class="rating_star"> <span class="star">
 													<!-- background image 커스텀 영역 --> <span style="width: 100%">
 														<select name="reviewStar">
-															<option value="">별점 선택하세요</option>
+															<option value="">별점</option>
 															<option value="1">1점</option>
 															<option value="2">2점</option>
 															<option value="3">3점</option>
@@ -217,13 +225,11 @@ a {
 										</div>
 										<!-- 190610_수정 -->
 										<div class="user_id">
-											<a><span>작성자</span><input
-												type="text" name="userId" /></a>
+											<input value="${userId }" name="userId" type="hidden" />
 										</div>
 										<!-- //190610_수정 -->
 
 										<div class="purchase_num">
-											<span class="hide">구매 횟수 : </span>구매 3회
 										</div>
 										<!-- 개발 요청 사항 : 첫구매시에는 노출되지 않음 -->
 									</div>
@@ -232,8 +238,8 @@ a {
 										placeholder="리뷰를 작성해주세요" />
 									<div class="buttons">
 										<input type="file" name="reviewImage" accept="image/*"
-											value="사진등록" /> <input type="submit"
-											class="button" value="리뷰등록" form="formReview" />
+											value="사진등록" /> <input type="submit" class="button"
+											value="리뷰등록" form="formReview" />
 									</div>
 								</div>
 							</li>

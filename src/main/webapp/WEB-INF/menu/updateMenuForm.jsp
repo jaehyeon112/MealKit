@@ -8,11 +8,11 @@
 
     <div class="update">
         <div class="container">
-            <h1 class="display-3">상품수정</h1>
+            <h1 class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">상품수정</h1>
         </div>
     </div>
     <div class="container">
-        <form name="updateMenu" action="updateMenu.do"  method="post" class="form-horizontal" enctype="multipart/form-data">
+        <form name="updateMenu" action="updateMenu.do" method="post" class="form-horizontal" enctype="multipart/form-data">
             <div class="form-group row">
                 <label class="col-sm-2">제품번호</label>
                 <div class="col-sm-3">
@@ -52,7 +52,7 @@
                     </select>
                 </div>
             </div>
-    
+
     
             <div class="form-group row">
                 <label class="hotstep">맵기단계</label>
@@ -86,6 +86,13 @@
                 <label class="col-sm-2">제품설명</label>
                 <div class="col-sm-3">
                     <textarea cols="30" rows="5" name="menuContent"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2">상품팁</label>
+                <div class="col-sm-3">
+                    <textarea cols="30" rows="2" name="menuTip"></textarea>
                 </div>
             </div>
     
@@ -185,3 +192,7 @@
             </div>
         </form>
     </div>
+
+
+    
+    

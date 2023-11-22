@@ -88,6 +88,10 @@ width: 400px;
 }
 
 </style>
+
+${cartList}
+${map}
+
 <div class="row">
 	<div class="col">
 		<h1>주문하기</h1>
@@ -118,14 +122,14 @@ width: 400px;
 		<h3>구매할물건</h3>
 		<div id="test"></div>
 		<div class="recieve_date">
-		<strong id="nextDate">11-16(목) 도착예정</strong>
+		<strong id="nextDate">날짜+2 도착예정</strong>
 		</div>
 		<ul style="list-style-type: none; margin-top:20px">
 		<c:forEach items="${cartList }" var="cart">
 		<li style="margin-bottom: 20px">
 		<div class="row" style="vertical-align: center">
 		<div class="col"><img style="width:100px;height:100px" src="image/${cart.menuImage1 }"></div>
-		<div class="col-6"><span style="font-size: 20px;line-height: 80px; ">${cart.menuName }</span></div>
+		<div class="col-6"><span class="menuIdClass" style="font-size: 20px;line-height: 80px; " id="${cart.menuId}">${cart.menuName }</span></div>
 		<div class="col"><span style="font-size: 14px;line-height: 80px;">${cart.cartCount }개</span></div>
 		<div class="col"><span style="font-size: 20px;line-height: 80px;; font-weight: 700">${(cart.menuPrice-cart.menuPriceOff)*cart.cartCount}원</span></div>
 		</div>
@@ -189,7 +193,7 @@ width: 400px;
 				<td style="font-size: 24px; font-weight: 700; color:red" id="realPay"></td>
 			</tr>
 		</table>
-		<form name="go">
+		<form name="go" method="post">
 		<input type="button" onclick="requestPay()" value="결제하기" class="cart__bigorderbtn right">
 		</form>
 		
@@ -227,6 +231,53 @@ width: 400px;
 	let address1_ = document.getElementById('address1')
 	let address2_= document.getElementById('address2')
 
+	
+		 
+		function test1(){
+		//일단 테스트
+		let buy = document.createElement('form');
+		buy.method = "post";
+		buy.action = "orderfinish.do"
+		buy.enctype = "application/x-www-form-urlencoded"
+		document.body.append(buy);
+
+		let postForward = document.querySelectorAll('.menuIdClass')
+
+		postForward.forEach((ele,index) =>{
+				let input = document.createElement('input');
+				input.type = 'hidden'
+				input.value = ele.id; // 마라마라 value // menuName
+				input.name = ele.id // 마라탕 // key // menuId
+				buy.append(input)
+		})
+
+
+		let pointInput = document.createElement('input');
+		pointInput.type= 'hidden'
+		pointInput.name= 'usePoint'
+		if(document.querySelector('#pointMinus').innerHTML.split(' ')[0]==0){
+			pointInput.value = 0;
+		}else{
+			pointInput.value = document.querySelector('#pointMinus').innerHTML.split(' ')[0];
+		}
+
+		buy.append(pointInput);
+		
+		
+		let input3 = document.createElement('input');
+		input3.type= 'hidden'
+		input3.name= "orderNumber"
+		input3.value = payNum;
+		buy.append(input3);
+
+		buy.submit();
+
+	}
+	
+
+	
+
+
 
 
 	// 값 가져오고
@@ -236,7 +287,7 @@ width: 400px;
 	// json -> object (script에서 쓰기 위함)
 	userList = JSON.parse(userList);
 	payList = JSON.parse(payList);
-	console.log(payList)
+
 
 	let date = new Date();
 	let day = ['일','월','화','수','목','금','토']
@@ -277,6 +328,8 @@ width: 400px;
 
 	// 포인트 적용하기.
 	document.querySelector('#usePoint').addEventListener('click',function(){
+		
+		
 		// 숫자만 받는 정규식
 		let check = /^[0-9]+$/;
 		if(!check.test(parseInt(document.querySelector('#howManyUsePoint').value))){
@@ -307,6 +360,8 @@ width: 400px;
 				document.querySelector('#totalPoint').children[1].innerHTML = document.querySelector('#howManyUsePoint').value + ' Point' 
 				document.querySelector('#pointMinus').innerHTML = document.querySelector('#howManyUsePoint').value + ' Point';
 				document.querySelector('#realPay').innerHTML = payList.total - pointValue + '원'
+
+				
 			}else{
 				alert('최소 1000 Point부터 사용할 수 있습니다.')
 			}
@@ -375,17 +430,19 @@ width: 400px;
      IMP.init("imp87028837"); 
  	
     function requestPay(){
+
+
+
+		//장바구니에 
+		//for(let cart in )
+
+
+
 		if(phone1.value==''){
 			console.log('비어있는거같은데..?')
 		}else{
 			console.log('안비어있어~')
 		}
-		console.log(userList.userEmail)
-		console.log(userName1.value)
-		console.log(phone1.value+phone2.value+phone3.value)
-		console.log(address1_.value + address2_.value)
-		console.log(address3_.value)
-		
 		
     	let total = payList.total - pointValue;
     	if(document.querySelector('input[name="kindOfPayment"]:checked').id=='kg'){
@@ -405,8 +462,7 @@ width: 400px;
     	}, function(rsp) { // callback 로직
     		if(rsp.success){
     			console.log('성공!')
-    			 document.forms.go.action = "orderfinish.do"
-				 document.forms.go.submit();
+				test1()
     			
     		}else{
     			alert('결제가 실패하였습니다. 다시 한번 확인해주세요.')
@@ -417,10 +473,8 @@ width: 400px;
 	}else{
 		alert('아직 구현 안했어요!')
 	}
-    	
 	
 	}
-	
 	
 </script>
 

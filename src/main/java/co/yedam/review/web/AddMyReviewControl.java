@@ -3,10 +3,11 @@ package co.yedam.review.web;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -20,6 +21,7 @@ public class AddMyReviewControl implements command {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
+		
 		ReviewService svc = new ReviewServiceImpl();
 		String savaDir = req.getServletContext().getRealPath("image");
 
@@ -31,8 +33,8 @@ public class AddMyReviewControl implements command {
 
 		try {
 			MultipartRequest mr = new MultipartRequest(req, savaDir, size, "UTF-8", new DefaultFileRenamePolicy());
-
 			String menuName = mr.getParameter("menuName"); // 상품명
+			int orderDetailNumber = Integer.parseInt(mr.getParameter("orderDetailNumber"));
 			String reviewContent = mr.getParameter("reviewContent"); // 리뷰내용
 			String userId = mr.getParameter("userId"); // 아이디
 			String reviewImage = mr.getFilesystemName("reviewImage");
@@ -46,7 +48,7 @@ public class AddMyReviewControl implements command {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
+			vo.setOrderDetailNumber(orderDetailNumber);
 			vo.setMenuName(menuName);
 			vo.setReviewContent(reviewContent);
 			vo.setUserId(userId);

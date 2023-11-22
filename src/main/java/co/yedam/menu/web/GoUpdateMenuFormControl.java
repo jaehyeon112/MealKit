@@ -16,7 +16,7 @@ public class GoUpdateMenuFormControl implements command {
 		String mid = req.getParameter("menuId");
 		MenuService svc = new MenuServiceImpl();
 		MenuVO vo = svc.getMenu(mid);
-		req.setAttribute("mid", vo);
+		req.setAttribute("menuId", vo);
 		
 		try {
 			req.getRequestDispatcher("menu/updateMenuForm.tiles").forward(req, resp);

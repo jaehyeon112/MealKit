@@ -3,6 +3,7 @@ package co.yedam.review.web;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,11 +19,18 @@ public class GoAddReviewControl implements command {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-
-		String path = "/review/addReview.tiles";
+		HttpSession session = req.getSession();
+		String userId = (String) session.getAttribute("userId");
+		ReviewService svc = new ReviewServiceImpl();
+		List<ReviewVO> list = svc.selectMenu(userId);
+		
+		req.setAttribute("list", list);
+		System.out.println(list);
+		
+		
 		
 		try {
-			req.getRequestDispatcher(path).forward(req, resp);
+			req.getRequestDispatcher("review/addReview.tiles").forward(req, resp);
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}

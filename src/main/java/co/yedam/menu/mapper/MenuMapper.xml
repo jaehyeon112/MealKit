@@ -5,6 +5,22 @@
 		select * from menu
 	</select>
 	
+	<!-- 내림차순 정렬 -->
+	<select id="down" resultType="co.yedam.menu.service.MenuVO">
+		select * from menu order by menu_price DESC  
+	</select>
+	
+	
+	<!-- 오름차순 정렬 -->
+	<select id="up" resultType="co.yedam.menu.service.MenuVO">
+		select * from menu order by menu_price ASC
+	</select>
+	
+	<!-- 인기메뉴순 -->
+	<select id="3" resultType="co.yedam.menu.service.MenuVO">
+		select * from menu order by 
+	</select>
+	
 	<!-- 장바구니 버튼 눌렀을때, 해당 메뉴의 정보 가져올 수 있도록.. -->
 	<select id="selectMenu"	resultType="co.yedam.menu.service.MenuVO"
 	parameterType="String">
@@ -12,7 +28,7 @@
 	</select>
 	
 	<insert id="insertMenu" parameterType="co.yedam.menu.service.MenuVO">
-		insert into menu values(#{menuId}, #{menuName}, #{menuNameInfo}, #{menuImage1}, #{menuImage2} , #{menuImage3} ,#{menuKind}, #{menuPrice}, #{menuPriceOff}, #{menuContent}, #{menuCount}, #{menuPoint}, #{menuTime}, #{menuMany})
+		insert into menu values(#{menuId}, #{menuName}, #{menuNameInfo}, #{menuImage1}, #{menuImage2} , #{menuImage3} ,#{menuKind}, #{menuPrice}, #{menuPriceOff}, #{menuContent}, #{menuCount}, #{menuPoint}, #{menuTime}, #{menuMany}, #{menuTip})
 	</insert>
 	
 
@@ -27,7 +43,7 @@
 
 	<update id="updateMenu" parameterType="co.yedam.menu.service.MenuVO">
 		update menu set menu_name =#{menuName}, menu_name_Info =#{menuNameInfo}, menu_Image1 =#{menuImage1}, menu_Image2 =#{menuImage2} , menu_Image3 =#{menuImage3},
-		 menu_kind =#{menuKind}, menu_Price =#{menuPrice}, menu_PriceOff =#{menuPriceOff}, menu_Content =#{menuContent}, menu_Count =#{menuCount}, menu_Point =#{menuPoint}, menu_Time#{menuTime}, menu_Many =#{menuMany} where menu_Id =#{menuId} 
+		 menu_kind =#{menuKind}, menu_Price =#{menuPrice}, menu_PriceOff =#{menuPriceOff}, menu_Content =#{menuContent}, menu_Count =#{menuCount}, menu_Point =#{menuPoint}, menu_Time =#{menuTime}, menu_Many =#{menuMany}, menu_Tip =#{menuTip} where menu_Id =#{menuId} 
 	</update>
 
 </mapper> 
