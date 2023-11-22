@@ -600,13 +600,14 @@
     })
 
 
-    document.querySelector('#a3').addEventListener('click', function(){
+   /*  document.querySelector('#a3').addEventListener('click', function(){
             document.querySelector('#div3').style += 'display:block';
             document.querySelector('#aa').style += 'display:none';
             document.querySelector('#div1').style += 'display:none';
             document.querySelector('#div2').style += 'display:none';
-            console.log(4)
+            console.log(4) 
     })
+    */
     
 
     document.querySelectorAll('.btn.btn-outline-dark').forEach(ele => {
