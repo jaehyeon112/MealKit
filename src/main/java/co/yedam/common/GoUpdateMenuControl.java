@@ -21,13 +21,7 @@ public class GoUpdateMenuControl implements command {
       MenuVO vo = new MenuVO();
    
       String savaDir = req.getServletContext().getRealPath("image");
-      System.out.println("===================");
-      System.out.println("===================");
-      System.out.println("===================");
       System.out.println(savaDir);
-      System.out.println("===================");
-      System.out.println("===================");
-      System.out.println("===================");
       int size = 5 * 1024 * 1024;
       
       try {
