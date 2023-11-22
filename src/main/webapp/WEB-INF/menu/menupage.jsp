@@ -4,119 +4,140 @@
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
 <style>
+	.slides {
+		padding: 0;
+		width: 609px;
+		height: 420px;
+		display: block;
+		margin: 0 auto;
+		position: relative;
+	}
 
-.slides {
-    padding: 0;
-    width: 609px;
-    height: 420px;
-    display: block;
-    margin: 0 auto;
-    position: relative;
-}
+	.slides * {
+		user-select: none;
+		-ms-user-select: none;
+		-moz-user-select: none;
+		-khtml-user-select: none;
+		-webkit-user-select: none;
+		-webkit-touch-callout: none;
+	}
 
-.slides * {
-    user-select: none;
-    -ms-user-select: none;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
-}
+	.slides input {
+		display: none;
+	}
 
-.slides input { display: none; }
+	.slide-container {
+		display: block;
+	}
 
-.slide-container { display: block; }
+	.slide {
+		top: 0;
+		opacity: 0;
+		width: 609px;
+		height: 420px;
+		display: block;
+		position: absolute;
 
-.slide {
-    top: 0;
-    opacity: 0;
-    width: 609px;
-    height: 420px;
-    display: block;
-    position: absolute;
+		transform: scale(0);
 
-    transform: scale(0);
+		transition: all .7s ease-in-out;
+	}
 
-    transition: all .7s ease-in-out;
-}
+	.slide img {
+		width: 100%;
+		height: 120%;
+	}
 
-.slide img {
-    width: 100%;
-    height: 100%;
-}
+	.nav label {
+		width: 200px;
+		height: 100%;
+		display: none;
+		position: absolute;
 
-.nav label {
-    width: 200px;
-    height: 100%;
-    display: none;
-    position: absolute;
+		opacity: 0;
+		z-index: 9;
+		cursor: pointer;
 
-    opacity: 0;
-    z-index: 9;
-    cursor: pointer;
+		transition: opacity .2s;
 
-    transition: opacity .2s;
+		color: #FFF;
+		font-size: 156pt;
+		text-align: center;
+		line-height: 504px;
+		font-family: "Varela Round", sans-serif;
+		text-shadow: 0px 0px 15px rgb(119, 119, 119);
+	}
 
-    color: #FFF;
-    font-size: 156pt;
-    text-align: center;
-    line-height: 380px;
-    font-family: "Varela Round", sans-serif;
-    background-color: rgba(255, 255, 255, .3);
-    text-shadow: 0px 0px 15px rgb(119, 119, 119);
-}
+	.slide:hover+.nav label {
+		opacity: 0.5;
+	}
 
-.slide:hover + .nav label { opacity: 0.5; }
+	.nav label:hover {
+		opacity: 1;
+	}
 
-.nav label:hover { opacity: 1; }
+	.nav .next {
+		right: 0;
+	}
 
-.nav .next { right: 0; }
+	input:checked+.slide-container .slide {
+		opacity: 1;
 
-input:checked + .slide-container  .slide {
-    opacity: 1;
+		transform: scale(1);
 
-    transform: scale(1);
+		transition: opacity 1s ease-in-out;
+	}
 
-    transition: opacity 1s ease-in-out;
-}
+	input:checked+.slide-container .nav label {
+		display: block;
+	}
 
-input:checked + .slide-container .nav label { display: block; }
+	.nav-dots {
+		width: 100%;
+		bottom: 9px;
+		height: 11px;
+		display: block;
+		position: absolute;
+		text-align: center;
+	}
 
-.nav-dots {
-  width: 100%;
-  bottom: 9px;
-  height: 11px;
-  display: block;
-  position: absolute;
-  text-align: center;
-}
+	.nav-dots .nav-dot {
+		top: -5px;
+		width: 11px;
+		height: 11px;
+		margin: 0 4px;
+		position: relative;
+		border-radius: 100%;
+		display: inline-block;
+		background-color: rgba(0, 0, 0, 0.6);
+	}
 
-.nav-dots .nav-dot {
-  top: -5px;
-  width: 11px;
-  height: 11px;
-  margin: 0 4px;
-  position: relative;
-  border-radius: 100%;
-  display: inline-block;
-  background-color: rgba(0, 0, 0, 0.6);
-}
+	.nav-dots .nav-dot:hover {
+		cursor: pointer;
+		background-color: rgba(0, 0, 0, 0.8);
+	}
 
-.nav-dots .nav-dot:hover {
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.8);
-}
+	input#img-1:checked~.nav-dots label#img-dot-1,
+	input#img-2:checked~.nav-dots label#img-dot-2,
+	input#img-3:checked~.nav-dots label#img-dot-3,
+	input#img-4:checked~.nav-dots label#img-dot-4,
+	input#img-5:checked~.nav-dots label#img-dot-5,
+	input#img-6:checked~.nav-dots label#img-dot-6 {
+		background: rgba(0, 0, 0, 0.8);
+	}
 
-input#img-1:checked ~ .nav-dots label#img-dot-1,
-input#img-2:checked ~ .nav-dots label#img-dot-2,
-input#img-3:checked ~ .nav-dots label#img-dot-3,
-input#img-4:checked ~ .nav-dots label#img-dot-4,
-input#img-5:checked ~ .nav-dots label#img-dot-5,
-input#img-6:checked ~ .nav-dots label#img-dot-6 {
-  background: rgba(0, 0, 0, 0.8);
-}
+	#a {
+		font-family: cursive;
+	}
 
-#e { font-family: cursive; }
+	.tip {
+		display: block;
+		color: #008A00;
+		font-size: 18px;
+		line-height: 27px;
+		font-weight: 700;
+		text-decoration: underline;
+	}
 
 </style>
 
@@ -131,7 +152,7 @@ input#img-6:checked ~ .nav-dots label#img-dot-6 {
 
 
 
-			
+
 			<!-- <div class="carousel-inner">
 				<div class="carousel-item active" data-bs-interval="5000"></div>
 				<img src="image/${menuId.menuImage1}" width="130" height="120">
@@ -297,14 +318,68 @@ input#img-6:checked ~ .nav-dots label#img-dot-6 {
 	<br>
 	<br>
 	<br>
-	<h1 id="e">상세사진</h1>
+	<h1 id="a">상품상세</h1>
+	<br>
+	<div class="row">
+		<div class="col">
+			<ul class="slides">
+				<input type="radio" name="radio-btn" id="img-1" checked />
+				<li class="slide-container">
+					<div class="slide">
+						<img src="image/${menuId.menuImage2}" width="700" height="900">
+					</div>
+					<div class="nav">
+						<label for="img-6" class="prev">&#x2039;</label>
+						<label for="img-2" class="next">&#x203a;</label>
+					</div>
+				</li>
+				
+
+				<input type="radio" name="radio-btn" id="img-2" />
+				<li class="slide-container">
+					<div class="slide">
+						<img src="image/${menuId.menuImage1}" width="700" height="900">
+					</div>
+					<div class="nav">
+						<label for="img-1" class="prev">&#x2039;</label>
+						<label for="img-3" class="next">&#x203a;</label>
+					</div>
+				</li>
+
+				<input type="radio" name="radio-btn" id="img-3" />
+				<li class="slide-container">
+					<div class="slide">
+						<img src="image/${menuId.menuImage3}" width="700" height="900">
+					</div>
+					<div class="nav">
+						<label for="img-2" class="prev">&#x2039;</label>
+						<label for="img-4" class="next">&#x203a;</label>
+					</div>
+			</ul>
+		</div>
+		<div class="col">
+			<h4><b>${menuId.menuContent}</b></h4>
+			<br>
+			<h1 id="b">더 맛있게 즐기는 팁!</h1>
+			<hr>
+			<div>
+				<strong><span class="tip">[4MEN] 셰프 팁</span></strong>
+				<P class="text_tip">${menu.Name}<br><i>${menuId.menuTip}</i></P>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+	<br>
 
 
-	<ul class="slides">
+
+
+	<!-- <ul class="slides">
 		<input type="radio" name="radio-btn" id="img-1" checked />
 		<li class="slide-container">
 		<div class="slide">
-			<img src="image/${menuId.menuImage1}" width="700" height="700">
+			<img src="image/${menuId.menuImage1}" width="700" height="900">
 			</div>
 		<div class="nav">
 		  <label for="img-6" class="prev">&#x2039;</label>
@@ -315,7 +390,7 @@ input#img-6:checked ~ .nav-dots label#img-dot-6 {
 		<input type="radio" name="radio-btn" id="img-2" />
 		<li class="slide-container">
 			<div class="slide">
-				<img src="image/${menuId.menuImage2}" width="700" height="700">
+				<img src="image/${menuId.menuImage2}" width="700" height="900">
 			</div>
 		<div class="nav">
 		  <label for="img-1" class="prev">&#x2039;</label>
@@ -326,16 +401,16 @@ input#img-6:checked ~ .nav-dots label#img-dot-6 {
 		<input type="radio" name="radio-btn" id="img-3" />
 		<li class="slide-container">
 			<div class="slide">
-				<img src="image/${menuId.menuImage3}" width="700" height="700">
+				<img src="image/${menuId.menuImage3}" width="700" height="900">
 			</div>
 		<div class="nav">
 		  <label for="img-2" class="prev">&#x2039;</label>
 		  <label for="img-4" class="next">&#x203a;</label>
 		</div>
-	</ul>
+	</ul> -->
 
 
-	
+
 
 
 	<!-- <div class="row">
@@ -358,33 +433,30 @@ input#img-6:checked ~ .nav-dots label#img-dot-6 {
 </div>
 
 <script>
-
 	let userId = "${userId}";
 
-	 document.querySelectorAll('.btn btn-primary').forEach(ele => {
-        ele.addEventListener('click', function () {
-            if (userId != "guest") {
-                let menuId = this.getAttribute("id")
-                fetch("addCart.do?menuId=" + menuId).then(resolve => resolve.json()).then(result => {
-                    //값은 갯수 가져왔음.
-                    if (result.retCode == 'NG') {
-                        alert('이미 장바구니에 있어요~')
-                    } else {
+	document.querySelectorAll('.btn btn-primary').forEach(ele => {
+		ele.addEventListener('click', function () {
+			if (userId != "guest") {
+				let menuId = this.getAttribute("id")
+				fetch("addCart.do?menuId=" + menuId).then(resolve => resolve.json()).then(result => {
+					//값은 갯수 가져왔음.
+					if (result.retCode == 'NG') {
+						alert('이미 장바구니에 있어요~')
+					} else {
 
-                        let cart = document.querySelector('#cartAmounts')
-                        console.log(result.number)
-                        cart.innerHTML = result.number;
-                        alert('등록되었습니다!')
-                    }
+						let cart = document.querySelector('#cartAmounts')
+						console.log(result.number)
+						cart.innerHTML = result.number;
+						alert('등록되었습니다!')
+					}
 
-                }).catch(err => {
-                    console.log(err)
-                })
-            } else {}
-        })
-    })
-
-
+				}).catch(err => {
+					console.log(err)
+				})
+			} else {}
+		})
+	})
 
 
 </script>

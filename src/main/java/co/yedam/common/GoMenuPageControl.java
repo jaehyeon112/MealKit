@@ -16,9 +16,9 @@ public class GoMenuPageControl implements command {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		String menuId = req.getParameter("menuId");
+		System.out.println(menuId);
 		MenuService svc = new MenuServiceImpl();
 		MenuVO vo = svc.getMenu(menuId);
-		System.out.println(svc.getMenu(menuId));
 		req.setAttribute("menuId", vo);
 		
 		try {

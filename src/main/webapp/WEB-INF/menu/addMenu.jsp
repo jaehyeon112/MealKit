@@ -86,6 +86,13 @@
         </div>
 
         <div class="form-group row">
+            <label class="col-sm-2">제품팁</label>
+            <div class="col-sm-3">
+                <textarea cols="30" rows="5" name="menuTip"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group row">
             <label class="col-sm-2">재고수량</label>
             <div class="col-sm-3">
                 <input type="text" name="menuCount" class="form-control" />

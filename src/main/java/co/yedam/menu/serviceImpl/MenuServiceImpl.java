@@ -20,6 +20,13 @@ public class MenuServiceImpl implements MenuService{
 		
 		return mapper.list();
 	}
+	
+	public List<MenuVO> menuList(String a) {
+		if(a.equals("up")) {			
+			return mapper.up();
+		}
+		return mapper.down();
+	}
 
 	@Override
 	public boolean addMenu(MenuVO vo) {

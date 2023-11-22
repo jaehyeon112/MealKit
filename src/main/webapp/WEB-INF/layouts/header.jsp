@@ -32,7 +32,7 @@
 
 <nav class="navbar navbar-expand-sm bg-body-tertiary">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="main.do">  <h1 id="e" >4MEN</h1> </a>
+		<a class="navbar-brand" href="main.do">  <h1 id="e" ><i>4MEN</i></h1> </a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarNav" aria-controls="navbarNav"
 			aria-expanded="false" aria-label="Toggle navigation">
