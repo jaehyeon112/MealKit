@@ -192,17 +192,14 @@ pageEncoding="UTF-8"%>
     padding-top: 200px;
   }
 
-  .ma_best {
-    width: 1180px;
-    margin: 140px auto 0;
-  }
-
   .tit {
     color: #101010;
     font-weight: 700;
     font-size: 40px;
     line-height: 56px;
     padding-bottom: 30px;
+    margin-top: 30px;
+   
   }
 
   #textBox1,
@@ -325,7 +322,7 @@ pageEncoding="UTF-8"%>
   <div class="card" style="width: 18rem;">
   <img src="" class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
+    <h5 class="card-title">메뉴이름</h5>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>

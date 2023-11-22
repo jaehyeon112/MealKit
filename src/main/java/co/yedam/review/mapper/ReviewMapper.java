@@ -25,4 +25,6 @@ public interface ReviewMapper {
 	public int selectCnt();
 	
 	public List<ReviewVO> searchBox(@Param("word") String word);
+	
+	
 }
