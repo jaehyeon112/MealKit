@@ -27,6 +27,8 @@ public class GoReviewControl implements command {
 		ReviewService svc = new ReviewServiceImpl();
 		List<ReviewVO> list = svc.reviewList();
 		req.setAttribute("reviewList", list);
+		int reviewCnt = svc.reviewCnt();
+		req.setAttribute("reviewCnt", reviewCnt);
 		
 		try {
 			req.getRequestDispatcher(path).forward(req, resp);

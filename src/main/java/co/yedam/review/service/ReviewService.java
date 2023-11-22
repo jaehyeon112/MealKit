@@ -10,4 +10,6 @@ public interface ReviewService {
 	public boolean updateReview(ReviewVO vo);
 	public ReviewVO selectOne(int orderDetailNumber);
 	public List<ReviewVO> selectMenu(String userId);
+	public int reviewCnt();
+	public List<ReviewVO> searchBoxList(String menuName);
 }

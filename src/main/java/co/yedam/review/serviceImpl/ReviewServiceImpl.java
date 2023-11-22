@@ -54,4 +54,16 @@ public class ReviewServiceImpl implements ReviewService {
 		return mapper.selectMenuOne(userId);
 	}
 
+	@Override
+	public int reviewCnt() {
+		// TODO Auto-generated method stub
+		return mapper.selectCnt();
+	}
+	
+	@Override
+	public List<ReviewVO> searchBoxList(String menuName) {
+		// TODO Auto-generated method stub
+		return mapper.searchBox(menuName);
+	}
+
 }

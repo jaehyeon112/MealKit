@@ -30,11 +30,23 @@ public class UserServiceImpl implements UserService {
 		return mapper.userId(id);
 	}
 	@Override
+	public UserVO userPassword(String password) {
+		return mapper.userPassword(password);
+	}
+	@Override
 	public boolean editUser(UserVO vo) {
 		return mapper.editUser(vo) == 1 ;
 	}
 	@Override
 	public boolean delUser(String userId, String userPassword) {
 		return mapper.delUser(userId, userPassword);
+	}
+	@Override
+	public UserVO idCheck(String userName, String userPhone) {
+		return mapper.getId(userName, userPhone);
+	}
+	@Override
+	public UserVO pwCheck(String userId, String userPhone) {
+		return mapper.getPw(userId, userPhone);
 	}
 }

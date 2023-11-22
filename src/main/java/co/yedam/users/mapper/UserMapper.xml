@@ -19,11 +19,19 @@
 	<select id="userId" resultType="co.yedam.users.service.UserVO">
 		SELECT*FROM USERS WHERE USER_ID=#{userId}
 	</select>
-	
+	<select id="userPassword" resultType="co.yedam.users.service.UserVO">
+		SELECT*FROM USERS WHERE USER_PASSWORD=#{userPassword}
+	</select>
 	<update id="editUser" parameterType="co.yedam.users.service.UserVO">
 		UPDATE USERS SET USER_PASSWORD = #{userPassword},USER_EMAIL = #{userEmail},USER_NAME = #{userName},USER_PHONE = #{userPhone}, USER_ADDRESS1 = #{userAddress1}, USER_ADDRESS2 = #{userAddress2}, USER_ADDRESS3 = #{userAddress3} WHERE USER_ID = #{userId}
 	</update>
 	<delete id="delUser" parameterType="string">
 		DELETE FROM USERS WHERE USER_ID = #{userId} AND USER_PASSWORD=#{userPassword}
 	</delete>
+	<select id="getId" resultType="co.yedam.users.service.UserVO">
+		SELECT*FROM USERS WHERE USER_NAME=#{userName} AND USER_PHONE=#{userPhone}
+	</select>
+	<select id="getPw" resultType="co.yedam.users.service.UserVO">
+		SELECT*FROM USERS WHERE USER_ID=#{userId} AND USER_PHONE=#{userPhone}
+	</select>
 </mapper>
