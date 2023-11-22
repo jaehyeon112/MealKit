@@ -141,6 +141,7 @@ a {
 					</ul>
 				</dd>
 			</dl>
+			
 			<dl class="myMenu">
 				<dt>나의 정보</dt>
 				<dd>
@@ -150,7 +151,8 @@ a {
 					</ul>
 				</dd>
 			</dl>
-
+			
+			<c:if test="${!empty userId && userId == 'admin' }">
 			<dl class="adminMenu">
 				<dt>관리자페이지</dt>
 				<dd>
@@ -161,7 +163,7 @@ a {
 					</ul>
 				</dd>
 			</dl>
-
+			</c:if>
 
 
 		</div>

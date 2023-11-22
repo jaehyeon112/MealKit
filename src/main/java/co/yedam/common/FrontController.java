@@ -30,6 +30,9 @@ import co.yedam.qa.web.ModifyFormControl;
 import co.yedam.qa.web.ModifyQaControl;
 import co.yedam.qa.web.RemoveQaControl;
 import co.yedam.qa.web.getQaControl;
+import co.yedam.reply.web.AddQaReplyControl;
+import co.yedam.reply.web.QaReplyListControl;
+import co.yedam.reply.web.RemoveQaReplyControl;
 import co.yedam.menu.web.GoUpdateMenuFormControl;
 import co.yedam.join.GoJoinFormControl;
 import co.yedam.join.JoinControl;
@@ -91,6 +94,10 @@ public class FrontController extends HttpServlet {
 		map.put("/modifyQa.do", new ModifyQaControl());
 		
 		map.put("/qaListAll.do", new GoQaListAllControl());
+		map.put("/replyList.do", new QaReplyListControl());
+		map.put("/addReply.do", new AddQaReplyControl());
+		map.put("/removeReply.do", new RemoveQaReplyControl());
+		
 		
 		map.put("/delivery.do", new GoDeliveryControl());
 		map.put("/cancel.do", new GoCancelControl());

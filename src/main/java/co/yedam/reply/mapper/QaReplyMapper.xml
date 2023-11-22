@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "path/mybatis-3-mapper.dtd">
+<mapper namespace="co.yedam.reply.mapper.QaReplyMapper">
+	<select id="replyList"
+		resultType="co.yedam.reply.service.QaReplyVO">
+		select * from qa_reply where qa_no=#{qaNo} order by reply_no
+	</select>
+	<insert id="insertReply"
+		parameterType="co.yedam.reply.service.QaReplyVO">
+		INSERT INTO QA_REPLY(REPLY_NO, QA_NO, QA_REPLY, USER_NAME, REPLY_DATE)
+		VALUES(SEQ_REPLY.NEXTVAL, #{qaNo}, #{qaReply}, #{userName},
+		#{replyDate})
+	</insert>
+	<update id="updateReply"
+		parameterType="co.yedam.reply.service.QaReplyVO">
+		update qa_reply set qa_reply=#{qaReply} where reply_no = #{replyNo}
+	</update>
+	<delete id="deleteReply" parameterType="int">
+		delete from qa_reply where reply_no = #{replyNo}
+	</delete>
+</mapper>
