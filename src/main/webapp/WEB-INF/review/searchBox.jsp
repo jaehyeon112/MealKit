@@ -663,11 +663,7 @@ input, select, textarea, button {
 				
 				<!-- 검색 마지막 문단 -->
 				<div class="top_sec">
-					<p class="total">
-						리뷰
-						
-						 <span class="rvwTotalCnt"></span>${reviewCnt }건
-					</p>
+				
 					<div class="list_sort">
 						
 					</div>
@@ -676,6 +672,11 @@ input, select, textarea, button {
 				<div class="taste_review_list">
 					<div class="no_data" style="display: none"></div>
 					<ul class="reviewArea">
+					<c:choose>
+					<c:when test="${empty list}">
+					<h1 style="margin-top: 40px;,text-align:center;">검색결과가 존재하지 않습니다.</h1>
+					</c:when>
+					<c:otherwise>
 						<c:forEach items="${list }" var="vo">
 							<li>
 								<div class="review_module">
@@ -729,7 +730,7 @@ input, select, textarea, button {
 														src="image/${vo.reviewImage }"
 														>
 												</div>
-												<span class="lang"><span class="hide">총 사진 개수</span></span>
+												
 												<!-- 스크립트 요청 사항 : .review_module .img_wrap 안에 있는 .img 갯수 체크 -->
 											</div>
 											<!-- 큰 이미지 영역 -->
@@ -739,7 +740,10 @@ input, select, textarea, button {
 									</div>
 								</div>
 							</li>
+							
 						</c:forEach>
+						</c:otherwise>
+						</c:choose>
 					</ul>
 				</div>
 			</div>

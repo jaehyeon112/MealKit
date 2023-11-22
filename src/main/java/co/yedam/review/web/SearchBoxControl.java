@@ -24,6 +24,7 @@ public class SearchBoxControl implements command {
 		req.setAttribute("list", list);
 		System.out.println(word);
 		System.out.println(list);
+		
 		try {
 			req.getRequestDispatcher("review/searchBox.tiles").forward(req, resp);
 		} catch (Exception e) {
