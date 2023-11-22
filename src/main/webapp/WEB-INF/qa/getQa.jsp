@@ -156,11 +156,14 @@ a {
 #point, #tier {
 	display: inline-block;
 }
+#template{
+width: 100%;
+}
 span{
-margin-right: 100px;
+margin-right: 20px;
 }
 b{
-margin-right: 150px;
+
 }
 </style>
 <section id="myContainer">
@@ -281,8 +284,9 @@ margin-right: 150px;
 
 			<h4>답변목록</h4>
 			<ul id="list">
-				<li style="display: none;" id="template"><span>답변번호</span><span>유저이름</span><b>답변내용</b><span>작성일자</span>
-					<button>삭제</button></li>
+				<li style="display: none;" id="template">
+				<span>답변번호</span><button style="margin-right: 10px">삭제</button><span>작성일자</span><span>유저이름</span><b>답변내용</b>
+				</li>
 			</ul>
 			<p>
 				<a href="qaList.do">문의내역</a>
@@ -296,6 +300,7 @@ margin-right: 150px;
 	let qaNo = "${qaNo.qaNo }";
 	qaNo = document.querySelector('.qaNo').innerHTML;
 	let userName = "${userName }";
+	let userId = "${userId }";
 	let qaReply = "${qaNo.qaReply}";
 
 	function showList() {
@@ -323,13 +328,13 @@ margin-right: 150px;
 		temp.style.display = "block";
 		temp.querySelector('span:nth-of-type(1)').innerHTML = reply.replyNo;
 		temp.querySelector('b').innerHTML = reply.qaReply;
-		temp.querySelector('span:nth-of-type(2)').innerHTML = reply.userName;
-		temp.querySelector('span:nth-of-type(3)').innerHTML = reply.replyDate;
+		temp.querySelector('span:nth-of-type(3)').innerHTML = reply.userName;
+		temp.querySelector('span:nth-of-type(2)').innerHTML = reply.replyDate;
 		console.log(temp);
 
 		temp.querySelector('#template> button').addEventListener('click', function (e) {
 
-			if (userName != '관리자') {
+			if (userName != reply.userName) {
 				alert('권한 없음');
 				return;
 			}
