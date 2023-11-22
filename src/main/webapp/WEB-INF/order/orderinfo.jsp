@@ -89,8 +89,6 @@ width: 400px;
 
 </style>
 
-${cartList}
-${map}
 
 <div class="row">
 	<div class="col">
