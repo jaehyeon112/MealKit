@@ -28,7 +28,12 @@ public class AddMyReviewControl implements command {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 		ReviewVO vo = new ReviewVO();
-
+		System.out.println("=============");
+		System.out.println("=============");
+		System.out.println("=============");
+		System.out.println("=============");
+		System.out.println("=============");
+		System.out.println("=============");
 		int size = 5 * 1024 * 1024;
 
 		try {
@@ -55,7 +60,6 @@ public class AddMyReviewControl implements command {
 		    vo.setReviewImage(reviewImage);
 			vo.setReviewStar(reviewStar);
 			// vo.setReviewBoomup(reviewBoomup);
-
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
