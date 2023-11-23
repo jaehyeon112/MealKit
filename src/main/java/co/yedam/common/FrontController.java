@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.cart.web.DelCartListControl;
 import co.yedam.cart.web.GoCartControl;
+import co.yedam.cart.web.SoldoutRemove;
 import co.yedam.cart.web.cartListControl;
 import co.yedam.cart.web.carttest;
+import co.yedam.cart.web.updatecartcontroll;
 import co.yedam.delevery.GoCancelControl;
 import co.yedam.delevery.GoDeliveryControl;
 import co.yedam.find.FindIdControl;
@@ -52,8 +54,7 @@ import co.yedam.review.web.DeleteMyReviewControl;
 import co.yedam.review.web.GetMyReviewControl;
 import co.yedam.review.web.GoAddReviewControl;
 import co.yedam.review.web.GoReviewControl;
-
-
+import co.yedam.review.web.MainListControl;
 import co.yedam.review.web.ModMyReviewControl;
 import co.yedam.review.web.ModMyReviewFormControl;
 import co.yedam.review.web.SearchBoxControl;
@@ -74,6 +75,7 @@ public class FrontController extends HttpServlet {
 		map.put("/cart.do", new GoCartControl());
 		map.put("/bottom.do", new footerPath());
 		map.put("/carttest.do", new carttest());
+		map.put("/removeSoldout.do", new SoldoutRemove());
 		map.put("/updatecart.do", new cartListControl());
 		map.put("/deleteCartList.do", new DelCartListControl());
 		map.put("/order.do", new GoOrderControl());
@@ -107,7 +109,7 @@ public class FrontController extends HttpServlet {
 		map.put("/replyList.do", new QaReplyListControl());
 		map.put("/addReply.do", new AddQaReplyControl());
 		map.put("/removeReply.do", new RemoveQaReplyControl());
-		
+		map.put("/updatecart2.do", new updatecartcontroll());// 버튼 눌렀을때도..
 		
 		map.put("/delivery.do", new GoDeliveryControl());
 		map.put("/cancel.do", new GoCancelControl());
@@ -125,6 +127,7 @@ public class FrontController extends HttpServlet {
 		map.put("/searchReview.do", new SearchBoxControl()); // 검색기능 구현...
 		map.put("/modMyReviewForm.do", new ModMyReviewFormControl()); // 리뷰 수정 폼으로 이동.
 		map.put("/modMyReview.do", new ModMyReviewControl()); // 리뷰 수정.
+		map.put("/main.do", new MainListControl());
 
 		map.put("/addMenu.do", new GoAddMenuControl());
 		map.put("/addForm.do", new GoAddFormControl());

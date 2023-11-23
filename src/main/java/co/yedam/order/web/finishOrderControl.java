@@ -11,17 +11,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import co.yedam.cart.service.CartMenuJoinVO;
 import co.yedam.cart.service.CartService;
 import co.yedam.cart.service.CartVO;
 import co.yedam.cart.serviceImpl.CartServiceImpl;
 import co.yedam.common.command;
-import co.yedam.menu.service.MenuService;
-import co.yedam.menu.serviceImpl.MenuServiceImpl;
 import co.yedam.order.service.OrderDetailVO;
 import co.yedam.order.service.OrderService;
 import co.yedam.order.service.OrdersVO;
 import co.yedam.order.serviceImpl.OrderServiceImpl;
+import co.yedam.users.service.UserService;
+import co.yedam.users.service.UserVO;
+import co.yedam.users.serviceImpl.UserServiceImpl;
 
 public class finishOrderControl implements command {
 
@@ -29,15 +33,13 @@ public class finishOrderControl implements command {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		OrderService OrderSvc = new OrderServiceImpl();
 		CartService cartSvc = new CartServiceImpl();
-		MenuService menuSvc = new MenuServiceImpl();
-		
-		
+		UserService usvc = new UserServiceImpl();
 		String orderNumber = req.getParameter("orderNumber");
 		
 		HttpSession session = req.getSession();
 		String userId = (String) session.getAttribute("userId");
 		
-		
+		UserVO beforeUser = usvc.userId(userId);
 		List<CartVO> cartList = cartSvc.CartList(userId);
 
 		
@@ -131,6 +133,26 @@ public class finishOrderControl implements command {
 		//구매한 만큼 만들어야함.
 		//구매 테이블 => 주문상세(번호+아이디), 주문번호(시퀀스==리뷰테이블과 논리적 연결), 물건id, 수량, 지금구매한 날짜,
 		
+		Map<String, Object> userInfo = new HashMap<>();
+		
+		UserVO afterUser = usvc.userId(userId);
+		if(beforeUser.getUserGrade().equals(afterUser.getUserGrade())) {
+			userInfo.put("Grade", afterUser.getUserGrade());
+			userInfo.put("change", "NO");
+		}else {
+			userInfo.put("beforeGarde", beforeUser.getUserGrade());
+			userInfo.put("afterGrade", afterUser.getUserGrade());
+		}
+		
+		Gson gson = new GsonBuilder().create();
+		String jsonMap = gson.toJson(userInfo);
+		req.setAttribute("userInfojson", jsonMap);
+		req.setAttribute("userInfo", userInfo);
+		
+		req.setAttribute("buyList", vo2);
+		
+		
+		req.setAttribute("getPoint", getPoint);
 		try {
 			req.getRequestDispatcher("/order/orderfinish.tiles").forward(req, resp);
 		} catch (ServletException | IOException e) {

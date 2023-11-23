@@ -13,6 +13,6 @@ public interface CartService {
 	public CartVO updateCartList(CartVO vo, int cartNum, boolean check);
 	public CartMenuJoinVO joinCartMenuAll(String userId);
 	public CartMenuJoinVO joinCartMenu(Map<String, Object> map);
-	
+	public List<CartVO> CartListUseCartNum(Map<String, Object> map);
 	public List<CartVO> removeCart(String CartNum, String userId);
 }

@@ -89,8 +89,6 @@ width: 400px;
 
 </style>
 
-${cartList}
-${map}
 
 <div class="row">
 	<div class="col">
@@ -452,7 +450,7 @@ ${map}
     	    pay_method : 'card',
     	    merchant_uid: payNum, // 상점에서 관리하는 주문 번호를 전달
     	    name : '주문명:결제테스트',
-    	    amount : 10,// 가격 넣기
+    	    amount : total,// 가격 넣기
     	    buyer_email : userList.userEmail,
     	    buyer_name :  userName1.value,
     	    buyer_tel : phone1.value+phone2.value+phone3.value,
@@ -471,7 +469,29 @@ ${map}
     		
     	})
 	}else{
-		alert('아직 구현 안했어요!')
+		IMP.request_pay({
+		    pg : 'kakaopay',
+		    pay_method : 'card', //생략 가능
+		    merchant_uid: payNum, // 상점에서 관리하는 주문 번호를 전달
+    	    name : '주문명:결제테스트',
+    	    amount : total,// 가격 넣기
+    	    buyer_email : userList.userEmail,
+    	    buyer_name :  userName1.value,
+    	    buyer_tel : phone1.value+phone2.value+phone3.value,
+    	    buyer_addr : address1_.value + address2_.value ,
+    	    buyer_postcode : address3_.value,
+		}, function(rsp) { // callback 로직
+			if(rsp.success){
+    			console.log('성공!')
+				test1()
+    			
+    		}else{
+    			alert('결제가 실패하였습니다. 다시 한번 확인해주세요.')
+    		}
+    		
+		});
+		
+		
 	}
 	
 	}

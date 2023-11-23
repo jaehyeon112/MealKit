@@ -41,6 +41,9 @@ public class CartServiceImpl implements CartService{
 		CartVO vo2 = mapper.selectCartOne(cartNum);
 		return vo2;
 	}
+		
+	
+	
 	@Override
 	public CartVO cartOne(int CartNum) {
 		return mapper.selectCartOne(CartNum);
@@ -60,5 +63,9 @@ public class CartServiceImpl implements CartService{
 	@Override
 	public CartMenuJoinVO joinCartMenuAll(String userId) {
 		return mapper.joinCartMenuAll(userId);
+	}
+	@Override
+	public List<CartVO> CartListUseCartNum(Map<String, Object> map) {
+		return mapper.selectListUseCartNum(map);
 	}
 }

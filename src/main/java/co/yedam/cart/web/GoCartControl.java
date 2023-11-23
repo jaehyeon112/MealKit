@@ -38,7 +38,6 @@ public class GoCartControl implements command {
 	
 		// 여기 select * 로 하니까 값을 다 가져옴..
 		 List<MenuVO> menuList = menuSvc.menuList2();
-		 System.out.println("여기에는 텍스트가 없어야함."+menuList);
 			String menuListJson = gson.toJson(menuList);
 	        req.setAttribute("menuList", menuListJson);
 		
@@ -65,7 +64,11 @@ public class GoCartControl implements command {
 		CartMenuJoinVO vo = new CartMenuJoinVO();
 		System.out.println(cartArr);
 		if(cartArr.size()==0) {
-			 vo = svc.joinCartMenuAll(userId);
+			 vo.setDelivery(4000);
+			 vo.setPrice(0);
+			 vo.setPriceOff(0);
+			 vo.setTotal(0);
+			 vo.setUserId(userId);
 			 String join = gson.toJson(vo);
 			 req.setAttribute("totalJson", join);
 			 req.setAttribute("total", vo);
@@ -74,6 +77,7 @@ public class GoCartControl implements command {
 			 req.setAttribute("list", newList);
 		}else{
 			Map<String, Object> map = new HashMap<>();
+			System.out.println(cartArr);
 			map.put("cartArr",cartArr );
 			map.put("userId", userId);
 			 vo = svc.joinCartMenu(map);
@@ -87,10 +91,6 @@ public class GoCartControl implements command {
 		};
 		
 		
-		
-		
-		
-        
 		
 		try {
 			req.getRequestDispatcher("/cartcount/cartcount.tiles").forward(req, resp);

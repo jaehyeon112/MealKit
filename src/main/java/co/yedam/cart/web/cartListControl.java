@@ -2,6 +2,7 @@ package co.yedam.cart.web;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,19 +27,27 @@ public class cartListControl implements command {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
+		HttpSession session = req.getSession();
+		CartService svc = new CartServiceImpl();
+		String userId = (String) session.getAttribute("userId");
 		Gson gson = new GsonBuilder().create();
 		String cartNum = req.getParameter("cartNum");
+		String arr1 = req.getParameter("arr");
+		
+		String arr[] = arr1.split(",");
+		List<String> cartArr2 = Arrays.asList(arr);
+		
+
+		
 		String check = req.getParameter("check");
 		System.out.println(cartNum);
-		CartService svc = new CartServiceImpl();
 		CartVO vo = svc.cartOne(Integer.parseInt(cartNum));
 		if(check.equals("true")) {
 			vo = svc.updateCartList(vo,Integer.parseInt(cartNum),true);
 		}else {
 			vo = svc.updateCartList(vo,Integer.parseInt(cartNum),false);
 		}
-		HttpSession session = req.getSession();
-		String userId = (String) session.getAttribute("userId");
+		
 		
 		
 		//여길 수정..
@@ -52,15 +61,25 @@ public class cartListControl implements command {
 				if(cVO.getMenuId().equals(mVO.getMenuId())) {
 					cVO.setRestCount(mVO.getMenuCount());
 					newList.add(cVO);
-					System.out.println(cVO);
 					if(cVO.getRestCount()>0) {
 						cartArr.add(mVO.getMenuId());
 					}
 				}
 			}
 		}
+		
+		//cart2 + carr
+		List<String> merge = new ArrayList<>();
+		
+		for(String ele : cartArr) {
+			if(cartArr2.contains(ele)) {
+				merge.add(ele);
+			}
+		}
+		
+		
 		Map<String, Object> map2 = new HashMap<>();
-		map2.put("cartArr",cartArr );
+		map2.put("cartArr",merge );
 		map2.put("userId", userId);
 		CartMenuJoinVO vo2 = svc.joinCartMenu(map2);
 		
@@ -69,6 +88,7 @@ public class cartListControl implements command {
 		Map<String, Object> map = new HashMap<>();
 		map.put("cart", vo);
 		map.put("total", vo2);
+	
 		
 		 resp.setContentType("application/json");
 		    resp.setCharacterEncoding("UTF-8");
