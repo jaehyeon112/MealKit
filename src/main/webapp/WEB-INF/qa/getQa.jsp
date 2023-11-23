@@ -175,7 +175,6 @@ b{
 				<dd>
 					<ul class="menuList">
 						<li id="leftMenu"><a href="delivery.do">주문/배송 조회</a></li>
-						<li id="leftMenu"><a href="cancel.do">취소/반품 조회</a></li>
 					</ul>
 				</dd>
 			</dl>

@@ -8,6 +8,7 @@ import co.yedam.common.DataSourceMybatis;
 import co.yedam.users.mapper.UserMapper;
 import co.yedam.users.service.UserService;
 import co.yedam.users.service.UserVO;
+import co.yedam.users.service.userOrderVO;
 
 public class UserServiceImpl implements UserService {
 	SqlSession sqlSession = DataSourceMybatis.getInstance().openSession(true);
@@ -48,5 +49,9 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserVO pwCheck(String userId, String userPhone) {
 		return mapper.getPw(userId, userPhone);
+	}
+	@Override
+	public List<userOrderVO> userOrderList(String userId) {
+		return mapper.getOrder(userId);
 	}
 }
