@@ -119,6 +119,8 @@ li {
 	<button id="btnSearch" onclick="pw_search()">비밀번호찾기</button>
 	<ul id="submitUl">
 		<li id="forgot"><a href="findId.do">아이디 찾기</a></li>
+		<li>|</li>
+		<li id="signUp"><a href="login.do">로그인</a></li>
 	</ul>
 </div>
 	

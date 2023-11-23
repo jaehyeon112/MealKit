@@ -120,6 +120,8 @@ li {
 	
 	<ul id="submitUl">
 		<li id="forgot"><a href="findPw.do">비밀번호 찾기</a></li>
+		<li>|</li>
+		<li id="signUp"><a href="login.do">로그인</a></li>
 	</ul>
 </div>
 	
