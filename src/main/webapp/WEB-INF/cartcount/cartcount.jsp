@@ -528,7 +528,7 @@ font-weight: 700;
 		         arr.push(ele.querySelector('.checkList').id)
 		          }
 		        })
-            	arr = arr.join(',')
+              
             fetch("updatecart2.do?arr="+arr).then(resolve => resolve.json()).then(result => {
                 document.querySelector('#total').innerText = result.price + '원'
                document.querySelector('#totalOff').innerText = result.priceOff + '원'
