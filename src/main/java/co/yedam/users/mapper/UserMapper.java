@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import co.yedam.users.service.UserVO;
+import co.yedam.users.service.userOrderVO;
 
 public interface UserMapper {
 	public List<UserVO> selectList();
@@ -19,4 +20,6 @@ public interface UserMapper {
 
 	public UserVO getId(@Param("userName") String userName, @Param("userPhone") String userPhone);
 	public UserVO getPw(@Param("userId") String userId, @Param("userPhone") String userPhone);
+
+	public List<userOrderVO> getOrder(String userId);
 }

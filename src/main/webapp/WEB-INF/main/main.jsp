@@ -334,8 +334,8 @@ img {
 
 </div>
 
-<div class="row row-cols-5 row-cols-md-4 g-1">
-	<c:forEach items="${menuList }" var="vo">
+<div class="row row-cols-4 row-cols-md-4 g-1">
+	<c:forEach items="${menuList }" var="vo" begin="0" end="7">
 		<div class="col">
 			<div class="card" style="width: 18rem;">
 			
