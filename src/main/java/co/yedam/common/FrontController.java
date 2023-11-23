@@ -54,7 +54,6 @@ import co.yedam.review.web.DeleteMyReviewControl;
 import co.yedam.review.web.GetMyReviewControl;
 import co.yedam.review.web.GoAddReviewControl;
 import co.yedam.review.web.GoReviewControl;
-import co.yedam.review.web.MainListControl;
 import co.yedam.review.web.ModMyReviewControl;
 import co.yedam.review.web.ModMyReviewFormControl;
 import co.yedam.review.web.SearchBoxControl;
@@ -127,7 +126,6 @@ public class FrontController extends HttpServlet {
 		map.put("/searchReview.do", new SearchBoxControl()); // 검색기능 구현...
 		map.put("/modMyReviewForm.do", new ModMyReviewFormControl()); // 리뷰 수정 폼으로 이동.
 		map.put("/modMyReview.do", new ModMyReviewControl()); // 리뷰 수정.
-//		map.put("/main.do", new MainListControl());
 
 		map.put("/addMenu.do", new GoAddMenuControl());
 		map.put("/addForm.do", new GoAddFormControl());
