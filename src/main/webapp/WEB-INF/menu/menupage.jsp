@@ -216,7 +216,7 @@
 					<h2>
 						<b>${menuId.menuName}</b>
 					</h2>
-
+					<input value="${menuId.menuId}" id="in" name="in" type="hidden">
 					<p>원산지 : 상품정보 참조</p>
 
 					<p>
@@ -310,8 +310,8 @@
 
 						<div class="col-6">
 
-							<a href="cart.do"><button style="background-color: #BDD61A; width: 250px; border: 1px solid #BDD61A; height: 64px;" 
-								class="btn btn-primary" type="button">장바구니</button></a>
+							<button style="background-color: #BDD61A; width: 250px; border: 1px solid #BDD61A; height: 64px;" 
+								class="btn btn-primary" id="btn" type="button">장바구니</button>
 						</div>
 					</div>
 				</div>
@@ -443,10 +443,11 @@
 <script>
 	let userId = "${userId}";
 
-	document.querySelectorAll('.btn btn-primary').forEach(ele => {
-		ele.addEventListener('click', function () {
-			if (userId != "guest") {
-				let menuId = this.getAttribute("id")
+	document.querySelector('#btn').addEventListener('click',function(){
+		console.log("1");
+			if (userId != null )  {
+				let menuId = document.querySelector('#in').value;
+				console.log(menuId);
 				fetch("addCart.do?menuId=" + menuId).then(resolve => resolve.json()).then(result => {
 					//값은 갯수 가져왔음.
 					if (result.retCode == 'NG') {
@@ -462,9 +463,12 @@
 				}).catch(err => {
 					console.log(err)
 				})
-			} else {}
+			} else {	console.log("3");}
 		})
-	})
+
+
+
+	
 
 
 </script>

@@ -127,6 +127,8 @@ public class FrontController extends HttpServlet {
 		map.put("/modMyReviewForm.do", new ModMyReviewFormControl()); // 리뷰 수정 폼으로 이동.
 		map.put("/modMyReview.do", new ModMyReviewControl()); // 리뷰 수정.
 
+
+
 		map.put("/addMenu.do", new GoAddMenuControl());
 		map.put("/addForm.do", new GoAddFormControl());
 
