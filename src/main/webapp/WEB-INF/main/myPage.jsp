@@ -127,7 +127,6 @@ a {
 				<dd>
 					<ul class="menuList">
 						<li id="leftMenu"><a href="delivery.do">주문/배송 조회</a></li>
-						<li id="leftMenu"><a href="cancel.do">취소/반품 조회</a></li>
 					</ul>
 				</dd>
 			</dl>
@@ -167,6 +166,8 @@ a {
 
 
 		</div>
+		
+		
 		<div class="rightCon">
 			<div class="myMain">
 				<h3 class="hide">나의 정보</h3>
@@ -220,51 +221,26 @@ a {
 			</div>
 
 
-
+			
 			<div class="mainBottom">
 				<div class="myInfoWrap">
 					<div class="infoBox"></div>
-					<h3>구매 목록</h3>
+					<h3>최근 구매 목록</h3>
 					<div id="test"></div>
-					<div class="recieve_date">
-						<strong>11-16(목) 도착예정</strong>
-					</div>
-					<ul style="list-style-type: none; margin-top: 20px">
-						<li style="margin-bottom: 20px">
-							<div class="row" style="vertical-align: center">
-								<div class="col">
-									<img src="https://picsum.photos/80/80">
-								</div>
-								<div class="col-6">
-									<span style="font-size: 20px; line-height: 80px;">[냉장]어쩌구저쩌구볶음</span>
-								</div>
-								<div class="col">
-									<span style="font-size: 14px; line-height: 80px;">1개</span>
-								</div>
-								<div class="col">
-									<span
-										style="font-size: 20px; line-height: 80px;; font-weight: 700">30,000원</span>
-								</div>
-							</div>
-						</li>
-						<li style="margin-bottom: 20px">
-							<div class="row" style="vertical-align: center">
-								<div class="col">
-									<img src="https://picsum.photos/80/80">
-								</div>
-								<div class="col-6">
-									<span style="font-size: 20px; line-height: 80px;">상품명</span>
-								</div>
-								<div class="col">
-									<span style="font-size: 14px; line-height: 80px;">수량</span>
-								</div>
-								<div class="col">
-									<span
-										style="font-size: 22px; line-height: 80px;; font-weight: 700">가격</span>
-								</div>
-							</div>
-						</li>
-					</ul>
+		<div class="recieve_date">
+		</div>
+		<ul style="list-style-type: none; margin-top:20px">
+		<c:forEach items="${order }" var="order">
+		<li style="margin-bottom: 20px">
+		<div class="row" style="vertical-align: center">
+		<div class="col"><img style="width:100px;height:100px" src="resources/menu/${order.menuImage1 }"></div>
+		<div class="col-6"><span class="menuIdClass" style="font-size: 20px;line-height: 80px; ">${order.menuName }</span></div>
+		<div class="col"><span style="font-size: 14px;line-height: 80px;">${order.menuCount }개</span></div>
+		<div class="col"><span style="font-size: 20px;line-height: 80px;; font-weight: 700">${(order.menuPrice)*order.menuCount}원</span></div>
+		</div>
+		</li>
+		</c:forEach>
+		</ul>
 
 
 				</div>

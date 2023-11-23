@@ -74,17 +74,20 @@
 
 <!-- 삭제버튼 -->
 <script>
-    var menuId = document.getElementsByName("menuId")[0].value;
     // 배열로 됨.
     document.querySelectorAll('.deleteCheck').forEach((ele, index) => {
         ele.addEventListener('click', function () {
+            var menuId = document.getElementsByName("menuId")[0].value;
+            var menuId2 = document.getElementsByName("menuId")[index].value;
+            console.log("기존" + menuId);
+            console.log("이후" + menuId2)
             // 화면단 삭제
             ele.parentNode.parentNode.remove();
             //let menuId = ele.parentNode.parentNode.children[0].id
             // let menuId = document.getElementsByName("menuId")[0].value;
             console.log(menuId + "입니다");
             // json => object 변환
-            fetch('deleteMenu.do?mid=' + menuId).then(resolve => resolve.json()).then(result => {
+            fetch('deleteMenu.do?mid=' + menuId2).then(resolve => resolve.json()).then(result => {
                 console.log(result.retCode);
                 if (result.retCode == "OK") {
                     alert('삭제 성공!~')

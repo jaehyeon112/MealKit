@@ -13,25 +13,42 @@
 		VALUES(#{userId},#{userPassword},#{userEmail},#{userName},#{userBirth},#{userPhone},#{userAddress1},#{userAddress2},#{userAddress3},0,'bronze',0)
 	</insert>
 	<select id="getUser" resultType="co.yedam.users.service.UserVO">
-		SELECT*FROM USERS WHERE USER_ID=#{userId} AND USER_PASSWORD=#{userPassword}
+		SELECT*FROM USERS WHERE
+		USER_ID=#{userId} AND USER_PASSWORD=#{userPassword}
 	</select>
-	
+
 	<select id="userId" resultType="co.yedam.users.service.UserVO">
-		SELECT*FROM USERS WHERE USER_ID=#{userId}
+		SELECT*FROM USERS WHERE
+		USER_ID=#{userId}
 	</select>
-	<select id="userPassword" resultType="co.yedam.users.service.UserVO">
+	<select id="userPassword"
+		resultType="co.yedam.users.service.UserVO">
 		SELECT*FROM USERS WHERE USER_PASSWORD=#{userPassword}
 	</select>
-	<update id="editUser" parameterType="co.yedam.users.service.UserVO">
-		UPDATE USERS SET USER_PASSWORD = #{userPassword},USER_EMAIL = #{userEmail},USER_NAME = #{userName},USER_PHONE = #{userPhone}, USER_ADDRESS1 = #{userAddress1}, USER_ADDRESS2 = #{userAddress2}, USER_ADDRESS3 = #{userAddress3} WHERE USER_ID = #{userId}
+	<update id="editUser"
+		parameterType="co.yedam.users.service.UserVO">
+		UPDATE USERS SET USER_PASSWORD =
+		#{userPassword},USER_EMAIL = #{userEmail},USER_NAME =
+		#{userName},USER_PHONE = #{userPhone}, USER_ADDRESS1 =
+		#{userAddress1}, USER_ADDRESS2 = #{userAddress2}, USER_ADDRESS3 =
+		#{userAddress3} WHERE USER_ID = #{userId}
 	</update>
 	<delete id="delUser" parameterType="string">
-		DELETE FROM USERS WHERE USER_ID = #{userId} AND USER_PASSWORD=#{userPassword}
+		DELETE FROM USERS WHERE
+		USER_ID = #{userId} AND USER_PASSWORD=#{userPassword}
 	</delete>
 	<select id="getId" resultType="co.yedam.users.service.UserVO">
-		SELECT*FROM USERS WHERE USER_NAME=#{userName} AND USER_PHONE=#{userPhone}
+		SELECT*FROM USERS WHERE
+		USER_NAME=#{userName} AND USER_PHONE=#{userPhone}
 	</select>
 	<select id="getPw" resultType="co.yedam.users.service.UserVO">
-		SELECT*FROM USERS WHERE USER_ID=#{userId} AND USER_PHONE=#{userPhone}
+		SELECT*FROM USERS WHERE
+		USER_ID=#{userId} AND USER_PHONE=#{userPhone}
+	</select>
+	<select id="getOrder"
+		resultType="co.yedam.users.service.userOrderVO" parameterType="String">
+		select m.menu_image1, m.menu_name, o.menu_count,
+		(m.menu_price-menu_priceOff) as menu_price
+		from order_detail o left join menu m on o.menu_id = m.menu_id where user_Id = #{userId}
 	</select>
 </mapper>

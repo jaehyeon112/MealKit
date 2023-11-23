@@ -25,6 +25,7 @@ public class GoReviewControl implements command {
 		
 		String path = "/review/review.tiles";
 		ReviewService svc = new ReviewServiceImpl();
+		//여기서 보내는 값임;
 		List<ReviewVO> list = svc.reviewList();
 		req.setAttribute("reviewList", list);
 		int reviewCnt = svc.reviewCnt();

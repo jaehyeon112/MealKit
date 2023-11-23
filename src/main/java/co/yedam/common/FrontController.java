@@ -62,7 +62,7 @@ import co.yedam.users.web.EditUserControl;
 import co.yedam.users.web.GoDelUserFormControl;
 import co.yedam.users.web.GoDelUserSuccessControl;
 import co.yedam.users.web.GoEditUserFormControl;
-
+ 
 
 public class FrontController extends HttpServlet {
 	Map<String, command> map = new HashMap<>();
@@ -137,7 +137,7 @@ public class FrontController extends HttpServlet {
 		map.put("/deleteMenuForm.do", new GoDeleteMenuFormControl());
 		map.put("/updateMenu.do", new GoUpdateMenuControl());
 		map.put("/updateMenuForm.do", new GoUpdateMenuFormControl());
-		
+		map.put("/introduceForm.do", new introduceFormControl());
 			
 	}
 

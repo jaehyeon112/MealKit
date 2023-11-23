@@ -15,4 +15,6 @@ public interface UserService {
 	
 	UserVO idCheck(String userName, String userPhone);
 	UserVO pwCheck(String userId, String userPhone);
+	
+	public List<userOrderVO> userOrderList(String userId);
 }
