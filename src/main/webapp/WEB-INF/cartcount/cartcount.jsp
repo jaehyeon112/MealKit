@@ -229,7 +229,7 @@ font-weight: 700;
                   
                     <tr class="cart__list__detail" style="z-index: -1;position: relative" >
                  <td><input class="checkListOther" type="checkbox" disabled  id="${vo.cartNum }"></td>
-                        <td><img id="images" src="image/${vo.menuImage1}" style="display: table;
+                        <td><img id="images" src="resources/menu/${vo.menuImage1 }" style="display: table;
     width: 100px;
     opacity:0.5;
     height: 100px;
@@ -251,7 +251,7 @@ font-weight: 700;
                   <c:otherwise>
                     <tr class="cart__list__detail">
                   <td><input class="checkList" type="checkbox" checked id="${vo.cartNum }"></td>
-                        <td><img id="images" src="image/${vo.menuImage1 }"></td>
+                        <td><img id="images" src="resources/menu/${vo.menuImage1 }"></td>
                         <td id="description"><a class="menuId" id="${vo.menuId }" href="#">${vo.menuName }</a></td>
                         <td id="amount_center">
                         <input type="button" class="bnt_size" value="-" id="minus">

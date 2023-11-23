@@ -126,7 +126,7 @@ width: 400px;
 		<c:forEach items="${cartList }" var="cart">
 		<li style="margin-bottom: 20px">
 		<div class="row" style="vertical-align: center">
-		<div class="col"><img style="width:100px;height:100px" src="image/${cart.menuImage1 }"></div>
+		<div class="col"><img style="width:100px;height:100px" src="resources/menu/${cart.menuImage1 }"></div>
 		<div class="col-6"><span class="menuIdClass" style="font-size: 20px;line-height: 80px; " id="${cart.menuId}">${cart.menuName }</span></div>
 		<div class="col"><span style="font-size: 14px;line-height: 80px;">${cart.cartCount }개</span></div>
 		<div class="col"><span style="font-size: 20px;line-height: 80px;; font-weight: 700">${(cart.menuPrice-cart.menuPriceOff)*cart.cartCount}원</span></div>
