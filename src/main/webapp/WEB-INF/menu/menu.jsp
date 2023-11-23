@@ -57,7 +57,7 @@
                                     <h3 style="color:red;position:absolute;top:30%;left:50%;transform: translate(-50%, -50%);" id="sold">SOLD OUT</h3>
                                 <!-- Product details-->
                                 <div class="card-body p-4">
-                                    <div class="text-center">
+                                    <div class="text-center" style="color: black;">
                                         <!-- Product name-->
                                         <h5 class="fw-bolder">${vo.menuName }</h5>
                                         <!-- Product reviews-->
@@ -72,7 +72,8 @@
                                         <span class="text-muted text-decoration-line-through">제품금액
                                             ${vo.menuPrice}원</span><br>
 
-                                        <strong><span class="text">할인금액 ${vo.menuPriceOff }원</span></strong>  
+                                        <strong><span class="text">할인금액 ${vo.menuPriceOff }원</span></strong>
+                                        <strong><h5>판매금액 ${vo.menuPrice-vo.menuPriceOff }원</h5></strong>
                                         <p>조리 ${vo.menuTime }분 | ${vo.menuMany }인분 | ${vo.menuKind } <svg
                                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16"></svg></p>
                                         
