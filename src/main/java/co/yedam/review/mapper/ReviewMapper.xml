@@ -20,9 +20,9 @@
 	<insert id="insert"
 		parameterType="co.yedam.review.service.ReviewVO">
 		INSERT INTO REVIEW(REVIEW_STAR, REVIEW_CONTENT, USER_ID,
-		REVIEW_DATE, REVIEW_IMAGE, ORDER_DETAIL_NUMBER, MENU_NAME)
+		REVIEW_DATE, REVIEW_IMAGE,  MENU_NAME,ORDER_DETAIL_NUMBER)
 		VALUES(#{reviewStar}, #{reviewContent}, #{userId}, SYSDATE,
-		#{reviewImage}, #{orderDetailNumber}, #{menuName})
+		#{reviewImage}, #{menuName},#{orderDetailNumber})
 	</insert>
 
 	<!-- 내가 쓴 리뷰 조회 -->
@@ -42,6 +42,12 @@
 		resultType="co.yedam.review.service.ReviewVO">
 		Select * FROM REVIEW WHERE ORDER_DETAIL_NUMBER =
 		#{orderDetailNumber}
+	</select>
+	
+	<select id="selectJustTwo" parameterType="int"
+		resultType="co.yedam.review.service.ReviewVO">
+		Select * FROM REVIEW WHERE MENU_NAME =
+		#{menuName}
 	</select>
 
 	<!-- 내가 쓴 리뷰 수정 -->
