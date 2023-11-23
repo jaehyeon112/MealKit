@@ -13,7 +13,7 @@
 
 <div>
     <h1><b>4MEN 메뉴</b></h1>
-    <a href="addForm.do"><button>상품등록</button></a>
+    <!-- <a href="addForm.do"><button>상품등록</button></a> -->
     <!-- ${listUp} -->
 </div>
 
@@ -38,23 +38,23 @@
 <!-- <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5"> -->
         <div  id="div0">
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-4 row-cols-xl-4 justify-content-center">
             <c:forEach items="${list }" var="vo">
                 <c:choose>
                     <c:when test="${vo.menuCount == 0}">
                         <input type="hidden" name="menuId" value="${vo.menuId}">
                         <!--메뉴페이지 상품 포이치로 돌림-->
                         <!-- 상품목록 -->
-                        <div class="col mb-5">
+                        <div class="col mb-5" >
                             <div class="card h-100">
                                 <!-- Sale badge-->
                                 <div class="badge bg-dark text-white position-absolute"
                                     style="top: 0.5rem; right: 0.5rem">Sale
                                 </div>
-                                <!-- Product image--><a href="menupage.do?menuId=${vo.menuId}">
+                                <!-- Product image--><a href="menupage.do?menuId=${vo.menuId}"></a>
 
-                                    <img class="card-img-top" src="resources/menu/${vo.menuImage1 }" alt="..." />
-                                    <h3 style="color:red;position:absolute;top:30%;left:50%;transform: translate(-50%, -50%);" id="sold">SOLD OUT</h3>
+                                    <img class="card-img-top" src="resources/menu/${vo.menuImage1 }" style="opacity: 0.5;"alt="..." />
+                                    <h3 style="color:red;position:absolute;top:30%;left:50%;transform: translate(-50%, -50%);"style="opacity: 1;" id="sold">SOLD OUT</h3>
                                 <!-- Product details-->
                                 <div class="card-body p-4">
                                     <div class="text-center" style="color: black;">
@@ -189,8 +189,8 @@
                                 </div>
                                 <!-- Product image--><a href="menupage.do?menuId=${vo.menuId}">
 
-                                    <img class="card-img-top" src="resources/menu/${vo.menuImage1 }" alt="..." />
-                                    <h3 style="color:red;position:absolute;top:30%;left:50%;transform: translate(-50%, -50%);" id="sold">SOLD OUT</h3>
+                                    <img class="card-img-top" src="resources/menu/${vo.menuImage1 }" style="opacity: 0.5;" alt="..." />
+                                    <h3 style="color:red;position:absolute;top:30%;left:50%;transform: translate(-50%, -50%);" style="opacity: 1;" id="sold">SOLD OUT</h3>
                                 </a>
                                 <!-- Product details-->
                                 <div class="card-body p-4">
@@ -269,7 +269,7 @@
                                         <span class="text-muted text-decoration-line-through">제품금액
                                             ${vo.menuPrice}원</span><br>
 
-                                        <strong><span class="text">할인금액 ${vo.menuPrice-vo.menuPriceOff }원</span></strong>
+                                        <strong><span class="text">할인금액 ${vo.menuPriceOff }원</span></strong>
                                         <strong><h5>판매금액 ${vo.menuPrice-vo.menuPriceOff }원</h5></strong>
                                         <p>조리 ${vo.menuTime }분 | ${vo.menuMany }인분 | ${vo.menuKind } <svg
                                                 xmlns="http://www.w3.org/2000/svg" width="16" height="16"></svg></p>
@@ -328,8 +328,8 @@
                                 </div>
                                 <!-- Product image--><a href="menupage.do?menuId=${vo.menuId}">
 
-                                    <img class="card-img-top" src="resources/menu/${vo.menuImage1 }" alt="..." />
-                                    <h3 style="color:red;position:absolute;top:30%;left:50%;transform: translate(-50%, -50%);" id="sold">SOLD OUT</h3>
+                                    <img class="card-img-top" src="resources/menu/${vo.menuImage1 }" style="opacity: 0.5;" alt="..." />
+                                    <h3 style="color:red;position:absolute;top:30%;left:50%;transform: translate(-50%, -50%);" style="opacity: 1;" id="sold">SOLD OUT</h3>
                                 </a>
                                 <!-- Product details-->
                                 <div class="card-body p-4">
@@ -451,7 +451,7 @@
     <div class="container px-4 px-lg-5 mt-5"> -->
         <div id="div3" style="display: none;">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <c:forEach items="${list }" var="vo">
+            <c:forEach items="${listUp }" var="vo">
                 <c:choose>
                     <c:when test="${vo.menuCount == 0}">
                         <input type="hidden" name="menuId" value="${vo.menuId}">
@@ -465,8 +465,8 @@
                                 </div>
                                 <!-- Product image--><a href="menupage.do?menuId=${vo.menuId}">
 
-                                    <img class="card-img-top" src="resources/menu/${vo.menuImage1 }" alt="..." />
-                                    <h3 style="color:red;position:absolute;top:30%;left:50%;transform: translate(-50%, -50%);" id="sold">SOLD OUT</h3>
+                                    <img class="card-img-top" src="resources/menu/${vo.menuImage1 }" style="opacity: 0.5;" alt="..." />
+                                    <h3 style="color:red;position:absolute;top:30%;left:50%;transform: translate(-50%, -50%);" style="opacity: 1;" id="sold">SOLD OUT</h3>
                                 </a>
                                 <!-- Product details-->
                                 <div class="card-body p-4">
@@ -622,7 +622,6 @@
 
     })
     
-
     document.querySelectorAll('.btn.btn-outline-dark').forEach(ele => {
         ele.addEventListener('click', function () {
             if (userId != "guest") {

@@ -232,7 +232,7 @@
 					<div class="container text-center">
 						<div class="row">
 							<div class="col-6 col-sm-3">
-								<h4><del>판매가</del></h4>
+								<h4><del>상품가격</del></h4>
 							</div>
 							<div class="col-6 col-sm-3">
 								<h3><del>${menuId.menuPrice}원</del></h3>
@@ -244,10 +244,17 @@
 							<div class="w-100"></div>
 
 							<div class="col-6 col-sm-3">
-								<h2 style="color: crimson;">할인가</h2>
+								<h4 style="color: crimson;">할인가격</h4>
 							</div>
 							<div class="col-6 col-sm-3">
 								<h2><b>${menuId.menuPriceOff}원</b></h2>
+							</div>
+							<hr>
+							<div class="col-6 col-sm-3">
+								<h2>판매가격</h2>
+							</div>
+							<div class="col-6 col-sm-3">
+								<h2><b>${menuId.menuPrice - menuId.menuPriceOff}원</b></h2>
 							</div>
 						</div>
 					</div>
