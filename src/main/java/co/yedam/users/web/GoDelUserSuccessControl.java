@@ -12,11 +12,8 @@ import co.yedam.common.command;
 public class GoDelUserSuccessControl implements command {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
-		HttpSession session = req.getSession();
-		String userId = (String) session.getAttribute("userId");
-		if(userId==null) {
-			session.setAttribute("userId", "guest");
-		}
+
+		req.getSession().invalidate();
 		
 		try {
 			req.getRequestDispatcher("/delete/deleteSuccess.tiles").forward(req, resp);

@@ -139,7 +139,7 @@ h2 {
 			</div>
 			<div class="input-box">
 				<input id="birth" type="text" name="birth" placeholder="생년월일"
-					maxlength="6"> <label for="birth">생년월일(뒷 6자리)</label>
+					maxlength="6"> <label for="birth">생년월일(앞 6자리)</label>
 			</div>
 		</div>
 		<div id="box">
@@ -297,6 +297,10 @@ h2 {
 			alert("올바른 형식으로 입력해주세요.")
 			userPhone.focus();
 			return false;
+		}else if(userPhone.value.length != 11){
+			alert("휴대폰번호를 모두 입력해주세요.")
+			userPhone.focus();
+			return false;
 		}
 		if (userAddress1.value == "") {
 			alert("주소를 입력해주세요.")
@@ -338,9 +342,13 @@ h2 {
 				userId.value = ""
 				return false;
 			}else{
+				if(userId.value != ""){
 				alert("사용가능한 아이디입니다.")
 				userPassword.focus();
 				return;
+				}else{
+				alert("아이디를 입력해주세요.")			
+				}
 			}
 		})
 	}

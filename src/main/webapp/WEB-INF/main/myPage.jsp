@@ -7,7 +7,7 @@
 	height: 100%;
 	margin: 0, auto;
 	overflow: hidden;
-	margin-bottom: 100px;
+	margin-bottom: 200px;
 }
 
 .leftMenu {

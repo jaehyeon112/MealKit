@@ -70,7 +70,7 @@ input:focus, input:not(:placeholder-shown) {
 	height: 35px;
 	font-size: 14pt;
 	margin-top: 20px;
-	margin-left: 45%;
+	margin-left: 40%;
 	margin-bottom: 10px;
 }
 
@@ -116,7 +116,11 @@ li {
 	<c:if test="${!empty errMsg }">
 		<div id="errMsg" style="color: black">${errMsg}</div>
 	</c:if>
-	<button id="btnSearch" onclick="id_search()">찾기</button>
+	<button id="btnSearch" onclick="id_search()">아이디 찾기</button>
+	
+	<ul id="submitUl">
+		<li id="forgot"><a href="findPw.do">비밀번호 찾기</a></li>
+	</ul>
 </div>
 	
 
