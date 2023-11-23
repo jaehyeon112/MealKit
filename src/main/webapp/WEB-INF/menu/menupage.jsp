@@ -287,7 +287,7 @@
 						</div>
 					</div>
 					<hr style="border: double 5px">
-					<div class="row">
+					<!-- <div class="row">
 						<div class="col">
 							<h5>
 								<b>수량 0개</b>
@@ -299,20 +299,19 @@
 								<b>0원</b>
 							</h4>
 						</div>
-					</div>
+					</div> -->
 					<div class="row">
-						<div class="col-6">
+						<!-- <div class="col-6">
 
 							<button
 								style="height: 64px; width: 250px; border: 1px solid #b0b0b0; background-color: white; color: black;"
 								class="btn btn-primary" type="button">구매</button>
-						</div>
+						</div> -->
 
 						<div class="col-6">
 
-							<button
-								style="background-color: #BDD61A; width: 250px; border: 1px solid #BDD61A; height: 64px;"
-								class="btn btn-primary" type="button">장바구니</button>
+							<a href="cart.do"><button style="background-color: #BDD61A; width: 250px; border: 1px solid #BDD61A; height: 64px;" 
+								class="btn btn-primary" type="button">장바구니</button></a>
 						</div>
 					</div>
 				</div>

@@ -24,7 +24,6 @@ public class GoMainControl implements command {
 		MenuService svc = new MenuServiceImpl();
 		List<MenuVO> list = svc.menuList();
 		req.setAttribute("menuList", list);
-		
 		try {
 			req.getRequestDispatcher("/main/main.tiles").forward(req, resp);
 		} catch (ServletException | IOException e) {
