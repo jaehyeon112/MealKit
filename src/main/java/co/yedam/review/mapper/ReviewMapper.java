@@ -21,6 +21,8 @@ public interface ReviewMapper {
 	
 	public ReviewVO selectJustOne(int orderDetailNumber);
 	
+
+	
 	public List<ReviewVO> selectMenuOne(String userId);
 	
 	public int selectCnt();

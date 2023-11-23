@@ -16,7 +16,6 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public List<ReviewVO> reviewList() {
-		// TODO Auto-generated method stub
 		return mapper.selectList();
 	}
 
@@ -66,5 +65,6 @@ public class ReviewServiceImpl implements ReviewService {
 		// TODO Auto-generated method stub
 		return mapper.searchBox(menuName);
 	}
+
 
 }
