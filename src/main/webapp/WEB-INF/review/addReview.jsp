@@ -166,6 +166,7 @@ a {
 					<ul>
 						<li class="on"><a href="#!">작성 가능한 리뷰</a></li>
 						<!-- 선택된 메뉴에 on클래스 추가 -->
+						 
 						<li><a href="getMyReview.do">작성한 리뷰</a></li>
 					</ul>
 				</div>
@@ -182,17 +183,22 @@ a {
 										<p class="tit">
 
 											<!-- 구매한 상품 선택. -->
+												
+											
 											<span class="name"> <select name="orderDetailNumber">
 													<option selected>주문하신 상품 선택</option>
 													<c:forEach items="${list }" var="vo">
 														<option value="${vo.orderDetailNumber }" >[${vo.orderDetailNumber}] ${vo.menuName }</option>
+											
 													</c:forEach>
+													
 													
 
 											</select></span>
+											<input value="${menuName }"  name="menuName"  type="hidden"/>
 											<!-- 개발 요청 사항 : 검색된 단어에 <strong></strong>태그 추가 -->
 										</p>
-											<input value="${vo.menuName }" type="hidden" name="menuName"  />
+											
 											
 										<div class="top_wrap--right">
 											<!-- 20220609 div 추가 -->
