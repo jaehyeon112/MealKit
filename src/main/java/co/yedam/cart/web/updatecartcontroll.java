@@ -33,6 +33,21 @@ public class updatecartcontroll implements command {
 		MenuService msvc = new MenuServiceImpl();
 		Gson gson = new GsonBuilder().create();
 		String arr = req.getParameter("arr");
+		if(arr.length()==0) {
+			
+			CartMenuJoinVO vo = csvc.joinCartMenuAll(userId);
+			vo.setDelivery(4000);
+			vo.setPrice(0);
+			vo.setPriceOff(0);
+			vo.setTotal(0);
+			try {
+				resp.getWriter().write(gson.toJson(vo));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
 		String arr1[] = arr.split(",");
 		
 		List<String> cartArr = Arrays.asList(arr1); // 체크가 된 값
