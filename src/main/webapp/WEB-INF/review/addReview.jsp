@@ -202,8 +202,13 @@ uri="http://java.sun.com/jsp/jstl/sql"%>
             <div class="#!">
                 <!-- 상품리스트 -->
                 <div class="prd_list row">
-                   
-                    <form action="addMyReview.do" method="post" name="myForm"id="formReview" enctype="multipart/form-data">
+                    <form
+                        action="addMyReview.do"
+                        method="post"
+                        name="myForm"
+                        id="formReview"
+                        enctype="multipart/form-data"
+                    >
                         <ul>
                             <li>
                                 <div class="review_module">
@@ -296,21 +301,18 @@ uri="http://java.sun.com/jsp/jstl/sql"%>
 </div>
 
 <script>
-	let order = 0;
+    let order = 0;
 
     document.querySelector('#btn').addEventListener('click', function (e) {
-    	if(order==0){
-    		alert('메뉴부터 선택하세요.')
-    		return;
-    	}
-    	document.forms.myForm.action = "addMyReview.do?order="+order
-    	console.log("addMyReview.do?order="+order);
-    	document.forms.myForm.submit();
-    
+        if (order == 0) {
+            alert('이미등록된 리뷰입니다.');
+            return;
+        }
+        document.forms.myForm.action = 'addMyReview.do?order=' + order;
+        console.log('addMyReview.do?order=' + order);
+        document.forms.myForm.submit();
     });
     document.querySelector('#sel').addEventListener('change', function (e) {
-       order = e.target.value
+        order = e.target.value;
     });
-    
-    
 </script>

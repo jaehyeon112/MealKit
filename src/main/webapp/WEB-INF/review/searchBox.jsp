@@ -4,19 +4,9 @@
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <style>
-
-
-
-.taste_review_list .link_more .thumb_img img {
-    position: absolute;
-    width: 100%;
-    height: auto;
-    margin: auto;
-    top: 50%;
-    left: 0;
-    -ms-transform: translateY( -50% );
-    -moz-transform: translateY( -50% );
-    transform: translateY( -50% );
+img {
+	width:186px;
+	height: 186px;
 }
 
 *:after, *:before {
@@ -41,117 +31,11 @@ element.style {
 	float: left;
 }
 
-.cn_review_wrap .best_review .img_wrap.slide_wrap .item>a {
-	display: block;
-}
-
-.cn_review_wrap .best_review .img_wrap.slide_wrap .item .img_wrap {
-	margin-bottom: 0;
-}
-
-.cn_review_wrap .best_review .img_wrap.slide_wrap .item .img_wrap {
-	position: relative;
-	width: 520px;
-	height: 324px;
-	overflow: hidden;
-}
-
-
-.cn_review_wrap .best_review .img_wrap.slide_wrap .slide_conts {
-	margin-right: 48px;
-	vertical-align: top;
-}
-
-.cn_review_wrap .best_review .img_wrap.slide_wrap .item .txt_wrap {
-	width: 520px;
-	height: 181px;
-	margin-top: 16px;
-}
-
-.cn_review_wrap .best_review .img_wrap.slide_wrap .item .etc_info {
-	position: relative;
-	padding-top: 8px;
-	font-size: 0;
-}
-
-.cn_review_wrap .best_review .img_wrap.slide_wrap .item .etc_info .rating_wrap .rating_star
-	{
-	padding: 0;
-}
-
-.cn_review_wrap .best_review .img_wrap.slide_wrap .item .etc_info .star,
-	.cn_review_wrap .best_review .img_wrap.slide_wrap .item .etc_info .star span
-	{
-	display: block;
-	width: 132px;
-	height: 24px;
-	background: url(/cjkit/web/images/common/ico_set.png) no-repeat 0 -360px;
-	background-size: 800px 800px;
-}
-
 .rating_wrap .rating_star .star, .rating_wrap .rating_star span {
 	display: block;
 	width: 88px;
 	height: 16px;
-
 	background-size: 800px 800px;
-}
-
-.cn_review_wrap .best_review .img_wrap.slide_wrap .item .txt {
-	margin-top: 32px;
-	color: #606060;
-	font-size: 15px;
-	line-height: 23px;
-	overflow: hidden;
-	max-height: 69px;
-	text-overflow: ellipsis;
-	word-wrap: break-word;
-	-moz-line-clamp: 3;
-	-ms-line-clamp: 3;
-	-webkit-line-clamp: 3;
-}
-
-.cn_review_wrap .best_review .img_wrap .count_wrap {
-	position: absolute;
-	right: 31px;
-	bottom: 0;
-	width: 42px;
-	text-align: center;
-	z-index: 2;
-}
-
-.cn_review_wrap .best_review .img_wrap .count_wrap .num {
-	display: inline-block;
-	color: #101010;
-	font-size: 18px;
-	line-height: 27px;
-	font-weight: 400;
-	vertical-align: middle;
-	letter-spacing: 2px;
-}
-
-.cn_review_wrap .best_review .img_wrap.slide_wrap .slide_arrow_wrap .arr_area
-	{
-	position: relative;
-}
-
-
-.cn_review_wrap .best_review .img_wrap.slide_wrap .slide_arrow_wrap .btn_arrow
-	{
-	position: absolute;
-	width: 24px;
-	height: 24px;
-	background:
-		url(https://www.cjcookit.com/cjkit/web/images/common/ico_set.png)
-		no-repeat;
-	background-size: 800px 800px;
-}
-
-.cn_review_wrap .best_review .img_wrap.slide_wrap .slide_arrow_wrap {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	width: 105px;
 }
 
 em {
@@ -170,20 +54,6 @@ em {
 	word-break: break-all;
 }
 
-.cn_review_wrap .best_review .img_wrap.slide_wrap .item .etc_info .user_id
-	{
-	display: inline-block;
-	color: #606060;
-	font-size: 16px;
-	line-height: 24px;
-	vertical-align: middle;
-}
-
-.cn_review_wrap .best_review .img_wrap.slide_wrap .item .etc_info .star span
-	{
-	background-position: 0 -384px;
-}
-
 .rating_wrap .rating_star span {
 	background-position: -374px 0;
 }
@@ -199,76 +69,10 @@ em {
 	vertical-align: top;
 }
 
-.cn_review_wrap .best_review .img_wrap.slide_wrap .item .tit {
-	display: block;
-	color: #101010;
-	font-size: 32px;
-	line-height: 48px;
-	font-weight: 700;
-}
-
-.cn_review_wrap .best_review .img_wrap.slide_wrap .item .img_wrap .best_flag
-	{
-	position: absolute;
-	top: 0;
-	left: 20px;
-	width: 66px;
-	height: 66px;
-	background-color: rgba(0, 138, 0, 0.8);
-	text-align: center;
-	z-index: 5;
-}
-
-.cn_review_wrap .best_review .img_wrap.slide_wrap .item .img_wrap img {
-	position: absolute;
-	width: 100%;
-	height: auto;
-	margin: auto;
-	top: 50%;
-	left: 0;
-	-ms-transform: translateY(-50%);
-	-moz-transform: translateY(-50%);
-	transform: translateY(-50%);
-}
-
-img {
-	vertical-align: middle;
-}
-
 element.style {
 	opacity: 1;
 	width: 25000px;
 	transform: translate3d(-568px, 0px, 0px);
-}
-
-.cn_review_wrap .best_review .img_wrap.slide_wrap .ui_carousel_list .ui_carousel_track
-	{
-	display: flex;
-}
-
-.cn_review_wrap .best_review {
-	height: 628px;
-	overflow: hidden;
-}
-
-.cn_review_wrap .best_review .img_wrap.slide_wrap {
-	overflow: hidden;
-	height: 628px;
-	padding: 48px 0 0;
-}
-
-.slide_wrap {
-	position: relative;
-}
-
-h2 {
-	display: block;
-	font-size: 1.5em;
-	margin-block-start: 0.83em;
-	margin-block-end: 0.83em;
-	margin-inline-start: 0px;
-	margin-inline-end: 0px;
-	font-weight: bold;
 }
 
 .hide {
@@ -282,6 +86,7 @@ h2 {
 	line-height: normal;
 	word-break: break-all;
 }
+
 div {
 	display: block;
 }
@@ -372,8 +177,6 @@ input, select, textarea, button {
 		-150px no-repeat;
 	background-size: 800px 800px;
 }
-
-
 
 .cn_review_wrap .taste_list .top_sec {
 	margin-top: 56px;
@@ -508,6 +311,7 @@ dl, ul, ol, menu, li {
 
 .review_module .top_wrap .top_wrap--right {
 	float: right;
+	margin-right: 20px
 }
 
 .review_module .top_wrap .top_wrap--right time {
@@ -520,11 +324,6 @@ dl, ul, ol, menu, li {
 	margin-top: 2px;
 	font-size: 14px;
 	line-height: 24px;
-}
-
-.review_module .top_wrap .top_wrap--right .btn-report {
-	display: inline-block;
-	transform: translateY(1px);
 }
 
 .taste_review_list .etc_info .rating_wrap .rating_star {
@@ -589,7 +388,7 @@ dl, ul, ol, menu, li {
 .taste_review_list .etc_info {
 	float: left;
 	width: 100%;
-	margin-bottom: 20px;
+	margin-bottom: 0 px;
 }
 
 .top_sec .list_sort {
@@ -689,7 +488,7 @@ input, select, textarea, button {
 												<fmt:formatDate value="${vo.reviewDate}"
 													pattern="yyyy.MM.dd" />
 											</time>
-											<a href="#!" class="btn-report">신고</a>
+											
 										</div>
 
 									</div>
@@ -728,7 +527,7 @@ input, select, textarea, button {
 												<div class="img">
 													<img
 														src="image/${vo.reviewImage }"
-														>
+														onerror="this.style.display='none';">
 												</div>
 												
 												<!-- 스크립트 요청 사항 : .review_module .img_wrap 안에 있는 .img 갯수 체크 -->
