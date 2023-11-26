@@ -157,7 +157,9 @@ a {
 	line-height: 16px;
 }
 </style>
+
 <div id="content" class="my_wrap">
+
 	<div class="right_con">
 		<div class="order_view my_activity">
 			<h3>리뷰</h3>
@@ -170,9 +172,19 @@ a {
 					</ul>
 				</div>
 			</div>
+
 			<div class="#!">
 				<!-- 상품리스트 -->
 				<div class="prd_list row">
+				<c:set var="test" value="${vo.orderDetailNumber }"/>
+
+											<c:if test="${test == null}">
+												<p>
+													작성가능한 리뷰가 없습니다.
+													<p> 
+
+
+											</c:if> 
 					<form action="addMyReview.do" method="post" id="formReview"
 						enctype="multipart/form-data">
 						<ul>
@@ -180,19 +192,20 @@ a {
 								<div class="review_module">
 									<div class="top_wrap">
 										<p class="tit">
-
+											
 											<!-- 구매한 상품 선택. -->
-											<span class="name"> <select name="orderDetailNumber">
+													<span class="name"> <select name="orderDetailNumber">
 													<option selected>주문하신 상품 선택</option>
 													<c:forEach items="${list }" var="vo">
-														<option value="${vo.orderDetailNumber }" >[${vo.orderDetailNumber}] ${vo.menuName }</option>
+														<option value="${vo.orderDetailNumber }">[${vo.orderDetailNumber}] ${vo.menuName }</option>
 													</c:forEach>
 													
 
 											</select></span>
 											<!-- 개발 요청 사항 : 검색된 단어에 <strong></strong>태그 추가 -->
-										</p>
-											<input value="${vo.menuName }" type="hidden" name="menuName"  />
+										
+												</p>
+											<input value="${vo.menuName }" type="hidden" name="menuName" />
 											
 										<div class="top_wrap--right">
 											<!-- 20220609 div 추가 -->
