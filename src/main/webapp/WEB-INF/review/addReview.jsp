@@ -176,15 +176,7 @@ a {
 			<div class="#!">
 				<!-- 상품리스트 -->
 				<div class="prd_list row">
-				<c:set var="test" value="${vo.orderDetailNumber }"/>
-
-											<c:if test="${test == null}">
-												<p>
-													작성가능한 리뷰가 없습니다.
-													<p> 
-
-
-											</c:if> 
+				
 					<form action="addMyReview.do" method="post" id="formReview"
 						enctype="multipart/form-data">
 						<ul>
