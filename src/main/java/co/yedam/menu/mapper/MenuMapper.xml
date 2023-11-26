@@ -11,18 +11,18 @@
 	
 	<!-- 내림차순 정렬 -->
 	<select id="down" resultType="co.yedam.menu.service.MenuVO">
-		select * from menu order by menu_price DESC  
+		select * from menu order by (menu_price - menu_priceOff) DESC  
 	</select>
 	
 	
 	<!-- 오름차순 정렬 -->
 	<select id="up" resultType="co.yedam.menu.service.MenuVO">
-		select * from menu order by menu_price ASC
+		select * from menu order by (menu_price - menu_priceOff) ASC
 	</select>
 	
 	<!-- 인기메뉴순 -->
 	<select id="3" resultType="co.yedam.menu.service.MenuVO">
-		select * from menu order by 
+		select * from menu order by cart_count
 	</select>
 	
 	<!-- 장바구니 버튼 눌렀을때, 해당 메뉴의 정보 가져올 수 있도록.. -->
@@ -40,7 +40,7 @@
 		select * from menu where menu_id =#{vo.menuId}
 	</select>
 	
-	<delete id="deleteMenu" parameterType="co.yedam.menu.service.MenuVO">
+	<delete id="deleteMenu" parameterType="String">
 		delete from menu where menu_id =#{menuId}
 	</delete>
 	

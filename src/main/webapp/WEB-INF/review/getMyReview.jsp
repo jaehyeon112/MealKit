@@ -198,7 +198,7 @@ prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
     line-height: 16px;
   }
 </style>
-
+<br>
 <div id="content" class="my_wrap">
   <div class="right_con">
     <div class="order_view my_activity">

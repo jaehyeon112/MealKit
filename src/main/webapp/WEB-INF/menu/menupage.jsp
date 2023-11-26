@@ -216,7 +216,7 @@
 					<h2>
 						<b>${menuId.menuName}</b>
 					</h2>
-
+					<input value="${menuId.menuId}" id="in" name="in" type="hidden">
 					<p>원산지 : 상품정보 참조</p>
 
 					<p>
@@ -232,7 +232,7 @@
 					<div class="container text-center">
 						<div class="row">
 							<div class="col-6 col-sm-3">
-								<h4><del>판매가</del></h4>
+								<h4><del>상품가격</del></h4>
 							</div>
 							<div class="col-6 col-sm-3">
 								<h3><del>${menuId.menuPrice}원</del></h3>
@@ -244,10 +244,17 @@
 							<div class="w-100"></div>
 
 							<div class="col-6 col-sm-3">
-								<h2 style="color: crimson;">할인가</h2>
+								<h4 style="color: crimson;">할인가격</h4>
 							</div>
 							<div class="col-6 col-sm-3">
 								<h2><b>${menuId.menuPriceOff}원</b></h2>
+							</div>
+							<hr>
+							<div class="col-6 col-sm-3">
+								<h2>판매가격</h2>
+							</div>
+							<div class="col-6 col-sm-3">
+								<h2><b>${menuId.menuPrice - menuId.menuPriceOff}원</b></h2>
 							</div>
 						</div>
 					</div>
@@ -280,7 +287,7 @@
 						</div>
 					</div>
 					<hr style="border: double 5px">
-					<div class="row">
+					<!-- <div class="row">
 						<div class="col">
 							<h5>
 								<b>수량 0개</b>
@@ -292,20 +299,19 @@
 								<b>0원</b>
 							</h4>
 						</div>
-					</div>
+					</div> -->
 					<div class="row">
-						<div class="col-6">
+						<!-- <div class="col-6">
 
 							<button
 								style="height: 64px; width: 250px; border: 1px solid #b0b0b0; background-color: white; color: black;"
 								class="btn btn-primary" type="button">구매</button>
-						</div>
+						</div> -->
 
 						<div class="col-6">
 
-							<button
-								style="background-color: #BDD61A; width: 250px; border: 1px solid #BDD61A; height: 64px;"
-								class="btn btn-primary" type="button">장바구니</button>
+							<button style="background-color: #BDD61A; width: 250px; border: 1px solid #BDD61A; height: 64px;" 
+								class="btn btn-primary" id="btn" type="button">장바구니</button>
 						</div>
 					</div>
 				</div>
@@ -437,10 +443,11 @@
 <script>
 	let userId = "${userId}";
 
-	document.querySelectorAll('.btn btn-primary').forEach(ele => {
-		ele.addEventListener('click', function () {
-			if (userId != "guest") {
-				let menuId = this.getAttribute("id")
+	document.querySelector('#btn').addEventListener('click',function(){
+		console.log("1");
+			if (userId != null )  {
+				let menuId = document.querySelector('#in').value;
+				console.log(menuId);
 				fetch("addCart.do?menuId=" + menuId).then(resolve => resolve.json()).then(result => {
 					//값은 갯수 가져왔음.
 					if (result.retCode == 'NG') {
@@ -456,9 +463,12 @@
 				}).catch(err => {
 					console.log(err)
 				})
-			} else {}
+			} else {	console.log("3");}
 		})
-	})
+
+
+
+	
 
 
 </script>

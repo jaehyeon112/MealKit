@@ -24,7 +24,9 @@ public class DelUserControl implements command {
 		if(svc.delUser(userId, userPassword)) {
 			map.put("retCode", "OK");
 			map.put("vo", vo);
+			
 			req.getSession().invalidate();
+			
 			try {
 				resp.sendRedirect("delSuccess.do");
 			} catch (Exception e) {

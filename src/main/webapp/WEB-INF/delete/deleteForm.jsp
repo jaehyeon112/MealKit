@@ -106,7 +106,7 @@ li {
 	</header>
 	<div class="input-box">
 		<input id="userId" type="text" name="userId" placeholder="아이디"
-			value="${userId}" readonly="readonly"> <label for="userId">${userId}</label>
+			value="${userId}" readonly="readonly"> <label for="userId">아이디</label>
 	</div>
 	<div class="input-box">
 		<input id="userPassword" type="password" name="userPassword"

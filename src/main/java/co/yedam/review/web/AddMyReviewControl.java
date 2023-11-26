@@ -24,16 +24,28 @@ public class AddMyReviewControl implements command {
 		
 		ReviewService svc = new ReviewServiceImpl();
 		String savaDir = req.getServletContext().getRealPath("image");
-
+		String order = req.getParameter("order");
+		int newOrder = Integer.parseInt(order);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
 		ReviewVO vo = new ReviewVO();
-
+		ReviewVO vo2 = svc.selectOne(newOrder);
+		System.out.println("오더넘버넘어온 값 : " + order);
+		System.out.println("오더넘버넘어온 값 : " + newOrder);
+		
+		System.out.println("출력되야 하는 값 : " + vo2);
+		
+		System.out.println("=============");
+		System.out.println("=============");
+		System.out.println("=============");
+		System.out.println("=============");
+		System.out.println("=============");
+		System.out.println("=============");
 		int size = 5 * 1024 * 1024;
 
 		try {
 			MultipartRequest mr = new MultipartRequest(req, savaDir, size, "UTF-8", new DefaultFileRenamePolicy());
 			String menuName = mr.getParameter("menuName"); // 상품명
+			System.out.println(menuName);
 			int orderDetailNumber = Integer.parseInt(mr.getParameter("orderDetailNumber"));
 			String reviewContent = mr.getParameter("reviewContent"); // 리뷰내용
 			String userId = mr.getParameter("userId"); // 아이디
@@ -42,25 +54,25 @@ public class AddMyReviewControl implements command {
 			// int reviewBoomup = Integer.parseInt(req.getParameter("reviewBoomup")); // 추천수
 			String reviewDate = mr.getParameter("reviewDate"); // 날짜
 
-			try {
-				vo.setReviewDate(sdf.parse(reviewDate));
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			/*
+			 * try { vo.setReviewDate(sdf.parse(reviewDate)); } catch (ParseException e) {
+			 * // TODO Auto-generated catch block e.printStackTrace(); }
+			 */
 			vo.setOrderDetailNumber(orderDetailNumber);
 			vo.setMenuName(menuName);
 			vo.setReviewContent(reviewContent);
 			vo.setUserId(userId);
 		    vo.setReviewImage(reviewImage);
 			vo.setReviewStar(reviewStar);
+			
+			
 			// vo.setReviewBoomup(reviewBoomup);
-
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
+		
 		if (svc.addReview(vo)) {
 			try {
 				resp.sendRedirect("myPage.do");
